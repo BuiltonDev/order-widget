@@ -8,7 +8,8 @@
     "start:dev:windows": "SET NODE_ENV=development && webpack --watch --display-error-details",
     "start:prod": "NODE_ENV=production && ./node_modules/.bin/webpack --display-error-details && ./node_modules/.bin/uglifyjs --compress -o dist/main.bundle.min.js -- dist/main.bundle.js && ./node_modules/.bin/http-server . -c-1",
     "autobuild:dev": "nodemon --exec npm run start:dev",
-    "autobuild:prod": "nodemon --exec npm run start:prod"
+    "autobuild:prod": "nodemon --exec npm run start:prod",
+    "lint": "eslint src/**"
   },
   "repository": {
     "type": "git",

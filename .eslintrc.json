@@ -6,7 +6,8 @@
   ],
   "rules": {
     "no-underscore-dangle": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "comma-dangle": ["error", "never"]
   },
   "env": {
     "browser": true

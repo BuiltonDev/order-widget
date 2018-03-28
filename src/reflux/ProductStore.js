@@ -7,9 +7,9 @@ class ProductStore extends Reflux.Store {
     this.state = {
       selectedProducts: [{
         product: null
-      }],,
+      }],
       order: null,
-      user: null,
+      user: null
     };
     this.listenables = Actions;
   }

@@ -7,7 +7,7 @@ const Actions = Reflux.createActions([
   'removeProduct',
   'setStore',
   'setOrder',
-  'setUser',
+  'setUser'
 ]);
 
 export default Actions;
