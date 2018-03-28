@@ -1,0 +1,14 @@
+{
+  "extends": "airbnb-base",
+  "plugins": [
+    "import",
+    "react"
+  ],
+  "rules": {
+    "no-underscore-dangle": "off",
+    "consistent-return": "off"
+  },
+  "env": {
+    "browser": true
+  }
+}

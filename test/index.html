@@ -1,0 +1,24 @@
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../dist/index.css">
+</head>
+
+<div id="test">
+</div>
+
+
+<script src="./../dist/main.bundle.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf53-uXGDdH29KisPNSvsqpdRIzruI66U&libraries=places"></script>
+<script src="https://unpkg.com/@shareactor/shareactor-sdk@latest/dist/main.bundle.js"></script>
+<script src="./config.js"></script>
+<script>
+  KvassOrdering.init({
+    id: 'test',
+    apiKey: config.apiKey,
+    endpoint: config.endpoint,
+    lng: 'no'
+  });
+</script>
+
+</html>

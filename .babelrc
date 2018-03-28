@@ -1,0 +1,19 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": [ "safari 10", "ie 11", "ios 9" ]
+        },
+        "modules": false,
+        "useBuiltIns": true
+      }
+    ],
+    ["react"]
+  ],
+  "plugins": [
+
+  ],
+  "comments": false
+}
