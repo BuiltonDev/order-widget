@@ -8,7 +8,9 @@ class ProductSearch extends Component {
 
   render() {
     return (
-      <div>Product Search</div>
+      <div class="kvass-widget-product-search">
+        <div>Product Search</div>
+      </div>
     )
   }
 }

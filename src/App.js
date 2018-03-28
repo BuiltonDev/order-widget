@@ -13,8 +13,11 @@ class App extends Component {
 
   render() {
     return (
-      <div id={'sa-widget--nav-container'} className="sa-widget fade-in">
-      <ProductSearch></ProductSearch>
+      <div id={'kvass-widget'} className="kvass-widget kvass-widget-open">
+        <div class="kvass-widget-overlay"></div>
+          <div class="kvass-widget-container">
+            <ProductSearch></ProductSearch>
+          </div>
       </div>
     )
   }

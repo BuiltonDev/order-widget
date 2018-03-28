@@ -11,9 +11,7 @@ T.setLanguage = (lng) => {
       global: {
         next: "Neste",
         back: "Tilbake",
-        confirm: "Bekreft",
-        addAPhone: "Legg til telefon",
-        backToSite: "< Tilbake til hjemmesiden"
+        confirm: "Bekreft"
       }
     });
   } else { // fallback english
@@ -21,9 +19,7 @@ T.setLanguage = (lng) => {
       global: {
         next: "Next",
         back: "Back",
-        confirm: "Confirm",
-        addAPhone: "Add a phone",
-        backToSite: "< Back to the main page",
+        confirm: "Confirm"
       }
     });
   }
