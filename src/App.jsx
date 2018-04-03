@@ -13,7 +13,7 @@ class App extends Component {
     let openClass = '';
     if (this.props.isOpen === true) openClass = ' kvass-widget--open';
     if (this.props.isOpen === false) openClass = ' kvass-widget--close';
-    console.log(openClass);
+
     return (
       <div id="kvass-widget" className={"kvass-widget" + openClass}>
         <div className="kvass-widget__overlay"></div>

@@ -11,7 +11,7 @@ class ProductSearch extends Component {
       <div className="kvass-widget__product-search">
         <div>Product Search</div>
       </div>
-    )
+    );
   }
 }
 
