@@ -12,6 +12,9 @@ T.setLanguage = (lng) => {
         next: 'Neste',
         back: 'Tilbake',
         confirm: 'Bekreft'
+      },
+      product: {
+        searchPlaceholder: 'Søk etter product'
       }
     });
   } else { // fallback english
@@ -20,6 +23,9 @@ T.setLanguage = (lng) => {
         next: 'Next',
         back: 'Back',
         confirm: 'Confirm'
+      },
+      product: {
+        searchPlaceholder: 'Search for product'
       }
     });
   }

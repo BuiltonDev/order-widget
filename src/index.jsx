@@ -8,7 +8,7 @@ import 'babel-polyfill';
 let a, e, el;
 
 export const init = ({domElementId, apiKey, endpoint, search='', lng='no', auth0Config}) => {
-  new ShareActor({ apiKey, endpoint });
+  window.ShareActor = new ShareActor({ apiKey, endpoint });
   T.setLanguage(lng);
   el = document.getElementById(domElementId);
   a = apiKey;
@@ -26,5 +26,6 @@ export const close = () => {
 
 // TODO check whether we should destroy shareactor and i18n instance as well so that GC picks them up
 export const destroy = () => {
+  delete window.ShareActor;
   ReactDOM.unmountComponentAtNode(el);
 };
