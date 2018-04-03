@@ -14,6 +14,7 @@ T.setLanguage = (lng) => {
         confirm: 'Bekreft'
       },
       product: {
+        search: 'Søk',
         searchPlaceholder: 'Søk etter product'
       }
     });
@@ -25,6 +26,7 @@ T.setLanguage = (lng) => {
         confirm: 'Confirm'
       },
       product: {
+        search: 'Search',
         searchPlaceholder: 'Search for product'
       }
     });

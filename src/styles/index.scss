@@ -1,6 +1,6 @@
 /** **/
-@import 'global';
-@import 'mixins';
+@import '_global';
+@import '_mixins';
 .kvass-widget {
   display: flex;
   align-items: center;

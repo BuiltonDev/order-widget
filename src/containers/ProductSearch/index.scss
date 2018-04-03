@@ -1,16 +1,42 @@
+@import '../../styles/_global';
 
 .kvass-widget__product-search {
   text-align: center;
 
   .kvass-widget__search-form {
-    
+    display: flex;
+    margin-bottom: 0;
+  }
+
+  .kvass-widget__search-input {
+    height: 36px;
+    border: 1px solid $primary-color;
+    padding: 0 16px;
+    border-radius: 2px 0 0 2px;
+    width: 100%;
+    max-width: 266px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .kvass-widget__search-input:focus {
   }
 
   .kvass-widget__search-button {
-
+    text-align: center;
+    height: 36px;
+    width: 70px;
+    color: #FFFFFF;
+    background-color: $primary-color;
+    border: 0;
+    &:focus {
+      outline: none;
+    }
   }
 }
 
 .kvass-widget__header {
-
+  padding: 30px 32px;
 }

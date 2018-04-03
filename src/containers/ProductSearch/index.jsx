@@ -63,12 +63,13 @@ class ProductSearch extends Component {
         <div className="kvass-widget__header">
           <form className="kvass-widget__search-form" onSubmit={this.handleSearchSubmit}>
             <DebounceInput
+              className="kvass-widget__search-input"
               minLength={0}
               debounceTimeout={300}
               value={search}
               placeholder={T.translate('product.searchPlaceholder')}
               onChange={event => this.setProductSearch(event.target.value)} />
-            <input className="kvass-widget__search-button" type="submit" value="Submit" />
+            <input className="kvass-widget__search-button" type="submit" value={T.translate('product.search')} />
           </form>
         </div>
         <div className="kvass-widget__product-list">
