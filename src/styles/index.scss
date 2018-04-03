@@ -2,8 +2,18 @@
 @import 'global';
 @import 'mixins';
 .kvass-widget {
+  display: flex;
+  align-items: center;
 
-  .kvass-widget-overlay {
+  z-index: 9999;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  right: 0;
+
+  .kvass-widget__overlay {
     background: radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
     position: fixed;
     top: 0;
@@ -15,12 +25,9 @@
     @include transition(opacity 0.2s ease-in 0.4s);
   }
 
-  .kvass-widget-open {
-    opacity: 0.9;
-    @include transition(opacity 0.3s ease-in 0s);
-  }
-
-  .kvass-widget-container {
+  .kvass-widget__container {
+    display: block;
+    opacity: 1;
     height: 600px; // Temporary
     width: 400px;
     margin: 0 auto;
@@ -28,12 +35,20 @@
     max-height: 100vh;
 
     @include transition(transform 0.6s, opacity 0.6s, -webkit-transform 0.6s);
+    //@include transition(opacity 0.3s ease-in-out 0.4s);
     @include transition-delay(0.5s);
-    //@include transform(translateY(0%) scale(1));
 
     box-shadow: 0 0 20px 1px #111118;
-    opacity: 1;
   }
+}
+
+.kvass-widget--close {
+  display: none;
+  opacity: 0;
+}
+
+.kvass-widget--open {
+  opacity: 1;
 }
 
 /** Include component styles **/

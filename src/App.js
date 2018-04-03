@@ -7,15 +7,17 @@ import ProductSearch from './containers/ProductSearch';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.endpoint = props.endpoint;
-    this.apiKey = props.apiKey;
   }
 
   render() {
+    let openClass = '';
+    if (this.props.isOpen === true) openClass = ' kvass-widget--open';
+    if (this.props.isOpen === false) openClass = ' kvass-widget--close';
+    console.log(openClass);
     return (
-      <div id={'kvass-widget'} className="kvass-widget kvass-widget-open">
-        <div class="kvass-widget-overlay"></div>
-          <div class="kvass-widget-container">
+      <div id="kvass-widget" className={"kvass-widget" + openClass}>
+        <div className="kvass-widget__overlay"></div>
+          <div className="kvass-widget__container">
             <ProductSearch></ProductSearch>
           </div>
       </div>

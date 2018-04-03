@@ -4,21 +4,29 @@
   <link rel="stylesheet" type="text/css" href="../dist/index.css">
 </head>
 
-<div id="test">
-</div>
-
-
 <script src="./../dist/main.bundle.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf53-uXGDdH29KisPNSvsqpdRIzruI66U&libraries=places"></script>
 <script src="https://unpkg.com/@shareactor/shareactor-sdk@latest/dist/main.bundle.js"></script>
 <script src="./config.js"></script>
+
+<body>
+  <div id="kvass-instance"></div>
+  <button id="openKvass">Open</button>
+  <button id="closeKvass" style="z-index: 1000000; position: absolute;">Close</button>
+</body>
 <script>
   KvassOrdering.init({
-    id: 'test',
+    domElementId: 'kvass-instance',
     apiKey: config.apiKey,
     endpoint: config.endpoint,
     lng: 'no'
   });
-</script>
 
+  document.getElementById('openKvass').addEventListener('click', function(event) {
+    KvassOrdering.open();
+  });
+  document.getElementById('closeKvass').addEventListener('click', function(event) {
+    KvassOrdering.close();
+  });
+</script>
 </html>

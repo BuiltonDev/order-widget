@@ -5,8 +5,8 @@ export const steps = {
 };
 
 function getViews() {
-  const mainElement = document.getElementById('sa-widget--nav-container');
-  return mainElement.querySelectorAll('#sa-widget--nav-container>div');
+  const mainElement = document.getElementById('kvass-widget-container');
+  return mainElement.querySelectorAll('#kvass-widget-container>div');
 }
 
 export function navigate(step = null) {
