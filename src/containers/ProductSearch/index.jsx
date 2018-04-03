@@ -5,6 +5,7 @@ import ProductStore from '../../reflux/ProductStore';
 import T from '../../utils/i18n';
 import {ShareActor} from '../../utils';
 import {DebounceInput} from 'react-debounce-input';
+import Spinner from '../../components/spinner';
 
 class ProductSearch extends Component {
   constructor(props) {
@@ -53,11 +54,16 @@ class ProductSearch extends Component {
 
   renderProductItems() {
     if (!this.state.products.length) return;
-    return this.state.products.map((product) => <li key={product._id.$oid}>{product.name}</li>);
+    const children = this.state.products.map((product) => <li key={product._id.$oid}>{product.name}</li>);
+    return (
+      <ul>
+        {children}
+      </ul>
+    );
   }
 
   render() {
-    const {search} = this.state;
+    const {search, isLoading} = this.state;
     return (
       <div className="kvass-widget__product-search">
         <div className="kvass-widget__header">
@@ -73,9 +79,8 @@ class ProductSearch extends Component {
           </form>
         </div>
         <div className="kvass-widget__product-list">
-          <ul>
-            {this.renderProductItems()}
-          </ul>
+          <Spinner show={isLoading}></Spinner>
+          {this.renderProductItems()}
         </div>
       </div>
     );

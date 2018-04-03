@@ -21,14 +21,11 @@
     }
   }
 
-  .kvass-widget__search-input:focus {
-  }
-
   .kvass-widget__search-button {
     text-align: center;
     height: 36px;
     width: 70px;
-    color: #FFFFFF;
+    color: $secondary-background-color;
     background-color: $primary-color;
     border: 0;
     &:focus {
@@ -37,6 +34,20 @@
   }
 }
 
+.kvass-widget__product-list {
+  min-height: $content-min-height;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 30px 32px;
+  }
+  li {
+    
+  }
+}
+
 .kvass-widget__header {
+  background-color: $secondary-background-color;
+  box-shadow: 0 5px 15px rgba(0,0,0,.033);
   padding: 30px 32px;
 }
