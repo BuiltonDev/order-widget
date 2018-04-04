@@ -6,6 +6,8 @@ import T from '../../utils/i18n';
 import {ShareActor} from '../../utils';
 import {DebounceInput} from 'react-debounce-input';
 import Spinner from '../../components/spinner';
+import { Scrollbars } from 'react-custom-scrollbars';
+import {AddIcon, RemoveIcon} from '../../components/svgIcons';
 
 class ProductSearch extends Component {
   constructor(props) {
@@ -21,6 +23,8 @@ class ProductSearch extends Component {
       total: 0
     };
     this.store = ProductStore;
+    this.endpoint = window.config.endpoint; // Get from store
+    this.apiKey = window.config.apiKey; // Get from store
   }
 
   componentDidMount() {
@@ -52,13 +56,45 @@ class ProductSearch extends Component {
     event.preventDefault();
   }
 
+  addProduct(id) {
+    console.log('Adding instance');
+  }
+
+  removeProduct(id) {
+    console.log('Removing instance');
+  }
+
+  renderProductItemImg(image_url) {
+    if (!image_url) return;
+
+    return (
+      <img  src={`${this.endpoint}images/${image_url}?api_key=${this.apiKey}`} alt="product image"/>
+    );
+  }
+
   renderProductItems() {
     if (!this.state.products.length) return;
-    const children = this.state.products.map((product) => <li key={product._id.$oid}>{product.name}</li>);
+    const children = this.state.products.map((product) => {
+      const id = product._id.$oid;
+      return (
+        <li key={id}>
+          <div className="kvass-widget__product-list-item__img">
+            {this.renderProductItemImg(product.image_url)}
+          </div>
+          <span className="kvass-widget__product-list-item__name">{product.name}</span>
+          <div className="kvass-widget__product-list-item__toolbar">
+            <a href="#" onClick={this.removeProduct(id)}><RemoveIcon className="kvass-widget__svg--red"></RemoveIcon></a>
+            <a href="#" onClick={this.addProduct(id)}><AddIcon className="kvass-widget__svg--green"></AddIcon></a>
+          </div>
+        </li>
+      );
+    });
     return (
-      <ul>
-        {children}
-      </ul>
+      <Scrollbars style={{ height: 500 }}>
+        <ul>
+          {children}
+        </ul>
+      </Scrollbars>
     );
   }
 
@@ -81,6 +117,9 @@ class ProductSearch extends Component {
         <div className="kvass-widget__product-list">
           <Spinner show={isLoading}></Spinner>
           {this.renderProductItems()}
+        </div>
+        <div className="kvass-widget__footer">
+          <button className="kvass-widget__next-button">Next</button>
         </div>
       </div>
     );

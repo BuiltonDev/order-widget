@@ -1,22 +1,30 @@
 // generic transform
 @mixin transform($transforms...) {
-	   -moz-transform: $transforms;
-	     -o-transform: $transforms;
-	    -ms-transform: $transforms;
+   -moz-transform: $transforms;
+ 	-o-transform: $transforms;
+  -ms-transform: $transforms;
 	-webkit-transform: $transforms;
-          transform: $transforms;
+  transform: $transforms;
 }
 
 @mixin transition($transition...) {
-    -moz-transition:    $transition;
-    -o-transition:      $transition;
-    -webkit-transition: $transition;
-    transition:         $transition;
+  -moz-transition:    $transition;
+  -o-transition:      $transition;
+  -webkit-transition: $transition;
+  transition:         $transition;
 }
 
 @mixin transition-delay($delay...) {
-    -moz-transition-delay:    $delay;
-    -o-transition-delay:      $delay;
-    -webkit-transition-delay: $delay;
-    transition-delay:         $delay;
+  -moz-transition-delay:    $delay;
+  -o-transition-delay:      $delay;
+  -webkit-transition-delay: $delay;
+  transition-delay:         $delay;
+}
+
+@mixin translate($x, $y) {
+  -webkit-transform: translate($x, $y);
+  -moz-transform: translate($x, $y);
+  -ms-transform: translate($x, $y);
+  -o-transform: translate($x, $y);
+  transform: translate($x, $y);
 }

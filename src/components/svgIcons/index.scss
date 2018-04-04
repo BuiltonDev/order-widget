@@ -1,0 +1,15 @@
+
+.kvass-widget__svg--green {
+  fill: #5cb85c;
+
+  &:hover {
+    fill: #1cab1c;
+  }
+}
+.kvass-widget__svg--red {
+  fill: #d9534f;
+
+  &:hover {
+    fill: #b71914;
+  }
+}
