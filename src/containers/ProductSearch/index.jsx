@@ -9,13 +9,17 @@ import Spinner from '../../components/spinner';
 import { Scrollbars } from 'react-custom-scrollbars';
 import {AddIcon, RemoveIcon, ShoppingCartIcon} from '../../components/svgIcons';
 
+import NotificationBadge from 'react-notification-badge';
+import {Effect} from 'react-notification-badge';
+
 class ProductSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: false,
       products: [],
-      search: ''
+      search: '',
+      count: 0
     };
     this.pagination = {
       page: 0,
@@ -57,18 +61,20 @@ class ProductSearch extends Component {
   }
 
   addProduct(id) {
-    console.log('Adding instance');
+    this.setState({count: this.state.count + 1});
   }
 
   removeProduct(id) {
-    console.log('Removing instance');
+    if (this.state.count - 1 > -1) {
+      this.setState({count: this.state.count - 1});
+    }
   }
 
   renderProductItemImg(image_url) {
     if (!image_url) return;
 
     return (
-      <img  src={`${this.endpoint}images/${image_url}?api_key=${this.apiKey}`} alt="product image"/>
+      <img src={`${this.endpoint}images/${image_url}?api_key=${this.apiKey}`} alt="product image"/>
     );
   }
 
@@ -83,8 +89,8 @@ class ProductSearch extends Component {
           </div>
           <span className="kvass-widget__product-list-item__name">{product.name}</span>
           <div className="kvass-widget__product-list-item__toolbar">
-            <a href="#" onClick={this.removeProduct(id)}><RemoveIcon className="kvass-widget__svg--red"></RemoveIcon></a>
-            <a href="#" onClick={this.addProduct(id)}><AddIcon className="kvass-widget__svg--green"></AddIcon></a>
+            <a href="#" onClick={() => this.removeProduct(id)}><RemoveIcon className="kvass-widget__svg--red"></RemoveIcon></a>
+            <a href="#" onClick={() => this.addProduct(id)}><AddIcon className="kvass-widget__svg--green"></AddIcon></a>
           </div>
         </li>
       );
@@ -99,7 +105,7 @@ class ProductSearch extends Component {
   }
 
   render() {
-    const {search, isLoading} = this.state;
+    const {search, isLoading, count} = this.state;
     return (
       <div className="kvass-widget__product-search">
         <div className="kvass-widget__header">
@@ -119,7 +125,10 @@ class ProductSearch extends Component {
           {this.renderProductItems()}
         </div>
         <div className="kvass-widget__footer">
-          <ShoppingCartIcon className="kvass-widget__svg--primary"></ShoppingCartIcon>
+          <div className="kvass-widget__shopping-cart">
+            <ShoppingCartIcon className="kvass-widget__svg--primary"></ShoppingCartIcon>
+            <NotificationBadge className="kvass-widget__shopping-cart__badge" count={count} effect={Effect.SCALE} frameLength={15.0}/>
+          </div>
           {/*<button className="kvass-widget__next-button">Next</button>*/}
         </div>
       </div>

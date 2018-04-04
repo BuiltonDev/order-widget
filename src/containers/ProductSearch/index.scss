@@ -80,3 +80,12 @@
     @extend %button;
   }
 }
+
+.kvass-widget__shopping-cart {
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  .kvass-widget__shopping-cart__badge {
+    background-color: #a9a2a1;
+  }
+}
