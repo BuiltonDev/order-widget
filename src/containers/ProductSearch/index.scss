@@ -44,7 +44,10 @@
   }
 
   .kvass-widget__product-list-item {
-
+    transition: all .2s ease-in-out;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   .kvass-widget__product-list-item__img {

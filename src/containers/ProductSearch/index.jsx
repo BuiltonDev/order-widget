@@ -7,7 +7,7 @@ import {ShareActor} from '../../utils';
 import {DebounceInput} from 'react-debounce-input';
 import Spinner from '../../components/spinner';
 import { Scrollbars } from 'react-custom-scrollbars';
-import {AddIcon, RemoveIcon} from '../../components/svgIcons';
+import {AddIcon, RemoveIcon, ShoppingCartIcon} from '../../components/svgIcons';
 
 class ProductSearch extends Component {
   constructor(props) {
@@ -77,7 +77,7 @@ class ProductSearch extends Component {
     const children = this.state.products.map((product) => {
       const id = product._id.$oid;
       return (
-        <li key={id}>
+        <li className="kvass-widget__product-list-item" key={id}>
           <div className="kvass-widget__product-list-item__img">
             {this.renderProductItemImg(product.image_url)}
           </div>
@@ -119,7 +119,8 @@ class ProductSearch extends Component {
           {this.renderProductItems()}
         </div>
         <div className="kvass-widget__footer">
-          <button className="kvass-widget__next-button">Next</button>
+          <ShoppingCartIcon className="kvass-widget__svg--primary"></ShoppingCartIcon>
+          {/*<button className="kvass-widget__next-button">Next</button>*/}
         </div>
       </div>
     );

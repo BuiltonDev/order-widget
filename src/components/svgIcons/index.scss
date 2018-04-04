@@ -1,3 +1,4 @@
+@import '../../styles/_global';
 
 .kvass-widget__svg--green {
   fill: #5cb85c;
@@ -11,5 +12,11 @@
 
   &:hover {
     fill: #b71914;
+  }
+}
+.kvass-widget__svg--primary {
+  fill: $primary-color;
+  &:hover {
+
   }
 }
