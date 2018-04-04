@@ -2,9 +2,13 @@
 
 .spinner-container {
   position: absolute;
-  width: 400px;
-  opacity: 0.1;
-  min-height: 500px;
+  width: 100%;
+  min-height: $content-min-height;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.spinner-container--hidden {
+  display: none;
 }
 
 .loader,
