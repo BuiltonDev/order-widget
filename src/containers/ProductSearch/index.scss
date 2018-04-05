@@ -18,11 +18,8 @@
 
     &:focus {
       outline: none;
+      border: 1px solid $primary-color-focus;
     }
-  }
-
-  .kvass-widget__search-button {
-    @extend %button;
   }
 }
 
@@ -35,10 +32,10 @@
   }
   li {
     display: flex;
-    //justify-content: space-between;
+    cursor: pointer;
     margin-bottom: 5px;
     padding: 5px;
-    background-color: white;
+    background-color: $secondary-background-color;
     border: 1px solid #bfbcbc7a;
     border-radius: 2px;
   }
@@ -76,15 +73,13 @@
 
 .kvass-widget__footer {
   padding: 30px 32px;
-  .kvass-widget__next-button {
-    @extend %button;
-  }
 }
 
 .kvass-widget__shopping-cart {
   height: 50px;
   width: 50px;
   display: inline-block;
+  cursor: pointer;
   .kvass-widget__shopping-cart__badge {
     background-color: #a9a2a1;
   }

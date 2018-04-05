@@ -117,7 +117,7 @@ class ProductSearch extends Component {
               value={search}
               placeholder={T.translate('product.searchPlaceholder')}
               onChange={event => this.setProductSearch(event.target.value)} />
-            <input className="kvass-widget__search-button" type="submit" value={T.translate('product.search')} />
+            <input className="kvass-widget__primary-button" type="submit" value={T.translate('product.search')} />
           </form>
         </div>
         <div className="kvass-widget__product-list">
@@ -129,7 +129,7 @@ class ProductSearch extends Component {
             <ShoppingCartIcon className="kvass-widget__svg--primary"></ShoppingCartIcon>
             <NotificationBadge className="kvass-widget__shopping-cart__badge" count={count} effect={Effect.SCALE} frameLength={15.0}/>
           </div>
-          {/*<button className="kvass-widget__next-button">Next</button>*/}
+          {/*<button className="kvass-widget__primary-button">Next</button>*/}
         </div>
       </div>
     );

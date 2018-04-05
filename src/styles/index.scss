@@ -51,6 +51,22 @@
   opacity: 1;
 }
 
+/* Global classes*/
+
+.kvass-widget__primary-button {
+  text-align: center;
+  cursor: pointer;
+  height: 36px;
+  width: 70px;
+  color: $secondary-background-color;
+  background-color: $primary-color;
+  border: 0;
+  &:hover {
+    outline: none;
+    background-color: $primary-color-focus;
+  }
+}
+
 /** Include component styles **/
 
 @import '../containers/ProductSearch/index';
