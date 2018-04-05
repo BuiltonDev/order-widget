@@ -2,6 +2,7 @@
 
 .spinner-container {
   position: absolute;
+  z-index: 10000;
   width: 100%;
   min-height: $content-min-height;
   background-color: rgba(0, 0, 0, 0.08);
