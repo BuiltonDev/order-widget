@@ -12,8 +12,6 @@
     ],
     ["react"]
   ],
-  "plugins": [
-
-  ],
+  "plugins": ["transform-object-rest-spread"],
   "comments": false
 }

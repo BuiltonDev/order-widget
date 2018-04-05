@@ -1,25 +1,25 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Reflux from 'reflux';
-import ProductStore from '../../reflux/ProductStore';
-import T from '../../utils/i18n';
-import {ShareActor} from '../../utils';
 import {DebounceInput} from 'react-debounce-input';
-import Spinner from '../../components/spinner';
 import { Scrollbars } from 'react-custom-scrollbars';
-import {AddIcon, RemoveIcon, ShoppingCartIcon} from '../../components/svgIcons';
-
 import NotificationBadge from 'react-notification-badge';
 import {Effect} from 'react-notification-badge';
+import ProductStore from '../../reflux/ProductStore';
+import Actions from '../../reflux/Actions'
+import T from '../../utils/i18n';
+import {ShareActor} from '../../utils';
+import Spinner from '../../components/spinner';
+import {AddIcon, RemoveIcon, ShoppingCartIcon} from '../../components/svgIcons';
 
-class ProductSearch extends Component {
+
+class ProductSearch extends Reflux.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoading: false,
-      products: [],
-      search: '',
-      count: 0
+      productSearchList: [],
+      search: ''
     };
     this.pagination = {
       page: 0,
@@ -27,6 +27,7 @@ class ProductSearch extends Component {
       total: 0
     };
     this.store = ProductStore;
+    this.storeKeys = ['globalCount'];
     this.endpoint = window.config.endpoint; // Get from store
     this.apiKey = window.config.apiKey; // Get from store
   }
@@ -40,12 +41,12 @@ class ProductSearch extends Component {
   searchProduct(page) {
     this.setState({isLoading: true});
     page = Number.isInteger(page) ? page : this.pagination.page;
-    ShareActor().product().search({query: this.state.search, urlParams: {size: this.pagination.size, page}}, (error, products, res) => {
+    ShareActor().product().search({query: this.state.search, urlParams: {size: this.pagination.size, page}}, (error, productSearchList, res) => {
       this.pagination.total = res.headers['x-pagination-total'];
       this.pagination.page = page;
       this.setState({
         isLoading: false,
-        products
+        productSearchList
       });
     });
   }
@@ -60,16 +61,6 @@ class ProductSearch extends Component {
     event.preventDefault();
   }
 
-  addProduct(id) {
-    this.setState({count: this.state.count + 1});
-  }
-
-  removeProduct(id) {
-    if (this.state.count - 1 > -1) {
-      this.setState({count: this.state.count - 1});
-    }
-  }
-
   renderProductItemImg(image_url) {
     if (!image_url) return;
 
@@ -79,18 +70,17 @@ class ProductSearch extends Component {
   }
 
   renderProductItems() {
-    if (!this.state.products.length) return;
-    const children = this.state.products.map((product) => {
-      const id = product._id.$oid;
+    if (!this.state.productSearchList.length) return;
+    const children = this.state.productSearchList.map((product) => {
       return (
-        <li className="kvass-widget__product-list-item" key={id}>
+        <li className="kvass-widget__product-list-item" key={product._id.$oid}>
           <div className="kvass-widget__product-list-item__img">
             {this.renderProductItemImg(product.image_url)}
           </div>
           <span className="kvass-widget__product-list-item__name">{product.name}</span>
           <div className="kvass-widget__product-list-item__toolbar">
-            <a href="#" onClick={() => this.removeProduct(id)}><RemoveIcon className="kvass-widget__svg--red"></RemoveIcon></a>
-            <a href="#" onClick={() => this.addProduct(id)}><AddIcon className="kvass-widget__svg--green"></AddIcon></a>
+            <a href="#" onClick={() => Actions.onRemoveProduct(product)}><RemoveIcon className="kvass-widget__svg--red"></RemoveIcon></a>
+            <a href="#" onClick={() => Actions.onAddProduct(product)}><AddIcon className="kvass-widget__svg--green"></AddIcon></a>
           </div>
         </li>
       );
@@ -105,7 +95,7 @@ class ProductSearch extends Component {
   }
 
   render() {
-    const {search, isLoading, count} = this.state;
+    const {search, isLoading, globalCount} = this.state;
     return (
       <div className="kvass-widget__product-search">
         <div className="kvass-widget__header">
@@ -127,7 +117,7 @@ class ProductSearch extends Component {
         <div className="kvass-widget__footer">
           <div className="kvass-widget__shopping-cart">
             <ShoppingCartIcon className="kvass-widget__svg--primary"></ShoppingCartIcon>
-            <NotificationBadge className="kvass-widget__shopping-cart__badge" count={count} effect={Effect.SCALE} frameLength={15.0}/>
+            <NotificationBadge className="kvass-widget__shopping-cart__badge" count={globalCount} effect={Effect.SCALE} frameLength={15.0}/>
           </div>
           {/*<button className="kvass-widget__primary-button">Next</button>*/}
         </div>
