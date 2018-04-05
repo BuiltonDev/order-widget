@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Reflux from 'reflux';
 import {DebounceInput} from 'react-debounce-input';
 import { Scrollbars } from 'react-custom-scrollbars';
-import NotificationBadge from 'react-notification-badge';
-import {Effect} from 'react-notification-badge';
-import ProductStore from 'src/reflux/ProductStore';
-import Actions from 'src/reflux/Actions'
 import T from 'src/utils/i18n';
 import {ShareActor} from 'src/utils';
+import Actions from 'src/reflux/Actions';
 import Spinner from 'src/components/spinner';
-import {AddIcon, RemoveIcon, ShoppingCartIcon} from 'src/components/svgIcons';
+import ShoppingCart from 'src/components/ShoppingCart';
+import {AddIcon, RemoveIcon} from 'src/components/svgIcons';
 
-
-class ProductSearch extends Reflux.Component {
+class ProductSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,10 +22,8 @@ class ProductSearch extends Reflux.Component {
       size: 9,
       total: 0
     };
-    this.store = ProductStore;
-    this.storeKeys = ['globalCount'];
-    this.endpoint = window.config.endpoint; // Get from store
-    this.apiKey = window.config.apiKey; // Get from store
+    this.endpoint = ShareActor().endpoint;
+    this.apiKey = ShareActor().apiKey;
   }
 
   componentDidMount() {
@@ -115,10 +109,7 @@ class ProductSearch extends Reflux.Component {
           {this.renderProductItems()}
         </div>
         <div className="kvass-widget__footer">
-          <div className="kvass-widget__shopping-cart">
-            <ShoppingCartIcon className="kvass-widget__svg--primary"></ShoppingCartIcon>
-            <NotificationBadge className="kvass-widget__shopping-cart__badge" count={globalCount} effect={Effect.SCALE} frameLength={15.0}/>
-          </div>
+          <ShoppingCart></ShoppingCart>
           {/*<button className="kvass-widget__primary-button">Next</button>*/}
         </div>
       </div>
