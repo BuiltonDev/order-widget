@@ -5,12 +5,12 @@ import {DebounceInput} from 'react-debounce-input';
 import { Scrollbars } from 'react-custom-scrollbars';
 import NotificationBadge from 'react-notification-badge';
 import {Effect} from 'react-notification-badge';
-import ProductStore from '../../reflux/ProductStore';
-import Actions from '../../reflux/Actions'
-import T from '../../utils/i18n';
-import {ShareActor} from '../../utils';
-import Spinner from '../../components/spinner';
-import {AddIcon, RemoveIcon, ShoppingCartIcon} from '../../components/svgIcons';
+import ProductStore from 'src/reflux/ProductStore';
+import Actions from 'src/reflux/Actions'
+import T from 'src/utils/i18n';
+import {ShareActor} from 'src/utils';
+import Spinner from 'src/components/spinner';
+import {AddIcon, RemoveIcon, ShoppingCartIcon} from 'src/components/svgIcons';
 
 
 class ProductSearch extends Reflux.Component {
