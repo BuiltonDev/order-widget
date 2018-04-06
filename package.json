@@ -40,23 +40,21 @@
     "nodemon": "^1.17.3",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "uglify-js": "^3.3.5"
   },
   "dependencies": {
-    "@shareactor/shareactor-sdk": "^0.3.0",
-    "classnames": "^2.2.5",
-    "i18n-react": "^0.6.3",
+    "@shareactor/shareactor-sdk": "0.3.1",
+    "classnames": "2.2.5",
+    "i18n-react": "0.6.4",
     "lodash.clonedeep": "4.5.0",
     "prop-types": "15.6.1",
-    "react": "^16.0.0",
-    "react-addons-css-transition-group": "^15.6.2",
-    "react-addons-transition-group": "^15.6.2",
-    "react-custom-scrollbars": "^4.2.1",
+    "react": "16.3.1",
+    "react-custom-scrollbars": "4.2.1",
     "react-debounce-input": "3.2.0",
-    "react-dom": "^16.0.0",
+    "react-dom": "16.3.1",
     "react-notification-badge": "1.3.4",
-    "reflux": "^6.4.1",
-    "uglify-js": "^3.3.5"
+    "reflux": "6.4.1"
   },
   "browser": "./dist/main.bundle.js"
 }
