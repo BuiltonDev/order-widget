@@ -15,7 +15,7 @@ T.setLanguage = (lng) => {
       },
       product: {
         search: 'Søk',
-        searchPlaceholder: 'Søk etter product'
+        searchPlaceholder: 'Søk etter produkt'
       }
     });
   } else { // fallback english

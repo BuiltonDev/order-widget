@@ -56,7 +56,7 @@
   }
 
   .kvass-widget__product-list-item__name {
-    margin: 10px 5;
+    margin: 13px 5px 10px 5px;
   }
 
   .kvass-widget__product-list-item__toolbar {
@@ -65,12 +65,10 @@
   }
 }
 
-.kvass-widget__header {
-  background-color: $secondary-background-color;
-  box-shadow: 0 5px 15px rgba(0,0,0,.033);
-  padding: 30px 32px;
-}
-
-.kvass-widget__footer {
-  padding: 30px 32px;
+.kvass-widget__product-list--empty {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
 }

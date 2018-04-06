@@ -51,6 +51,20 @@
   opacity: 1;
 }
 
+.kvass-widget__content-body {
+  position: relative;
+}
+
+.kvass-widget__content-header {
+  background-color: $secondary-background-color;
+  box-shadow: 0 5px 15px rgba(0,0,0,.033);
+  padding: 30px 32px;
+}
+
+.kvass-widget__content-footer {
+  padding: 30px 32px;
+}
+
 /* Global classes*/
 
 .kvass-widget__primary-button {

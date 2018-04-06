@@ -17,7 +17,7 @@ class ShoppingCart extends Reflux.Component {
     return (
       <div className="kvass-widget__shopping-cart">
         <ShoppingCartIcon className="kvass-widget__svg--primary"></ShoppingCartIcon>
-        <NotificationBadge className="kvass-widget__shopping-cart__badge" count={globalCount} effect={Effect.SCALE} frameLength={15.0}/>
+        <NotificationBadge style={{'backgroundColor': '#FF7700'}} count={globalCount} effect={Effect.SCALE} frameLength={15.0}/>
       </div>
     );
   }

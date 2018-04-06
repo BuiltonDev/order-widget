@@ -4,7 +4,9 @@
   position: absolute;
   z-index: 10000;
   width: 100%;
-  min-height: $content-min-height;
+  //min-height: $content-min-height;
+  top: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.08);
 }
 

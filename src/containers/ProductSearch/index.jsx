@@ -26,29 +26,24 @@ class ProductSearch extends Component {
     this.apiKey = ShareActor().apiKey;
   }
 
-  componentDidMount() {
-    if (this.props.search) {
-      this.searchProduct();
+  searchProduct(e, search) {
+    console.log(search);
+    if (search === this.state.search) return;
+    // Empty search
+    if (!search.length) {
+      this.setState({search, productSearchList: []});
+      return;
     }
-  }
 
-  searchProduct(page) {
     this.setState({isLoading: true});
-    page = Number.isInteger(page) ? page : this.pagination.page;
-    ShareActor().product().search({query: this.state.search, urlParams: {size: this.pagination.size, page}}, (error, productSearchList, res) => {
+    ShareActor().product().search({query: this.state.search, urlParams: {size: this.pagination.size, page: this.pagination.page}}, (error, productSearchList, res) => {
       this.pagination.total = res.headers['x-pagination-total'];
-      this.pagination.page = page;
       this.setState({
         isLoading: false,
+        search,
         productSearchList
       });
     });
-  }
-
-  setProductSearch(search) {
-    if (search === this.state.search) return;
-    this.setState({search});
-    this.searchProduct();
   }
 
   handleSearchSubmit(event) {
@@ -88,29 +83,39 @@ class ProductSearch extends Component {
     );
   }
 
+  renderEmptyBody() {
+    return (
+      <div className="kvass-widget__product-list--empty">
+        <p>{T.translate('product.searchPlaceholder')}</p>
+      </div>
+    );
+  }
+
   render() {
     const {search, isLoading, globalCount} = this.state;
     return (
       <div className="kvass-widget__product-search">
-        <div className="kvass-widget__header">
+        <div className="kvass-widget__content-header">
           <form className="kvass-widget__search-form" onSubmit={this.handleSearchSubmit}>
             <DebounceInput
               className="kvass-widget__search-input"
-              minLength={0}
-              debounceTimeout={300}
+              minLength={1}
+              debounceTimeout={500}
               value={search}
               placeholder={T.translate('product.searchPlaceholder')}
-              onChange={event => this.setProductSearch(event.target.value)} />
+              onChange={event => this.searchProduct(event, event.target.value)} />
             <input className="kvass-widget__primary-button" type="submit" value={T.translate('product.search')} />
           </form>
         </div>
-        <div className="kvass-widget__product-list">
+        <div className="kvass-widget__content-body">
           <Spinner show={isLoading}></Spinner>
-          {this.renderProductItems()}
-        </div>
-        <div className="kvass-widget__footer">
-          <ShoppingCart></ShoppingCart>
-          {/*<button className="kvass-widget__primary-button">Next</button>*/}
+          <div className="kvass-widget__product-list">
+            {search ? this.renderProductItems() : this.renderEmptyBody()}
+          </div>
+          <div className="kvass-widget__content-footer">
+            <ShoppingCart></ShoppingCart>
+            {/*<button className="kvass-widget__primary-button">Next</button>*/}
+          </div>
         </div>
       </div>
     );
