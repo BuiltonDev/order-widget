@@ -27,7 +27,6 @@ class ProductSearch extends Component {
   }
 
   searchProduct(e, search) {
-    console.log(search);
     if (search === this.state.search) return;
     // Empty search
     if (!search.length) {
