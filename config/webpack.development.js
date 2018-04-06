@@ -8,8 +8,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 // Local development config
 const config = require('../test/config');
 
-console.log('config', config);
-
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
