@@ -1,41 +1,33 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-require('core-js');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-module.exports = {
-  entry: ['./src/index.jsx'],
-  resolve: {
-    extensions: ['.js', '.jsx', '.scss'],
-    alias: {
-      '@shareactor/shareactor-sdk/src/main' : path.resolve(__dirname, '../node_modules/@shareactor/shareactor-sdk/dist/main.bundle.js'),
-      'src': path.resolve(__dirname, '../src')
-    }
-  },
-  output: {
-    path: path.resolve(__dirname, '../dist'),
-    libraryTarget: 'var',
-    library: 'KvassOrdering',
-    filename: 'main.bundle.js',
-  },
-  module: {
-    loaders: [{
-      test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-    }, {
-      test: /\.scss$/,
-      use: ExtractTextPlugin.extract({
-        use: [{
-          loader: 'css-loader',
-        }, {
-          loader: 'sass-loader',
-        }],
-        // use style-loader in development
-        fallback: 'style-loader',
-      }),
-    }],
+// Local development config
+const config = require('../test/config');
+
+console.log('config', config);
+
+module.exports = merge(common, {
+  mode: 'development',
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: '../dist',
+    hot: true
   },
   plugins: [
-    new ExtractTextPlugin({ filename: './index.css' }),
-  ],
-};
+    new CleanWebpackPlugin(['../dist']),
+    new webpack.DefinePlugin({
+      APIKEY: JSON.stringify(config.apiKey),
+      ENDPOINT: JSON.stringify(config.endpoint)
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Kvass Ordering Widget',
+      template: path.resolve(__dirname, '../test/index.html')
+    }),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ]
+});
