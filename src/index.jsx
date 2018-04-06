@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import T from './utils/i18n';
 import '../src/styles/index.scss';
-import 'babel-polyfill';
 
 let a, e, el;
 
