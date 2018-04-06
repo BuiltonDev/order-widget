@@ -1,17 +1,17 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
         "targets": {
           "browsers": [ "safari 10", "ie 11", "ios 9" ]
         },
         "modules": false,
-        "useBuiltIns": true
+        "useBuiltIns": "usage"
       }
     ],
-    ["react"]
+    ["@babel/preset-react"]
   ],
-  "plugins": ["transform-object-rest-spread"],
+  "plugins": ["@babel/plugin-proposal-object-rest-spread"],
   "comments": false
 }
