@@ -1,6 +1,6 @@
 import AddIcon from './addIcon';
 import RemoveIcon from './removeIcon';
-import ShoppingCartIcon from './ShoppingCartIcon';
+import ShoppingCartIcon from './shoppingCartIcon';
 
 export {
   AddIcon,

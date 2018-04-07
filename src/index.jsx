@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './App.jsx';
 import T from './utils/i18n';
 import '../src/styles/index.scss';
 
-let a, e, el;
+let a;
+let e;
+let el;
 
-export const init = ({domElementId, apiKey, endpoint, search='', lng='no', auth0Config}) => {
+export const init = ({domElementId, apiKey, endpoint, lng = 'no'}) => {
+  // eslint-disable-next-line no-undef
   window.ShareActor = new ShareActor({ apiKey, endpoint });
   T.setLanguage(lng);
   el = document.getElementById(domElementId);
@@ -23,7 +26,7 @@ export const close = () => {
   ReactDOM.render(<App apiKey={a} endpoint={e} isOpen={false}/>, el);
 };
 
-// TODO check whether we should destroy shareactor and i18n instance as well so that GC picks them up
+// TODO check whether we should destroy shareactor and i18n instance as well
 export const destroy = () => {
   delete window.ShareActor;
   ReactDOM.unmountComponentAtNode(el);

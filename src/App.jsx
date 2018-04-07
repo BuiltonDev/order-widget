@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import ProductSearch from './containers/ProductSearch';
+import ProductSearch from './containers/ProductSearch/index.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class App extends Component {
             <ProductSearch></ProductSearch>
           </div>
       </div>
-    )
+    );
   }
 }
 

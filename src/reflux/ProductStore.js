@@ -1,6 +1,6 @@
 import Reflux from 'reflux';
-import Actions from './Actions';
 import cloneDeep from 'lodash.clonedeep';
+import Actions from './Actions';
 
 class ProductStore extends Reflux.Store {
   constructor() {
@@ -23,7 +23,7 @@ class ProductStore extends Reflux.Store {
     if (this.state.products[id]) {
       copy = cloneDeep(this.state.products[id]);
     }
-    copy.count = copy.count + 1;
+    copy.count += 1;
 
     this.setState({
       products: {
@@ -39,7 +39,7 @@ class ProductStore extends Reflux.Store {
     if (!this.state.products[id]) return;
 
     let copy = cloneDeep(this.state.products[id]);
-    copy.count = copy.count - 1;
+    copy.count -= 1;
 
     // Last item of product
     if (copy.count < 1) copy = null;
