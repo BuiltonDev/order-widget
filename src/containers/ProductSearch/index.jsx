@@ -26,7 +26,7 @@ class ProductSearch extends Component {
     this.apiKey = ShareActor().apiKey;
   }
 
-  searchProduct(e, search) {
+  searchProduct(search) {
     if (search === this.state.search) return;
     // Empty search
     if (!search.length) {
@@ -102,7 +102,7 @@ class ProductSearch extends Component {
               debounceTimeout={500}
               value={search}
               placeholder={T.translate('product.searchPlaceholder')}
-              onChange={event => this.searchProduct(event, event.target.value)} />
+              onChange={event => this.searchProduct(event.target.value)} />
             <input className="kvass-widget__primary-button" type="submit" value={T.translate('product.search')} />
           </form>
         </div>
