@@ -1,16 +1,12 @@
 export const steps = {
   next: 'next',
   previous: 'previous',
-  error: 'error',
+  error: 'error'
 };
 
 function getViews() {
-  const mainElement = document.getElementById('sa-widget--nav-container');
-  return mainElement.querySelectorAll('#sa-widget--nav-container>div');
-}
-
-export function initNavigation(initStep = 0) {
-  navigate(initStep);
+  const mainElement = document.getElementById('kvass-widget-container');
+  return mainElement.querySelectorAll('#kvass-widget-container>div');
 }
 
 export function navigate(step = null) {
@@ -35,10 +31,14 @@ export function navigate(step = null) {
       getViews()[currentIndex - 1].classList.add('active-view');
       break;
     case steps.error:
-      getViews()[getViews().length-1].classList.add('active-view');
+      getViews()[getViews().length - 1].classList.add('active-view');
       break;
     default:
       if (step < 0 || step >= getViews().length) return;
       getViews()[step].classList.add('active-view');
   }
+}
+
+export function initNavigation(initStep = 0) {
+  navigate(initStep);
 }

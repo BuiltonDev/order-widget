@@ -1,0 +1,22 @@
+@import '../../styles/_global';
+
+.svg-icon--green {
+  fill: #5cb85c;
+
+  &:hover {
+    fill: #1cab1c;
+  }
+}
+.svg-icon--red {
+  fill: #d9534f;
+
+  &:hover {
+    fill: #b71914;
+  }
+}
+.svg-icon--primary {
+  fill: $primary-color;
+  &:hover {
+    fill: $primary-color-focus
+  }
+}

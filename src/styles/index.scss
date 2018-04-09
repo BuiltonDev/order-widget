@@ -1,0 +1,91 @@
+/** **/
+@import '_global';
+@import '_mixins';
+.kvass-widget {
+  display: flex;
+  align-items: center;
+
+  z-index: 9999;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  right: 0;
+
+  .kvass-widget__overlay {
+    background: radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+    //@include transition(opacity 0.2s ease-in 0.4s);
+  }
+
+  .kvass-widget__container {
+    display: block;
+    position: relative;
+    background-color: $primary-background-color;
+    opacity: 1;
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 5px;
+
+    //@include transition(transform 0.6s, opacity 0.6s, -webkit-transform 0.6s);
+    //@include transition(opacity 0.3s ease-in-out 0.4s);
+    //@include transition-delay(0.5s);
+
+    box-shadow: 0 0 20px 1px #111118;
+  }
+}
+
+.kvass-widget--close {
+  display: none;
+  opacity: 0;
+}
+
+.kvass-widget--open {
+  opacity: 1;
+}
+
+.kvass-widget__content-body {
+  position: relative;
+}
+
+.kvass-widget__content-header {
+  background-color: $secondary-background-color;
+  box-shadow: 0 5px 15px rgba(0,0,0,.033);
+  padding: 30px 32px;
+}
+
+.kvass-widget__content-footer {
+  padding: 30px 32px;
+}
+
+/* Global classes*/
+
+.kvass-widget__primary-button {
+  text-align: center;
+  cursor: pointer;
+  height: 36px;
+  width: 70px;
+  color: $secondary-background-color;
+  background-color: $primary-color;
+  border: 0;
+  &:hover {
+    outline: none;
+    background-color: $primary-color-focus;
+  }
+}
+
+/** Include component styles **/
+
+@import '../containers/ProductSearch/index';
+
+
+@import '../components/spinner/index';
+@import '../components/svgIcons/index';
+@import '../components/ShoppingCart/index';

@@ -1,56 +1,57 @@
 import Reflux from 'reflux';
+import cloneDeep from 'lodash.clonedeep';
 import Actions from './Actions';
 
 class ProductStore extends Reflux.Store {
   constructor() {
     super();
     this.state = {
-      selectedProducts: [{
-        product: null
-      }],,
-      order: null,
-      user: null,
+      products: {},
+      globalCount: 0
     };
     this.listenables = Actions;
   }
 
-  onSetStore(store) {
-    this.setState(store);
-  }
+  onAddProduct(product) {
+    const id = product._id.$oid;
+    let copy = {
+      item: product,
+      count: 0
+    };
 
-  onSetLastProduct(product) {
-    const store = this.state;
-    const lastProduct = store.selectedProducts[store.selectedProducts.length - 1];
-    lastProduct.product = product;
-    this.setState(store);
-  }
+    // Already in list, just add to internal count
+    if (this.state.products[id]) {
+      copy = cloneDeep(this.state.products[id]);
+    }
+    copy.count += 1;
 
-  onAddOneProduct() {
-    const store = this.state;
-    store.selectedProducts.push({
-      product: null
+    this.setState({
+      products: {
+        ...this.state.products,
+        [id]: copy
+      },
+      globalCount: this.state.globalCount + 1
     });
-    this.setState(store);
   }
 
-  removeLastProduct() {
-    const { selectedProducts } = this.state;
-    selectedProducts.pop();
-    this.setState({ selectedProducts });
-  }
+  onRemoveProduct(product) {
+    const id = product._id.$oid;
+    if (!this.state.products[id]) return;
 
-  removeProduct(key) {
-    const { selectedProducts } = this.state;
-    selectedProducts.splice(key, 1);
-    this.setState({ selectedProducts });
-  }
+    let copy = cloneDeep(this.state.products[id]);
+    copy.count -= 1;
 
-  onSetOrder(order) {
-    this.setState({ order });
-  }
+    // Last item of product
+    if (copy.count < 1) copy = null;
 
-  onSetUser(user) {
-    this.setState({ user });
+
+    this.setState({
+      products: {
+        ...this.state.products,
+        [id]: copy
+      },
+      globalCount: this.state.globalCount - 1
+    });
   }
 }
 

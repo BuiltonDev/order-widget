@@ -1,14 +1,27 @@
 {
-  "extends": "airbnb-base",
+  "extends": [
+    "airbnb-base",
+    "plugin:react/recommended"
+  ],
   "plugins": [
     "import",
     "react"
   ],
   "rules": {
     "no-underscore-dangle": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "comma-dangle": ["error", "never"],
+    "react/jsx-uses-vars": 2,
+    "object-curly-spacing": "off",
+    "no-useless-constructor": "off",
+    "object-curly-newline": "off"
   },
   "env": {
     "browser": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
   }
 }
