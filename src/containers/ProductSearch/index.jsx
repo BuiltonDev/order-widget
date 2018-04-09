@@ -61,14 +61,14 @@ class ProductSearch extends Component {
     if (!this.state.productSearchList.length) return;
     const children = this.state.productSearchList.map((product) => {
       return (
-        <li className="kvass-widget__product-list-item" key={product._id.$oid}>
-          <div className="kvass-widget__product-list-item__img">
+        <li className="product-list-item" key={product._id.$oid}>
+          <div className="product-list-item__img">
             {this.renderProductItemImg(product.image_url)}
           </div>
-          <span className="kvass-widget__product-list-item__name">{product.name}</span>
-          <div className="kvass-widget__product-list-item__toolbar">
-            <a href="#" onClick={() => Actions.onRemoveProduct(product)}><RemoveIcon className="kvass-widget__svg--red"></RemoveIcon></a>
-            <a href="#" onClick={() => Actions.onAddProduct(product)}><AddIcon className="kvass-widget__svg--green"></AddIcon></a>
+          <span className="product-list-item__name">{product.name}</span>
+          <div className="product-list-item__toolbar">
+            <a href="#" onClick={() => Actions.onRemoveProduct(product)}><RemoveIcon className="svg-icon--red"></RemoveIcon></a>
+            <a href="#" onClick={() => Actions.onAddProduct(product)}><AddIcon className="svg-icon--green"></AddIcon></a>
           </div>
         </li>
       );
@@ -84,7 +84,7 @@ class ProductSearch extends Component {
 
   renderEmptyBody() {
     return (
-      <div className="kvass-widget__product-list--empty">
+      <div className="product-list--empty">
         <p>{T.translate('product.searchPlaceholder')}</p>
       </div>
     );
@@ -93,11 +93,11 @@ class ProductSearch extends Component {
   render() {
     const {search, isLoading, globalCount} = this.state;
     return (
-      <div className="kvass-widget__product-search">
+      <div className="product-search">
         <div className="kvass-widget__content-header">
-          <form className="kvass-widget__search-form" onSubmit={this.handleSearchSubmit}>
+          <form className="search-form" onSubmit={this.handleSearchSubmit}>
             <DebounceInput
-              className="kvass-widget__search-input"
+              className="search-input"
               minLength={1}
               debounceTimeout={500}
               value={search}
@@ -108,7 +108,7 @@ class ProductSearch extends Component {
         </div>
         <div className="kvass-widget__content-body">
           <Spinner show={isLoading}></Spinner>
-          <div className="kvass-widget__product-list">
+          <div className="product-list">
             {search ? this.renderProductItems() : this.renderEmptyBody()}
           </div>
           <div className="kvass-widget__content-footer">
