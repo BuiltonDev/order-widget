@@ -35,7 +35,7 @@ class ProductSearch extends Component {
     }
 
     this.setState({isLoading: true});
-    ShareActor().product().search({query: this.state.search, urlParams: {size: this.pagination.size, page: this.pagination.page}}, (error, productSearchList, res) => {
+    ShareActor().product().search({query: search, urlParams: {size: this.pagination.size, page: this.pagination.page}}, (error, productSearchList, res) => {
       this.pagination.total = res.headers['x-pagination-total'];
       this.setState({
         isLoading: false,
@@ -100,7 +100,6 @@ class ProductSearch extends Component {
               className="search-input"
               minLength={1}
               debounceTimeout={500}
-              value={search}
               placeholder={T.translate('product.searchPlaceholder')}
               onChange={event => this.searchProduct(event.target.value)} />
             <input className="kvass-widget__primary-button" type="submit" value={T.translate('product.search')} />
