@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {DebounceInput} from 'react-debounce-input';
-import { Scrollbars } from 'react-custom-scrollbars';
+import {Scrollbars} from 'react-custom-scrollbars';
 import T from 'src/utils/i18n';
 import {ShareActor} from 'src/utils';
 import Actions from 'src/reflux/Actions';
-import Spinner from 'src/components/spinner';
+import Spinner from 'src/components/Spinner';
 import ShoppingCart from 'src/components/ShoppingCart';
-import {AddIcon, RemoveIcon} from 'src/components/svgIcons';
+import AddIcon from 'src/components/SvgIcons/AddIcon';
+import MinusIcon from 'src/components/SvgIcons/MinusIcon';
 
 class ProductSearch extends Component {
   constructor(props) {
@@ -67,7 +68,7 @@ class ProductSearch extends Component {
           </div>
           <span className="product-list-item__name">{product.name}</span>
           <div className="product-list-item__toolbar">
-            <a href="#" onClick={() => Actions.onRemoveProduct(product)}><RemoveIcon className="svg-icon--red"></RemoveIcon></a>
+            <a href="#" onClick={() => Actions.onRemoveProduct(product)}><MinusIcon className="svg-icon--red"></MinusIcon></a>
             <a href="#" onClick={() => Actions.onAddProduct(product)}><AddIcon className="svg-icon--green"></AddIcon></a>
           </div>
         </li>
@@ -120,8 +121,5 @@ class ProductSearch extends Component {
     );
   }
 }
-
-ProductSearch.propTypes = {
-};
 
 export default ProductSearch;
