@@ -6,6 +6,7 @@ import T from 'src/utils/i18n';
 import {ShareActor} from 'src/utils';
 import Actions from 'src/reflux/Actions';
 import Spinner from 'src/components/Spinner';
+import Header from 'src/components/Header';
 import ShoppingCart from 'src/components/ShoppingCart';
 import AddIcon from 'src/components/SvgIcons/AddIcon';
 import MinusIcon from 'src/components/SvgIcons/MinusIcon';
@@ -95,7 +96,7 @@ class ProductSearch extends Component {
     const {search, isLoading, globalCount} = this.state;
     return (
       <div className="product-search">
-        <div className="kvass-widget__content-header">
+        <Header showBackNav={false}>
           <form className="search-form" onSubmit={this.handleSearchSubmit}>
             <DebounceInput
               className="search-input"
@@ -106,7 +107,7 @@ class ProductSearch extends Component {
               onChange={event => this.searchProduct(event.target.value)} />
             <input className="kvass-widget__primary-button" type="submit" value={T.translate('product.search')} />
           </form>
-        </div>
+        </Header>
         <div className="kvass-widget__content-body">
           <Spinner show={isLoading}></Spinner>
           <div className="product-list">

@@ -6,14 +6,25 @@ import CloseIcon from 'src/components/SvgIcons/CloseIcon';
 
 const Header = (props) => {
   const {showBackNav, showCloseNav} = props;
-  return (
-    <div className="kvass-widget__content-header">
+  const backNav = () => {
+    return (
       <div className="previous-navigation" onClick={() => Actions.onPreviousNavigation()}>
         <BackIcon className="svg-icon--primary"></BackIcon>
       </div>
-      <div className="close-widget" onClick={() => KvassOrdering.close}>
+    );
+  };
+  const closeNav = () => {
+    return (
+      <div className="close-widget" onClick={() => window.KvassOrdering.close()}>
         <CloseIcon className="svg-icon--primary"></CloseIcon>
       </div>
+    );
+  };
+
+  return (
+    <div className="kvass-widget__content-header">
+      {showBackNav ? backNav() : null}
+      {showCloseNav ? closeNav() : null}
       {props.children}
     </div>
   );

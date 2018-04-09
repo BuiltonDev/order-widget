@@ -10,8 +10,8 @@ class ProductBasket extends Component {
   render() {
     return (
       <div className="product-basket">
-        <Header>
-          <h1>Basket</h1>
+        <Header showBackNav={true}>
+          
         </Header>
         <div className="kvass-widget__content-body">
           <div className="product-list">

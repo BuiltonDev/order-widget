@@ -56,27 +56,27 @@
 }
 
 .kvass-widget__content-header {
+  height: 100px;
   background-color: $secondary-background-color;
   box-shadow: 0 5px 15px rgba(0,0,0,.033);
-  padding: 30px 32px;
 
   .previous-navigation {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 10px 0 0 10px;
+    padding: 5px 0 0 5px;
   }
 
   .close-widget {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 10px 10px 0 0;
+    padding: 5px 5px 0 0
   }
 }
 
 .kvass-widget__content-footer {
-  padding: 30px 32px;
+  height: 110px;
 }
 
 /* Global classes*/
