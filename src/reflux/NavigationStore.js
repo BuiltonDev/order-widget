@@ -24,7 +24,6 @@ class NavigationStore extends Reflux.Store {
   }
 
   onPreviousNavigation() {
-    console.log('Ping');
     if (this.state.step > 0) {
       this.setState({step: this.state.step -= 1});
     }

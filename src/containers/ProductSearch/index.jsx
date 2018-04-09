@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {DebounceInput} from 'react-debounce-input';
-import {Scrollbars} from 'react-custom-scrollbars';
 import T from 'src/utils/i18n';
 import {ShareActor} from 'src/utils';
 import Actions from 'src/reflux/Actions';
 import Spinner from 'src/components/Spinner';
 import Header from 'src/components/Header';
+import ProductList from 'src/components/ProductList';
 import ShoppingCart from 'src/components/ShoppingCart';
-import AddIcon from 'src/components/SvgIcons/AddIcon';
-import MinusIcon from 'src/components/SvgIcons/MinusIcon';
 
 class ProductSearch extends Component {
   constructor(props) {
@@ -24,8 +22,6 @@ class ProductSearch extends Component {
       size: 9,
       total: 0
     };
-    this.endpoint = ShareActor().endpoint;
-    this.apiKey = ShareActor().apiKey;
   }
 
   searchProduct(search) {
@@ -51,39 +47,6 @@ class ProductSearch extends Component {
     event.preventDefault();
   }
 
-  renderProductItemImg(image_url) {
-    if (!image_url) return;
-
-    return (
-      <img src={`${this.endpoint}images/${image_url}?api_key=${this.apiKey}`} alt="product image"/>
-    );
-  }
-
-  renderProductItems() {
-    if (!this.state.productSearchList.length) return;
-    const children = this.state.productSearchList.map((product) => {
-      return (
-        <li className="product-list-item" key={product._id.$oid}>
-          <div className="product-list-item__img">
-            {this.renderProductItemImg(product.image_url)}
-          </div>
-          <span className="product-list-item__name">{product.name}</span>
-          <div className="product-list-item__toolbar">
-            <a href="#" onClick={() => Actions.onRemoveProduct(product)}><MinusIcon className="svg-icon--red"></MinusIcon></a>
-            <a href="#" onClick={() => Actions.onAddProduct(product)}><AddIcon className="svg-icon--green"></AddIcon></a>
-          </div>
-        </li>
-      );
-    });
-    return (
-      <Scrollbars style={{ height: 500 }}>
-        <ul>
-          {children}
-        </ul>
-      </Scrollbars>
-    );
-  }
-
   renderEmptyBody() {
     return (
       <div className="product-list--empty">
@@ -93,7 +56,7 @@ class ProductSearch extends Component {
   }
 
   render() {
-    const {search, isLoading, globalCount} = this.state;
+    const {search, isLoading, globalCount, productSearchList} = this.state;
     return (
       <div className="product-search">
         <Header showBackNav={false}>
@@ -110,7 +73,7 @@ class ProductSearch extends Component {
         <div className="kvass-widget__content-body">
           <Spinner show={isLoading}></Spinner>
           <div className="product-list">
-            {search ? this.renderProductItems() : this.renderEmptyBody()}
+            {search ? <ProductList productList={productSearchList}></ProductList> : this.renderEmptyBody()}
           </div>
           <div className="kvass-widget__content-footer">
             <ShoppingCart></ShoppingCart>

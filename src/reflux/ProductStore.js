@@ -32,6 +32,8 @@ class ProductStore extends Reflux.Store {
       },
       globalCount: this.state.globalCount + 1
     });
+
+    console.log(this.state);
   }
 
   onRemoveProduct(product) {
