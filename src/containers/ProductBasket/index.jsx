@@ -95,7 +95,9 @@ class ProductBasket extends Reflux.Component {
             </div>
           </div>
           <div className="kvass-widget__content-footer">
-            <button className="kvass-widget__primary-button">Checkout</button>
+            <div className="footer-content">
+              <button className="kvass-widget__primary-button">Checkout</button>
+            </div>
           </div>
         </div>
       </div>
