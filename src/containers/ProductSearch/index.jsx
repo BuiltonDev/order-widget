@@ -77,7 +77,6 @@ class ProductSearch extends Component {
           </div>
           <div className="kvass-widget__content-footer">
             <ShoppingCart></ShoppingCart>
-            {/*<button className="kvass-widget__primary-button">Next</button>*/}
           </div>
         </div>
       </div>
