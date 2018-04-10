@@ -81,22 +81,22 @@ class ProductBasket extends Reflux.Component {
             </div>
             <div className="product-sum">
               <div className="product-sum__line">
-                <span>Products:</span>
+                <span>{T.translate('basket.products')}</span>
                 <span>{globalCount}</span>
               </div>
               <div className="product-sum__line">
-                <span>Tax:</span>
+                <span>{T.translate('basket.tax')}</span>
                 <span>{totalTax}</span>
               </div>
               <div className="product-sum__line">
-                <span>Total with tax:</span>
+                <span>{T.translate('basket.total')}</span>
                 <span className="product-sum__total">{totalSum}</span>
               </div>
             </div>
           </div>
           <div className="kvass-widget__content-footer">
             <div className="footer-content">
-              <button className="kvass-widget__primary-button">Checkout</button>
+              <button className="kvass-widget__primary-button">{T.translate('basket.checkout')}</button>
             </div>
           </div>
         </div>

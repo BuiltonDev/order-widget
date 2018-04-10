@@ -19,7 +19,11 @@ T.setLanguage = (lng) => {
         noResults: 'Fant ingen treff'
       },
       basket: {
-        header: 'Handlekurv'
+        header: 'Handlekurv',
+        checkout: "Fortsett",
+        products: 'Produkter',
+        tax: 'Mva',
+        total: 'Totalt m/ skatt'
       }
     });
   } else { // fallback english
@@ -35,7 +39,11 @@ T.setLanguage = (lng) => {
         noResults: 'No results'
       },
       basket: {
-        header: 'Basket'
+        header: 'Basket',
+        checkout: "Checkout",
+        products: 'Products',
+        tax: 'Tax',
+        total: 'Total w/ tax'
       }
     });
   }
