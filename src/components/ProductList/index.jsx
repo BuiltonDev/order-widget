@@ -23,7 +23,11 @@ class ProductList extends Reflux.Component {
 
   render() {
     const {productList} = this.props;
-    if (!productList.length) return;
+    if (!productList.length) return (
+      <div className="product-list--empty">
+        <p>{T.translate('product.noResults')}</p>
+      </div>
+    );
 
     const children = productList.map((product) => {
       return (
