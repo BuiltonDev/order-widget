@@ -25,7 +25,9 @@ T.setLanguage = (lng) => {
         total: 'Totalt m/ skatt'
       },
       userDetails: {
-        header: 'Bruker'
+        header: 'Bruker',
+        phoneNumber: 'Telefonnummer',
+        verifyCode: 'Verifiseringskode'
       },
       deliveryDetails: {
         header: 'Levering'
@@ -56,7 +58,9 @@ T.setLanguage = (lng) => {
         total: 'Total w/ tax'
       },
       userDetails: {
-        header: 'User'
+        header: 'User',
+        phoneNumber: 'Phone number',
+        verifyCode: 'Verification code'
       },
       deliveryDetails: {
         header: 'Delivery'

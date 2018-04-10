@@ -8,9 +8,10 @@ let a;
 let e;
 let el;
 
-export const init = ({domElementId, apiKey, endpoint, lng = 'no'}) => {
+export const init = ({domElementId, apiKey, endpoint, lng = 'no', auth0Config}) => {
   // eslint-disable-next-line no-undef
-  window.ShareActor = new ShareActor({ apiKey, endpoint });
+  window.ShareActor = new ShareActor({apiKey, endpoint});
+  window.Auth0Config = auth0Config;
   T.setLanguage(lng);
   el = document.getElementById(domElementId);
   a = apiKey;
@@ -29,5 +30,6 @@ export const close = () => {
 // TODO check whether we should destroy shareactor and i18n instance as well
 export const destroy = () => {
   delete window.ShareActor;
+  delete window.auth0Config;
   ReactDOM.unmountComponentAtNode(el);
 };

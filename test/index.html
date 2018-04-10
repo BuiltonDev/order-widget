@@ -14,11 +14,18 @@
 <script>
   var apiKey = "<%= APIKEY %>";
   var endpoint = "<%= ENDPOINT %>";
+  var auth0Domain = "<%= AUTH0_DOMAIN %>";
+  var auth0ClientId = "<%= AUTH0_CLIENTID %>";
+
   KvassOrdering.init({
     domElementId: 'kvass-instance',
     apiKey: apiKey,
     endpoint: endpoint,
-    lng: 'no'
+    lng: 'no',
+    auth0Config: {
+      domain: auth0Domain,
+      clientId: auth0ClientId
+    }
   });
 
   document.getElementById('openKvass').addEventListener('click', function(event) {
