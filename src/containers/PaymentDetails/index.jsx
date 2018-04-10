@@ -3,13 +3,11 @@ import Reflux from 'reflux';
 import {DebounceInput} from 'react-debounce-input';
 import Header from 'src/components/Header';
 import Actions from 'src/reflux/Actions';
-//import UserStore from 'src/reflux/UserStore';
 import T from 'src/utils/i18n';
 
 class PaymentDetails extends Reflux.Component {
   constructor(props) {
     super(props);
-    //this.store = UserStore;
   }
 
   render() {
