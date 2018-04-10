@@ -15,7 +15,11 @@ T.setLanguage = (lng) => {
       },
       product: {
         search: 'Søk',
-        searchPlaceholder: 'Søk etter produkt'
+        searchPlaceholder: 'Søk etter produkt',
+        noResults: 'Fant ingen treff'
+      },
+      basket: {
+        header: 'Handlekurv'
       }
     });
   } else { // fallback english
@@ -27,7 +31,11 @@ T.setLanguage = (lng) => {
       },
       product: {
         search: 'Search',
-        searchPlaceholder: 'Search for product'
+        searchPlaceholder: 'Search for product',
+        noResults: 'No results'
+      },
+      basket: {
+        header: 'Basket'
       }
     });
   }

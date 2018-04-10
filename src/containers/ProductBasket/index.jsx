@@ -1,10 +1,12 @@
 import React from 'react';
 import Reflux from 'reflux';
+import {DebounceInput} from 'react-debounce-input';
 import Header from 'src/components/Header';
 import Actions from 'src/reflux/Actions';
 import ProductStore from 'src/reflux/ProductStore';
 import ProductList from 'src/components/ProductList';
-import {ShareActor} from 'src/utils';
+import CloseIcon from 'src/components/SvgIcons/CloseIcon';
+import T from 'src/utils/i18n';
 
 class ProductBasket extends Reflux.Component {
   constructor(props) {
@@ -12,12 +14,26 @@ class ProductBasket extends Reflux.Component {
     this.store = ProductStore;
   }
 
+  handleCountChange(product, event) {
+    const diff = parseInt(event.target.value - product.count);
+    if (event.target.value > product.count) {
+      Actions.onAddProduct(product.item, diff);
+    } else {
+      Actions.onRemoveProduct(product.item, event.target.value >= 0 ? diff : -product.count);
+    }
+  }
+
   renderBasketItem(product) {
     return (
-      <li className="product-list-item" key={product.item._id.$oid}>
-        <span className="product-list-item__name">{product.item.name}</span>
-        <div className="product-list-item__toolbar">
-          Nr: {product.count}
+      <li key={product.item._id.$oid}>
+        <span>{product.item.name}</span>
+        <DebounceInput
+          minLength={1}
+          debounceTimeout={500}
+          value={product.count}
+          onChange={event => this.handleCountChange(product, event)} />
+        <div onClick={() => Actions.onRemoveProduct(product, -product.count)}>
+          <CloseIcon></CloseIcon>
         </div>
       </li>
     );
@@ -50,7 +66,7 @@ class ProductBasket extends Reflux.Component {
     return (
       <div className="product-basket">
         <Header showBackNav={true}>
-
+          <span>{T.translate('basket.header')}</span>
         </Header>
         <div className="kvass-widget__content-body">
           <div className="product-list">
