@@ -54,11 +54,14 @@ class ProductBasket extends Reflux.Component {
     const productArray = [];
     let totalTax = 0;
     let totalSum = 0;
+    let currency = ''
 
     Object.entries(products).forEach(([key, value]) => {
       if (value) {
         totalSum += value.item.price;
         totalTax += value.item.vat;
+
+        if (!currency) currency = value.item.currency; // TODO better solution in the future here
 
         productArray.push(this.renderBasketItem(value));
         productArray.push(this.renderBasketPrice(value));
@@ -86,11 +89,11 @@ class ProductBasket extends Reflux.Component {
               </div>
               <div className="product-sum__line">
                 <span>{T.translate('basket.tax')}</span>
-                <span>{totalTax}</span>
+                <span>{totalTax} {currency}</span>
               </div>
               <div className="product-sum__line">
                 <span>{T.translate('basket.total')}</span>
-                <span className="product-sum__total">{totalSum}</span>
+                <span className="product-sum__total">{totalSum} {currency}</span>
               </div>
             </div>
           </div>
