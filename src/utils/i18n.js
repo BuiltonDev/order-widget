@@ -10,8 +10,7 @@ T.setLanguage = (lng) => {
     T.setTexts({
       global: {
         next: 'Neste',
-        back: 'Tilbake',
-        confirm: 'Bekreft'
+        last: 'Avslutt'
       },
       product: {
         search: 'Søk',
@@ -20,18 +19,29 @@ T.setLanguage = (lng) => {
       },
       basket: {
         header: 'Handlekurv',
-        checkout: "Fortsett",
+        checkout: "Neste",
         products: 'Produkter',
         tax: 'Mva',
         total: 'Totalt m/ skatt'
+      },
+      userDetails: {
+        header: 'Bruker'
+      },
+      deliveryDetails: {
+        header: 'Levering'
+      },
+      paymentDetails: {
+        header: 'Betaling'
+      },
+      receipt: {
+        header: 'Kvittering'
       }
     });
   } else { // fallback english
     T.setTexts({
       global: {
         next: 'Next',
-        back: 'Back',
-        confirm: 'Confirm'
+        last: 'Complete'
       },
       product: {
         search: 'Search',
@@ -44,6 +54,18 @@ T.setLanguage = (lng) => {
         products: 'Products',
         tax: 'Tax',
         total: 'Total w/ tax'
+      },
+      userDetails: {
+        header: 'User'
+      },
+      deliveryDetails: {
+        header: 'Delivery'
+      },
+      paymentDetails: {
+        header: 'Payment'
+      },
+      receipt: {
+        header: 'Receipt'
       }
     });
   }
