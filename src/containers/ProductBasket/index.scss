@@ -1,4 +1,20 @@
+@import '../../styles/_global';
 
 .product-basket {
 
+  .product-list {
+    min-height: $content-min-height;
+
+    ul {
+      background-color: $secondary-background-color;
+      list-style: none;
+      min-height: 300px;
+      margin: 20px;
+      padding: 5px;
+    }
+
+    li {
+      display: flex;
+    }
+  }
 }
