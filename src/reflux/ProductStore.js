@@ -44,7 +44,6 @@ class ProductStore extends Reflux.Store {
     // Last item of product
     if (copy.count < 1) copy = null;
 
-
     this.setState({
       products: {
         ...this.state.products,

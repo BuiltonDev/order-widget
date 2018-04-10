@@ -1,6 +1,7 @@
 import React from 'react';
 import Reflux from 'reflux';
 import {DebounceInput} from 'react-debounce-input';
+import {Scrollbars} from 'react-custom-scrollbars';
 import Header from 'src/components/Header';
 import Actions from 'src/reflux/Actions';
 import ProductStore from 'src/reflux/ProductStore';
@@ -24,60 +25,77 @@ class ProductBasket extends Reflux.Component {
   }
 
   renderBasketItem(product) {
+    const addedKey = `${product.item._id.$oid}-1`;
     return (
       <li key={product.item._id.$oid}>
-        <span>{product.item.name}</span>
-        <DebounceInput
-          minLength={1}
-          debounceTimeout={500}
-          value={product.count}
-          onChange={event => this.handleCountChange(product, event)} />
-        <div onClick={() => Actions.onRemoveProduct(product, -product.count)}>
-          <CloseIcon></CloseIcon>
-        </div>
+        <span className="product-item__title">{product.item.name}</span>
       </li>
     );
   }
 
-  getTotalTax(products) {
-    let vat = 0;
-    products.map((product) => {
-      vat += product.vat;
-    });
-    return vat;
-  }
-
-  getTotal(products) {
-    let total = 0;
-    products.map((product) => {
-      total += product.price;
-    });
-    return total;
+  renderBasketPrice(product) {
+    const addedKey = `${product.item._id.$oid}-1`;
+    return (
+      <li key={addedKey}>
+        <DebounceInput
+          className="product-item__count"
+          minLength={1}
+          debounceTimeout={500}
+          value={product.count}
+          onChange={event => this.handleCountChange(product, event)} />
+        <span className="product_item__price">{product.item.price} {product.item.currency}</span>
+        <span className="product_item__total">{product.item.price * product.count} {product.item.currency}</span>
+      </li>
+    );
   }
 
   render() {
     const {products, globalCount} = this.state;
     const productArray = [];
+    let totalTax = 0;
+    let totalSum = 0;
 
     Object.entries(products).forEach(([key, value]) => {
-      if (value) productArray.push(this.renderBasketItem(value));
+      if (value) {
+        totalSum += value.item.price;
+        totalTax += value.item.vat;
+
+        productArray.push(this.renderBasketItem(value));
+        productArray.push(this.renderBasketPrice(value));
+      }
     });
 
     return (
       <div className="product-basket">
         <Header showBackNav={true}>
-          <span>{T.translate('basket.header')}</span>
+          <span className="header-title">{T.translate('basket.header')}</span>
         </Header>
         <div className="kvass-widget__content-body">
           <div className="product-list">
-            <ul>
-              {productArray}
-            </ul>
+            <div className="padding-container">
+              <Scrollbars style={{ height: 380 }}>
+                <ul>
+                  {productArray}
+                </ul>
+              </Scrollbars>
+            </div>
+            <div className="product-sum">
+              <div className="product-sum__line">
+                <span>Products:</span>
+                <span>{globalCount}</span>
+              </div>
+              <div className="product-sum__line">
+                <span>Tax:</span>
+                <span>{totalTax}</span>
+              </div>
+              <div className="product-sum__line">
+                <span>Total with tax:</span>
+                <span className="product-sum__total">{totalSum}</span>
+              </div>
+            </div>
           </div>
           <div className="kvass-widget__content-footer">
-            <p>Nr of products: {globalCount}</p>
-            <p>Tax: {this.getTotalTax(productArray)}</p>
-            <p>Total w/tax: {this.getTotal(productArray)}</p>
+            <button className="kvass-widget__primary-button">Checkout</button>
           </div>
         </div>
       </div>
