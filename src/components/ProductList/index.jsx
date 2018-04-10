@@ -6,6 +6,7 @@ import Actions from 'src/reflux/Actions';
 import {ShareActor} from 'src/utils';
 import AddIcon from 'src/components/SvgIcons/AddIcon';
 import MinusIcon from 'src/components/SvgIcons/MinusIcon';
+import T from 'src/utils/i18n';
 
 class ProductList extends Reflux.Component {
   constructor(props) {
