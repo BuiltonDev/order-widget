@@ -7,7 +7,9 @@ class ProductStore extends Reflux.Store {
     super();
     this.state = {
       products: {},
-      globalCount: 0
+      totalCount: 0,
+      totalSum: 0,
+      totalTax: 0
     };
     this.listenables = Actions;
   }
@@ -30,7 +32,9 @@ class ProductStore extends Reflux.Store {
         ...this.state.products,
         [id]: copy
       },
-      globalCount: this.state.globalCount + addCount
+      totalCount: this.state.totalCount + addCount,
+      totalSum: this.state.totalSum + (copy.item.price * addCount),
+      totalTax: this.state.totalTax + (copy.item.vat * addCount)
     });
   }
 
@@ -39,17 +43,18 @@ class ProductStore extends Reflux.Store {
     if (!this.state.products[id]) return;
 
     let copy = cloneDeep(this.state.products[id]);
-    copy.count += minusCount;
+    const maxRemovable = Math.max(-copy.count, minusCount);
 
-    // Last item of product
-    if (copy.count < 1) copy = null;
+    copy.count += maxRemovable;
 
     this.setState({
       products: {
         ...this.state.products,
-        [id]: copy
+        [id]: copy.count > 0 ? copy : null // Set to null on last item of product
       },
-      globalCount: this.state.globalCount + minusCount
+      totalCount: this.state.totalCount + maxRemovable ,
+      totalSum: this.state.totalSum + (copy.item.price * maxRemovable),
+      totalTax: this.state.totalTax + (copy.item.vat * maxRemovable)
     });
   }
 }

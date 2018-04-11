@@ -10,15 +10,15 @@ class ShoppingCart extends Reflux.Component {
   constructor(props) {
     super(props);
     this.store = ProductStore;
-    this.storeKeys = ['globalCount'];
+    this.storeKeys = ['totalCount'];
   }
 
   render() {
-    const {globalCount} = this.state;
+    const {totalCount} = this.state;
     return (
       <div className="shopping-cart" onClick={() => Actions.onNextNavigation()}>
         <ShoppingCartIcon className="svg-icon--primary"></ShoppingCartIcon>
-        <NotificationBadge style={{'backgroundColor': '#FF7700'}} count={globalCount} effect={Effect.SCALE} frameLength={15.0}/>
+        <NotificationBadge style={{'backgroundColor': '#FF7700'}} count={totalCount} effect={Effect.SCALE} frameLength={15.0}/>
       </div>
     );
   }
