@@ -26,6 +26,10 @@ T.setLanguage = (lng) => {
       },
       userDetails: {
         header: 'Bruker',
+        detailsInfo: 'Vennligst fyll inn dine opplysninger',
+        verifyInfo: 'Verifiser telefonnummeret ditt',
+        firstName: 'Fornavn',
+        lastName: 'Etternavn',
         phoneNumber: 'Telefonnummer',
         verifyCode: 'Verifiseringskode'
       },
@@ -59,6 +63,10 @@ T.setLanguage = (lng) => {
       },
       userDetails: {
         header: 'User',
+        detailsInfo: 'Please type in your details',
+        verifyInfo: 'Verify your phone number',
+        firstName: 'Given name',
+        lastName: 'Family name',
         phoneNumber: 'Phone number',
         verifyCode: 'Verification code'
       },

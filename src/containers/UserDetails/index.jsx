@@ -18,8 +18,10 @@ class UserDetails extends Reflux.Component {
 
     this.state = {
       error: '',
+      firstName: '',
+      lastName: '',
       phoneNumber: '',
-      code: ''
+      verifyCode: ''
     };
   }
 
@@ -43,7 +45,7 @@ class UserDetails extends Reflux.Component {
     this.webAuth.passwordlessLogin({
       connection: 'sms',
       phoneNumber: this.state.phoneNumber,
-      verificationCode: this.state.code
+      verificationCode: this.state.verifyCode
     }, function (err,res) {
         if (err) {
           console.log(err);
@@ -55,12 +57,22 @@ class UserDetails extends Reflux.Component {
     );
   }
 
-  onPhoneChange(event) {
-    this.setState({phoneNumber: event.target.value});
+  onInputChange(type, event) {
+    this.setState({[type]: event.target.value});
   }
 
-  onVerifyCodeChange(event) {
-    this.setState({code: event.target.value});
+  renderInput(type) {
+    return (
+      <DebounceInput
+        className="search-input"
+        minLength={5}
+        type="string"
+        debounceTimeout={500}
+        placeholder={T.translate('userDetails.' + type)}
+        value={this.state[type]}
+        onChange={event => this.onInputChange(type, event)}
+      />
+    );
   }
 
   render() {
@@ -72,27 +84,21 @@ class UserDetails extends Reflux.Component {
         <div className="kvass-widget__content-body">
           <div className="content">
             <div className="padding-container">
+              <p>{T.translate('userDetails.detailsInfo')}</p>
               <div className="input-group">
-                <DebounceInput
-                  className="search-input"
-                  minLength={5}
-                  type="string"
-                  debounceTimeout={500}
-                  placeholder={T.translate('userDetails.phoneNumber')}
-                  value={this.state.phoneNumber}
-                  onChange={event => this.onPhoneChange(event)} />
-                  <button className="kvass-widget__primary-button" onClick={() => this.sendSms()}>Send</button>
+                {this.renderInput('firstName')}
               </div>
               <div className="input-group">
-                <DebounceInput
-                  className="search-input"
-                  minLength={3}
-                  type="string"
-                  debounceTimeout={500}
-                  placeholder={T.translate('userDetails.verifyCode')}
-                  value={this.state.code}
-                  onChange={event => this.onVerifyCodeChange(event)} />
-                  <button className="kvass-widget__primary-button" onClick={() => this.verifyCode()}>Verify</button>
+                {this.renderInput('lastName')}
+              </div>
+              <p>{T.translate('userDetails.verifyInfo')}</p>
+              <div className="input-group">
+                {this.renderInput('phoneNumber')}
+                <button disabled={!this.state.phoneNumber} className="kvass-widget__primary-button" onClick={() => this.sendSms()}>Send</button>
+              </div>
+              <div className="input-group">
+                {this.renderInput('verifyCode')}
+                <button disabled={!this.state.phoneNumber} className="kvass-widget__primary-button" onClick={() => this.verifyCode()}>Verify</button>
               </div>
             </div>
           </div>
