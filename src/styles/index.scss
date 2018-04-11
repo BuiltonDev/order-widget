@@ -105,6 +105,11 @@
     outline: none;
     background-color: $primary-color-focus;
   }
+  &:disabled {
+    outline: none;
+    cursor: default;
+    background-color: #d0d0d0;
+  }
 }
 
 /** Include component styles **/

@@ -61,13 +61,14 @@ class UserDetails extends Reflux.Component {
     this.setState({[type]: event.target.value});
   }
 
-  renderInput(type) {
+  renderInput(type, isDisabled = false, minLength = 0) {
     return (
       <DebounceInput
         className="search-input"
-        minLength={5}
+        minLength={minLength}
         type="string"
-        debounceTimeout={500}
+        disabled={isDisabled}
+        debounceTimeout={300}
         placeholder={T.translate('userDetails.' + type)}
         value={this.state[type]}
         onChange={event => this.onInputChange(type, event)}
@@ -93,11 +94,11 @@ class UserDetails extends Reflux.Component {
               </div>
               <p>{T.translate('userDetails.verifyInfo')}</p>
               <div className="input-group">
-                {this.renderInput('phoneNumber')}
+                {this.renderInput('phoneNumber', (!this.state.firstName && !this.state.lastName))}
                 <button disabled={!this.state.phoneNumber} className="kvass-widget__primary-button" onClick={() => this.sendSms()}>Send</button>
               </div>
               <div className="input-group">
-                {this.renderInput('verifyCode')}
+                {this.renderInput('verifyCode', !this.state.phoneNumber)}
                 <button disabled={!this.state.phoneNumber} className="kvass-widget__primary-button" onClick={() => this.verifyCode()}>Verify</button>
               </div>
             </div>

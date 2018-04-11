@@ -26,5 +26,8 @@
       outline: none;
       border: 1px solid $primary-color-focus;
     }
+    &:disabled {
+      border: none;
+    }
   }
 }
