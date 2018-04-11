@@ -56,7 +56,7 @@ class ProductSearch extends Component {
   }
 
   render() {
-    const {search, isLoading, globalCount, productSearchList} = this.state;
+    const {search, isLoading, productSearchList} = this.state;
     return (
       <div className="product-search">
         <Header showBackNav={false}>
