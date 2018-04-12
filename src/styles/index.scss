@@ -118,7 +118,7 @@
   padding: 0 16px;
   border-radius: 2px 0 0 2px;
   width: 100%;
-  max-width: 266px;
+  //max-width: 266px;
 
   &:focus {
     outline: none;
@@ -131,6 +131,7 @@
 }
 
 .kvass-widget__input-container {
+  display: flex;
   padding-bottom: 10px;
 }
 

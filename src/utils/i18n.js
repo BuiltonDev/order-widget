@@ -34,7 +34,8 @@ T.setLanguage = (lng) => {
         verifyCode: 'Verifiseringskode'
       },
       deliveryDetails: {
-        header: 'Levering'
+        header: 'Levering',
+        deliveryDetails: 'Vennligst fyll inn leveringsadresse'
       },
       paymentDetails: {
         header: 'Betaling'
@@ -71,7 +72,8 @@ T.setLanguage = (lng) => {
         verifyCode: 'Verification code'
       },
       deliveryDetails: {
-        header: 'Delivery'
+        header: 'Delivery',
+        deliveryDetails: 'Please enter the delivery location'
       },
       paymentDetails: {
         header: 'Payment'

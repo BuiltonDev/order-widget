@@ -20,6 +20,7 @@ class DeliveryDetails extends Reflux.Component {
         <div className="kvass-widget__content-body">
           <div className="content">
             <div className="padding-container">
+              <p>{T.translate('deliveryDetails.deliveryDetails')}</p>
               <PlaceAutoComplete></PlaceAutoComplete>
             </div>
           </div>

@@ -58,11 +58,11 @@ class PlaceAutoComplete extends Component {
 
     const classNames = {
       root: 'place-auto-complete',
-      input: ''
+      input: 'kvass-widget__input'
     };
 
     return (
-      <form onSubmit={this.handleFormSubmit}>
+      <form className="kvass-widget__input-container" onSubmit={this.handleFormSubmit}>
         <PlacesAutocomplete classNames={classNames} inputProps={inputProps} renderSuggestion={this.renderSuggestion} onSelect={this.getAddress} onEnterKeyDown={this.getAddress}/>
         <button className="kvass-widget__primary-button" type="submit">Select</button>
       </form>
