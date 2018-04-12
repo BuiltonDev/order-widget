@@ -2,6 +2,7 @@ import React from 'react';
 import Reflux from 'reflux';
 import {DebounceInput} from 'react-debounce-input';
 import Header from 'src/components/Header';
+import PlaceAutoComplete from 'src/components/PlaceAutoComplete';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
 
@@ -19,7 +20,7 @@ class DeliveryDetails extends Reflux.Component {
         <div className="kvass-widget__content-body">
           <div className="content">
             <div className="padding-container">
-
+              <PlaceAutoComplete></PlaceAutoComplete>
             </div>
           </div>
           <div className="kvass-widget__content-footer">

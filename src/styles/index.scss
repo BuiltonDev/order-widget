@@ -112,6 +112,19 @@
   }
 }
 
+.kvass-widget__secondary-button {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  border: honeydew;
+  color: $secondary-background-color;
+  background-color: $primary-color;
+  display: block;
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 2px;
+  outline: none;
+}
+
 /** Include component styles **/
 
 @import '../containers/ProductSearch/index';
@@ -124,3 +137,4 @@
 @import '../components/Spinner/index';
 @import '../components/SvgIcons/index';
 @import '../components/ShoppingCart/index';
+@import '../components/PlaceAutoComplete/index';
