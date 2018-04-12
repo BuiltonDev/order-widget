@@ -18,9 +18,6 @@ class Receipt extends Reflux.Component {
         </Header>
         <div className="kvass-widget__content-body">
           <div className="content">
-            <div className="padding-container">
-
-            </div>
           </div>
           <div className="kvass-widget__content-footer">
             <div className="footer-content">
