@@ -10,7 +10,8 @@ T.setLanguage = (lng) => {
     T.setTexts({
       global: {
         next: 'Neste',
-        last: 'Avslutt'
+        last: 'Avslutt',
+        select: 'Velg'
       },
       product: {
         search: 'Søk',
@@ -48,7 +49,8 @@ T.setLanguage = (lng) => {
     T.setTexts({
       global: {
         next: 'Next',
-        last: 'Complete'
+        last: 'Complete',
+        select: 'Select'
       },
       product: {
         search: 'Search',

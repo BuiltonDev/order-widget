@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+import T from 'src/utils/i18n';
 
 class PlaceAutoComplete extends Component {
   constructor(props) {
@@ -21,11 +22,12 @@ class PlaceAutoComplete extends Component {
   }
 
   getAddress(address) {
+    if (this.state.address !== address) this.setState({address});
+
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => {
         this.setState({retrievedGeo: address, ...latLng});
-        console.log('Success', latLng);
       })
       .catch(error => console.error('Error', error));
   }
@@ -64,7 +66,7 @@ class PlaceAutoComplete extends Component {
     return (
       <form className="kvass-widget__input-container" onSubmit={this.handleFormSubmit}>
         <PlacesAutocomplete classNames={classNames} inputProps={inputProps} renderSuggestion={this.renderSuggestion} onSelect={this.getAddress} onEnterKeyDown={this.getAddress}/>
-        <button className="kvass-widget__primary-button" type="submit">Select</button>
+        <button className="kvass-widget__primary-button" type="submit">{T.translate('global.select')}</button>
       </form>
     )
   }
