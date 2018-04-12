@@ -112,6 +112,28 @@
   }
 }
 
+.kvass-widget__input {
+  height: 36px;
+  border: 1px solid $primary-color;
+  padding: 0 16px;
+  border-radius: 2px 0 0 2px;
+  width: 100%;
+  max-width: 266px;
+
+  &:focus {
+    outline: none;
+    border: 1px solid $primary-color-focus;
+  }
+
+  &:disabled {
+    border: none;
+  }
+}
+
+.kvass-widget__input-container {
+  padding-bottom: 10px;
+}
+
 /** Include component styles **/
 
 @import '../containers/ProductSearch/index';

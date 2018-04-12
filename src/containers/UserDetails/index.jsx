@@ -15,7 +15,7 @@ class UserDetails extends Reflux.Component {
   renderInput(type, isDisabled = false, minLength = 0) {
     return (
       <DebounceInput
-        className="search-input"
+        className="kvass-widget__input"
         minLength={minLength}
         type="string"
         disabled={isDisabled}
@@ -37,18 +37,18 @@ class UserDetails extends Reflux.Component {
           <div className="content">
             <div className="padding-container">
               <p>{T.translate('userDetails.detailsInfo')}</p>
-              <div className="input-group">
+              <div className="kvass-widget__input-container">
                 {this.renderInput('firstName')}
               </div>
-              <div className="input-group">
+              <div className="kvass-widget__input-container">
                 {this.renderInput('lastName')}
               </div>
               <p>{T.translate('userDetails.verifyInfo')}</p>
-              <div className="input-group">
+              <div className="kvass-widget__input-container">
                 {this.renderInput('phoneNumber', (!this.state.firstName || !this.state.lastName))}
                 <button disabled={!this.state.phoneNumber} className="kvass-widget__primary-button" onClick={() => Actions.onSendSms()}>Send</button>
               </div>
-              <div className="input-group">
+              <div className="kvass-widget__input-container">
                 {this.renderInput('verifyCode', !this.state.phoneNumber)}
                 <button disabled={!this.state.phoneNumber} className="kvass-widget__primary-button" onClick={() => Actions.onVerifyCode()}>Verify</button>
               </div>

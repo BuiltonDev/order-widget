@@ -9,20 +9,6 @@
     padding: $default-padding;
   }
 
-  .search-input {
-    height: 36px;
-    border: 1px solid $primary-color;
-    padding: 0 16px;
-    border-radius: 2px 0 0 2px;
-    width: 100%;
-    max-width: 266px;
-
-    &:focus {
-      outline: none;
-      border: 1px solid $primary-color-focus;
-    }
-  }
-
   .product-list {
     min-height: $content-min-height;
     ul {
