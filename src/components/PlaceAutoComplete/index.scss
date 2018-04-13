@@ -1,4 +1,15 @@
+@import '../../styles/_global';
+
 .place-auto-complete {
   position: relative;
   width: 100%;
+
+  .container {
+    position: absolute;
+    top: 100%;
+    background-color: $secondary-background-color;
+    border: 1px solid $primary-color;
+    width: 100%;
+    z-index: 9999;
+  }
 }

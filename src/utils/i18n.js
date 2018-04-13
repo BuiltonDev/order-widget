@@ -36,7 +36,8 @@ T.setLanguage = (lng) => {
       },
       deliveryDetails: {
         header: 'Levering',
-        deliveryDetails: 'Vennligst fyll inn leveringsadresse'
+        deliveryDetails: 'Vennligst fyll inn leveringsadresse',
+        timeDetails: 'Velg leveringstidspunk'
       },
       paymentDetails: {
         header: 'Betaling'
@@ -75,7 +76,8 @@ T.setLanguage = (lng) => {
       },
       deliveryDetails: {
         header: 'Delivery',
-        deliveryDetails: 'Please enter the delivery location'
+        deliveryDetails: 'Please enter the delivery location',
+        timeDetails: 'Select delivery time'
       },
       paymentDetails: {
         header: 'Payment'

@@ -40,10 +40,10 @@ class PlaceAutoComplete extends Component {
 
   renderSuggestion({formattedSuggestion}) {
     return (
-      <div className="Demo__suggestion-item">
-        <i className="fa fa-map-marker Demo__suggestion-icon" />
+      <div>
+        <i/>
         <strong>{formattedSuggestion.mainText}</strong>{' '}
-        <small className="text-muted">{formattedSuggestion.secondaryText}</small>
+        <small>{formattedSuggestion.secondaryText}</small>
       </div>
     );
   }
@@ -60,7 +60,8 @@ class PlaceAutoComplete extends Component {
 
     const classNames = {
       root: 'place-auto-complete',
-      input: 'kvass-widget__input'
+      input: 'kvass-widget__input',
+      autocompleteContainer: 'container'
     };
 
     return (
