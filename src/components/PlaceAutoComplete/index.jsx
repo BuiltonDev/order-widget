@@ -4,7 +4,7 @@ import T from 'src/utils/i18n';
 
 class PlaceAutoComplete extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       address: '',
       retrievedGeo: '',
