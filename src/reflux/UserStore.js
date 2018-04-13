@@ -1,8 +1,7 @@
-import React from 'react';
 import Reflux from 'reflux';
 import auth0 from 'auth0-js';
-import Actions from './Actions';
 import {Auth0Config} from 'src/utils';
+import Actions from './Actions';
 
 class UserStore extends Reflux.Store {
   constructor() {
@@ -27,7 +26,7 @@ class UserStore extends Reflux.Store {
   }
 
   onSendSms() {
-    console.log('send sms');
+    this.setState();
     /*
     this.webAuth.passwordlessStart({
       connection: 'sms',
@@ -46,7 +45,7 @@ class UserStore extends Reflux.Store {
   }
 
   onVerifyCode() {
-    console.log('verify code');
+    this.setState();
     /*
     this.webAuth.passwordlessLogin({
       connection: 'sms',

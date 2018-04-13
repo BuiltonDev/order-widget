@@ -1,14 +1,13 @@
-import React from 'react';
 import Reflux from 'reflux';
-import Actions from './Actions';
 
 // Containers
-import ProductSearch from 'src/containers/ProductSearch/index.jsx';
-import ProductBasket from 'src/containers/ProductBasket/index.jsx';
-import UserDetails from 'src/containers/UserDetails/index.jsx';
-import DeliveryDetails from 'src/containers/DeliveryDetails/index.jsx';
-import PaymentDetails from 'src/containers/PaymentDetails/index.jsx';
-import Receipt from 'src/containers/Receipt/index.jsx';
+import ProductSearch from 'src/containers/ProductSearch';
+import ProductBasket from 'src/containers/ProductBasket';
+import UserDetails from 'src/containers/UserDetails';
+import DeliveryDetails from 'src/containers/DeliveryDetails';
+import PaymentDetails from 'src/containers/PaymentDetails';
+import Receipt from 'src/containers/Receipt';
+import Actions from './Actions';
 
 class NavigationStore extends Reflux.Store {
   constructor() {
