@@ -4,6 +4,7 @@ import {DebounceInput} from 'react-debounce-input';
 import Header from 'src/components/Header';
 import PlaceAutoComplete from 'src/components/PlaceAutoComplete';
 import TimePickerWrapper from 'src/components/TimePickerWrapper';
+import DayPickerWrapper from 'src/components/DayPickerWrapper';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
 
@@ -24,7 +25,7 @@ class DeliveryDetails extends Reflux.Component {
               <p>{T.translate('deliveryDetails.deliveryDetails')}</p>
               <PlaceAutoComplete />
               <p>{T.translate('deliveryDetails.timeDetails')}</p>
-              <TimePickerWrapper />
+              <TimePickerWrapper /> <DayPickerWrapper />
             </div>
           </div>
           <div className="kvass-widget__content-footer">

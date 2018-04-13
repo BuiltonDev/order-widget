@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import NavigationStore from './reflux/NavigationStore';
 
+import 'react-dates/initialize';
+
 class App extends Reflux.Component {
   constructor(props) {
     super(props);
