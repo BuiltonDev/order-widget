@@ -1,10 +1,9 @@
-import React from 'react';
 import Reflux from 'reflux';
-import Actions from './Actions';
 
 // Containers
-import ProductSearch from 'src/containers/ProductSearch/index.jsx';
-import ProductBasket from 'src/containers/ProductBasket/index.jsx';
+import ProductSearch from 'src/containers/ProductSearch';
+import ProductBasket from 'src/containers/ProductBasket';
+import Actions from './Actions';
 
 class NavigationStore extends Reflux.Store {
   constructor() {

@@ -1,9 +1,8 @@
 import React from 'react';
-import Reflux from 'reflux'
+import Reflux from 'reflux';
 import PropTypes from 'prop-types';
-import classNames from 'classnames'
+import classNames from 'classnames';
 import NavigationStore from 'src/reflux/NavigationStore';
-import Actions from 'src/reflux/Actions';
 
 class App extends Reflux.Component {
   constructor(props) {

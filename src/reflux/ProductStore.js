@@ -42,7 +42,7 @@ class ProductStore extends Reflux.Store {
     const id = product._id.$oid;
     if (!this.state.products[id]) return;
 
-    let copy = cloneDeep(this.state.products[id]);
+    const copy = cloneDeep(this.state.products[id]);
     const maxRemovable = Math.max(-copy.count, minusCount);
 
     copy.count += maxRemovable;
@@ -52,7 +52,7 @@ class ProductStore extends Reflux.Store {
         ...this.state.products,
         [id]: copy.count > 0 ? copy : null // Set to null on last item of product
       },
-      totalCount: this.state.totalCount + maxRemovable ,
+      totalCount: this.state.totalCount + maxRemovable,
       totalSum: this.state.totalSum + (copy.item.price * maxRemovable),
       totalTax: this.state.totalTax + (copy.item.vat * maxRemovable)
     });
