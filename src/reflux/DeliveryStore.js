@@ -12,7 +12,8 @@ class DeliveryStore extends Reflux.Store {
       deliveryAddress: '',
       lat: 0,
       lng: 0,
-      retrievedGeo: false
+      retrievedGeo: false,
+      deliveryAdditional: ''
     };
     this.listenables = Actions;
   }
@@ -38,6 +39,10 @@ class DeliveryStore extends Reflux.Store {
         this.setState({...latLng, retrievedGeo: true});
       })
       .catch(error => console.error('Error', error));
+  }
+
+  onAdditionalDetailsChange(deliveryAdditional) {
+    this.setState({deliveryAdditional});
   }
 
 }

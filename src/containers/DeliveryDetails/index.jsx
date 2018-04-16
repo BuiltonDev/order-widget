@@ -11,14 +11,6 @@ import T from 'src/utils/i18n';
 class DeliveryDetails extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      additional: ''
-    };
-    this.onAdditionalDetailsChange = this.onAdditionalDetailsChange.bind(this);
-  }
-
-  onAdditionalDetailsChange(event) {
-    this.setState({additional: event.target.value});
   }
 
   render() {
@@ -37,7 +29,7 @@ class DeliveryDetails extends Reflux.Component {
               <p>{T.translate('deliveryDetails.timeDetails')}</p>
               <TimePickerWrapper />
               <p>{T.translate('deliveryDetails.additionalDetails')}</p>
-              <textarea className="delivery-details__additional" value={this.state.value} onChange={this.onAdditionalDetailsChange} maxLength="250"/>
+              <textarea className="delivery-details__additional" value={this.state.value} onChange={(evt) => Actions.onAdditionalDetailsChange({additional: evt.target.value})} maxLength="250"/>
             </div>
           </div>
           <div className="kvass-widget__content-footer">

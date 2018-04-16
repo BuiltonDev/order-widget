@@ -12,6 +12,7 @@ const Actions = Reflux.createActions([
   'onDateChange', // Delivery
   'onTimeChange', // Delivery
   'onAddressChange', // Delivery
+  'onAdditionalDetailsChange', // Delivery
   'onGetAddressFromGoogle' // Delivery
 ]);
 
