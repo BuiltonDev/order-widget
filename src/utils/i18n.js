@@ -43,7 +43,8 @@ T.setLanguage = (lng) => {
         additionalDetails: 'Tilleggsinformasjon ved levering'
       },
       paymentDetails: {
-        header: 'Betaling'
+        header: 'Betaling',
+        pay: 'Betal'
       },
       receipt: {
         header: 'Kvittering'
@@ -86,7 +87,8 @@ T.setLanguage = (lng) => {
         additionalDetails: 'Add additional delivery details'
       },
       paymentDetails: {
-        header: 'Payment'
+        header: 'Payment',
+        pay: 'Pay'
       },
       receipt: {
         header: 'Receipt'

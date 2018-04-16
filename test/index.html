@@ -4,6 +4,7 @@
 </head>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf53-uXGDdH29KisPNSvsqpdRIzruI66U&libraries=places"></script>
+<script src="https://js.stripe.com/v3/"></script>
 <script src="https://unpkg.com/@shareactor/shareactor-sdk@latest/dist/main.bundle.js"></script>
 
 <body>
@@ -16,6 +17,7 @@
   var endpoint = "<%= ENDPOINT %>";
   var auth0Domain = "<%= AUTH0_DOMAIN %>";
   var auth0ClientId = "<%= AUTH0_CLIENTID %>";
+  var stripeApiKey = "<%= STRIPE_API_KEY %>";
 
   KvassOrdering.init({
     domElementId: 'kvass-instance',
@@ -25,7 +27,8 @@
     auth0Config: {
       domain: auth0Domain,
       clientId: auth0ClientId
-    }
+    },
+    stripeApiKey: stripeApiKey
   });
 
   document.getElementById('openKvass').addEventListener('click', function(event) {
