@@ -19,7 +19,9 @@
     domElementId: 'kvass-instance',
     apiKey: config.apiKey,
     endpoint: config.endpoint,
-    lng: 'no'
+    lng: 'no',
+    auth0Config: config.auth0Config,
+    stripeApiKey: config.stripeApiKey
   });
   document.getElementById('openKvass').addEventListener('click', function(event) {
     KvassOrdering.open();
