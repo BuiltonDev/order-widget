@@ -19,8 +19,6 @@ class DayPickerWrapper extends Component {
   }
 
   onFocusChange({focused}) {
-    console.log(focused);
-    // Force the focused states to always be truthy so that date is always selectable
     this.setState({focused});
   }
 
