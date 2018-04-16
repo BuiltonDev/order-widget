@@ -1,23 +1,24 @@
 @import '../../styles/_global';
 @import '../../styles/_mixins';
 
-.time_picker_preview {
-  height: 36px;
+/* time_picker override */
+
+.time_picker_container {
   width: 150px;
-  border: 1px solid $primary-color;
-  padding: 0 16px;
-  border-radius: 2px 0 0 2px;
+}
+
+.time_picker_preview {
+  @include primary-input(36px, 100%);
   @include transition(none);
   @include box-shadow(none);
 
-  &:focus {
-    outline: none;
-    border: 1px solid $primary-color-focus;
+  .preview_container {
+    left: 25%;
+    svg {
+      fill: #9a9a9a;
+    }
   }
 
-  &:disabled {
-    border: none;
-  }
 }
 
 .time_picker_preview.active, .time_picker_preview:hover {
@@ -26,6 +27,22 @@
 
 .classic_theme_container {
   width: 184px;
+  .active {
+    background-color: $primary-color;
+  }
+}
+
+.classic_theme_container .classic_time.light.active, .classic_theme_container {
+  background-color: $primary-color;
+}
+
+.classic_theme_container .classic_time.light:hover {
+  outline: none;
+  background-color: $primary-color-focus;
+}
+
+.time_picker_modal_header, .time_picker_modal_footer, .timezone_picker_modal_header, .picker_pointer .pointer_drag, .picker_center, .picker_pointer {
+  background-color: $primary-color;
 }
 
 /* Only valid when using react-times material css
@@ -40,9 +57,5 @@
   }
 }
 */
-
-.time_picker_modal_header, .time_picker_modal_footer, .timezone_picker_modal_header, .picker_pointer .pointer_drag, .picker_center, .picker_pointer {
-  background-color: $primary-color;
-}
 
 @import '~react-times/css/classic/default.css';

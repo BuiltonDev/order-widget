@@ -113,21 +113,7 @@
 }
 
 .kvass-widget__input {
-  height: 36px;
-  border: 1px solid $primary-color;
-  padding: 0 16px;
-  border-radius: 2px 0 0 2px;
-  width: 100%;
-  //max-width: 266px;
-
-  &:focus {
-    outline: none;
-    border: 1px solid $primary-color-focus;
-  }
-
-  &:disabled {
-    border: none;
-  }
+  @include primary-input(36px, 100%);
 }
 
 .kvass-widget__input-container {
