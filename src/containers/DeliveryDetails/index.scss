@@ -8,4 +8,9 @@
   .padding-container {
     padding: 10px 32px;
   }
+
+  .delivery-details__additional {
+    @include primary-input(155px, 100%);
+    resize: none;
+  }
 }
