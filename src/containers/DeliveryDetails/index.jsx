@@ -2,7 +2,7 @@ import React from 'react';
 import Reflux from 'reflux';
 import {DebounceInput} from 'react-debounce-input';
 import Header from 'src/components/Header';
-import PlaceAutoComplete from 'src/components/PlaceAutoComplete';
+import PlaceAutoCompleteWrapper from 'src/components/PlaceAutoCompleteWrapper';
 import TimePickerWrapper from 'src/components/TimePickerWrapper';
 import DayPickerWrapper from 'src/components/DayPickerWrapper';
 import Actions from 'src/reflux/Actions';
@@ -31,7 +31,7 @@ class DeliveryDetails extends Reflux.Component {
           <div className="content">
             <div className="padding-container">
               <p>{T.translate('deliveryDetails.deliveryDetails')}</p>
-              <PlaceAutoComplete />
+              <PlaceAutoCompleteWrapper />
               <p>{T.translate('deliveryDetails.dateDetails')}</p>
               <DayPickerWrapper />
               <p>{T.translate('deliveryDetails.timeDetails')}</p>

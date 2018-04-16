@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import T from 'src/utils/i18n';
 
-class PlaceAutoComplete extends Component {
+class PlaceAutoCompleteWrapper extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,4 +73,4 @@ class PlaceAutoComplete extends Component {
   }
 }
 
-export default PlaceAutoComplete;
+export default PlaceAutoCompleteWrapper;
