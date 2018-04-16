@@ -1,42 +1,24 @@
-import React, {Component} from 'react'
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+import React from 'react'
+import Reflux from 'reflux'
+import PlacesAutocomplete from 'react-places-autocomplete'
 import T from 'src/utils/i18n';
+import Actions from 'src/reflux/Actions';
+import DeliveryStore from 'src/reflux/DeliveryStore';
 
-class PlaceAutoCompleteWrapper extends Component {
+class PlaceAutoCompleteWrapper extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      address: '',
-      retrievedGeo: '',
-      lat: null,
-      lng: null
-    };
-    this.onChange = this.onChange.bind(this);
-    this.getAddress = this.getAddress.bind(this);
+    this.store = DeliveryStore;
+    this.storeKeys = ['deliveryAddress', 'retrievedGeo'];
+
     this.renderSuggestion = this.renderSuggestion.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  onChange(address) {
-    this.setState({address});
-  }
-
-  getAddress(address) {
-    if (this.state.address !== address) this.setState({address});
-
-    geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
-      .then(latLng => {
-        this.setState({retrievedGeo: address, ...latLng});
-      })
-      .catch(error => console.error('Error', error));
-  }
-
   handleFormSubmit(event) {
     event.preventDefault();
-    if (this.state.retrievedGeo !== this.state.address) this.getAddress(this.state.address);
+    if (this.state.retrievedGeo) Actions.getAddressFromGoogle(this.state.address);
   }
-
 
   renderSuggestion({formattedSuggestion}) {
     return (
@@ -51,8 +33,8 @@ class PlaceAutoCompleteWrapper extends Component {
 
   render() {
     const inputProps = {
-      value: this.state.address,
-      onChange: this.onChange,
+      value: this.state.deliveryAddress,
+      onChange: Actions.onAddressChange,
       type: 'search',
       placeholder: T.translate('deliveryDetails.searchPlacesPlaceholder'),
       autoFocus: true
@@ -66,7 +48,12 @@ class PlaceAutoCompleteWrapper extends Component {
 
     return (
       <form className="kvass-widget__input-container" onSubmit={this.handleFormSubmit}>
-        <PlacesAutocomplete classNames={classNames} inputProps={inputProps} renderSuggestion={this.renderSuggestion} onSelect={this.getAddress} onEnterKeyDown={this.getAddress}/>
+        <PlacesAutocomplete
+          classNames={classNames}
+          inputProps={inputProps}
+          renderSuggestion={this.renderSuggestion}
+          onSelect={(address) => Actions.onGetAddressFromGoogle(address)}
+          onEnterKeyDown={(address) => Actions.onGetAddressFromGoogle(address)} />
         <button className="kvass-widget__primary-button" type="submit">{T.translate('global.select')}</button>
       </form>
     )

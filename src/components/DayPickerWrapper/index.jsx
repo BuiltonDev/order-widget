@@ -1,21 +1,20 @@
-import React, {Component} from 'react'
+import React from 'react'
+import Reflux from 'reflux'
 import {SingleDatePicker} from 'react-dates';
-import moment from 'moment';
 import T from 'src/utils/i18n';
+import Actions from 'src/reflux/Actions';
+import DeliveryStore from 'src/reflux/DeliveryStore';
 
-class DayPickerWrapper extends Component {
+class DayPickerWrapper extends Reflux.Component {
   constructor(props) {
     super(props);
     this.state = {
-      focused: false,
-      date: moment(),
+      focused: false
     };
-    this.onDateChange = this.onDateChange.bind(this);
-    this.onFocusChange = this.onFocusChange.bind(this);
-  }
+    this.store = DeliveryStore;
+    this.storeKeys = ['deliveryDate'];
 
-  onDateChange(date) {
-    this.setState({date});
+    this.onFocusChange = this.onFocusChange.bind(this);
   }
 
   onFocusChange({focused}) {
@@ -23,9 +22,9 @@ class DayPickerWrapper extends Component {
   }
 
   render() {
-    const {date, focused} = this.state;
+    const {deliveryDate, focused} = this.state;
     return (
-      <SingleDatePicker numberOfMonths={1} date={date} focused={focused} onDateChange={this.onDateChange} onFocusChange={this.onFocusChange}/>
+      <SingleDatePicker numberOfMonths={1} date={deliveryDate} focused={focused} onDateChange={(date) => Actions.onDateChange(date)} onFocusChange={this.onFocusChange}/>
     );
   }
 }

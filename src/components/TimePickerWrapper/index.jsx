@@ -1,23 +1,20 @@
-import React, {Component} from 'react'
+import React from 'react'
+import Reflux from 'reflux'
 import TimePicker from 'react-times';
 import T from 'src/utils/i18n';
+import Actions from 'src/reflux/Actions';
+import DeliveryStore from 'src/reflux/DeliveryStore';
 
-class TimePickerWrapper extends Component {
+class TimePickerWrapper extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      time: ''
-    };
-    this.onTimeChange = this.onTimeChange.bind(this);
-  }
-
-  onTimeChange(time) {
-    this.setState({time});
+    this.store = DeliveryStore;
+    this.storeKeys = ['deliveryTime'];
   }
 
   render() {
     return (
-      <TimePicker time={this.state.time} draggable={false} onTimeChange={this.onTimeChange} theme="classic"/>
+      <TimePicker time={this.state.deliveryTime} draggable={false} onTimeChange={(time) => Actions.onTimeChange(time)} theme="classic"/>
     );
   }
 }
