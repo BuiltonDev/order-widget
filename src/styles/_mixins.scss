@@ -35,6 +35,14 @@
   box-shadow:$shadow;
 }
 
+@mixin focus-effect() {
+  outline: none;
+  border: 1px solid $primary-color-focus;
+  box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+  -webkit-transition: all 150ms ease;
+  transition: all 150ms ease;
+}
+
 @mixin primary-input($height, $width) {
   height: $height;
   width: $width;
@@ -48,8 +56,7 @@
   color: #565a5c;
 
   &:focus {
-    outline: none;
-    border: 1px solid $primary-color-focus;
+    @include focus-effect();
   }
 
   &:disabled {

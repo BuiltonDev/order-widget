@@ -12,6 +12,16 @@
   @include transition(none);
   @include box-shadow(none);
 
+  .active {
+    @include focus-effect();
+  }
+
+  &:hover {
+    @include box-shadow(none);
+    outline: none;
+    border: 1px solid $primary-color-focus;
+  }
+
   .preview_container {
     left: 25%;
     svg {
@@ -19,10 +29,6 @@
     }
   }
 
-}
-
-.time_picker_preview.active, .time_picker_preview:hover {
-  @include box-shadow(none);
 }
 
 .classic_theme_container {

@@ -101,9 +101,12 @@
   color: $secondary-background-color;
   background-color: $primary-color;
   border: 0;
+  &:focus {
+    @include focus-effect();
+  }
   &:hover {
     outline: none;
-    background-color: $primary-color-focus;
+    border: 1px solid $primary-color-focus;
   }
   &:disabled {
     outline: none;
