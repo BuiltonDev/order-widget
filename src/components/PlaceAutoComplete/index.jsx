@@ -54,7 +54,7 @@ class PlaceAutoComplete extends Component {
       value: this.state.address,
       onChange: this.onChange,
       type: 'search',
-      placeholder: 'Search Places...',
+      placeholder: T.translate('deliveryDetails.searchPlacesPlaceholder'),
       autoFocus: true
     };
 

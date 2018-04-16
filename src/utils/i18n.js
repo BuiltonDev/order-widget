@@ -36,8 +36,11 @@ T.setLanguage = (lng) => {
       },
       deliveryDetails: {
         header: 'Levering',
+        searchPlacesPlaceholder: 'Søk etter adresse',
         deliveryDetails: 'Vennligst fyll inn leveringsadresse',
-        timeDetails: 'Velg leveringstidspunk'
+        timeDetails: 'Velg leveringstidspunk',
+        dateDetails: 'Velg leveringsdato',
+        additionalDetails: 'Tilleggsinformasjon ved levering'
       },
       paymentDetails: {
         header: 'Betaling'
@@ -76,8 +79,11 @@ T.setLanguage = (lng) => {
       },
       deliveryDetails: {
         header: 'Delivery',
+        searchPlacesPlaceholder: 'Search for location',
         deliveryDetails: 'Please enter the delivery location',
-        timeDetails: 'Select delivery time'
+        timeDetails: 'Select delivery time',
+        dateDetails: 'Select delivery date',
+        additionalDetails: 'Add additional delivery details'
       },
       paymentDetails: {
         header: 'Payment'
