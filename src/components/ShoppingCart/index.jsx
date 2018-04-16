@@ -18,7 +18,7 @@ class ShoppingCart extends Reflux.Component {
     return (
       <a href="#" className="shopping-cart" onClick={() => Actions.onNextNavigation()}>
         <ShoppingCartIcon className="svg-icon--primary"></ShoppingCartIcon>
-        <NotificationBadge style={{'backgroundColor': '#FF7700'}} count={totalCount} effect={Effect.SCALE} frameLength={15.0}/>
+        <NotificationBadge style={{'backgroundColor': '#FF7700', position: 'relative'}} count={totalCount} effect={Effect.SCALE} frameLength={15.0}/>
       </a>
     );
   }
