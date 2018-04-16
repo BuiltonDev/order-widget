@@ -6,11 +6,15 @@ import PlaceAutoCompleteWrapper from 'src/components/PlaceAutoCompleteWrapper';
 import TimePickerWrapper from 'src/components/TimePickerWrapper';
 import DayPickerWrapper from 'src/components/DayPickerWrapper';
 import Actions from 'src/reflux/Actions';
+import DeliveryStore from 'src/reflux/DeliveryStore';
 import T from 'src/utils/i18n';
 
 class DeliveryDetails extends Reflux.Component {
   constructor(props) {
     super(props);
+
+    this.store = DeliveryStore;
+    this.storeKeys = ['deliveryAdditional'];
   }
 
   render() {
@@ -29,7 +33,7 @@ class DeliveryDetails extends Reflux.Component {
               <p>{T.translate('deliveryDetails.timeDetails')}</p>
               <TimePickerWrapper />
               <p>{T.translate('deliveryDetails.additionalDetails')}</p>
-              <textarea className="delivery-details__additional" value={this.state.value} onChange={(evt) => Actions.onAdditionalDetailsChange({additional: evt.target.value})} maxLength="250"/>
+              <textarea className="delivery-details__additional" value={this.state.deliveryAdditional} onChange={(evt) => Actions.onAdditionalDetailsChange(evt.target.value)} maxLength="250"/>
             </div>
           </div>
           <div className="kvass-widget__content-footer">
