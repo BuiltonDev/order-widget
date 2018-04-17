@@ -10,7 +10,7 @@ let el;
 
 export const init = ({domElementId, apiKey, endpoint, lng = 'no', auth0Config, stripeApiKey}) => {
   // eslint-disable-next-line no-undef
-  window.ShareActor = new ShareActor({apiKey, endpoint});
+  window.ShareActor = ShareActor ? new ShareActor({apiKey, endpoint}) : null;
   window.Auth0Config = auth0Config;
   window.StripeApiKey = stripeApiKey;
   T.setLanguage(lng);

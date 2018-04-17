@@ -44,7 +44,8 @@ T.setLanguage = (lng) => {
       },
       paymentDetails: {
         header: 'Betaling',
-        pay: 'Betal'
+        pay: 'Betal',
+        cardDetails: 'Fyll inn betalingsdetaljer'
       },
       receipt: {
         header: 'Kvittering'
@@ -88,7 +89,8 @@ T.setLanguage = (lng) => {
       },
       paymentDetails: {
         header: 'Payment',
-        pay: 'Pay'
+        pay: 'Pay',
+        cardDetails: 'Fill in card details'
       },
       receipt: {
         header: 'Receipt'

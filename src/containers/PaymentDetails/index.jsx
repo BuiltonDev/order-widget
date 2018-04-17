@@ -3,6 +3,7 @@ import {StripeProvider, Elements} from 'react-stripe-elements';
 import Header from 'src/components/Header';
 import Spinner from 'src/components/Spinner';
 import PaymentForm from 'src/components/PaymentForm';
+import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
 import {StripeApiKey} from 'src/utils';
 

@@ -13,7 +13,8 @@ const Actions = Reflux.createActions([
   'onTimeChange', // Delivery
   'onAddressChange', // Delivery
   'onAdditionalDetailsChange', // Delivery
-  'onGetAddressFromGoogle' // Delivery
+  'onGetAddressFromGoogle', // Delivery
+  'onStripeToken' // Payment
 ]);
 
 export default Actions;
