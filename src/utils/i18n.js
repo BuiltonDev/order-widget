@@ -20,7 +20,7 @@ T.setLanguage = (lng) => {
       },
       basket: {
         header: 'Handlekurv',
-        checkout: 'Neste',
+        checkout: 'Fortsett',
         products: 'Produkter',
         tax: 'Mva',
         total: 'Totalt m/ skatt'
