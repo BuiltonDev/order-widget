@@ -1,14 +1,13 @@
-import React from 'react';
-import Reflux from 'reflux';
-import {StripeProvider, Elements, CardElement, injectStripe} from 'react-stripe-elements';
+import React, {Component} from 'react';
+import {StripeProvider, Elements} from 'react-stripe-elements';
 import Header from 'src/components/Header';
 import Spinner from 'src/components/Spinner';
-import Actions from 'src/reflux/Actions';
+import PaymentForm from 'src/components/PaymentForm';
 import T from 'src/utils/i18n';
 import {StripeApiKey} from 'src/utils';
 
 
-class PaymentDetails extends Reflux.Component {
+class PaymentDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,23 +28,6 @@ class PaymentDetails extends Reflux.Component {
     }
   }
 
-  handleSubmit(event) {
-    ev.preventDefault();
-    this.props.stripe.createToken().then(payload => console.log(payload));
-  }
-
-  handleChange(event) {
-    console.log(event);
-  }
-
-  renderStripeCheckout() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <CardElement onChange={this.handleChange}/>
-      </form>
-    );
-  }
-
   render() {
     return (
       <div className="payment-details">
@@ -58,7 +40,7 @@ class PaymentDetails extends Reflux.Component {
             <div className="padding-container">
               <StripeProvider apiKey={this.stripeApiKey}>
                 <Elements>
-                  {this.renderStripeCheckout()}
+                  <PaymentForm />
                 </Elements>
               </StripeProvider>
             </div>
