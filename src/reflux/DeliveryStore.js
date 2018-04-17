@@ -1,6 +1,6 @@
 import Reflux from 'reflux';
 import moment from 'moment';
-import {geocodeByAddress, getLatLng} from 'react-places-autocomplete'
+import {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 import Actions from './Actions';
 
 class DeliveryStore extends Reflux.Store {
@@ -35,7 +35,7 @@ class DeliveryStore extends Reflux.Store {
     this.setState({deliveryAddress});
     geocodeByAddress(deliveryAddress)
       .then(results => getLatLng(results[0]))
-      .then(latLng => {
+      .then((latLng) => {
         this.setState({...latLng, retrievedGeo: true});
       })
       .catch(error => console.error('Error', error));
@@ -44,7 +44,6 @@ class DeliveryStore extends Reflux.Store {
   onAdditionalDetailsChange(deliveryAdditional) {
     this.setState({deliveryAdditional});
   }
-
 }
 
 export default DeliveryStore;

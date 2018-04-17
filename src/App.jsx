@@ -2,9 +2,9 @@ import React from 'react';
 import Reflux from 'reflux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import 'react-dates/initialize';
 import NavigationStore from './reflux/NavigationStore';
 
-import 'react-dates/initialize';
 
 class App extends Reflux.Component {
   constructor(props) {
