@@ -8,7 +8,7 @@ class DeliveryStore extends Reflux.Store {
     super();
     this.state = {
       deliveryDate: moment(),
-      deliveryTime: '',
+      deliveryTime: moment().startOf('hour').toString(),
       deliveryAddress: '',
       lat: 0,
       lng: 0,
