@@ -1,12 +1,18 @@
-import React, {Component} from 'react';
+import React from 'react';
+import Reflux from 'reflux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import NavigationStore from 'src/reflux/NavigationStore';
 
-import ProductSearch from './containers/ProductSearch/index.jsx';
-
-class App extends Component {
+class App extends Reflux.Component {
   constructor(props) {
     super(props);
+    this.store = NavigationStore;
+  }
+
+  renderCurrentNav() {
+    const {step, navComponents} = this.state;
+    return React.createElement(navComponents[step]);
   }
 
   render() {
@@ -20,7 +26,7 @@ class App extends Component {
       <div id="kvass-widget" className={className}>
         <div className="kvass-widget__overlay"></div>
           <div className="kvass-widget__container">
-            <ProductSearch></ProductSearch>
+            {this.renderCurrentNav()}
           </div>
       </div>
     );

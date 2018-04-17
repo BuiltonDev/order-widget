@@ -30,7 +30,7 @@
     position: relative;
     background-color: $primary-background-color;
     opacity: 1;
-    width: 400px;
+    width: $widget-width;
     margin: 0 auto;
     border-radius: 5px;
 
@@ -56,13 +56,39 @@
 }
 
 .kvass-widget__content-header {
+  height: $header-height;
   background-color: $secondary-background-color;
   box-shadow: 0 5px 15px rgba(0,0,0,.033);
-  padding: 30px 32px;
+  text-align: center;
+
+  .previous-navigation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px 0 0 5px;
+  }
+
+  .close-widget {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px 5px 0 0
+  }
+
+  .header-title {
+    font-size: 32px;
+    display: inline-block;
+    padding: $default-padding;
+  }
 }
 
 .kvass-widget__content-footer {
-  padding: 30px 32px;
+  height: $footer-height;
+  text-align: center;
+
+  .footer-content {
+    padding: $default-padding;
+  }
 }
 
 /* Global classes*/
@@ -84,8 +110,8 @@
 /** Include component styles **/
 
 @import '../containers/ProductSearch/index';
+@import '../containers/ProductBasket/index';
 
-
-@import '../components/spinner/index';
-@import '../components/svgIcons/index';
+@import '../components/Spinner/index';
+@import '../components/SvgIcons/index';
 @import '../components/ShoppingCart/index';

@@ -2,22 +2,23 @@ import React from 'react';
 import Reflux from 'reflux';
 import NotificationBadge from 'react-notification-badge';
 import {Effect} from 'react-notification-badge';
-import {ShoppingCartIcon} from 'src/components/svgIcons';
+import ShoppingCartIcon from 'src/components/SvgIcons/ShoppingCartIcon';
 import ProductStore from 'src/reflux/ProductStore';
+import Actions from 'src/reflux/Actions';
 
 class ShoppingCart extends Reflux.Component {
   constructor(props) {
     super(props);
     this.store = ProductStore;
-    this.storeKeys = ['globalCount'];
+    this.storeKeys = ['totalCount'];
   }
 
   render() {
-    const {globalCount} = this.state;
+    const {totalCount} = this.state;
     return (
-      <div className="shopping-cart">
+      <div className="shopping-cart" onClick={() => Actions.onNextNavigation()}>
         <ShoppingCartIcon className="svg-icon--primary"></ShoppingCartIcon>
-        <NotificationBadge style={{'backgroundColor': '#FF7700'}} count={globalCount} effect={Effect.SCALE} frameLength={15.0}/>
+        <NotificationBadge style={{'backgroundColor': '#FF7700'}} count={totalCount} effect={Effect.SCALE} frameLength={15.0}/>
       </div>
     );
   }

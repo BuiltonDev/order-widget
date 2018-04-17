@@ -7,12 +7,14 @@ class ProductStore extends Reflux.Store {
     super();
     this.state = {
       products: {},
-      globalCount: 0
+      totalCount: 0,
+      totalSum: 0,
+      totalTax: 0
     };
     this.listenables = Actions;
   }
 
-  onAddProduct(product) {
+  onAddProduct(product, addCount = 1) {
     const id = product._id.$oid;
     let copy = {
       item: product,
@@ -23,34 +25,36 @@ class ProductStore extends Reflux.Store {
     if (this.state.products[id]) {
       copy = cloneDeep(this.state.products[id]);
     }
-    copy.count += 1;
+    copy.count += addCount;
 
     this.setState({
       products: {
         ...this.state.products,
         [id]: copy
       },
-      globalCount: this.state.globalCount + 1
+      totalCount: this.state.totalCount + addCount,
+      totalSum: this.state.totalSum + (copy.item.price * addCount),
+      totalTax: this.state.totalTax + (copy.item.vat * addCount)
     });
   }
 
-  onRemoveProduct(product) {
+  onRemoveProduct(product, minusCount = -1) {
     const id = product._id.$oid;
     if (!this.state.products[id]) return;
 
-    let copy = cloneDeep(this.state.products[id]);
-    copy.count -= 1;
+    const copy = cloneDeep(this.state.products[id]);
+    const maxRemovable = Math.max(-copy.count, minusCount);
 
-    // Last item of product
-    if (copy.count < 1) copy = null;
-
+    copy.count += maxRemovable;
 
     this.setState({
       products: {
         ...this.state.products,
-        [id]: copy
+        [id]: copy.count > 0 ? copy : null // Set to null on last item of product
       },
-      globalCount: this.state.globalCount - 1
+      totalCount: this.state.totalCount + maxRemovable,
+      totalSum: this.state.totalSum + (copy.item.price * maxRemovable),
+      totalTax: this.state.totalTax + (copy.item.vat * maxRemovable)
     });
   }
 }
