@@ -20,8 +20,6 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       APIKEY: JSON.stringify(config.apiKey),
       ENDPOINT: JSON.stringify(config.endpoint),
-      AUTH0_CLIENTID: JSON.stringify(config.auth0Config.clientId),
-      AUTH0_DOMAIN: JSON.stringify(config.auth0Config.domain),
       FIREBASE_APIKEY: JSON.stringify(config.firebaseConfig.apiKey),
       FIREBASE_DOMAIN: JSON.stringify(config.firebaseConfig.domain)
     }),
