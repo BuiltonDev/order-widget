@@ -13,7 +13,15 @@ class Receipt extends Reflux.Component {
       last_name: 'Bond',
       phone_number: '+47 97180329',
       orderId: 'ERD232',
-      totalPrice: '200'
+      totalPrice: '200',
+      products: [
+        '2x Example Product',
+        '1x Example Product2'
+      ],
+      delivery: [
+        'Augestadveien 14A, 1413 Tårnåsen',
+        '20/4/2018 18:00'
+      ]
     };
   }
 
@@ -21,12 +29,12 @@ class Receipt extends Reflux.Component {
     let multipleClassName = null;
     if (items.length > 1) multipleClassName = 'receipt-item__multiple';
 
-    const children = items.map((item) => (<span className={multipleClassName}>{item}</span>));
+    const children = items.map((item, idx) => (<span key={idx} className={multipleClassName}>{item}</span>));
 
     return (
-      <li className="receipt-item">
+      <li key={label} className="receipt-item">
         <div>
-          <span>Name:</span>
+          <span>{label}:</span>
         </div>
         <div>
           {children}
@@ -46,56 +54,12 @@ class Receipt extends Reflux.Component {
             <div className="padding-container">
               <div className="receipt-summary">
                 <ul>
-                  <li className="receipt-item">
-                    <div>
-                      <span>Name:</span>
-                    </div>
-                    <div>
-                      <span>{this.state.first_name} {this.state.last_name}</span>
-                    </div>
-                  </li>
-                  <li className="receipt-item">
-                    <div>
-                      <span>Phone number:</span>
-                    </div>
-                    <div>
-                      <span>{this.state.phone_number}</span>
-                    </div>
-                  </li>
-                  <li className="receipt-item">
-                    <div>
-                      <span>Order:</span>
-                    </div>
-                    <div>
-                      <span>{this.state.orderId}</span>
-                    </div>
-                  </li>
-                  <li className="receipt-item">
-                    <div>
-                      <span>Product(s):</span>
-                    </div>
-                    <div className="receipt-item__multiple">
-                      <span>2x Example Product</span>
-                      <span>1x Example Product2</span>
-                    </div>
-                  </li>
-                  <li className="receipt-item">
-                    <div>
-                      <span>Total price:</span>
-                    </div>
-                    <div>
-                      <span>{this.state.totalPrice}</span>
-                    </div>
-                  </li>
-                  <li className="receipt-item">
-                    <div>
-                      <span>Delivery:</span>
-                    </div>
-                    <div className="receipt-item__multiple">
-                      <span>Augestadveien 14A, 1413 Tårnåsen</span>
-                      <span>20/4/2018 18:00</span>
-                    </div>
-                  </li>
+                  {this.renderReceiptItem('Name', [this.state.first_name + ' ' + this.state.last_name])}
+                  {this.renderReceiptItem('Phone number', [this.state.phone_number])}
+                  {this.renderReceiptItem('Order', [this.state.orderId])}
+                  {this.renderReceiptItem('Product(s)', this.state.products)}
+                  {this.renderReceiptItem('Total price', [this.state.totalPrice])}
+                  {this.renderReceiptItem('Delivery', this.state.delivery)}
                 </ul>
               </div>
             </div>
