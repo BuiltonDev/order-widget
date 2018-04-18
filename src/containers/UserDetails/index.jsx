@@ -1,15 +1,41 @@
 import React from 'react';
 import Reflux from 'reflux';
 import {DebounceInput} from 'react-debounce-input';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebase from 'firebase';
 import Header from 'src/components/Header';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
 import UserStore from 'src/reflux/UserStore';
+import {FirebaseConfig} from 'src/utils';
 
 class UserDetails extends Reflux.Component {
   constructor(props) {
     super(props);
+    firebase.initializeApp(FirebaseConfig());
+    this.state = {
+      isSignedIn: false
+    };
+    this.uiConfig = {
+      signInFlow: 'popup',
+      signInOptions: [
+        firebase.auth.PhoneAuthProvider.PROVIDER_ID
+      ],
+      callbacks: {
+        // Avoid redirects after sign-in.
+        signInSuccess: () => false
+      }
+    };
     this.store = UserStore;
+  }
+
+  componentDidMount() {
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged((user) => this.setState({isSignedIn: !!user}));
+  }
+
+  // Make sure we un-register Firebase observers when the component unmounts.
+  componentWillUnmount() {
+    this.unregisterAuthObserver();
   }
 
   renderInput(type, isDisabled = false, minLength = 0) {
@@ -43,6 +69,7 @@ class UserDetails extends Reflux.Component {
               <div className="kvass-widget__input-container">
                 {this.renderInput('lastName')}
               </div>
+              {/*
               <p>{T.translate('userDetails.verifyInfo')}</p>
               <div className="kvass-widget__input-container">
                 {this.renderInput('phoneNumber', (!this.state.firstName || !this.state.lastName))}
@@ -52,6 +79,8 @@ class UserDetails extends Reflux.Component {
                 {this.renderInput('verifyCode', !this.state.phoneNumber)}
                 <button disabled={!this.state.phoneNumber} className="kvass-widget__primary-button" onClick={() => Actions.onVerifyCode()}>Verify</button>
               </div>
+              */}
+              <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
             </div>
           </div>
           <div className="kvass-widget__content-footer">
