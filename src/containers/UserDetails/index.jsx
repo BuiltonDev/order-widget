@@ -7,12 +7,10 @@ import Header from 'src/components/Header';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
 import UserStore from 'src/reflux/UserStore';
-import {FirebaseConfig} from 'src/utils';
 
 class UserDetails extends Reflux.Component {
   constructor(props) {
     super(props);
-    firebase.initializeApp(FirebaseConfig());
     this.state = {
       isSignedIn: false
     };
