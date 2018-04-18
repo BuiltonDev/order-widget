@@ -10,12 +10,7 @@
     }
 
     ul {
-      background-color: $secondary-background-color;
-      list-style: none;
-      min-height: 300px;
-      margin: 0;
-      padding: 5px;
-      border: 1px solid #bfbcbc7a;
+      @extend %white-content-box;      
     }
 
     li {
