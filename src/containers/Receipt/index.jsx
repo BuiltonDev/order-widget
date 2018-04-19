@@ -50,13 +50,13 @@ class Receipt extends Reflux.Component {
             <div className="padding-container">
               <div className="receipt-summary">
                 <ul>
-                  {this.renderReceiptItem('Name', [this.state.firstName + ' ' + this.state.lastName])}
-                  {this.renderReceiptItem('Phone number', [this.state.phoneNumber])}
+                  {this.renderReceiptItem(T.translate('receipt.nameLabel'), [this.state.firstName + ' ' + this.state.lastName])}
+                  {this.renderReceiptItem(T.translate('receipt.phoneNumberLabel'), [this.state.phoneNumber])}
                   {/*this.renderReceiptItem('Order', [this.state.orderId])*/}
-                  {this.renderReceiptItem('Product(s)', productArray)}
-                  {this.renderReceiptItem('Total price', [this.state.totalSum])}
-                  {this.renderReceiptItem('Delivery', [this.state.deliveryAddress, `${this.state.deliveryDate.format('DD/MM YYYY')}, ${this.state.deliveryTime}`])}
-                  {this.state.deliveryAdditional ? this.renderReceiptItem('Delivery notes' , [this.state.deliveryAdditional]) : null}
+                  {this.renderReceiptItem(T.translate('receipt.productsLabel'), productArray)}
+                  {this.renderReceiptItem(T.translate('receipt.priceLabel'), [this.state.totalSum])}
+                  {this.renderReceiptItem(T.translate('receipt.deliveryLabel'), [this.state.deliveryAddress, `${this.state.deliveryDate.format('DD/MM YYYY')}, ${this.state.deliveryTime}`])}
+                  {this.state.deliveryAdditional ? this.renderReceiptItem(T.translate('receipt.deliveryAddLabel') , [this.state.deliveryAdditional]) : null}
                 </ul>
               </div>
             </div>

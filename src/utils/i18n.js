@@ -47,7 +47,13 @@ T.setLanguage = (lng) => {
         pay: 'Betal'
       },
       receipt: {
-        header: 'Kvittering'
+        header: 'Kvittering',
+        nameLabel: 'Navn',
+        phoneNumberLabel: 'Tlf',
+        productsLabel: 'Produkter',
+        priceLabel: 'Total pris',
+        deliveryLabel: 'Levering',
+        deliveryAddLabel: 'Tilleggsinformasjon'
       }
     });
   } else { // fallback english
@@ -91,7 +97,13 @@ T.setLanguage = (lng) => {
         pay: 'Pay'
       },
       receipt: {
-        header: 'Receipt'
+        header: 'Receipt',
+        nameLabel: 'Name',
+        phoneNumberLabel: 'Phone number',
+        productsLabel: 'Product(s)',
+        priceLabel: 'Total price',
+        deliveryLabel: 'Delivery',
+        deliveryAddLabel: 'Comment'
       }
     });
   }
