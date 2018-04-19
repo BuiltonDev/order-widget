@@ -11,9 +11,6 @@ import UserStore from 'src/reflux/UserStore';
 class UserDetails extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isSignedIn: false
-    };
     this.uiConfig = {
       signInFlow: 'popup',
       signInOptions: [
@@ -28,7 +25,7 @@ class UserDetails extends Reflux.Component {
   }
 
   componentDidMount() {
-    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged((user) => this.setState({isSignedIn: !!user}));
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged((user) => Actions.onAuthStateChanged(user));
   }
 
   // Make sure we un-register Firebase observers when the component unmounts.
@@ -51,6 +48,30 @@ class UserDetails extends Reflux.Component {
     );
   }
 
+  renderFirebaseVerify() {
+    return (
+      <StyledFirebaseAuth uiCallback={ui => ui.disableAutoSignIn()} uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
+    );
+  }
+
+  renderUserDetails() {
+    return (
+      <div>
+        <p>{T.translate('userDetails.detailsInfo')}</p>
+        <div className="kvass-widget__input-container">
+          {this.renderInput('firstName')}
+        </div>
+        <div className="kvass-widget__input-container">
+          {this.renderInput('lastName')}
+        </div>
+      </div>
+    );
+  }
+
+  renderExistingUser() {
+    // Show avatar and let user select this or reapply verification process
+  }
+
   render() {
     return (
       <div className="user-details">
@@ -60,25 +81,7 @@ class UserDetails extends Reflux.Component {
         <div className="kvass-widget__content-body">
           <div className="content">
             <div className="padding-container">
-              <p>{T.translate('userDetails.detailsInfo')}</p>
-              <div className="kvass-widget__input-container">
-                {this.renderInput('firstName')}
-              </div>
-              <div className="kvass-widget__input-container">
-                {this.renderInput('lastName')}
-              </div>
-              {/*
-              <p>{T.translate('userDetails.verifyInfo')}</p>
-              <div className="kvass-widget__input-container">
-                {this.renderInput('phoneNumber', (!this.state.firstName || !this.state.lastName))}
-                <button disabled={!this.state.phoneNumber} className="kvass-widget__primary-button" onClick={() => Actions.onSendSms()}>Send</button>
-              </div>
-              <div className="kvass-widget__input-container">
-                {this.renderInput('verifyCode', !this.state.phoneNumber)}
-                <button disabled={!this.state.phoneNumber} className="kvass-widget__primary-button" onClick={() => Actions.onVerifyCode()}>Verify</button>
-              </div>
-              */}
-              <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
+              {this.state.isSignedIn ? this.renderUserDetails() : this.renderFirebaseVerify()}
             </div>
           </div>
           <div className="kvass-widget__content-footer">
