@@ -8,6 +8,7 @@ const Actions = Reflux.createActions([
   'onNextNavigation', // Nav
   'onAuthStateChanged', // User
   'onUserDetailsInput', // User
+  'onResetAuth', // User
   'onDateChange', // Delivery
   'onTimeChange', // Delivery
   'onAddressChange', // Delivery
