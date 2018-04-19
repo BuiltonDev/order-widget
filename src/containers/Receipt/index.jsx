@@ -29,14 +29,14 @@ class Receipt extends Reflux.Component {
     let multipleClassName = null;
     if (items.length > 1) multipleClassName = 'receipt-item__multiple';
 
-    const children = items.map((item, idx) => (<span key={idx} className={multipleClassName}>{item}</span>));
+    const children = items.map((item, idx) => (<span key={idx}>{item}</span>));
 
     return (
       <li key={label} className="receipt-item">
         <div>
           <span>{label}:</span>
         </div>
-        <div>
+        <div className={multipleClassName}>
           {children}
         </div>
       </li>
