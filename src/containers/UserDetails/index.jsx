@@ -7,6 +7,7 @@ import Header from 'src/components/Header';
 import Spinner from 'src/components/Spinner';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
+import {ShareActor} from 'src/utils';
 import UserStore from 'src/reflux/UserStore';
 
 class UserDetails extends Reflux.Component {
@@ -26,6 +27,7 @@ class UserDetails extends Reflux.Component {
     this.state = {
       isLoading: false
     };
+    this.authenticateWithApi = this.authenticateWithApi.bind(this);
   }
 
   componentDidMount() {
@@ -37,14 +39,25 @@ class UserDetails extends Reflux.Component {
     this.unregisterAuthObserver();
   }
 
-  onNext() {
-    if (this.state.isSignedIn) {
-      this.setState({isLoading: true});
-      Actions.onApiAuth().then(() => {
-        this.setState({isLoading: false});
-        Actions.onNextNavigation();
-      });
-    }
+  // Authenticate user with our API
+  authenticateWithApi() {
+    const profile = {
+      first_name: this.state.firstName,
+      last_name: this.state.lastName,
+      phone_number: this.state.phoneNumber,
+      email: this.state.email
+    };
+    // Add the idToken from successful firebase authentication
+    ShareActor().refreshBearerToken(this.state.idToken);
+    ShareActor().user().login({body: profile}, (err, apiUser, raw) => {
+      if (err) {
+        // TODO Handle error
+        return;
+      }
+      this.setState({isLoading: false});
+      Actions.onUserDetailsInput('apiUser', apiUser);
+      Actions.onNextNavigation();
+    });
   }
 
   renderInput(type, isDisabled = false, minLength = 0) {
@@ -101,7 +114,7 @@ class UserDetails extends Reflux.Component {
           </div>
           <div className="kvass-widget__content-footer">
             <div className="footer-content">
-              <button disabled={!this.state.isSignedIn} className="kvass-widget__primary-button" onClick={this.onNext}>{T.translate('global.next')}</button>
+              <button disabled={!this.state.isSignedIn} className="kvass-widget__primary-button" onClick={this.authenticateWithApi}>{T.translate('global.next')}</button>
             </div>
           </div>
         </div>

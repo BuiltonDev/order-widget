@@ -1,6 +1,5 @@
 import Reflux from 'reflux';
 import Actions from './Actions';
-import {authenticate} from 'src/network';
 
 class UserStore extends Reflux.Store {
   constructor() {
@@ -11,23 +10,14 @@ class UserStore extends Reflux.Store {
       lastName: '',
       phoneNumber: '',
       email: '',
-      idToken: ''
+      idToken: '',
+      apiUser: null
     };
     this.listenables = Actions;
   }
 
-  onApiAuth() {
-    authenticate(this.state.idtoken, {
-      first_name: this.state.firstName,
-      last_name: this.state.lastName,
-      phone_number: this.state.phoneNumber,
-      email: this.state.email
-    }).then((res) => {
-      // Success
-      console.log(res.body)
-    }).catch((err) => {
-      // TODO Handle error
-    });
+  onUserDetailsInput(type, value) {
+    this.setState({[type]: value});
   }
 
   onAuthStateChanged(user) {
@@ -35,7 +25,6 @@ class UserStore extends Reflux.Store {
       const phoneNumber = user.phoneNumber;
       const email = user.email;
       user.getIdToken().then((accessToken) => {
-        console.log('onAuthStateChanged');
         this.setState({isSignedIn: !!user, idToken: accessToken, phoneNumber, email});
       }).catch((err) => {
         // TODO Handle error
