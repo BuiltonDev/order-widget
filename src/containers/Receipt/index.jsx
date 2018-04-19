@@ -16,7 +16,6 @@ class Receipt extends Reflux.Component {
   }
 
   renderReceiptItem(label, items = []) {
-    console.log(items);
     let multipleClassName = null;
     if (items.length > 1) multipleClassName = 'receipt-item__multiple';
 
