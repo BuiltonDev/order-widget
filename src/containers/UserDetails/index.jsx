@@ -4,6 +4,7 @@ import {DebounceInput} from 'react-debounce-input';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase';
 import Header from 'src/components/Header';
+import Spinner from 'src/components/Spinner';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
 import UserStore from 'src/reflux/UserStore';
@@ -22,6 +23,9 @@ class UserDetails extends Reflux.Component {
       }
     };
     this.store = UserStore;
+    this.state = {
+      isLoading: false
+    };
   }
 
   componentDidMount() {
@@ -31,6 +35,16 @@ class UserDetails extends Reflux.Component {
   // Make sure we un-register Firebase observers when the component unmounts.
   componentWillUnmount() {
     this.unregisterAuthObserver();
+  }
+
+  onNext() {
+    if (this.state.isSignedIn) {
+      this.setState({isLoading: true});
+      Actions.onApiAuth().then(() => {
+        this.setState({isLoading: false});
+        Actions.onNextNavigation();
+      });
+    }
   }
 
   renderInput(type, isDisabled = false, minLength = 0) {
@@ -79,6 +93,7 @@ class UserDetails extends Reflux.Component {
           <span className="header-title">{T.translate('userDetails.header')}</span>
         </Header>
         <div className="kvass-widget__content-body">
+          <Spinner show={this.state.isLoading}></Spinner>
           <div className="content">
             <div className="padding-container">
               {this.state.isSignedIn ? this.renderUserDetails() : this.renderFirebaseVerify()}
@@ -86,7 +101,7 @@ class UserDetails extends Reflux.Component {
           </div>
           <div className="kvass-widget__content-footer">
             <div className="footer-content">
-              <button className="kvass-widget__primary-button" onClick={() => Actions.onNextNavigation()}>{T.translate('global.next')}</button>
+              <button disabled={!this.state.isSignedIn} className="kvass-widget__primary-button" onClick={this.onNext}>{T.translate('global.next')}</button>
             </div>
           </div>
         </div>
