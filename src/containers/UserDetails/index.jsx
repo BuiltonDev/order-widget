@@ -60,7 +60,7 @@ class UserDetails extends Reflux.Component {
     ShareActor().user().login({body: profile}, (err, apiUser, raw) => {
       this.setState({isLoading: false});
       if (err) {
-        // TODO Handle error message        
+        // TODO Handle error message
         this.removeAuthentication();
         return;
       }
@@ -127,7 +127,7 @@ class UserDetails extends Reflux.Component {
       <div className="user-details__existing-user">
         <UserIcon className="svg-icon--primary avatar"/>
         <span className="phoneNumber">{this.state.phoneNumber}</span>
-        <a href="#" onClick={this.removeAuthentication}>Not you?</a>
+        <a href="#" onClick={this.removeAuthentication}>{T.translate('userDetails.notYou')}</a>
       </div>
     );
   }
