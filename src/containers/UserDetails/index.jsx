@@ -35,6 +35,7 @@ class UserDetails extends Reflux.Component {
     this.authenticateWithApi = this.authenticateWithApi.bind(this);
     this.removeAuthentication = this.removeAuthentication.bind(this);
     this.renderExistingUser = this.renderExistingUser.bind(this);
+    this.renderInput = this.renderInput.bind(this);
   }
 
   componentDidMount() {
@@ -64,8 +65,7 @@ class UserDetails extends Reflux.Component {
         this.removeAuthentication();
         return;
       }
-      Actions.onUserDetailsInput('apiUser', apiUser);
-      Actions.onUserDetailsInput('isAuthenticated', true);
+      Actions.onAuthenticateUser(apiUser, profile);
       Actions.onNextNavigation();
     });
   }
@@ -74,10 +74,7 @@ class UserDetails extends Reflux.Component {
     this.setState({isLoading: true});
     Actions.onResetAuth();
     firebase.auth().signOut();
-    // Wait a bit before continuing with auth
-    setTimeout(() => {
-      this.setState({isLoading: false});
-    }, 300);
+    this.setState({isLoading: false});
   }
 
   renderInput(type, isDisabled = false, minLength = 0) {
@@ -126,6 +123,7 @@ class UserDetails extends Reflux.Component {
     return (
       <div className="user-details__existing-user">
         <UserIcon className="svg-icon--primary avatar"/>
+        <span className="phoneNumber">{this.state.firstName} {this.state.lastName}</span>
         <span className="phoneNumber">{this.state.phoneNumber}</span>
         <a href="#" onClick={this.removeAuthentication}>{T.translate('userDetails.notYou')}</a>
       </div>
