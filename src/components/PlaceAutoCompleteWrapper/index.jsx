@@ -29,7 +29,6 @@ class PlaceAutoCompleteWrapper extends Reflux.Component {
     );
   }
 
-
   render() {
     const inputProps = {
       value: this.state.deliveryAddress,

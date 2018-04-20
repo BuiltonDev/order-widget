@@ -1,11 +1,11 @@
 const NAMESPACE = 'kvass.ai';
 
 function get(key) {
-  let result = null;
+  let result;
   try {
     result = JSON.parse(window.localStorage.getItem(`${NAMESPACE}/${key}`));
-  } catch(err) {
-    console.log(err);
+  } catch (err) {
+    result = null;
   }
   return result;
 }

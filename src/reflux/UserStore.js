@@ -1,7 +1,7 @@
 import Reflux from 'reflux';
 import cloneDeep from 'lodash.clonedeep';
-import Actions from './Actions';
 import storage from 'src/utils/storage';
+import Actions from './Actions';
 
 const INITIAL_STATE = {
   isVerified: false,
@@ -15,7 +15,6 @@ const INITIAL_STATE = {
 };
 
 class UserStore extends Reflux.Store {
-
   constructor() {
     super();
     this.state = cloneDeep(INITIAL_STATE);
@@ -38,15 +37,21 @@ class UserStore extends Reflux.Store {
 
   onAuthStateChanged(user) {
     if (user && !this.state.idToken) {
-      const phoneNumber = user.phoneNumber;
-      const email = user.email;
+      const {phoneNumber, email} = user;
       user.getIdToken().then((accessToken) => {
         const storedUser = storage.get(phoneNumber);
         const firstName = storedUser ? storedUser.first_name : '';
         const lastName = storedUser ? storedUser.last_name : '';
-        console.log(storedUser);
-        this.setState({isAuthenticated: !!storedUser, isVerified: !!user, idToken: accessToken, phoneNumber, email, firstName, lastName});
-      }).catch((err) => {
+        this.setState({
+          isAuthenticated: !!storedUser,
+          isVerified: !!user,
+          idToken: accessToken,
+          phoneNumber,
+          email,
+          firstName,
+          lastName
+        });
+      }).catch(() => {
         // TODO Handle error
       });
     }

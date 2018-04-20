@@ -32,6 +32,6 @@ export const close = () => {
 export const destroy = () => {
   delete window.ShareActor;
   delete window.auth0Config;
-  delete window.FirebaseConfig
+  delete window.FirebaseConfig;
   ReactDOM.unmountComponentAtNode(el);
 };
