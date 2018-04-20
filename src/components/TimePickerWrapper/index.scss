@@ -1,0 +1,61 @@
+@import '../../styles/_global';
+@import '../../styles/_mixins';
+
+/* time_picker override */
+
+.time_picker_container {
+  width: 150px;
+}
+
+.time_picker_preview {
+  @include primary-input(36px, 100%);
+  @include transition(none);
+  @include box-shadow(none);
+
+  .preview_container {
+    left: 25%;
+    svg {
+      fill: #9a9a9a;
+    }
+  }
+
+}
+
+.time_picker_preview.active, .time_picker_preview:hover {
+  @include box-shadow(none);
+}
+
+.classic_theme_container {
+  width: 184px;
+  .active {
+    background-color: $primary-color;
+  }
+}
+
+.classic_theme_container .classic_time.light.active, .classic_theme_container {
+  background-color: $primary-color;
+}
+
+.classic_theme_container .classic_time.light:hover {
+  outline: none;
+  background-color: $primary-color-focus;
+}
+
+.time_picker_modal_header, .time_picker_modal_footer, .timezone_picker_modal_header, .picker_pointer .pointer_drag, .picker_center, .picker_pointer {
+  background-color: $primary-color;
+}
+
+/* Only valid when using react-times material css
+.time_picker_container {
+  position: relative;
+  display: flex;
+  .picker_container {
+    margin: 20px;
+  }
+  .time_picker_modal_header {
+    margin: 0;
+  }
+}
+*/
+
+@import '~react-times/css/classic/default.css';

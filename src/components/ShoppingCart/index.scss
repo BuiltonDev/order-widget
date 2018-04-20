@@ -1,8 +1,7 @@
 
 .shopping-cart {
-  height: 50px;
-  width: 50px;
-  padding: 30px 32px;
-  display: inline-block;
-  cursor: pointer;
+  svg {
+    margin-top: 40px;
+    position: relative;
+  }
 }

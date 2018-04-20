@@ -28,3 +28,31 @@
   -o-transform: translate($x, $y);
   transform: translate($x, $y);
 }
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow:$shadow;
+  -moz-box-shadow:$shadow;
+  box-shadow:$shadow;
+}
+
+@mixin primary-input($height, $width) {
+  height: $height;
+  width: $width;
+  border: 1px solid $primary-color;
+  padding: 0 16px;
+  border-radius: 2px 0 0 2px;
+
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 24px;
+  color: #565a5c;
+
+  &:focus {
+    outline: none;
+    border: 1px solid $primary-color-focus;
+  }
+
+  &:disabled {
+    border: none;
+  }
+}

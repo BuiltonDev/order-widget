@@ -95,7 +95,7 @@ class ProductBasket extends Reflux.Component {
           </div>
           <div className="kvass-widget__content-footer">
             <div className="footer-content">
-              <button className="kvass-widget__primary-button">{T.translate('basket.checkout')}</button>
+              <button className="kvass-widget__primary-button" onClick={() => Actions.onNextNavigation()}>{T.translate('basket.checkout')}</button>
             </div>
           </div>
         </div>

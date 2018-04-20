@@ -3,6 +3,10 @@ import Reflux from 'reflux';
 // Containers
 import ProductSearch from 'src/containers/ProductSearch';
 import ProductBasket from 'src/containers/ProductBasket';
+import UserDetails from 'src/containers/UserDetails';
+import DeliveryDetails from 'src/containers/DeliveryDetails';
+import PaymentDetails from 'src/containers/PaymentDetails';
+import Receipt from 'src/containers/Receipt';
 import Actions from './Actions';
 
 class NavigationStore extends Reflux.Store {
@@ -12,7 +16,11 @@ class NavigationStore extends Reflux.Store {
       step: 0,
       navComponents: [
         ProductSearch,
-        ProductBasket
+        ProductBasket,
+        UserDetails,
+        DeliveryDetails,
+        PaymentDetails,
+        Receipt
       ]
     };
     this.listenables = Actions;

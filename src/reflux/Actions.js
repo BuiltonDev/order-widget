@@ -1,11 +1,19 @@
 import Reflux from 'reflux';
 
 const Actions = Reflux.createActions([
-  'onAddProduct',
-  'onRemoveProduct',
-  'onInitNavigation',
-  'onPreviousNavigation',
-  'onNextNavigation'
+  'onAddProduct', // Product
+  'onRemoveProduct', // Product
+  'onInitNavigation', // Nav
+  'onPreviousNavigation', // Nav
+  'onNextNavigation', // Nav
+  'onUserDetailsInput', // User
+  'onSendSms', // User
+  'onVerifyCode', // User
+  'onDateChange', // Delivery
+  'onTimeChange', // Delivery
+  'onAddressChange', // Delivery
+  'onAdditionalDetailsChange', // Delivery
+  'onGetAddressFromGoogle' // Delivery
 ]);
 
 export default Actions;

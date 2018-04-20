@@ -105,13 +105,34 @@
     outline: none;
     background-color: $primary-color-focus;
   }
+  &:disabled {
+    outline: none;
+    cursor: default;
+    background-color: #d0d0d0;
+  }
+}
+
+.kvass-widget__input {
+  @include primary-input(36px, 100%);
+}
+
+.kvass-widget__input-container {
+  display: flex;
+  padding-bottom: 10px;
 }
 
 /** Include component styles **/
 
 @import '../containers/ProductSearch/index';
 @import '../containers/ProductBasket/index';
+@import '../containers/UserDetails/index';
+@import '../containers/DeliveryDetails/index';
+@import '../containers/PaymentDetails/index';
+@import '../containers/Receipt/index';
 
 @import '../components/Spinner/index';
 @import '../components/SvgIcons/index';
 @import '../components/ShoppingCart/index';
+@import '../components/PlaceAutoCompleteWrapper/index';
+@import '../components/TimePickerWrapper/index';
+@import '../components/DayPickerWrapper/index';

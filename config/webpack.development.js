@@ -19,7 +19,9 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(['../dist']),
     new webpack.DefinePlugin({
       APIKEY: JSON.stringify(config.apiKey),
-      ENDPOINT: JSON.stringify(config.endpoint)
+      ENDPOINT: JSON.stringify(config.endpoint),
+      AUTH0_CLIENTID: JSON.stringify(config.auth0Config.clientId),
+      AUTH0_DOMAIN: JSON.stringify(config.auth0Config.domain)
     }),
     new HtmlWebpackPlugin({
       title: 'Kvass Ordering Widget',
