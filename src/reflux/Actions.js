@@ -15,7 +15,8 @@ const Actions = Reflux.createActions([
   'onAddressChange', // Delivery
   'onAdditionalDetailsChange', // Delivery
   'onGetAddressFromGoogle', // Delivery
-  'onStripeToken' // Payment
+  'onStripeToken', // Payment
+  'onAddPaymentMethod' // Payment
 ]);
 
 export default Actions;

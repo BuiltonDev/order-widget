@@ -22,6 +22,7 @@ class ProductSearch extends Component {
       size: 9,
       total: 0
     };
+    this.sa = ShareActor();
   }
 
   searchProduct(search) {
@@ -33,7 +34,7 @@ class ProductSearch extends Component {
     }
 
     this.setState({isLoading: true});
-    ShareActor().product().search({query: search, urlParams: {size: this.pagination.size, page: this.pagination.page}}, (error, productSearchList, res) => {
+    this.sa.product().search({query: search, urlParams: {size: this.pagination.size, page: this.pagination.page}}, (error, productSearchList, res) => {
       this.pagination.total = res.headers['x-pagination-total'];
       this.setState({
         isLoading: false,

@@ -34,7 +34,9 @@ class DeliveryStore extends Reflux.Store {
     if (this.state.retrievedGeo) return;
     this.setState({deliveryAddress});
     geocodeByAddress(deliveryAddress)
-      .then(results => getLatLng(results[0]))
+      .then(results => {
+        return getLatLng(results[0]);
+      })
       .then((latLng) => {
         this.setState({...latLng, retrievedGeo: true});
       })

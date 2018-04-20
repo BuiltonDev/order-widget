@@ -11,7 +11,8 @@ T.setLanguage = (lng) => {
       global: {
         next: 'Neste',
         last: 'Avslutt',
-        select: 'Velg'
+        select: 'Velg',
+        confirm: 'Bekreft'
       },
       product: {
         search: 'Søk',
@@ -57,7 +58,8 @@ T.setLanguage = (lng) => {
       global: {
         next: 'Next',
         last: 'Complete',
-        select: 'Select'
+        select: 'Select',
+        confirm: 'Confirm'
       },
       product: {
         search: 'Search',

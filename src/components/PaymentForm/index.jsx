@@ -15,10 +15,8 @@ class PaymentForm extends Reflux.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // {name: 'Jenny Rosen'}
     this.props.stripe.createToken().then(payload => {
-      console.log(payload);
-      Actions.onStripeToken(payload.id);
+      Actions.onStripeToken(payload.token.id);
     });
   }
 
@@ -30,7 +28,7 @@ class PaymentForm extends Reflux.Component {
           <CardElement />
         </label>
         <div className="pay-button">
-          <button className="kvass-widget__primary-button">Pay</button>
+          <button className="kvass-widget__primary-button">Process</button>
         </div>
       </form>
     );
