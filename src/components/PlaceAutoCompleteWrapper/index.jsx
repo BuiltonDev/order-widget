@@ -23,13 +23,11 @@ class PlaceAutoCompleteWrapper extends Reflux.Component {
   renderSuggestion({formattedSuggestion}) {
     return (
       <div>
-        <i/>
         <strong>{formattedSuggestion.mainText}</strong>{' '}
         <small>{formattedSuggestion.secondaryText}</small>
       </div>
     );
   }
-
 
   render() {
     const inputProps = {

@@ -3,6 +3,7 @@
 <head>
 </head>
 
+<!--<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-auth.js"></script>-->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf53-uXGDdH29KisPNSvsqpdRIzruI66U&libraries=places"></script>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="https://unpkg.com/@shareactor/shareactor-sdk@latest/dist/main.bundle.js" async></script>
@@ -15,8 +16,8 @@
 <script>
   var apiKey = "<%= APIKEY %>";
   var endpoint = "<%= ENDPOINT %>";
-  var auth0Domain = "<%= AUTH0_DOMAIN %>";
-  var auth0ClientId = "<%= AUTH0_CLIENTID %>";
+  var firebaseApiKey = "<%= FIREBASE_APIKEY %>";
+  var firebaseDomain = "<%= FIREBASE_DOMAIN %>";
   var stripeApiKey = "<%= STRIPE_API_KEY %>";
 
   KvassOrdering.init({
@@ -24,9 +25,9 @@
     apiKey: apiKey,
     endpoint: endpoint,
     lng: 'no',
-    auth0Config: {
-      domain: auth0Domain,
-      clientId: auth0ClientId
+    firebaseConfig: {
+      domain: firebaseDomain,
+      apiKey: firebaseApiKey
     },
     stripeApiKey: stripeApiKey
   });

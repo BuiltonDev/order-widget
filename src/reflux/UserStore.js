@@ -1,66 +1,60 @@
 import Reflux from 'reflux';
-import auth0 from 'auth0-js';
-import {Auth0Config} from 'src/utils';
+import cloneDeep from 'lodash.clonedeep';
+import storage from 'src/utils/storage';
 import Actions from './Actions';
+
+const INITIAL_STATE = {
+  isVerified: false,
+  isAuthenticated: false,
+  firstName: '',
+  lastName: '',
+  phoneNumber: '',
+  email: '',
+  idToken: '',
+  apiUser: null
+};
 
 class UserStore extends Reflux.Store {
   constructor() {
     super();
-    this.state = {
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-      verifyCode: '',
-      error: ''
-    };
-    this.webAuth = new auth0.WebAuth({
-      domain: Auth0Config().domain,
-      clientID: Auth0Config().clientId,
-      responseType: 'token'
-    });
+    this.state = cloneDeep(INITIAL_STATE);
     this.listenables = Actions;
   }
 
-  onUserDetailsInput(type, data) {
-    this.setState({[type]: data});
+  onResetAuth() {
+    storage.remove(this.state.phoneNumber);
+    this.setState({...cloneDeep(INITIAL_STATE)});
   }
 
-  onSendSms() {
-    this.setState();
-    /*
-    this.webAuth.passwordlessStart({
-      connection: 'sms',
-      send: 'code',
-      phoneNumber: this.state.phoneNumber
-    }, function (err,res) {
-        if (err) {
-          console.log(err);
-        } else {
-          // Success
-          console.log(res);
-        }
-      }
-    );
-    */
+  onUserDetailsInput(type, value) {
+    this.setState({[type]: value});
   }
 
-  onVerifyCode() {
-    this.setState();
-    /*
-    this.webAuth.passwordlessLogin({
-      connection: 'sms',
-      phoneNumber: this.state.phoneNumber,
-      verificationCode: this.state.verifyCode
-    }, function (err,res) {
-        if (err) {
-          console.log(err);
-        } else {
-          // Success
-          console.log(res);
-        }
-      }
-    );
-    */
+  onAuthenticateUser(apiUser, profile) {
+    storage.set(this.state.phoneNumber, profile);
+    this.setState({apiUser, isAuthenticated: true});
+  }
+
+  onAuthStateChanged(user) {
+    if (user && !this.state.idToken) {
+      const {phoneNumber, email} = user;
+      user.getIdToken().then((accessToken) => {
+        const storedUser = storage.get(phoneNumber);
+        const firstName = storedUser ? storedUser.first_name : '';
+        const lastName = storedUser ? storedUser.last_name : '';
+        this.setState({
+          isAuthenticated: !!storedUser,
+          isVerified: !!user,
+          idToken: accessToken,
+          phoneNumber,
+          email,
+          firstName,
+          lastName
+        });
+      }).catch(() => {
+        // TODO Handle error
+      });
+    }
   }
 }
 
