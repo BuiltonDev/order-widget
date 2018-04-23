@@ -5,7 +5,9 @@ import Spinner from 'src/components/Spinner';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
 import {ShareActor} from 'src/utils';
+import ProductStore from 'src/reflux/ProductStore';
 import DeliveryStore from 'src/reflux/DeliveryStore';
+import PaymentStore from 'src/reflux/PaymentStore';
 
 class ConfirmOrder extends Reflux.Component {
   constructor(props) {
@@ -30,14 +32,18 @@ class ConfirmOrder extends Reflux.Component {
   // POST /payment_method {payment_method: 'stripe', token: stripeToken}
   // POST /order {items: [{...product, quantity}], payment_method: payment_method_id}
   // POST /order/{ID}/pay {}
-  onCreateOrder() {
+  createOrder() {
     this.setState({isLoading: true});
 
     const orderPayload = {
-      items: this.state.products.map((product) => { return { product: product._id.$oid, quantity: product.count }; }),
+      items: this.state.products.map((product) => {
+        return { product: product._id.$oid, quantity: product.count };
+      }),
       delivery_address: this.deliveryAddress,
-      delivery_time: this.deliveryDate.unix() // TODO Add deliery time to moment obj. to get correct time
+      delivery_time: this.deliveryDate.unix() // TODO Add delivery time to moment obj. to get correct time
     };
+
+    console.log(orderPayload);
 
     this.sa.order().create({body: orderPayload}, (err, order, raw) => {
       if (err) {
@@ -50,8 +56,9 @@ class ConfirmOrder extends Reflux.Component {
           this.onError(err);
           return;
         }
-
+        console.log('Order', order);
         this.setState({isLoading: false, processedOrder: true});
+        Actions.onNextNavigation();
       });
     });
   }
@@ -73,7 +80,7 @@ class ConfirmOrder extends Reflux.Component {
           </div>
           <div className="kvass-widget__content-footer">
             <div className="footer-content">
-              <button className="kvass-widget__primary-button" onClick={() => Actions.onNextNavigation()}>{T.translate('global.confirm')}</button>
+              <button className="kvass-widget__primary-button" onClick={this.createOrder}>{T.translate('global.confirm')}</button>
             </div>
           </div>
         </div>

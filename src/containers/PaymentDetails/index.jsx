@@ -51,6 +51,7 @@ class PaymentDetails extends Reflux.Component {
         this.onError(err);
         return;
       }
+      this.setState({isLoading: false});
       Actions.onAddPaymentMethod(paymentMethod);
       Actions.onNextNavigation();
     });
