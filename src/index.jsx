@@ -8,10 +8,11 @@ let a;
 let e;
 let el;
 
-export const init = ({domElementId, apiKey, endpoint, lng = 'no', auth0Config}) => {
+export const init = ({domElementId, apiKey, endpoint, lng = 'no', auth0Config, firebaseConfig}) => {
   // eslint-disable-next-line no-undef
   window.ShareActor = new ShareActor({apiKey, endpoint});
   window.Auth0Config = auth0Config;
+  window.FirebaseConfig = firebaseConfig;
   T.setLanguage(lng);
   el = document.getElementById(domElementId);
   a = apiKey;
@@ -31,5 +32,6 @@ export const close = () => {
 export const destroy = () => {
   delete window.ShareActor;
   delete window.auth0Config;
+  delete window.FirebaseConfig;
   ReactDOM.unmountComponentAtNode(el);
 };

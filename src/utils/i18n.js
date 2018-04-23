@@ -32,7 +32,8 @@ T.setLanguage = (lng) => {
         firstName: 'Fornavn',
         lastName: 'Etternavn',
         phoneNumber: 'Telefonnummer',
-        verifyCode: 'Verifiseringskode'
+        verifyCode: 'Verifiseringskode',
+        notYou: 'Ikke deg?'
       },
       deliveryDetails: {
         header: 'Levering',
@@ -75,7 +76,8 @@ T.setLanguage = (lng) => {
         firstName: 'Given name',
         lastName: 'Family name',
         phoneNumber: 'Phone number',
-        verifyCode: 'Verification code'
+        verifyCode: 'Verification code',
+        notYou: 'Not you?'
       },
       deliveryDetails: {
         header: 'Delivery',
