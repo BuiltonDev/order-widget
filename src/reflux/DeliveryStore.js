@@ -10,8 +10,7 @@ class DeliveryStore extends Reflux.Store {
       deliveryDate: moment(),
       deliveryTime: moment().startOf('hour').toString(),
       deliveryAddress: '',
-      lat: 0,
-      lng: 0,
+      deliveryGeo: [],
       retrievedGeo: false,
       deliveryAdditional: ''
     };
@@ -38,7 +37,7 @@ class DeliveryStore extends Reflux.Store {
         return getLatLng(results[0]);
       })
       .then((latLng) => {
-        this.setState({...latLng, retrievedGeo: true});
+        this.setState({deliveryGeo:[latLng.lat, latLng.lng], retrievedGeo: true});
       })
       .catch(() => {
         // TODO Handle error

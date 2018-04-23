@@ -13,7 +13,7 @@ class ConfirmOrder extends Reflux.Component {
   constructor(props) {
     super(props);
     this.stores = [ProductStore, DeliveryStore, PaymentStore];
-    this.storeKeys = ['products', 'deliveryDate', 'deliveryTime', 'deliveryAddress', 'deliveryAdditional', 'paymentMethod'];
+    this.storeKeys = ['products', 'deliveryDate', 'deliveryTime', 'deliveryAddress', 'deliveryGeo', 'deliveryAdditional', 'paymentMethod'];
     this.state = {
       isLoading: false,
       processedOrder: false
@@ -34,29 +34,34 @@ class ConfirmOrder extends Reflux.Component {
   // POST /order/{ID}/pay {}
   createOrder() {
     this.setState({isLoading: true});
-
+    let currency;
     const orderPayload = {
-      items: this.state.products.map((product) => {
-        return { product: product._id.$oid, quantity: product.count };
+      items: Object.entries(this.state.products).map(([key, value]) => {
+        if(!currency) currency = value.item.currency;
+        return { product: value.item._id.$oid, quantity: value.count };
       }),
-      delivery_address: this.deliveryAddress,
-      delivery_time: this.deliveryDate.unix() // TODO Add delivery time to moment obj. to get correct time
+      delivery_address: {street_name: this.state.deliveryAddress, geo: this.state.deliveryGeo}, // TODO Get proper mapping of street_name, zip_code, city, country
+      delivery_time: this.state.deliveryDate.unix() // TODO Add delivery time to moment obj. to get correct time,
     };
+    orderPayload.currency = currency; // TODO better way here. We need a way of setting one global currency used for this order
 
-    console.log(orderPayload);
-
-    this.sa.order().create({body: orderPayload}, (err, order, raw) => {
+    this.sa.order().create({body: orderPayload}, (err, Order, raw) => {
       if (err) {
         this.onError(err);
         return;
       }
 
-      this.sa.order().pay({}, (err, payOrder, raw) => {
+      const paymentPayload = {
+        orders: [Order.id],
+        payment_method: this.state.paymentMethod._id.$oid
+      };
+      
+      this.sa.payment().create({body: paymentPayload}, (err, PayOrder, raw) => {
         if (err) {
           this.onError(err);
           return;
         }
-        console.log('Order', order);
+
         this.setState({isLoading: false, processedOrder: true});
         Actions.onNextNavigation();
       });

@@ -57,7 +57,7 @@ class ProductBasket extends Reflux.Component {
     Object.entries(products).forEach(([key, value]) => {
       if (value) {
 
-        if (!currency) currency = value.item.currency; // TODO better solution in the future here
+        if (!currency) currency = value.item.currency; // TODO better solution in the future here for currency
 
         productArray.push(this.renderBasketItem(value));
         productArray.push(this.renderBasketPrice(value));
