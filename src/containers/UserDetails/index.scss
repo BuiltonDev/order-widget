@@ -8,5 +8,24 @@
     .padding-container {
       padding: 10px 32px;
     }
+
+    .user-details__additional {
+      margin-top: 100px;
+    }
+
+    .user-details__existing-user {
+      text-align: center;
+      margin-top: 100px;
+      .avatar {
+        display: block;
+        margin: 0 auto;
+        height: 150px;
+        width: 150px;
+      }
+      .phoneNumber {
+        display: block;
+        margin-bottom: 15px;
+      }
+    }
   }
 }
