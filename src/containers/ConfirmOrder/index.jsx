@@ -13,7 +13,7 @@ class ConfirmOrder extends Reflux.Component {
   constructor(props) {
     super(props);
     this.stores = [ProductStore, DeliveryStore, PaymentStore];
-    this.storeKeys = ['products', 'deliveryDate', 'deliveryTime', 'deliveryAddress', 'deliveryGeo', 'deliveryAdditional', 'selectedPaymentMethod'];
+    this.storeKeys = ['products', 'deliveryDate', 'deliveryTime', 'parsedDeliveryAddress', 'deliveryGeo', 'deliveryAdditional', 'selectedPaymentMethod'];
     this.state = {
       isLoading: false,
       processedOrder: false
@@ -34,16 +34,21 @@ class ConfirmOrder extends Reflux.Component {
   // POST /order/{ID}/pay {}
   createOrder() {
     this.setState({isLoading: true});
+    let productItems = [];
     let currency;
+
+    Object.entries(this.state.products).forEach(([key, value]) => {
+      if (!value) return;
+      if (!currency) currency = value.item.currency;
+      productItems.push({product: value.item._id.$oid, quantity: value.count});
+    });
+
     const orderPayload = {
-      items: Object.entries(this.state.products).map(([key, value]) => {
-        if(!currency) currency = value.item.currency;
-        return { product: value.item._id.$oid, quantity: value.count };
-      }),
-      delivery_address: {street_name: this.state.deliveryAddress, geo: this.state.deliveryGeo}, // TODO Get proper mapping of street_name, zip_code, city, country
+      currency, // TODO better way here. We need a way of setting one global currency used for this order
+      items: productItems,
+      delivery_address: {...this.state.parsedDeliveryAddress, geo: this.state.deliveryGeo},
       delivery_time: this.state.deliveryDate.unix() // TODO Add delivery time to moment obj. to get correct time,
     };
-    orderPayload.currency = currency; // TODO better way here. We need a way of setting one global currency used for this order
 
     this.sa.order().create({body: orderPayload}, (err, Order, raw) => {
       if (err) {
