@@ -13,7 +13,7 @@ class ConfirmOrder extends Reflux.Component {
   constructor(props) {
     super(props);
     this.stores = [ProductStore, DeliveryStore, PaymentStore];
-    this.storeKeys = ['products', 'deliveryDate', 'deliveryTime', 'deliveryAddress', 'deliveryGeo', 'deliveryAdditional', 'paymentMethod'];
+    this.storeKeys = ['products', 'deliveryDate', 'deliveryTime', 'deliveryAddress', 'deliveryGeo', 'deliveryAdditional', 'selectedPaymentMethod'];
     this.state = {
       isLoading: false,
       processedOrder: false
@@ -53,9 +53,9 @@ class ConfirmOrder extends Reflux.Component {
 
       const paymentPayload = {
         orders: [Order.id],
-        payment_method: this.state.paymentMethod._id.$oid
+        payment_method: this.state.selectedPaymentMethod.id
       };
-      
+
       this.sa.payment().create({body: paymentPayload}, (err, PayOrder, raw) => {
         if (err) {
           this.onError(err);

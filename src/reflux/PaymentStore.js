@@ -5,18 +5,14 @@ class PaymentStore extends Reflux.Store {
   constructor() {
     super();
     this.state = {
-      stripeToken: null,
-      paymentMethod: null
+      selectedPaymentMethod: ''
     };
     this.listenables = Actions;
   }
 
-  onStripeToken(stripeToken) {
-    this.setState({stripeToken});
-  }
-
-  onAddPaymentMethod(paymentMethod) {
-    this.setState({paymentMethod});
+  onSelectPaymentMethod(selectedPaymentMethod) {
+    if (!selectedPaymentMethod) return;
+    this.setState({selectedPaymentMethod});
   }
 
 }
