@@ -14,7 +14,6 @@ class PaymentStore extends Reflux.Store {
     if (!selectedPaymentMethod) return;
     this.setState({selectedPaymentMethod});
   }
-
 }
 
 export default PaymentStore;
