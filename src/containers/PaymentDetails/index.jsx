@@ -87,7 +87,7 @@ class PaymentDetails extends Reflux.Component {
             <div className="padding-container">
               <p>{T.translate('paymentDetails.usePrevious')}</p>
               {this.renderPaymentMethodList()}
-              <p>{T.translate('paymentDetails.useCurrent')}</p>
+              <p>{T.translate('paymentDetails.useNew')}</p>
               <StripeProvider apiKey={this.stripeApiKey}>
                 <Elements>
                   <PaymentForm />

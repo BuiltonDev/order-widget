@@ -3,16 +3,13 @@
 
 .payment-form {
 
-  .pay-button {
-    text-align: center;
-  }
-
   /* Override Stripe css */
   .StripeElement {
     display: block;
-    margin: 10px 0 20px 0;
+    margin: 0;
     max-width: 500px;
-    padding: 10px 14px;
+    width: 100%;
+    padding: 8px 8px;
     border: 1px solid $primary-color;
     background: white;
   }
