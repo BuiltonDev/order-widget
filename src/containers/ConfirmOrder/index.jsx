@@ -34,6 +34,7 @@ class ConfirmOrder extends Reflux.Component {
   // POST /order/{ID}/pay {}
   createOrder() {
     this.setState({isLoading: true});
+    const [hours, minutes] = this.state.deliveryTime.split(':');
     let productItems = [];
     let currency;
 
@@ -47,7 +48,7 @@ class ConfirmOrder extends Reflux.Component {
       currency, // TODO better way here. We need a way of setting one global currency used for this order
       items: productItems,
       delivery_address: {...this.state.parsedDeliveryAddress, geo: this.state.deliveryGeo},
-      delivery_time: this.state.deliveryDate.unix() // TODO Add delivery time to moment obj. to get correct time,
+      delivery_time: this.state.deliveryDate.set({'hour': hours, 'minute': minutes, 'seconds': 0}).unix()
     };
 
     this.sa.order().create({body: orderPayload}, (err, Order, raw) => {
