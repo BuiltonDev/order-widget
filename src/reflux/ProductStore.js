@@ -1,7 +1,7 @@
 import Reflux from 'reflux';
 import cloneDeep from 'lodash.clonedeep';
-import Actions from './Actions';
 import roundNumber from 'src/utils/roundNumber';
+import Actions from './Actions';
 
 class ProductStore extends Reflux.Store {
   constructor() {
@@ -28,6 +28,8 @@ class ProductStore extends Reflux.Store {
     }
     copy.count += addCount;
 
+    const tax = this.state.totalTax + ((copy.item.vat * copy.item.price) * addCount);
+
     this.setState({
       products: {
         ...this.state.products,
@@ -35,7 +37,7 @@ class ProductStore extends Reflux.Store {
       },
       totalCount: this.state.totalCount + addCount,
       totalSum: this.state.totalSum + (copy.item.price * addCount),
-      totalTax: roundNumber(this.state.totalTax + ((copy.item.vat * copy.item.price) * addCount), 2)
+      totalTax: roundNumber(tax, 2)
     });
   }
 
@@ -48,6 +50,8 @@ class ProductStore extends Reflux.Store {
 
     copy.count += maxRemovable;
 
+    const tax = this.state.totalTax + ((copy.item.vat * copy.item.price) * maxRemovable);
+
     this.setState({
       products: {
         ...this.state.products,
@@ -55,7 +59,7 @@ class ProductStore extends Reflux.Store {
       },
       totalCount: this.state.totalCount + maxRemovable,
       totalSum: this.state.totalSum + (copy.item.price * maxRemovable),
-      totalTax: roundNumber(this.state.totalTax + ((copy.item.vat * copy.item.price) * maxRemovable), 2)
+      totalTax: roundNumber(tax, 2)
     });
   }
 }

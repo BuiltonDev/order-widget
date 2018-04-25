@@ -1,8 +1,8 @@
 import Reflux from 'reflux';
 import moment from 'moment';
 import {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
-import Actions from './Actions';
 import parseLocation from 'src/utils/parseLocation';
+import Actions from './Actions';
 
 class DeliveryStore extends Reflux.Store {
   constructor() {
@@ -41,7 +41,7 @@ class DeliveryStore extends Reflux.Store {
     if (this.state.retrievedGeo) return;
     this.setState({deliveryAddress});
     geocodeByAddress(deliveryAddress)
-      .then(results => {
+      .then((results) => {
         this.setState({
           parsedDeliveryAddress: {
             street_name: parseLocation(results[0], 'route'),
@@ -51,7 +51,7 @@ class DeliveryStore extends Reflux.Store {
             country: parseLocation(results[0], 'country')
           }
         });
-        return getLatLng(results[0])
+        return getLatLng(results[0]);
       })
       .then((latLng) => {
         this.setState({deliveryGeo: [latLng.lat, latLng.lng], retrievedGeo: true});
