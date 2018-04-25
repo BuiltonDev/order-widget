@@ -9,7 +9,7 @@ class DeliveryStore extends Reflux.Store {
     super();
     this.state = {
       deliveryDate: moment().add(1, 'day'), // Delivery allowed next day
-      deliveryTime: moment().startOf('hour').toString(),
+      deliveryTime: moment().startOf('hour').format('hh:mm').toString(),
       deliveryAddress: '',
       deliveryGeo: [],
       retrievedGeo: false,
