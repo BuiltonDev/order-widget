@@ -50,7 +50,7 @@ T.setLanguage = (lng) => {
         cardDetails: 'Fyll inn betalingsdetaljer',
         addNewCard: 'Legg til',
         usePrevious: 'Bruk tidligere betalingsmetode',
-        useNew: 'Legg til ny'
+        useNew: 'Legg til betalingsmetode'
       },
       receipt: {
         header: 'Kvittering'
@@ -100,7 +100,7 @@ T.setLanguage = (lng) => {
         cardDetails: 'Fill in card details',
         addNewCard: 'Add',
         usePrevious: 'Use previous payment method',
-        useNew: 'Add new one'
+        useNew: 'Add payment method'
       },
       receipt: {
         header: 'Receipt'

@@ -60,6 +60,8 @@ class PaymentDetails extends Reflux.Component {
 
   renderPaymentMethodList() {
     const {userPaymentMethods, apiUser, selectedPaymentMethod} = this.state;
+    if (!userPaymentMethods || !userPaymentMethods.length) return;
+
     const children = userPaymentMethods.map((paymentMethod) => {
       return (
         <option key={paymentMethod.id} value={paymentMethod.id}>
@@ -68,9 +70,12 @@ class PaymentDetails extends Reflux.Component {
       );
     });
     return (
-      <select className="payment-details__list" name="paymentMethods" value={this.state.selectedPaymentMethod.id} onChange={this.setPaymentMethod}>
-        {children}
-      </select>
+      <div>
+        <p>{T.translate('paymentDetails.usePrevious')}</p>
+        <select className="payment-details__list" name="paymentMethods" value={this.state.selectedPaymentMethod.id} onChange={this.setPaymentMethod}>
+          {children}
+        </select>
+      </div>
     );
   }
 
@@ -85,7 +90,6 @@ class PaymentDetails extends Reflux.Component {
           <Spinner show={isLoading}></Spinner>
           <div className="content">
             <div className="padding-container">
-              <p>{T.translate('paymentDetails.usePrevious')}</p>
               {this.renderPaymentMethodList()}
               <p>{T.translate('paymentDetails.useNew')}</p>
               <StripeProvider apiKey={this.stripeApiKey}>
