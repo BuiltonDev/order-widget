@@ -1,19 +1,26 @@
 import Reflux from 'reflux';
 import moment from 'moment';
-import {geocodeByAddress, getLatLng} from 'react-places-autocomplete'
+import {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
+import parseLocation from 'src/utils/parseLocation';
 import Actions from './Actions';
 
 class DeliveryStore extends Reflux.Store {
   constructor() {
     super();
     this.state = {
-      deliveryDate: moment(),
-      deliveryTime: '',
+      deliveryDate: moment().add(1, 'day'), // Delivery allowed next day
+      deliveryTime: moment().startOf('hour').format('hh:mm').toString(),
       deliveryAddress: '',
-      lat: 0,
-      lng: 0,
+      deliveryGeo: [],
       retrievedGeo: false,
-      deliveryAdditional: ''
+      deliveryAdditional: '',
+      parsedDeliveryAddress: {
+        street_name: '',
+        building: '',
+        zip_code: '',
+        city: '',
+        country: ''
+      }
     };
     this.listenables = Actions;
   }
@@ -34,17 +41,29 @@ class DeliveryStore extends Reflux.Store {
     if (this.state.retrievedGeo) return;
     this.setState({deliveryAddress});
     geocodeByAddress(deliveryAddress)
-      .then(results => getLatLng(results[0]))
-      .then(latLng => {
-        this.setState({...latLng, retrievedGeo: true});
+      .then((results) => {
+        this.setState({
+          parsedDeliveryAddress: {
+            street_name: parseLocation(results[0], 'route'),
+            building: parseLocation(results[0], 'street_number'),
+            zip_code: parseLocation(results[0], 'postal_code'),
+            city: parseLocation(results[0], 'postal_town'),
+            country: parseLocation(results[0], 'country')
+          }
+        });
+        return getLatLng(results[0]);
       })
-      .catch(error => console.error('Error', error));
+      .then((latLng) => {
+        this.setState({deliveryGeo: [latLng.lat, latLng.lng], retrievedGeo: true});
+      })
+      .catch(() => {
+        // TODO Handle error
+      });
   }
 
   onAdditionalDetailsChange(deliveryAdditional) {
     this.setState({deliveryAdditional});
   }
-
 }
 
 export default DeliveryStore;

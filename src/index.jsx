@@ -8,11 +8,11 @@ let a;
 let e;
 let el;
 
-export const init = ({domElementId, apiKey, endpoint, lng = 'no', auth0Config, stripeApiKey}) => {
+export const init = ({domElementId, apiKey, endpoint, lng = 'no', firebaseConfig, stripeApiKey}) => {
   // eslint-disable-next-line no-undef
-  window.ShareActor = new ShareActor({apiKey, endpoint});
-  window.Auth0Config = auth0Config;
+  window.ShareActor = ShareActor ? new ShareActor({apiKey, endpoint}) : null;
   window.StripeApiKey = stripeApiKey;
+  window.FirebaseConfig = firebaseConfig;
   T.setLanguage(lng);
   el = document.getElementById(domElementId);
   a = apiKey;
@@ -31,7 +31,7 @@ export const close = () => {
 // TODO check whether we should destroy shareactor and i18n instance as well
 export const destroy = () => {
   delete window.ShareActor;
-  delete window.Auth0Config;
   delete window.StripeApiKey;
+  delete window.FirebaseConfig;
   ReactDOM.unmountComponentAtNode(el);
 };

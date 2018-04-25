@@ -17,19 +17,17 @@ class PlaceAutoCompleteWrapper extends Reflux.Component {
 
   handleFormSubmit(event) {
     event.preventDefault();
-    if (this.state.retrievedGeo) Actions.getAddressFromGoogle(this.state.address);
+    if (this.state.retrievedGeo) Actions.onGetAddressFromGoogle(this.state.address);
   }
 
   renderSuggestion({formattedSuggestion}) {
     return (
       <div>
-        <i/>
         <strong>{formattedSuggestion.mainText}</strong>{' '}
         <small>{formattedSuggestion.secondaryText}</small>
       </div>
     );
   }
-
 
   render() {
     const inputProps = {

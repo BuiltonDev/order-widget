@@ -11,7 +11,8 @@ T.setLanguage = (lng) => {
       global: {
         next: 'Neste',
         last: 'Avslutt',
-        select: 'Velg'
+        select: 'Velg',
+        confirm: 'Bekreft'
       },
       product: {
         search: 'Søk',
@@ -20,7 +21,7 @@ T.setLanguage = (lng) => {
       },
       basket: {
         header: 'Handlekurv',
-        checkout: 'Neste',
+        checkout: 'Fortsett',
         products: 'Produkter',
         tax: 'Mva',
         total: 'Totalt m/ skatt'
@@ -32,7 +33,8 @@ T.setLanguage = (lng) => {
         firstName: 'Fornavn',
         lastName: 'Etternavn',
         phoneNumber: 'Telefonnummer',
-        verifyCode: 'Verifiseringskode'
+        verifyCode: 'Verifiseringskode',
+        notYou: 'Ikke deg?'
       },
       deliveryDetails: {
         header: 'Levering',
@@ -44,7 +46,11 @@ T.setLanguage = (lng) => {
       },
       paymentDetails: {
         header: 'Betaling',
-        pay: 'Betal'
+        pay: 'Betal',
+        cardDetails: 'Fyll inn betalingsdetaljer',
+        addNewCard: 'Legg til',
+        usePrevious: 'Bruk tidligere betalingsmetode',
+        useNew: 'Legg til betalingsmetode'
       },
       receipt: {
         header: 'Kvittering',
@@ -61,7 +67,8 @@ T.setLanguage = (lng) => {
       global: {
         next: 'Next',
         last: 'Complete',
-        select: 'Select'
+        select: 'Select',
+        confirm: 'Confirm'
       },
       product: {
         search: 'Search',
@@ -82,7 +89,8 @@ T.setLanguage = (lng) => {
         firstName: 'Given name',
         lastName: 'Family name',
         phoneNumber: 'Phone number',
-        verifyCode: 'Verification code'
+        verifyCode: 'Verification code',
+        notYou: 'Not you?'
       },
       deliveryDetails: {
         header: 'Delivery',
@@ -94,7 +102,11 @@ T.setLanguage = (lng) => {
       },
       paymentDetails: {
         header: 'Payment',
-        pay: 'Pay'
+        pay: 'Pay',
+        cardDetails: 'Fill in card details',
+        addNewCard: 'Add',
+        usePrevious: 'Use previous payment method',
+        useNew: 'Add payment method'
       },
       receipt: {
         header: 'Receipt',
