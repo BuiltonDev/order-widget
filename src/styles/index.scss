@@ -101,9 +101,12 @@
   color: $secondary-background-color;
   background-color: $primary-color;
   border: 0;
+  &:focus {
+    @include focus-effect();
+  }
   &:hover {
     outline: none;
-    background-color: $primary-color-focus;
+    border: 1px solid $primary-color-focus;
   }
   &:disabled {
     outline: none;
@@ -128,6 +131,7 @@
 @import '../containers/UserDetails/index';
 @import '../containers/DeliveryDetails/index';
 @import '../containers/PaymentDetails/index';
+@import '../containers/ConfirmOrder/index';
 @import '../containers/Receipt/index';
 
 @import '../components/Spinner/index';
@@ -136,3 +140,4 @@
 @import '../components/PlaceAutoCompleteWrapper/index';
 @import '../components/TimePickerWrapper/index';
 @import '../components/DayPickerWrapper/index';
+@import '../components/PaymentForm/index';

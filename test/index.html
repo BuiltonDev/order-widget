@@ -5,6 +5,7 @@
 
 <!--<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-auth.js"></script>-->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf53-uXGDdH29KisPNSvsqpdRIzruI66U&libraries=places"></script>
+<script src="https://js.stripe.com/v3/" async></script>
 <script src="https://unpkg.com/@shareactor/shareactor-sdk@latest/dist/main.bundle.js"></script>
 
 <body>
@@ -17,6 +18,7 @@
   var endpoint = "<%= ENDPOINT %>";
   var firebaseApiKey = "<%= FIREBASE_APIKEY %>";
   var firebaseDomain = "<%= FIREBASE_DOMAIN %>";
+  var stripeApiKey = "<%= STRIPE_API_KEY %>";
 
   KvassOrdering.init({
     domElementId: 'kvass-instance',
@@ -26,7 +28,8 @@
     firebaseConfig: {
       domain: firebaseDomain,
       apiKey: firebaseApiKey
-    }
+    },
+    stripeApiKey: stripeApiKey
   });
 
   document.getElementById('openKvass').addEventListener('click', function(event) {

@@ -49,8 +49,7 @@
         border-radius: 2px 0 0 2px;
 
         &:focus {
-          outline: none;
-          border: 1px solid $primary-color-focus;
+          @include focus-effect();
         }
       }
 

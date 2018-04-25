@@ -1,0 +1,10 @@
+@import '../../styles/_global';
+
+.confirm-order {
+  .content {
+    min-height: $content-min-height;
+  }
+  .padding-container {
+    padding: 10px 32px;
+  }
+}

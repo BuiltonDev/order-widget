@@ -1,8 +1,18 @@
 @import '../../styles/_global';
+@import '../../styles/_mixins';
 
 .payment-details {
 
   .content {
     min-height: $content-min-height;
+
+    .padding-container {
+      padding: 10px 32px;
+    }
+
+    .payment-details__list {
+      @include primary-input(36px, 100%);
+      background-color: $secondary-background-color;
+    }
   }
 }

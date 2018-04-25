@@ -11,7 +11,8 @@ T.setLanguage = (lng) => {
       global: {
         next: 'Neste',
         last: 'Avslutt',
-        select: 'Velg'
+        select: 'Velg',
+        confirm: 'Bekreft'
       },
       product: {
         search: 'Søk',
@@ -44,7 +45,12 @@ T.setLanguage = (lng) => {
         additionalDetails: 'Tilleggsinformasjon ved levering'
       },
       paymentDetails: {
-        header: 'Betaling'
+        header: 'Betaling',
+        pay: 'Betal',
+        cardDetails: 'Fyll inn betalingsdetaljer',
+        addNewCard: 'Legg til',
+        usePrevious: 'Bruk tidligere betalingsmetode',
+        useNew: 'Legg til betalingsmetode'
       },
       receipt: {
         header: 'Kvittering'
@@ -55,7 +61,8 @@ T.setLanguage = (lng) => {
       global: {
         next: 'Next',
         last: 'Complete',
-        select: 'Select'
+        select: 'Select',
+        confirm: 'Confirm'
       },
       product: {
         search: 'Search',
@@ -88,7 +95,12 @@ T.setLanguage = (lng) => {
         additionalDetails: 'Add additional delivery details'
       },
       paymentDetails: {
-        header: 'Payment'
+        header: 'Payment',
+        pay: 'Pay',
+        cardDetails: 'Fill in card details',
+        addNewCard: 'Add',
+        usePrevious: 'Use previous payment method',
+        useNew: 'Add payment method'
       },
       receipt: {
         header: 'Receipt'

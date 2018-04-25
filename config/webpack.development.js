@@ -21,7 +21,8 @@ module.exports = merge(common, {
       APIKEY: JSON.stringify(config.apiKey),
       ENDPOINT: JSON.stringify(config.endpoint),
       FIREBASE_APIKEY: JSON.stringify(config.firebaseConfig.apiKey),
-      FIREBASE_DOMAIN: JSON.stringify(config.firebaseConfig.domain)
+      FIREBASE_DOMAIN: JSON.stringify(config.firebaseConfig.domain),
+      STRIPE_API_KEY: JSON.stringify(config.stripeApiKey)
     }),
     new HtmlWebpackPlugin({
       title: 'Kvass Ordering Widget',

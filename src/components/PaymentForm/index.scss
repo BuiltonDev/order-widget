@@ -1,0 +1,20 @@
+@import '../../styles/_global';
+@import '../../styles/_mixins';
+
+.payment-form {
+
+  /* Override Stripe css */
+  .StripeElement {
+    display: block;
+    margin: 0;
+    max-width: 500px;
+    width: 100%;
+    padding: 8px 8px;
+    border: 1px solid $primary-color;
+    background: white;
+  }
+
+  .StripeElement--focus {
+    @include focus-effect();
+  }
+}
