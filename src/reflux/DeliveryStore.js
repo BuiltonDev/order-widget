@@ -14,6 +14,7 @@ class DeliveryStore extends Reflux.Store {
       deliveryGeo: [],
       retrievedGeo: false,
       deliveryAdditional: '',
+      parsedDeliveryTime: null,
       parsedDeliveryAddress: {
         street_name: '',
         building: '',
@@ -26,11 +27,15 @@ class DeliveryStore extends Reflux.Store {
   }
 
   onDateChange(deliveryDate) {
-    this.setState({deliveryDate});
+    const [hours, minutes] = this.state.deliveryTime.split(':');
+    const parsedDeliveryTime = deliveryDate.set({'hour': hours, 'minute': minutes, 'seconds': 0});
+    this.setState({deliveryDate, parsedDeliveryTime});
   }
 
   onTimeChange(deliveryTime) {
-    this.setState({deliveryTime});
+    const [hours, minutes] = deliveryTime.split(':');
+    const parsedDeliveryTime = this.state.deliveryDate.set({'hour': hours, 'minute': minutes, 'seconds': 0});
+    this.setState({deliveryTime, parsedDeliveryTime});
   }
 
   onAddressChange(deliveryAddress) {

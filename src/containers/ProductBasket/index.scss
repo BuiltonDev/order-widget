@@ -4,13 +4,10 @@
 
   .product-list {
     min-height: $content-min-height;
+    @extend %white-content-box;
 
     .padding-container {
       padding: 10px 32px;
-    }
-
-    ul {
-      @extend %white-content-box;      
     }
 
     li {

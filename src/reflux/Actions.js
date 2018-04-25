@@ -1,11 +1,12 @@
 import Reflux from 'reflux';
 
 const Actions = Reflux.createActions([
-  'onAddProduct', // Product
-  'onRemoveProduct', // Product
   'onInitNavigation', // Nav
   'onPreviousNavigation', // Nav
   'onNextNavigation', // Nav
+  'onNavigateTo', // Nav
+  'onAddProduct', // Product
+  'onRemoveProduct', // Product
   'onAuthStateChanged', // User
   'onUserDetailsInput', // User
   'onAuthenticateUser', // User

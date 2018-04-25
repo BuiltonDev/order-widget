@@ -52,6 +52,13 @@ T.setLanguage = (lng) => {
         usePrevious: 'Bruk tidligere betalingsmetode',
         useNew: 'Legg til betalingsmetode'
       },
+      confirm: {
+        header: 'Bekreft',
+        products: 'Produkter',
+        totalPrice: 'Total pris',
+        note: 'Info',
+        editNote: 'Klikk på elementene om du vil redigere noe før orderbekrefelse'
+      },
       receipt: {
         header: 'Kvittering',
         nameLabel: 'Navn',
@@ -107,6 +114,13 @@ T.setLanguage = (lng) => {
         addNewCard: 'Add',
         usePrevious: 'Use previous payment method',
         useNew: 'Add payment method'
+      },
+      confirm: {
+        header: 'Confirm',
+        products: 'Products',
+        totalPrice: 'Total price',
+        note: 'Note',
+        editNote: 'Click on items to edit details if needed before confirming order'
       },
       receipt: {
         header: 'Receipt',

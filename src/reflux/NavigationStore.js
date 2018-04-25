@@ -43,6 +43,10 @@ class NavigationStore extends Reflux.Store {
       this.setState({step: this.state.step += 1});
     }
   }
+
+  onNavigateTo(step) {
+    this.setState({step});
+  }
 }
 
 export default NavigationStore;

@@ -13,6 +13,10 @@
   height: 100%;
   right: 0;
 
+  p {
+    margin: 12px 0;
+  }
+
   .kvass-widget__overlay {
     background: radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
     position: fixed;
