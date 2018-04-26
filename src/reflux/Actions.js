@@ -1,6 +1,9 @@
 import Reflux from 'reflux';
 
 const Actions = Reflux.createActions([
+  'onMessage', // Global
+  'onCloseMessage', // Global
+  'onReset', // Every store has this. To reset state
   'onInitNavigation', // Nav
   'onPreviousNavigation', // Nav
   'onNextNavigation', // Nav
