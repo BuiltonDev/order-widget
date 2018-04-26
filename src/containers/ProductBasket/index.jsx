@@ -3,6 +3,7 @@ import Reflux from 'reflux';
 import {DebounceInput} from 'react-debounce-input';
 import {Scrollbars} from 'react-custom-scrollbars';
 import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
 import Actions from 'src/reflux/Actions';
 import ProductStore from 'src/reflux/ProductStore';
 import ProductList from 'src/components/ProductList';
@@ -93,11 +94,9 @@ class ProductBasket extends Reflux.Component {
               </div>
             </div>
           </div>
-          <div className="kvass-widget__content-footer">
-            <div className="footer-content">
-              <button className="kvass-widget__primary-button" onClick={() => Actions.onNextNavigation()}>{T.translate('basket.checkout')}</button>
-            </div>
-          </div>
+          <Footer>
+            <button className="kvass-widget__primary-button" onClick={() => Actions.onNextNavigation()}>{T.translate('basket.checkout')}</button>
+          </Footer>
         </div>
       </div>
     );

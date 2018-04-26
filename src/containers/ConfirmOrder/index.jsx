@@ -2,6 +2,7 @@ import React from 'react';
 import Reflux from 'reflux';
 import moment from 'moment';
 import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
 import Spinner from 'src/components/Spinner';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
@@ -133,11 +134,9 @@ class ConfirmOrder extends Reflux.Component {
                 <span className="step-list__note">{T.translate('confirm.editNote')}</span>
             </div>
           </div>
-          <div className="kvass-widget__content-footer">
-            <div className="footer-content">
-              <button className="kvass-widget__primary-button" onClick={this.createOrder}>{T.translate('global.confirm')}</button>
-            </div>
-          </div>
+          <Footer>
+            <button className="kvass-widget__primary-button" onClick={this.createOrder}>{T.translate('global.confirm')}</button>
+          </Footer>          
         </div>
       </div>
     );

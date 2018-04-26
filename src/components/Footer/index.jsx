@@ -5,7 +5,9 @@ import Notification from 'src/components/Notification';
 const Footer = (props) => {
   return (
     <div className="kvass-widget__content-footer">
-      {props.children}
+      <div className="footer-content">
+        {props.children}
+      </div>
       <Notification />
     </div>
   );

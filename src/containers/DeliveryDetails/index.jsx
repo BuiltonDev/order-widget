@@ -2,6 +2,7 @@ import React from 'react';
 import Reflux from 'reflux';
 import {DebounceInput} from 'react-debounce-input';
 import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
 import PlaceAutoCompleteWrapper from 'src/components/PlaceAutoCompleteWrapper';
 import TimePickerWrapper from 'src/components/TimePickerWrapper';
 import DayPickerWrapper from 'src/components/DayPickerWrapper';
@@ -36,11 +37,9 @@ class DeliveryDetails extends Reflux.Component {
               <textarea className="delivery-details__additional" value={this.state.deliveryAdditional} onChange={(evt) => Actions.onAdditionalDetailsChange(evt.target.value)} maxLength="250"/>
             </div>
           </div>
-          <div className="kvass-widget__content-footer">
-            <div className="footer-content">
-              <button className="kvass-widget__primary-button" onClick={() => Actions.onNextNavigation()}>{T.translate('global.next')}</button>
-            </div>
-          </div>
+          <Footer>
+            <button className="kvass-widget__primary-button" onClick={() => Actions.onNextNavigation()}>{T.translate('global.next')}</button>          
+          </Footer>
         </div>
       </div>
     );

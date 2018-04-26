@@ -2,6 +2,7 @@ import React from 'react';
 import Reflux from 'reflux';
 import {DebounceInput} from 'react-debounce-input';
 import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
 import Actions from 'src/reflux/Actions';
 import DeliveryStore from 'src/reflux/DeliveryStore';
 import ProductStore from 'src/reflux/ProductStore';
@@ -60,11 +61,9 @@ class Receipt extends Reflux.Component {
               </div>
             </div>
           </div>
-          <div className="kvass-widget__content-footer">
-            <div className="footer-content">
-              <button className="kvass-widget__primary-button" onClick={() => window.KvassOrdering.close()}>{T.translate('global.last')}</button>
-            </div>
-          </div>
+          <Footer>
+            <button className="kvass-widget__primary-button" onClick={() => window.KvassOrdering.close()}>{T.translate('global.last')}</button>
+          </Footer>
         </div>
       </div>
     );

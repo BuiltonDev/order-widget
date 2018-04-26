@@ -2,6 +2,7 @@ import React from 'react';
 import Reflux from 'reflux';
 import {StripeProvider, Elements} from 'react-stripe-elements';
 import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
 import Spinner from 'src/components/Spinner';
 import PaymentForm from 'src/components/PaymentForm';
 import Actions from 'src/reflux/Actions';
@@ -110,11 +111,9 @@ class PaymentDetails extends Reflux.Component {
               </StripeProvider>
             </div>
           </div>
-          <div className="kvass-widget__content-footer">
-            <div className="footer-content">
-              <button className="kvass-widget__primary-button" disabled={!selectedPaymentMethod} onClick={() => Actions.onNextNavigation()}>{T.translate('paymentDetails.pay')}</button>
-            </div>
-          </div>
+          <Footer>
+            <button className="kvass-widget__primary-button" disabled={!selectedPaymentMethod} onClick={() => Actions.onNextNavigation()}>{T.translate('paymentDetails.pay')}</button>
+          </Footer>
         </div>
       </div>
     );
