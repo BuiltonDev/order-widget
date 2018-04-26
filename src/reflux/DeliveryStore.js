@@ -2,8 +2,8 @@ import Reflux from 'reflux';
 import moment from 'moment';
 import {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 import parseLocation from 'src/utils/parseLocation';
+import parseDeliveryTime from 'src/utils/parseDeliveryTime';
 import Actions from './Actions';
-import parsedDeliveryTime from 'src/utils/parsedDeliveryTime';
 
 class DeliveryStore extends Reflux.Store {
   constructor() {
@@ -17,7 +17,7 @@ class DeliveryStore extends Reflux.Store {
       deliveryGeo: [],
       retrievedGeo: false,
       deliveryAdditional: '',
-      parsedDeliveryTime: parsedDeliveryTime(deliveryTime, deliveryDate),
+      parsedDeliveryTime: parseDeliveryTime(deliveryTime, deliveryDate),
       parsedDeliveryAddress: {
         street_name: '',
         building: '',
@@ -30,11 +30,13 @@ class DeliveryStore extends Reflux.Store {
   }
 
   onDateChange(deliveryDate) {
-    this.setState({deliveryDate, parsedDeliveryTime: parsedDeliveryTime(this.state.deliveryTime, deliveryDate)});
+    const parsed = parseDeliveryTime(this.state.deliveryTime, deliveryDate);
+    this.setState({deliveryDate, parsedDeliveryTime: parsed});
   }
 
   onTimeChange(deliveryTime) {
-    this.setState({deliveryTime, parsedDeliveryTime: parsedDeliveryTime(deliveryTime, this.state.deliveryDate)});
+    const parsed = parseDeliveryTime(deliveryTime, this.state.deliveryDate);
+    this.setState({deliveryTime, parsedDeliveryTime: parsed});
   }
 
   onAddressChange(deliveryAddress) {
