@@ -12,7 +12,7 @@ class Receipt extends Reflux.Component {
   constructor(props) {
     super(props);
     this.stores = [DeliveryStore, ProductStore, UserStore];
-    this.storeKeys = ['firstName', 'lastName', 'phoneNumber', 'products', 'totalSum', 'deliveryAddress', 'deliveryTime', 'deliveryDate', 'deliveryAdditional'];
+    this.storeKeys = ['firstName', 'lastName', 'phoneNumber', 'products', 'totalSum', 'deliveryAddress', 'parsedDeliveryTime', 'deliveryAdditional'];
   }
 
   renderReceiptItem(label, items = []) {
@@ -41,7 +41,7 @@ class Receipt extends Reflux.Component {
 
     return (
       <div className="receipt">
-        <Header showBackNav={true}>
+        <Header showBackNav={false}>
           <span className="header-title">{T.translate('receipt.header')}</span>
         </Header>
         <div className="kvass-widget__content-body">
@@ -54,7 +54,7 @@ class Receipt extends Reflux.Component {
                   {/*this.renderReceiptItem('Order', [this.state.orderId])*/}
                   {this.renderReceiptItem(T.translate('receipt.productsLabel'), productArray)}
                   {this.renderReceiptItem(T.translate('receipt.priceLabel'), [this.state.totalSum])}
-                  {this.renderReceiptItem(T.translate('receipt.deliveryLabel'), [this.state.deliveryAddress, `${this.state.deliveryDate.format('DD/MM YYYY')}, ${this.state.deliveryTime}`])}
+                  {this.renderReceiptItem(T.translate('receipt.deliveryLabel'), [this.state.deliveryAddress, this.state.parsedDeliveryTime.format('LLL')])}
                   {this.state.deliveryAdditional ? this.renderReceiptItem(T.translate('receipt.deliveryAddLabel') , [this.state.deliveryAdditional]) : null}
                 </ul>
               </div>

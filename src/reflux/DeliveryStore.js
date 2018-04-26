@@ -3,18 +3,21 @@ import moment from 'moment';
 import {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 import parseLocation from 'src/utils/parseLocation';
 import Actions from './Actions';
+import parsedDeliveryTime from 'src/utils/parsedDeliveryTime';
 
 class DeliveryStore extends Reflux.Store {
   constructor() {
+    const deliveryDate = moment().add(1, 'day');
+    const deliveryTime = moment().startOf('hour').format('hh:mm').toString();
     super();
     this.state = {
-      deliveryDate: moment().add(1, 'day'), // Delivery allowed next day
-      deliveryTime: moment().startOf('hour').format('hh:mm').toString(),
+      deliveryDate, // Delivery allowed next day
+      deliveryTime,
       deliveryAddress: '',
       deliveryGeo: [],
       retrievedGeo: false,
       deliveryAdditional: '',
-      parsedDeliveryTime: null,
+      parsedDeliveryTime: parsedDeliveryTime(deliveryTime, deliveryDate),
       parsedDeliveryAddress: {
         street_name: '',
         building: '',
@@ -27,15 +30,11 @@ class DeliveryStore extends Reflux.Store {
   }
 
   onDateChange(deliveryDate) {
-    const [hours, minutes] = this.state.deliveryTime.split(':');
-    const parsedDeliveryTime = deliveryDate.set({'hour': hours, 'minute': minutes, 'seconds': 0});
-    this.setState({deliveryDate, parsedDeliveryTime});
+    this.setState({deliveryDate, parsedDeliveryTime: parsedDeliveryTime(this.state.deliveryTime, deliveryDate)});
   }
 
   onTimeChange(deliveryTime) {
-    const [hours, minutes] = deliveryTime.split(':');
-    const parsedDeliveryTime = this.state.deliveryDate.set({'hour': hours, 'minute': minutes, 'seconds': 0});
-    this.setState({deliveryTime, parsedDeliveryTime});
+    this.setState({deliveryTime, parsedDeliveryTime: parsedDeliveryTime(deliveryTime, this.state.deliveryDate)});
   }
 
   onAddressChange(deliveryAddress) {

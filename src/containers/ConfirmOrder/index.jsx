@@ -83,7 +83,7 @@ class ConfirmOrder extends Reflux.Component {
       firstName = '', lastName = '', phoneNumber = '', totalCount = '', totalSum = '', parsedDeliveryTime = '',
       deliveryAddress = '', deliveryAdditional = '', selectedPaymentMethod = ''} = this.state;
 
-      let deliveryTimeFormatted = moment.isMoment(parsedDeliveryTime) ? parsedDeliveryTime.toString() : '';
+      let deliveryTimeFormatted = moment.isMoment(parsedDeliveryTime) ? parsedDeliveryTime.format('LLL') : '';
     return (
       <div className="confirm-order">
         <Header showBackNav={true}>
