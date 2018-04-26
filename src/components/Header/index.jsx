@@ -15,7 +15,7 @@ const Header = (props) => {
   };
   const closeNav = () => {
     return (
-      <div className="close-widget" onClick={() => window.KvassOrdering.close()}>
+      <div className="close-widget-icon" onClick={() => window.KvassOrdering.close()}>
         <CloseIcon className="svg-icon--primary"></CloseIcon>
       </div>
     );

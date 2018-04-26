@@ -3,14 +3,15 @@
 .kvass-widget__notification {
   position: absolute;
   width: 100%;
-  height: 150px;
+  height: 125px;
   bottom: 0;
   overflow: hidden;
-  background-color: #000; color: #FFF;
+  background-color: $notification-error-color;
+  color: #FFF;
   transition: all 0.5s;
 
   .message {
-
+    padding: $default-padding;
   }
 }
 

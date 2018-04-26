@@ -20,3 +20,10 @@
     fill: $primary-color-focus
   }
 }
+
+.svg-icon--secondary {
+  fill: $secondary-background-color;
+  &:hover {
+    fill: $primary-color-focus
+  }
+}

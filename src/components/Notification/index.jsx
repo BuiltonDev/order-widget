@@ -26,8 +26,8 @@ class Notification extends Reflux.Component {
 
     return (
       <div className={className}>
-        <div className="close-widget" onClick={this.closeNotifcation}>
-          <CloseIcon className="svg-icon--primary"></CloseIcon>
+        <div className="close-widget-icon" onClick={this.closeNotifcation}>
+          <CloseIcon className="svg-icon--secondary"></CloseIcon>
         </div>
         <div className="message">{message}</div>
       </div>
