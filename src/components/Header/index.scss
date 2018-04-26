@@ -1,0 +1,28 @@
+@import '../../styles/_global';
+
+.kvass-widget__content-header {
+  height: $header-height;
+  background-color: $secondary-background-color;
+  box-shadow: 0 5px 15px rgba(0,0,0,.033);
+  text-align: center;
+
+  .previous-navigation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px 0 0 5px;
+  }
+
+  .close-widget {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px 5px 0 0
+  }
+
+  .header-title {
+    font-size: 32px;
+    display: inline-block;
+    padding: $default-padding;
+  }
+}
