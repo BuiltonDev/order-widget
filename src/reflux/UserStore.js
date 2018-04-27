@@ -52,7 +52,7 @@ class UserStore extends Reflux.Store {
           lastName
         });
       }).catch(() => {
-        // TODO Handle error
+        Actions.onMessage({isError: true});
       });
     }
   }

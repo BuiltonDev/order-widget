@@ -20,7 +20,7 @@ class PaymentForm extends Reflux.Component {
       const paymentMethodPayload = {payment_method: 'stripe', token: payload.token.id};
       this.sa.paymentMethod().create({body: paymentMethodPayload}, (err, paymentMethod, raw) => {
         if (err) {
-          this.onError(err);
+          Actions.onMessage({isError: true});
           return;
         }
 

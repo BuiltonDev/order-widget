@@ -42,7 +42,7 @@ class PaymentDetails extends Reflux.Component {
     // Retrieve payment methods
     this.sa.paymentMethod().getAll({}, (err, PaymentMethods, raw) => {
       if (err) {
-        console.log(err);
+        Actions.onMessage({isError: true});
         this.setState({isLoading: false});
         return;
       }

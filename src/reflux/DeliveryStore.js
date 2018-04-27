@@ -63,7 +63,7 @@ class DeliveryStore extends Reflux.Store {
         this.setState({deliveryGeo: [latLng.lat, latLng.lng], retrievedGeo: true});
       })
       .catch(() => {
-        // TODO Handle error
+        Actions.onMessage({isError: true});
       });
   }
 

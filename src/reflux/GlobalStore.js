@@ -1,6 +1,7 @@
 import Reflux from 'reflux';
 import cloneDeep from 'lodash.clonedeep';
 import Actions from './Actions';
+import T from 'src/utils/i18n';
 
 const INITIAL_STATE = {
   message: ''
@@ -22,9 +23,11 @@ class GlobalStore extends Reflux.Store {
     this.setState({message: ''});
   }
 
-  onMessage(message) {
+  onMessage({isError:false}, message) {
     if (this.state.message) return; // Only allow one message for now
-    this.setState({message});
+    const defaultMsg = isError ? T.translate('global.defaultError') : '';
+    this.setState({message: message || defaultMsg});
+
     setTimeout(() => {
       this.setState({message: ''});
     }, this.notificationTTL);

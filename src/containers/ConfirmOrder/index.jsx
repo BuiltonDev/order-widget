@@ -31,11 +31,6 @@ class ConfirmOrder extends Reflux.Component {
     this.onError = this.onError.bind(this);
   }
 
-  onError(error) {
-    console.log(error);
-    this.setState({isLoading: false});
-  }
-
   // POST /order {items: [{...product, quantity}], payment_method: payment_method_id}
   // POST /order/{ID}/pay {}
   createOrder() {
@@ -58,7 +53,7 @@ class ConfirmOrder extends Reflux.Component {
 
     this.sa.order().create({body: orderPayload}, (err, Order, raw) => {
       if (err) {
-        this.onError(err);
+        Actions.onMessage({isError: true});
         return;
       }
 
@@ -69,7 +64,7 @@ class ConfirmOrder extends Reflux.Component {
 
       this.sa.payment().create({body: paymentPayload}, (err, PayOrder, raw) => {
         if (err) {
-          this.onError(err);
+          Actions.onMessage({isError: true});
           return;
         }
 
@@ -136,7 +131,7 @@ class ConfirmOrder extends Reflux.Component {
           </div>
           <Footer>
             <button className="kvass-widget__primary-button" onClick={this.createOrder}>{T.translate('global.confirm')}</button>
-          </Footer>          
+          </Footer>
         </div>
       </div>
     );

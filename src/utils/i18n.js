@@ -12,7 +12,8 @@ T.setLanguage = (lng) => {
         next: 'Neste',
         last: 'Avslutt',
         select: 'Velg',
-        confirm: 'Bekreft'
+        confirm: 'Bekreft',
+        defaultError: 'Noe gikk galt. Vennligst prøv igjen'
       },
       product: {
         search: 'Søk',
@@ -75,7 +76,8 @@ T.setLanguage = (lng) => {
         next: 'Next',
         last: 'Complete',
         select: 'Select',
-        confirm: 'Confirm'
+        confirm: 'Confirm',
+        defaultError: 'Something went wrong. Please try again'
       },
       product: {
         search: 'Search',
