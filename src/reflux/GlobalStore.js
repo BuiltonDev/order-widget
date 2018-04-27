@@ -23,7 +23,7 @@ class GlobalStore extends Reflux.Store {
     this.setState({message: ''});
   }
 
-  onMessage({isError:false}, message) {
+  onMessage({isError = false}, message) {
     if (this.state.message) return; // Only allow one message for now
     const defaultMsg = isError ? T.translate('global.defaultError') : '';
     this.setState({message: message || defaultMsg});
