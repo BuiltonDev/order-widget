@@ -21,9 +21,14 @@ class UserStore extends Reflux.Store {
     this.listenables = Actions;
   }
 
-  onResetAuth() {
+  // Just to trigger this action
+  onUserRemoveAuth() {
     storage.remove(this.state.phoneNumber);
-    this.setState({...cloneDeep(INITIAL_STATE)});
+    this.setState(cloneDeep(INITIAL_STATE));
+  }
+
+  onUserReset() {
+    this.setState(cloneDeep(INITIAL_STATE));
   }
 
   onUserDetailsInput(type, value) {

@@ -3,16 +3,22 @@ import cloneDeep from 'lodash.clonedeep';
 import roundNumber from 'src/utils/roundNumber';
 import Actions from './Actions';
 
+const INITIAL_STATE = {
+  products: {},
+  totalCount: 0,
+  totalSum: 0,
+  totalTax: 0
+};
+
 class ProductStore extends Reflux.Store {
   constructor() {
     super();
-    this.state = {
-      products: {},
-      totalCount: 0,
-      totalSum: 0,
-      totalTax: 0
-    };
+    this.state = cloneDeep(INITIAL_STATE);
     this.listenables = Actions;
+  }
+
+  onProductReset() {
+    this.setState(cloneDeep(INITIAL_STATE));
   }
 
   onAddProduct(product, addCount = 1) {

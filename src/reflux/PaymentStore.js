@@ -1,13 +1,20 @@
 import Reflux from 'reflux';
+import cloneDeep from 'lodash.clonedeep';
 import Actions from './Actions';
+
+const INITIAL_STATE = {
+  selectedPaymentMethod: ''
+};
 
 class PaymentStore extends Reflux.Store {
   constructor() {
     super();
-    this.state = {
-      selectedPaymentMethod: ''
-    };
+    this.state = cloneDeep(INITIAL_STATE);
     this.listenables = Actions;
+  }
+
+  onPaymentReset() {
+    this.setState(cloneDeep(INITIAL_STATE));
   }
 
   onSelectPaymentMethod(selectedPaymentMethod) {

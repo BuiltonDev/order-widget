@@ -28,7 +28,6 @@ class ConfirmOrder extends Reflux.Component {
 
     this.sa = ShareActor();
     this.createOrder = this.createOrder.bind(this);
-    this.onError = this.onError.bind(this);
   }
 
   // POST /order {items: [{...product, quantity}], payment_method: payment_method_id}

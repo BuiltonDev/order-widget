@@ -15,8 +15,13 @@ class GlobalStore extends Reflux.Store {
     this.listenables = Actions;
   }
 
-  onReset() {
+  onGlobalReset() {
     this.setState(cloneDeep(INITIAL_STATE));
+    Actions.onNavigationReset();
+    Actions.onUserReset();
+    Actions.onDeliveryReset();
+    Actions.onPaymentReset();
+    Actions.onProductReset();
   }
 
   onCloseMessage() {

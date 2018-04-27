@@ -1,32 +1,51 @@
 import Reflux from 'reflux';
 import moment from 'moment';
+import cloneDeep from 'lodash.clonedeep';
 import {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 import parseLocation from 'src/utils/parseLocation';
 import parseDeliveryTime from 'src/utils/parseDeliveryTime';
 import Actions from './Actions';
 
+const INITIAL_STATE = {
+  deliveryDate: null, // Delivery allowed next day
+  deliveryTime: null,
+  deliveryAddress: '',
+  deliveryGeo: [],
+  retrievedGeo: false,
+  deliveryAdditional: '',
+  parsedDeliveryTime: null,
+  parsedDeliveryAddress: {
+    street_name: '',
+    building: '',
+    zip_code: '',
+    city: '',
+    country: ''
+  }
+};
+
 class DeliveryStore extends Reflux.Store {
   constructor() {
+    super();
     const deliveryDate = moment().add(1, 'day');
     const deliveryTime = moment().startOf('hour').format('hh:mm').toString();
-    super();
     this.state = {
-      deliveryDate, // Delivery allowed next day
+      ...cloneDeep(INITIAL_STATE),
+      deliveryDate,
       deliveryTime,
-      deliveryAddress: '',
-      deliveryGeo: [],
-      retrievedGeo: false,
-      deliveryAdditional: '',
-      parsedDeliveryTime: parseDeliveryTime(deliveryTime, deliveryDate),
-      parsedDeliveryAddress: {
-        street_name: '',
-        building: '',
-        zip_code: '',
-        city: '',
-        country: ''
-      }
+      parsedDeliveryTime: parseDeliveryTime(deliveryTime, deliveryDate)
     };
     this.listenables = Actions;
+  }
+
+  onDeliveryReset() {
+    const deliveryDate = moment().add(1, 'day');
+    const deliveryTime = moment().startOf('hour').format('hh:mm').toString();
+    this.setState({
+      ...cloneDeep(INITIAL_STATE),
+      deliveryDate,
+      deliveryTime,
+      parsedDeliveryTime: parseDeliveryTime(deliveryTime, deliveryDate)
+    });
   }
 
   onDateChange(deliveryDate) {

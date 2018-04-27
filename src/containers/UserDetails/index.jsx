@@ -72,7 +72,7 @@ class UserDetails extends Reflux.Component {
 
   removeAuthentication() {
     this.setState({isLoading: true});
-    Actions.onResetAuth();
+    Actions.onUserRemoveAuth();
     firebase.auth().signOut();
     this.setState({isLoading: false});
   }
