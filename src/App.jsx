@@ -5,7 +5,8 @@ import classNames from 'classnames';
 import firebase from 'firebase';
 import 'react-dates/initialize';
 import {FirebaseConfig} from 'src/utils';
-import NavigationStore from './reflux/NavigationStore';
+import NavigationStore from 'src/reflux/NavigationStore';
+import Actions from 'src/reflux/Actions';
 
 
 class App extends Reflux.Component {
@@ -13,8 +14,14 @@ class App extends Reflux.Component {
     super(props);
     this.store = NavigationStore;
 
-    firebase.initializeApp(FirebaseConfig());
-    firebase.auth().useDeviceLanguage();
+    if (!firebase.apps.length) {
+      firebase.initializeApp(FirebaseConfig());
+      firebase.auth().useDeviceLanguage();
+    }
+  }
+
+  componentWillUnmount() {
+    Actions.onGlobalReset();
   }
 
   renderCurrentNav() {

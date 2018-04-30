@@ -61,7 +61,7 @@ class UserDetails extends Reflux.Component {
     ShareActor().user().login({body: profile}, (err, apiUser, raw) => {
       this.setState({isLoading: false});
       if (err) {
-        // TODO Handle error message
+        Actions.onMessage({isError: true});
         this.removeAuthentication();
         return;
       }
@@ -72,7 +72,7 @@ class UserDetails extends Reflux.Component {
 
   removeAuthentication() {
     this.setState({isLoading: true});
-    Actions.onResetAuth();
+    Actions.onUserRemoveAuth();
     firebase.auth().signOut();
     this.setState({isLoading: false});
   }

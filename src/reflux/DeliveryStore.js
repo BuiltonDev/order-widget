@@ -1,36 +1,61 @@
 import Reflux from 'reflux';
 import moment from 'moment';
+import cloneDeep from 'lodash.clonedeep';
 import {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 import parseLocation from 'src/utils/parseLocation';
+import parseDeliveryTime from 'src/utils/parseDeliveryTime';
 import Actions from './Actions';
+
+const INITIAL_STATE = {
+  deliveryDate: null, // Delivery allowed next day
+  deliveryTime: null,
+  deliveryAddress: '',
+  deliveryGeo: [],
+  retrievedGeo: false,
+  deliveryAdditional: '',
+  parsedDeliveryTime: null,
+  parsedDeliveryAddress: {
+    street_name: '',
+    building: '',
+    zip_code: '',
+    city: '',
+    country: ''
+  }
+};
 
 class DeliveryStore extends Reflux.Store {
   constructor() {
     super();
+    const deliveryDate = moment().add(1, 'day');
+    const deliveryTime = moment().startOf('hour').format('hh:mm').toString();
     this.state = {
-      deliveryDate: moment().add(1, 'day'), // Delivery allowed next day
-      deliveryTime: moment().startOf('hour').format('hh:mm').toString(),
-      deliveryAddress: '',
-      deliveryGeo: [],
-      retrievedGeo: false,
-      deliveryAdditional: '',
-      parsedDeliveryAddress: {
-        street_name: '',
-        building: '',
-        zip_code: '',
-        city: '',
-        country: ''
-      }
+      ...cloneDeep(INITIAL_STATE),
+      deliveryDate,
+      deliveryTime,
+      parsedDeliveryTime: parseDeliveryTime(deliveryTime, deliveryDate)
     };
     this.listenables = Actions;
   }
 
+  onDeliveryReset() {
+    const deliveryDate = moment().add(1, 'day');
+    const deliveryTime = moment().startOf('hour').format('hh:mm').toString();
+    this.setState({
+      ...cloneDeep(INITIAL_STATE),
+      deliveryDate,
+      deliveryTime,
+      parsedDeliveryTime: parseDeliveryTime(deliveryTime, deliveryDate)
+    });
+  }
+
   onDateChange(deliveryDate) {
-    this.setState({deliveryDate});
+    const parsed = parseDeliveryTime(this.state.deliveryTime, deliveryDate);
+    this.setState({deliveryDate, parsedDeliveryTime: parsed});
   }
 
   onTimeChange(deliveryTime) {
-    this.setState({deliveryTime});
+    const parsed = parseDeliveryTime(deliveryTime, this.state.deliveryDate);
+    this.setState({deliveryTime, parsedDeliveryTime: parsed});
   }
 
   onAddressChange(deliveryAddress) {
@@ -57,7 +82,7 @@ class DeliveryStore extends Reflux.Store {
         this.setState({deliveryGeo: [latLng.lat, latLng.lng], retrievedGeo: true});
       })
       .catch(() => {
-        // TODO Handle error
+        Actions.onMessage({isError: true});
       });
   }
 

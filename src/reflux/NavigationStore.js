@@ -1,4 +1,5 @@
 import Reflux from 'reflux';
+import cloneDeep from 'lodash.clonedeep';
 
 // Containers
 import ProductSearch from 'src/containers/ProductSearch';
@@ -10,22 +11,28 @@ import ConfirmOrder from 'src/containers/ConfirmOrder';
 import Receipt from 'src/containers/Receipt';
 import Actions from './Actions';
 
+const INITIAL_STATE = {
+  step: 0,
+  navComponents: [
+    ProductSearch,
+    ProductBasket,
+    UserDetails,
+    DeliveryDetails,
+    PaymentDetails,
+    ConfirmOrder,
+    Receipt
+  ]
+};
+
 class NavigationStore extends Reflux.Store {
   constructor() {
     super();
-    this.state = {
-      step: 0,
-      navComponents: [
-        ProductSearch,
-        ProductBasket,
-        UserDetails,
-        DeliveryDetails,
-        PaymentDetails,
-        ConfirmOrder,
-        Receipt
-      ]
-    };
+    this.state = cloneDeep(INITIAL_STATE);
     this.listenables = Actions;
+  }
+
+  onNavigationReset() {
+    this.setState(cloneDeep(INITIAL_STATE));
   }
 
   onInitNavigation(components) {
@@ -42,6 +49,10 @@ class NavigationStore extends Reflux.Store {
     if (this.state.step < this.state.navComponents.length) {
       this.setState({step: this.state.step += 1});
     }
+  }
+
+  onNavigateTo(step) {
+    this.setState({step});
   }
 }
 

@@ -12,7 +12,8 @@ T.setLanguage = (lng) => {
         next: 'Neste',
         last: 'Avslutt',
         select: 'Velg',
-        confirm: 'Bekreft'
+        confirm: 'Bekreft',
+        defaultError: 'Noe gikk galt. Vennligst prøv igjen'
       },
       product: {
         search: 'Søk',
@@ -52,8 +53,21 @@ T.setLanguage = (lng) => {
         usePrevious: 'Bruk tidligere betalingsmetode',
         useNew: 'Legg til betalingsmetode'
       },
+      confirm: {
+        header: 'Bekreft',
+        products: 'Produkter',
+        totalPrice: 'Total pris',
+        note: 'Info',
+        editNote: 'Klikk på elementene om du vil redigere noe før orderbekrefelse'
+      },
       receipt: {
-        header: 'Kvittering'
+        header: 'Kvittering',
+        nameLabel: 'Navn',
+        phoneNumberLabel: 'Tlf',
+        productsLabel: 'Produkter',
+        priceLabel: 'Total pris',
+        deliveryLabel: 'Levering',
+        deliveryAddLabel: 'Tilleggsinformasjon'
       }
     });
   } else { // fallback english
@@ -62,7 +76,8 @@ T.setLanguage = (lng) => {
         next: 'Next',
         last: 'Complete',
         select: 'Select',
-        confirm: 'Confirm'
+        confirm: 'Confirm',
+        defaultError: 'Something went wrong. Please try again'
       },
       product: {
         search: 'Search',
@@ -102,8 +117,21 @@ T.setLanguage = (lng) => {
         usePrevious: 'Use previous payment method',
         useNew: 'Add payment method'
       },
+      confirm: {
+        header: 'Confirm',
+        products: 'Products',
+        totalPrice: 'Total price',
+        note: 'Note',
+        editNote: 'Click on items to edit details if needed before confirming order'
+      },
       receipt: {
-        header: 'Receipt'
+        header: 'Receipt',
+        nameLabel: 'Name',
+        phoneNumberLabel: 'Phone number',
+        productsLabel: 'Product(s)',
+        priceLabel: 'Total price',
+        deliveryLabel: 'Delivery',
+        deliveryAddLabel: 'Comment'
       }
     });
   }

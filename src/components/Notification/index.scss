@@ -1,0 +1,21 @@
+@import '../../styles/_global';
+
+.kvass-widget__notification {
+  position: absolute;
+  width: 100%;
+  height: 125px;
+  bottom: 0;
+  overflow: hidden;
+  background-color: $notification-error-color;
+  color: #FFF;
+  transition: all 0.5s;
+
+  .message {
+    padding: $default-padding;
+  }
+}
+
+.kvass-widget__notification--close {
+  bottom: 0;
+  height: 0;
+}

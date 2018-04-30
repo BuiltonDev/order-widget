@@ -11,3 +11,16 @@ $footer-height: 100px;
 $content-min-height: 500px;
 
 $default-padding: 32px;
+
+$notification-error-color: #d43636; 
+
+%white-content-box {
+  ul {
+    list-style: none;
+    min-height: 300px;
+    background-color: $secondary-background-color;
+    margin: 0;
+    padding: 5px;
+    border: 1px solid #bfbcbc7a;
+  }
+}

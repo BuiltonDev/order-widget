@@ -1,0 +1,10 @@
+@import '../../styles/_global';
+
+.kvass-widget__content-footer {
+  height: $footer-height;
+  text-align: center;
+
+  .footer-content {
+    padding: $default-padding;
+  }
+}

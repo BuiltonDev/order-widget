@@ -2,6 +2,7 @@ import React from 'react';
 import Reflux from 'reflux';
 import {StripeProvider, Elements} from 'react-stripe-elements';
 import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
 import Spinner from 'src/components/Spinner';
 import PaymentForm from 'src/components/PaymentForm';
 import Actions from 'src/reflux/Actions';
@@ -10,6 +11,7 @@ import {StripeApiKey} from 'src/utils';
 import PaymentStore from 'src/reflux/PaymentStore';
 import UserStore from 'src/reflux/UserStore';
 import {ShareActor} from 'src/utils';
+import parseCreditCard from 'src/utils/parseCreditCard';
 
 class PaymentDetails extends Reflux.Component {
   constructor(props) {
@@ -24,6 +26,7 @@ class PaymentDetails extends Reflux.Component {
     this.stripeApiKey = StripeApiKey();
     this.sa = ShareActor();
     this.setPaymentMethod = this.setPaymentMethod.bind(this);
+    this.onPaymentMethodChange = this.onPaymentMethodChange.bind(this);
   }
 
   componentDidMount() {
@@ -39,14 +42,15 @@ class PaymentDetails extends Reflux.Component {
     // Retrieve payment methods
     this.sa.paymentMethod().getAll({}, (err, PaymentMethods, raw) => {
       if (err) {
-        console.log(err);
+        Actions.onMessage({isError: true});
         this.setState({isLoading: false});
         return;
       }
 
       // Set default selected payment method to users default
-      if (this.state.apiUser.default_payment_method) {
-        Actions.onSelectPaymentMethod(this.sa.paymentMethod(this.state.apiUser.default_payment_method.$oid));
+      const defaultPaymentMethod = this.state.apiUser.default_payment_method;
+      if (defaultPaymentMethod) {
+        this.setPaymentMethod(defaultPaymentMethod.$oid, PaymentMethods);
       }
 
       this.setState({isLoading: false, userPaymentMethods: PaymentMethods});
@@ -54,8 +58,16 @@ class PaymentDetails extends Reflux.Component {
 
   }
 
-  setPaymentMethod(event) {
-    Actions.onSelectPaymentMethod(this.sa.paymentMethod(event.target.value));
+  setPaymentMethod(id, paymentMethods) {
+    let foundPaymentMethod = null;
+    paymentMethods.forEach((paymentMethod) => {
+      if (paymentMethod.id === id) foundPaymentMethod = paymentMethod;
+    });
+    Actions.onSelectPaymentMethod(foundPaymentMethod);
+  }
+
+  onPaymentMethodChange(event) {
+    this.setPaymentMethod(event.target.value, this.state.userPaymentMethods);
   }
 
   renderPaymentMethodList() {
@@ -65,14 +77,14 @@ class PaymentDetails extends Reflux.Component {
     const children = userPaymentMethods.map((paymentMethod) => {
       return (
         <option key={paymentMethod.id} value={paymentMethod.id}>
-          {paymentMethod.card.brand} xxxx xxxx xxxx {paymentMethod.card.last4} {paymentMethod.card.exp_month}/{paymentMethod.card.exp_year.toString().substring(2, 4)}
+          {parseCreditCard(paymentMethod.card)}
         </option>
       );
     });
     return (
       <div>
         <p>{T.translate('paymentDetails.usePrevious')}</p>
-        <select className="payment-details__list" name="paymentMethods" value={this.state.selectedPaymentMethod.id} onChange={this.setPaymentMethod}>
+        <select className="payment-details__list" name="paymentMethods" value={this.state.selectedPaymentMethod.id} onChange={this.onPaymentMethodChange}>
           {children}
         </select>
       </div>
@@ -99,11 +111,9 @@ class PaymentDetails extends Reflux.Component {
               </StripeProvider>
             </div>
           </div>
-          <div className="kvass-widget__content-footer">
-            <div className="footer-content">
-              <button className="kvass-widget__primary-button" disabled={!selectedPaymentMethod} onClick={() => Actions.onNextNavigation()}>{T.translate('paymentDetails.pay')}</button>
-            </div>
-          </div>
+          <Footer>
+            <button className="kvass-widget__primary-button" disabled={!selectedPaymentMethod} onClick={() => Actions.onNextNavigation()}>{T.translate('paymentDetails.pay')}</button>
+          </Footer>
         </div>
       </div>
     );

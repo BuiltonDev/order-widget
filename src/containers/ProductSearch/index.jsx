@@ -6,6 +6,7 @@ import {ShareActor} from 'src/utils';
 import Actions from 'src/reflux/Actions';
 import Spinner from 'src/components/Spinner';
 import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
 import ProductList from 'src/components/ProductList';
 import ShoppingCart from 'src/components/ShoppingCart';
 
@@ -76,9 +77,9 @@ class ProductSearch extends Component {
           <div className="product-list">
             {search ? <ProductList productList={productSearchList}></ProductList> : this.renderEmptyBody()}
           </div>
-          <div className="kvass-widget__content-footer">
+          <Footer>
             <ShoppingCart></ShoppingCart>
-          </div>
+          </Footer>
         </div>
       </div>
     );
