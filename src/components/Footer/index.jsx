@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Notification from 'src/components/Notification';
 
 const Footer = (props) => {
@@ -11,14 +10,6 @@ const Footer = (props) => {
       <Notification />
     </div>
   );
-};
-
-Footer.defaultProps = {
-  //showCloseNav: true
-};
-
-Footer.propTypes = {
-  //showCloseNav: PropTypes.bool
 };
 
 export default Footer;
