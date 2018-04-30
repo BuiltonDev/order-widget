@@ -14,7 +14,8 @@
     "react/jsx-uses-vars": 2,
     "object-curly-spacing": "off",
     "no-useless-constructor": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "class-methods-use-this": [2, { "exceptMethods": ["componentDidMount", "componentWillUnmount"] }]
   },
   "env": {
     "browser": true

@@ -1,7 +1,7 @@
 import Reflux from 'reflux';
 import cloneDeep from 'lodash.clonedeep';
-import Actions from './Actions';
 import T from 'src/utils/i18n';
+import Actions from './Actions';
 
 const INITIAL_STATE = {
   message: ''
@@ -37,7 +37,6 @@ class GlobalStore extends Reflux.Store {
       this.setState({message: ''});
     }, this.notificationTTL);
   }
-
 }
 
 export default GlobalStore;

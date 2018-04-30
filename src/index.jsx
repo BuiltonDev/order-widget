@@ -25,7 +25,7 @@ export const open = () => {
 };
 
 export const close = () => {
-  //ReactDOM.render(<App apiKey={a} endpoint={e} isOpen={false}/>, el);
+  // ReactDOM.render(<App apiKey={a} endpoint={e} isOpen={false}/>, el);
   ReactDOM.unmountComponentAtNode(el);
 };
 
