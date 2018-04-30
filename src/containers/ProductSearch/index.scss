@@ -27,10 +27,15 @@
     }
 
     .product-list-item {
+      transform: translateY(25px);
+      opacity: 0;
       transition: all .2s ease-in-out;
-      &:hover {
-        transform: scale(1.1);
-      }
+    }
+
+    .product-list-item.is-moved {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all .2s ease-in-out;
     }
 
     .product-list-item__img {

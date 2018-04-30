@@ -13,6 +13,12 @@ class ProductList extends Reflux.Component {
     super(props);
     this.endpoint = ShareActor().endpoint;
     this.apiKey = ShareActor().apiKey;
+    this.items = props.productList;
+    this.index = 0;
+    this.lastMove = new Date();
+    this.delay = 50;
+
+    this.animate = this.animate.bind(this);
   }
 
   renderProductImg(image_url) {
@@ -20,6 +26,31 @@ class ProductList extends Reflux.Component {
     return (
       <img src={`${this.endpoint}images/${image_url}?api_key=${this.apiKey}`} alt="product image"/>
     );
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isLoading) {
+      this.items = [];
+    }
+  }
+
+  componentDidMount() {
+    this.animate();
+  }
+
+  animate() {
+    this.moveItem();
+    requestAnimationFrame(this.animate);
+  }
+
+  moveItem() {
+    const now = new Date();
+    if (now - this.lastMove < this.delay || !this.items[this.index]) {
+      return;
+    }
+    this.lastMove = now;
+    this.items[this.index].classList.add('is-moved');
+    this.index += 1;
   }
 
   render() {
@@ -44,6 +75,11 @@ class ProductList extends Reflux.Component {
         </li>
       );
     });
+    
+    if (!this.props.isLoading) {
+      this.items = document.getElementsByClassName('product-list-item');
+      this.index = 0;
+    }
 
     return (
       <Scrollbars style={{ height: 500 }}>
