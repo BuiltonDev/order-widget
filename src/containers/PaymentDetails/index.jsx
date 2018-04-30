@@ -16,15 +16,17 @@ import parseCreditCard from 'src/utils/parseCreditCard';
 class PaymentDetails extends Reflux.Component {
   constructor(props) {
     super(props);
+    this.stripeApiKey = StripeApiKey();
+    this.sa = ShareActor();
+
     this.stores = [PaymentStore, UserStore];
-    this.storeKeys = ['stripeToken', 'apiUser', 'selectedPaymentMethod'];
     this.state = {
       isLoading: true,
       userPaymentMethods: [],
       stripe: null // stripe instance
     };
-    this.stripeApiKey = StripeApiKey();
-    this.sa = ShareActor();
+    this.storeKeys = ['stripeToken', 'apiUser', 'selectedPaymentMethod'];
+
     this.setPaymentMethod = this.setPaymentMethod.bind(this);
     this.onPaymentMethodChange = this.onPaymentMethodChange.bind(this);
   }

@@ -27,3 +27,11 @@
     fill: $primary-color-focus
   }
 }
+
+.svg-icon--disabled {
+  cursor: default;
+  fill: #d0d0d0;
+  &:hover {
+    fill: #d0d0d0;
+  }
+}

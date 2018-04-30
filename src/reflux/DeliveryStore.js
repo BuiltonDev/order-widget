@@ -12,6 +12,8 @@ const INITIAL_STATE = {
   deliveryAddress: '',
   deliveryGeo: [],
   retrievedGeo: false,
+  setTime: false,
+  setDate: false,
   deliveryAdditional: '',
   parsedDeliveryTime: null,
   parsedDeliveryAddress: {
@@ -23,11 +25,14 @@ const INITIAL_STATE = {
   }
 };
 
+const nextDay = moment().add(1, 'day');
+const startOfHour = moment().startOf('hour').format('hh:mm');
+
 class DeliveryStore extends Reflux.Store {
   constructor() {
     super();
-    const deliveryDate = moment().add(1, 'day');
-    const deliveryTime = moment().startOf('hour').format('hh:mm').toString();
+    const deliveryDate = nextDay.clone();
+    const deliveryTime = startOfHour.toString();
     this.state = {
       ...cloneDeep(INITIAL_STATE),
       deliveryDate,
@@ -38,8 +43,8 @@ class DeliveryStore extends Reflux.Store {
   }
 
   onDeliveryReset() {
-    const deliveryDate = moment().add(1, 'day');
-    const deliveryTime = moment().startOf('hour').format('hh:mm').toString();
+    const deliveryDate = nextDay.clone();
+    const deliveryTime = startOfHour.toString();
     this.setState({
       ...cloneDeep(INITIAL_STATE),
       deliveryDate,
@@ -50,12 +55,12 @@ class DeliveryStore extends Reflux.Store {
 
   onDateChange(deliveryDate) {
     const parsed = parseDeliveryTime(this.state.deliveryTime, deliveryDate);
-    this.setState({deliveryDate, parsedDeliveryTime: parsed});
+    this.setState({deliveryDate, parsedDeliveryTime: parsed, setDate: true});
   }
 
   onTimeChange(deliveryTime) {
     const parsed = parseDeliveryTime(deliveryTime, this.state.deliveryDate);
-    this.setState({deliveryTime, parsedDeliveryTime: parsed});
+    this.setState({deliveryTime, parsedDeliveryTime: parsed, setTime: true});
   }
 
   onAddressChange(deliveryAddress) {

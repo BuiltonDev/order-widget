@@ -15,10 +15,11 @@ class DeliveryDetails extends Reflux.Component {
     super(props);
 
     this.store = DeliveryStore;
-    this.storeKeys = ['deliveryAdditional'];
+    this.storeKeys = ['deliveryAdditional', 'setDate', 'setTime'];
   }
 
   render() {
+    const {deliveryAdditional, setDate, setTime} = this.state;
     return (
       <div className="delivery-details">
         <Header showBackNav={true}>
@@ -34,11 +35,11 @@ class DeliveryDetails extends Reflux.Component {
               <p>{T.translate('deliveryDetails.timeDetails')}</p>
               <TimePickerWrapper />
               <p>{T.translate('deliveryDetails.additionalDetails')}</p>
-              <textarea className="delivery-details__additional" value={this.state.deliveryAdditional} onChange={(evt) => Actions.onAdditionalDetailsChange(evt.target.value)} maxLength="250"/>
+              <textarea className="delivery-details__additional" value={deliveryAdditional} onChange={(evt) => Actions.onAdditionalDetailsChange(evt.target.value)} maxLength="250"/>
             </div>
           </div>
           <Footer>
-            <button className="kvass-widget__primary-button" onClick={() => Actions.onNextNavigation()}>{T.translate('global.next')}</button>          
+            <button className="kvass-widget__primary-button" disabled={!setDate || !setTime} onClick={() => Actions.onNextNavigation()}>{T.translate('global.next')}</button>
           </Footer>
         </div>
       </div>
