@@ -2,13 +2,21 @@ import React from 'react';
 import Reflux from 'reflux';
 import PropTypes from 'prop-types';
 import {Scrollbars} from 'react-custom-scrollbars';
-import Actions from 'src/reflux/Actions';
-import {ShareActor} from 'src/utils';
-import AddIcon from 'src/components/SvgIcons/AddIcon';
-import MinusIcon from 'src/components/SvgIcons/MinusIcon';
-import T from 'src/utils/i18n';
+import Actions from '../../reflux/Actions';
+import {ShareActor} from '../../utils';
+import AddIcon from '../svgIcons/addIcon';
+import MinusIcon from '../svgIcons/MinusIcon';
+import T from '../../utils/i18n';
 
 class ProductList extends Reflux.Component {
+  static renderEmptyResults() {
+    return (
+      <div className="product-list--empty">
+        <p>{T.translate('product.noResults')}</p>
+      </div>
+    );
+  }
+
   constructor(props) {
     super(props);
     this.endpoint = ShareActor().endpoint;
@@ -21,10 +29,10 @@ class ProductList extends Reflux.Component {
     this.animate = this.animate.bind(this);
   }
 
-  renderProductImg(image_url) {
-    if (!image_url) return;
+  renderProductImg(imageUrl) {
+    if (!imageUrl) return;
     return (
-      <img src={`${this.endpoint}images/${image_url}?api_key=${this.apiKey}`} alt="product image"/>
+      <img src={`${this.endpoint}images/${imageUrl}?api_key=${this.apiKey}`} alt="product image"/>
     );
   }
 
@@ -53,29 +61,30 @@ class ProductList extends Reflux.Component {
     this.index += 1;
   }
 
-  render() {
-    const {productList} = this.props;
-    if (!productList.length) return (
-      <div className="product-list--empty">
-        <p>{T.translate('product.noResults')}</p>
-      </div>
-    );
+  renderChildrenItems(productList) {
+    return productList.map(product =>
+      <li className="product-list-item" key={product._id.$oid}>
+        <div className="product-list-item__img">
+          {this.renderProductImg(product.image_url)}
+        </div>
+        <span className="product-list-item__name">
+          {product.name}
+        </span>
+        <div className="product-list-item__toolbar">
+          <a href="#" onClick={() => Actions.onRemoveProduct(product)}>
+            <MinusIcon className="svg-icon--red" />
+          </a>
+          <a href="#" onClick={() => Actions.onAddProduct(product)}>
+            <AddIcon className="svg-icon--green" />
+          </a>
+        </div>
+      </li>);
+  }
 
-    const children = productList.map((product) => {
-      return (
-        <li className="product-list-item" key={product._id.$oid}>
-          <div className="product-list-item__img">
-            {this.renderProductImg(product.image_url)}
-          </div>
-          <span className="product-list-item__name">{product.name}</span>
-          <div className="product-list-item__toolbar">
-            <a href="#" onClick={() => Actions.onRemoveProduct(product)}><MinusIcon className="svg-icon--red"></MinusIcon></a>
-            <a href="#" onClick={() => Actions.onAddProduct(product)}><AddIcon className="svg-icon--green"></AddIcon></a>
-          </div>
-        </li>
-      );
-    });
-    
+  render() {
+    const { productList } = this.props;
+    if (!productList.length) return this.constructor.renderEmptyResults();
+
     if (!this.props.isLoading) {
       this.items = document.getElementsByClassName('product-list-item');
       this.index = 0;
@@ -84,7 +93,7 @@ class ProductList extends Reflux.Component {
     return (
       <Scrollbars style={{ height: 500 }}>
         <ul>
-          {children}
+          {this.renderChildrenItems(productList)}
         </ul>
       </Scrollbars>
     );
@@ -92,11 +101,12 @@ class ProductList extends Reflux.Component {
 }
 
 ProductList.defaultProps = {
-  productList: []
+  isLoading: false
 };
 
 ProductList.propTypes = {
-  productList: PropTypes.array.isRequired
+  productList: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default ProductList;
