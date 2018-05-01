@@ -15,8 +15,10 @@
   }
 }
 .svg-icon--primary {
-  fill: $primary-color;
+  fill: white;
+  @include transition(all 450ms);
   &:hover {
-    fill: $primary-color-focus
+    @include transition(all 450ms);
+    fill: whitesmoke
   }
 }

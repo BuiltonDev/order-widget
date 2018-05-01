@@ -28,7 +28,6 @@
   .kvass-widget__container {
     display: block;
     position: relative;
-    background-color: $primary-background-color;
     opacity: 1;
     width: $widget-width;
     margin: 0 auto;
@@ -57,7 +56,7 @@
 
 .kvass-widget__content-header {
   height: $header-height;
-  background-color: $secondary-background-color;
+  background-color: $primary-color;
   box-shadow: 0 5px 15px rgba(0,0,0,.033);
   text-align: center;
 
@@ -116,7 +115,7 @@
 }
 
 .kvass-widget__input {
-  @include primary-input(36px, 100%);
+  @include primary-input(36px, 100%, $secondary-color, 12px);
 }
 
 .kvass-widget__input-container {
