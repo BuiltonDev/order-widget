@@ -1,6 +1,8 @@
-node_modules
-dist
-test/config.js
 .DS_Store
 .idea/
+.nvmrc
+
+node_modules
+dist
+
 npm-debug.log

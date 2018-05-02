@@ -12,8 +12,8 @@
     "type": "git",
     "url": "git+https://github.com/shareactorIO/kvass-ordering-widget.git"
   },
-  "author": "Sofien Rakke Lazreg",
-  "license": "ISC",
+  "author": "Sofien Rakke Lazreg <sofien@kvass.ai>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/shareactorIO/kvass-ordering-widget/issues"
   },
