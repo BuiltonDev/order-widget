@@ -34,7 +34,7 @@ Add the required script dependencies in your header, and remember to add your [G
 <head>
 	<script src="https://js.stripe.com/v3/" async></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
-  <script src="https://unpkg.com/@shareactor/kvass-ordering-widget@latest/dist/kvass.bundle.js"></script>
+	<script src="https://unpkg.com/@shareactor/kvass-ordering-widget@latest/dist/kvass.bundle.js"></script>
 </head>
 ```
 
