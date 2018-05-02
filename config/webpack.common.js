@@ -7,7 +7,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
     alias: {
-      '@shareactor/shareactor-sdk/src/main' : path.resolve(__dirname, '../node_modules/@shareactor/shareactor-sdk/dist/main.bundle.js'),
+      '@shareactor/shareactor-sdk' : path.resolve(__dirname, '../node_modules/@shareactor/shareactor-sdk/src/main.js'),
       'src': path.resolve(__dirname, '../src')
     }
   },

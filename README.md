@@ -1,4 +1,4 @@
-![Kvass logo](https://cdn.rawgit.com/lazreg87/1e978ad79b838ee7fe01db98d6ec247b/raw/08f8500b7aaf217a5a7244db78b252dbb519b4fb/kvass_logo.svg)
+![Kvass logo](https://cdn.rawgit.com/lazreg87/1e978ad79b838ee7fe01db98d6ec247b/raw/d1bbcc97192562cd4797b4f42c408c5badcb7e78/kvass_logo.svg)
 
 # Kvass Ordering Widget
 [Kvass](https://kvass.ai) offers a platform as a service that digitizes core business functions and optimizes resource allocation with baked-in machine learning capabilities.
@@ -34,7 +34,7 @@ Add the required script dependencies in your header, and remember to add your [G
 <head>
 	<script src="https://js.stripe.com/v3/" async></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
-  <script src="https://unpkg.com/@shareactor/kvass-ordering-widget@latest/dist/kvass.bundle.js"></script>
+	<script src="https://unpkg.com/@shareactor/kvass-ordering-widget@latest/dist/kvass.bundle.js"></script>
 </head>
 ```
 
