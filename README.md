@@ -1,4 +1,4 @@
-![Kvass logo](./KVASS_logo.svg)
+![Kvass logo](https://cdn.rawgit.com/lazreg87/1e978ad79b838ee7fe01db98d6ec247b/raw/08f8500b7aaf217a5a7244db78b252dbb519b4fb/kvass_logo.svg)
 
 # Kvass Ordering Widget
 [Kvass](https://kvass.ai) offers a platform as a service that digitizes core business functions and optimizes resource allocation with baked-in machine learning capabilities.
