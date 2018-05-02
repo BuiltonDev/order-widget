@@ -6,7 +6,7 @@ import Footer from 'src/components/Footer';
 import Spinner from 'src/components/Spinner';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
-import {ShareActor} from 'src/utils';
+import ShareActor from '@shareactor/shareactor-sdk';
 import UserStore from 'src/reflux/UserStore';
 import ProductStore from 'src/reflux/ProductStore';
 import DeliveryStore from 'src/reflux/DeliveryStore';
@@ -26,7 +26,7 @@ class ConfirmOrder extends Reflux.Component {
       processedOrder: false
     };
 
-    this.sa = ShareActor();
+    this.sa = new ShareActor();
     this.createOrder = this.createOrder.bind(this);
   }
 

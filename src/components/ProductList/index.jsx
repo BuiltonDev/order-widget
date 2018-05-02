@@ -3,7 +3,7 @@ import Reflux from 'reflux';
 import PropTypes from 'prop-types';
 import {Scrollbars} from 'react-custom-scrollbars';
 import Actions from 'src/reflux/Actions';
-import {ShareActor} from 'src/utils';
+import ShareActor from '@shareactor/shareactor-sdk';
 import AddIcon from 'src/components/SvgIcons/AddIcon';
 import MinusIcon from 'src/components/SvgIcons/MinusIcon';
 import T from 'src/utils/i18n';
@@ -11,14 +11,13 @@ import T from 'src/utils/i18n';
 class ProductList extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.endpoint = ShareActor().endpoint;
-    this.apiKey = ShareActor().apiKey;
+    this.sa = new ShareActor();
   }
 
   renderProductImg(image_url) {
     if (!image_url) return;
     return (
-      <img src={`${this.endpoint}images/${image_url}?api_key=${this.apiKey}`} alt="product image"/>
+      <img src={`${this.sa.endpoint}images/${image_url}?api_key=${this.sa.apiKey}`} alt="product image"/>
     );
   }
 

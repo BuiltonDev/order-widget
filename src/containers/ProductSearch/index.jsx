@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {DebounceInput} from 'react-debounce-input';
 import T from 'src/utils/i18n';
-import {ShareActor} from 'src/utils';
+import ShareActor from '@shareactor/shareactor-sdk';
 import Actions from 'src/reflux/Actions';
 import Spinner from 'src/components/Spinner';
 import Header from 'src/components/Header';
@@ -23,7 +23,7 @@ class ProductSearch extends Component {
       size: 9,
       total: 0
     };
-    this.sa = ShareActor();
+    this.sa = new ShareActor();
   }
 
   searchProduct(search) {

@@ -9,7 +9,7 @@ import UserIcon from 'src/components/SvgIcons/UserIcon';
 import UserStore from 'src/reflux/UserStore';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
-import {ShareActor} from 'src/utils';
+import ShareActor from '@shareactor/shareactor-sdk';
 
 class UserDetails extends Reflux.Component {
   constructor(props) {

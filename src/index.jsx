@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ShareActor from '@shareactor/shareactor-sdk';
 import App from './App';
 import T from './utils/i18n';
+import Config from './utils/Config';
 import '../src/styles/index.scss';
 
 let a;
@@ -11,10 +12,10 @@ let el;
 
 export const init = ({domElementId, apiKey, endpoint, lng = 'no', firebaseConfig, stripeApiKey}) => {
   // eslint-disable-next-line no-undef
-  window.ShareActor = new ShareActor({apiKey, endpoint});
-  window.StripeApiKey = stripeApiKey;
-  window.FirebaseConfig = firebaseConfig;
+  new ShareActor({apiKey, endpoint});
+  new Config(firebaseConfig, stripeApiKey);
   T.setLanguage(lng);
+
   el = document.getElementById(domElementId);
   a = apiKey;
   e = endpoint;
