@@ -49,7 +49,7 @@
     "@shareactor/shareactor-sdk": "0.3.1",
     "classnames": "2.2.5",
     "eslint-import-resolver-webpack": "0.9.0",
-    "firebase": "^4.12.1",
+    "firebase": "4.12.1",
     "i18n-react": "0.6.4",
     "lodash.clonedeep": "4.5.0",
     "moment": "2.22.0",
