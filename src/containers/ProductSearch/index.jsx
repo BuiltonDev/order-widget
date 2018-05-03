@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {DebounceInput} from 'react-debounce-input';
 import T from 'src/utils/i18n';
-import {ShareActor} from 'src/utils';
+import ShareActor from '@shareactor/shareactor-sdk';
 import Actions from 'src/reflux/Actions';
 import Spinner from 'src/components/Spinner';
 import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
 import ProductList from 'src/components/ProductList';
 import ShoppingCart from 'src/components/ShoppingCart';
 
@@ -22,7 +23,7 @@ class ProductSearch extends Component {
       size: 9,
       total: 0
     };
-    this.sa = ShareActor();
+    this.sa = new ShareActor();
   }
 
   searchProduct(search) {
@@ -76,9 +77,9 @@ class ProductSearch extends Component {
           <div className="product-list">
             {search ? <ProductList isLoading={this.state.isLoading} productList={productSearchList}></ProductList> : this.renderEmptyBody()}
           </div>
-          <div className="kvass-widget__content-footer">
+          <Footer>
             <ShoppingCart></ShoppingCart>
-          </div>
+          </Footer>
         </div>
       </div>
     );

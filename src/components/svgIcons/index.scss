@@ -22,3 +22,18 @@
     fill: whitesmoke
   }
 }
+
+.svg-icon--secondary {
+  fill: $secondary-background-color;
+  &:hover {
+    fill: $primary-color-focus
+  }
+}
+
+.svg-icon--disabled {
+  cursor: default;
+  fill: #d0d0d0;
+  &:hover {
+    fill: #d0d0d0;
+  }
+}

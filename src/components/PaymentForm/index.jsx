@@ -4,7 +4,7 @@ import {CardElement, injectStripe} from 'react-stripe-elements';
 import T from 'src/utils/i18n';
 import Actions from 'src/reflux/Actions';
 import PaymentStore from 'src/reflux/PaymentStore';
-import {ShareActor} from 'src/utils';
+import ShareActor from '@shareactor/shareactor-sdk';
 
 class PaymentForm extends Reflux.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class PaymentForm extends Reflux.Component {
       const paymentMethodPayload = {payment_method: 'stripe', token: payload.token.id};
       this.sa.paymentMethod().create({body: paymentMethodPayload}, (err, paymentMethod, raw) => {
         if (err) {
-          this.onError(err);
+          Actions.onMessage({isError: true});
           return;
         }
 

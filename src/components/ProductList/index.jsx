@@ -1,12 +1,13 @@
 import React from 'react';
 import Reflux from 'reflux';
 import PropTypes from 'prop-types';
+import ShareActor from '@shareactor/shareactor-sdk';
 import {Scrollbars} from 'react-custom-scrollbars';
 import Actions from '../../reflux/Actions';
-import {ShareActor} from '../../utils';
 import AddIcon from '../svgIcons/addIcon';
 import MinusIcon from '../svgIcons/MinusIcon';
 import T from '../../utils/i18n';
+
 
 class ProductList extends Reflux.Component {
   static renderEmptyResults() {
@@ -27,12 +28,13 @@ class ProductList extends Reflux.Component {
     this.delay = 50;
 
     this.animate = this.animate.bind(this);
+    this.sa = new ShareActor();
   }
 
   renderProductImg(imageUrl) {
     if (!imageUrl) return;
     return (
-      <img src={`${this.endpoint}images/${imageUrl}?api_key=${this.apiKey}`} alt="product image"/>
+      <img src={`${this.sa.endpoint}images/${image_url}?api_key=${this.sa.apiKey}`} alt="product image"/>
     );
   }
 

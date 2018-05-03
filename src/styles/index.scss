@@ -13,6 +13,10 @@
   height: 100%;
   right: 0;
 
+  p {
+    margin: 12px 0;
+  }
+
   .kvass-widget__overlay {
     background: radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
     position: fixed;
@@ -28,6 +32,7 @@
   .kvass-widget__container {
     display: block;
     position: relative;
+    background-color: $primary-background-color;
     opacity: 1;
     width: $widget-width;
     margin: 0 auto;
@@ -54,40 +59,11 @@
   position: relative;
 }
 
-.kvass-widget__content-header {
-  height: $header-height;
-  background-color: $primary-color;
-  box-shadow: 0 5px 15px rgba(0,0,0,.033);
-  text-align: center;
-
-  .previous-navigation {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 5px 0 0 5px;
-  }
-
-  .close-widget {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 5px 5px 0 0
-  }
-
-  .header-title {
-    font-size: 32px;
-    display: inline-block;
-    padding: $default-padding;
-  }
-}
-
-.kvass-widget__content-footer {
-  height: $footer-height;
-  text-align: center;
-
-  .footer-content {
-    padding: $default-padding;
-  }
+.close-widget-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 5px 0 0
 }
 
 /* Global classes*/
@@ -111,11 +87,14 @@
     outline: none;
     cursor: default;
     background-color: #d0d0d0;
+    &:hover {
+      border: none;
+    }
   }
 }
 
 .kvass-widget__input {
-  @include primary-input(36px, 100%, $secondary-color, 12px);
+  @include primary-input(36px, 100%);
 }
 
 .kvass-widget__input-container {
@@ -133,6 +112,10 @@
 @import '../containers/ConfirmOrder/index';
 @import '../containers/Receipt/index';
 
+
+@import '../components/Header/index';
+@import '../components/Footer/index';
+@import '../components/Notification/index';
 @import '../components/Spinner/index';
 @import '../components/SvgIcons/index';
 @import '../components/ShoppingCart/index';

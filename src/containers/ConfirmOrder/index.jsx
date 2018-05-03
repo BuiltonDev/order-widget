@@ -1,40 +1,39 @@
 import React from 'react';
 import Reflux from 'reflux';
+import moment from 'moment';
 import Header from 'src/components/Header';
+import Footer from 'src/components/Footer';
 import Spinner from 'src/components/Spinner';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
-import {ShareActor} from 'src/utils';
+import ShareActor from '@shareactor/shareactor-sdk';
+import UserStore from 'src/reflux/UserStore';
 import ProductStore from 'src/reflux/ProductStore';
 import DeliveryStore from 'src/reflux/DeliveryStore';
 import PaymentStore from 'src/reflux/PaymentStore';
+import EditIcon from 'src/components/SvgIcons/EditIcon';
+import parseCreditCard from 'src/utils/parseCreditCard';
 
 class ConfirmOrder extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.stores = [ProductStore, DeliveryStore, PaymentStore];
-    this.storeKeys = ['products', 'deliveryDate', 'deliveryTime', 'parsedDeliveryAddress', 'deliveryGeo', 'deliveryAdditional', 'selectedPaymentMethod'];
+    this.stores = [UserStore, ProductStore, DeliveryStore, PaymentStore];
+    this.storeKeys = ['firstName', 'lastName', 'phoneNumber', 'products', 'totalCount', 'totalSum', 'parsedDeliveryTime',
+    'parsedDeliveryAddress', 'deliveryAddress', 'deliveryGeo', 'deliveryAdditional', 'selectedPaymentMethod'];
+
     this.state = {
       isLoading: false,
       processedOrder: false
     };
 
-    this.sa = ShareActor();
+    this.sa = new ShareActor();
     this.createOrder = this.createOrder.bind(this);
-    this.onError = this.onError.bind(this);
   }
 
-  onError(error) {
-    console.log(error);
-    this.setState({isLoading: false});
-  }
-
-  // POST /payment_method {payment_method: 'stripe', token: stripeToken}
   // POST /order {items: [{...product, quantity}], payment_method: payment_method_id}
   // POST /order/{ID}/pay {}
   createOrder() {
     this.setState({isLoading: true});
-    const [hours, minutes] = this.state.deliveryTime.split(':');
     let productItems = [];
     let currency;
 
@@ -48,12 +47,12 @@ class ConfirmOrder extends Reflux.Component {
       currency, // TODO better way here. We need a way of setting one global currency used for this order
       items: productItems,
       delivery_address: {...this.state.parsedDeliveryAddress, geo: this.state.deliveryGeo},
-      delivery_time: this.state.deliveryDate.set({'hour': hours, 'minute': minutes, 'seconds': 0}).unix()
+      delivery_time: this.state.parsedDeliveryTime.unix()
     };
 
     this.sa.order().create({body: orderPayload}, (err, Order, raw) => {
       if (err) {
-        this.onError(err);
+        Actions.onMessage({isError: true});
         return;
       }
 
@@ -64,7 +63,7 @@ class ConfirmOrder extends Reflux.Component {
 
       this.sa.payment().create({body: paymentPayload}, (err, PayOrder, raw) => {
         if (err) {
-          this.onError(err);
+          Actions.onMessage({isError: true});
           return;
         }
 
@@ -75,25 +74,63 @@ class ConfirmOrder extends Reflux.Component {
   }
 
   render() {
+    const {
+      firstName = '', lastName = '', phoneNumber = '', totalCount = '', totalSum = '', parsedDeliveryTime = '',
+      deliveryAddress = '', deliveryAdditional = '', selectedPaymentMethod = ''} = this.state;
+
+      let deliveryTimeFormatted = moment.isMoment(parsedDeliveryTime) ? parsedDeliveryTime.format('LLL') : '';
     return (
-      <div className="delivery-details">
+      <div className="confirm-order">
         <Header showBackNav={true}>
-          <span className="header-title">{T.translate('deliveryDetails.header')}</span>
+          <span className="header-title">{T.translate('confirm.header')}</span>
         </Header>
         <div className="kvass-widget__content-body">
           <Spinner show={this.state.isLoading}></Spinner>
           <div className="content">
-            <div className="padding-container">
-              Confirm Order (temp page)
-              {' '}
-              {this.state.processedOrder ? 'SUCCESS' : 'PENDING'}
+            <div className="step-list">
+                <div className="step">
+                  <p className="step__label">{T.translate('basket.header')}</p>
+                  <div onClick={() => Actions.onNavigateTo(1)} className="step__items">
+                    <span>{totalCount}x {T.translate('confirm.products')}</span>
+                    <span>{T.translate('confirm.totalPrice')} {totalSum}</span>
+                    <EditIcon className="svg-icon--primary edit" />
+                  </div>
+                </div>
+
+                <div className="step">
+                  <p className="step__label">{T.translate('userDetails.header')}</p>
+                  <div onClick={() => Actions.onNavigateTo(2)} className="step__items">
+                    <span>{firstName} {lastName}</span>
+                    <span>{phoneNumber}</span>
+                    <EditIcon className="svg-icon--primary edit" />
+                  </div>
+                </div>
+
+                <div className="step">
+                  <p className="step__label">{T.translate('deliveryDetails.header')}</p>
+                  <div onClick={() => Actions.onNavigateTo(3)} className="step__items">
+                    <span>{deliveryAddress}</span>
+                    <span>{deliveryTimeFormatted.toString()}</span>
+                    <span>{deliveryAdditional ? T.translate('confirm.note') : ''}</span>
+                    <span>{deliveryAdditional}</span>
+                    <EditIcon className="svg-icon--primary edit" />
+                  </div>
+                </div>
+
+                <div className="step">
+                  <p className="step__label">{T.translate('paymentDetails.header')}</p>
+                  <div onClick={() => Actions.onNavigateTo(4)} className="step__items">
+                    <span>{parseCreditCard(selectedPaymentMethod.card)}</span>
+                    <EditIcon className="svg-icon--primary edit" />
+                  </div>
+                </div>
+
+                <span className="step-list__note">{T.translate('confirm.editNote')}</span>
             </div>
           </div>
-          <div className="kvass-widget__content-footer">
-            <div className="footer-content">
-              <button className="kvass-widget__primary-button" onClick={this.createOrder}>{T.translate('global.confirm')}</button>
-            </div>
-          </div>
+          <Footer>
+            <button className="kvass-widget__primary-button" onClick={this.createOrder}>{T.translate('global.confirm')}</button>
+          </Footer>
         </div>
       </div>
     );

@@ -4,17 +4,25 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import firebase from 'firebase';
 import 'react-dates/initialize';
-import {FirebaseConfig} from 'src/utils';
-import NavigationStore from './reflux/NavigationStore';
+import Config from 'src/utils/Config';
+import NavigationStore from 'src/reflux/NavigationStore';
+import Actions from 'src/reflux/Actions';
 
 
 class App extends Reflux.Component {
   constructor(props) {
     super(props);
     this.store = NavigationStore;
+    this.config = Config();
 
-    firebase.initializeApp(FirebaseConfig());
-    firebase.auth().useDeviceLanguage();
+    if (!firebase.apps.length) {
+      firebase.initializeApp(this.config.firebaseConfig);
+      firebase.auth().useDeviceLanguage();
+    }
+  }
+
+  componentWillUnmount() {
+    Actions.onGlobalReset();
   }
 
   renderCurrentNav() {

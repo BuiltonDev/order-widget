@@ -12,7 +12,8 @@ T.setLanguage = (lng) => {
         next: 'Neste',
         last: 'Avslutt',
         select: 'Velg',
-        confirm: 'Bekreft'
+        confirm: 'Bekreft',
+        defaultError: 'Noe gikk galt. Vennligst prøv igjen'
       },
       product: {
         search: 'Søk',
@@ -50,10 +51,23 @@ T.setLanguage = (lng) => {
         cardDetails: 'Fyll inn betalingsdetaljer',
         addNewCard: 'Legg til',
         usePrevious: 'Bruk tidligere betalingsmetode',
-        useNew: 'Legg til ny'
+        useNew: 'Legg til betalingsmetode'
+      },
+      confirm: {
+        header: 'Bekreft',
+        products: 'Produkter',
+        totalPrice: 'Total pris',
+        note: 'Info',
+        editNote: 'Klikk på elementene om du vil redigere noe før orderbekrefelse'
       },
       receipt: {
-        header: 'Kvittering'
+        header: 'Kvittering',
+        nameLabel: 'Navn',
+        phoneNumberLabel: 'Tlf',
+        productsLabel: 'Produkter',
+        priceLabel: 'Total pris',
+        deliveryLabel: 'Levering',
+        deliveryAddLabel: 'Tilleggsinformasjon'
       }
     });
   } else { // fallback english
@@ -62,7 +76,8 @@ T.setLanguage = (lng) => {
         next: 'Next',
         last: 'Complete',
         select: 'Select',
-        confirm: 'Confirm'
+        confirm: 'Confirm',
+        defaultError: 'Something went wrong. Please try again'
       },
       product: {
         search: 'Search',
@@ -100,10 +115,23 @@ T.setLanguage = (lng) => {
         cardDetails: 'Fill in card details',
         addNewCard: 'Add',
         usePrevious: 'Use previous payment method',
-        useNew: 'Add new one'
+        useNew: 'Add payment method'
+      },
+      confirm: {
+        header: 'Confirm',
+        products: 'Products',
+        totalPrice: 'Total price',
+        note: 'Note',
+        editNote: 'Click on items to edit details if needed before confirming order'
       },
       receipt: {
-        header: 'Receipt'
+        header: 'Receipt',
+        nameLabel: 'Name',
+        phoneNumberLabel: 'Phone number',
+        productsLabel: 'Product(s)',
+        priceLabel: 'Total price',
+        deliveryLabel: 'Delivery',
+        deliveryAddLabel: 'Comment'
       }
     });
   }
