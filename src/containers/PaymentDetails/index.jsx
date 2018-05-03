@@ -7,17 +7,17 @@ import Spinner from 'src/components/Spinner';
 import PaymentForm from 'src/components/PaymentForm';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
-import {StripeApiKey} from 'src/utils';
+import Config from 'src/utils/Config';
 import PaymentStore from 'src/reflux/PaymentStore';
 import UserStore from 'src/reflux/UserStore';
-import {ShareActor} from 'src/utils';
+import ShareActor from '@shareactor/shareactor-sdk';
 import parseCreditCard from 'src/utils/parseCreditCard';
 
 class PaymentDetails extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.stripeApiKey = StripeApiKey();
-    this.sa = ShareActor();
+    this.config = Config();
+    this.sa = new ShareActor();
 
     this.stores = [PaymentStore, UserStore];
     this.state = {
@@ -33,11 +33,11 @@ class PaymentDetails extends Reflux.Component {
 
   componentDidMount() {
     if (window.Stripe) {
-      this.setState({stripe: this.stripeApiKey});
+      this.setState({stripe: this.config.stripeConfig});
     } else {
       document.querySelector('#stripe-js').addEventListener('load', () => {
         // Create Stripe instance once Stripe.js loads
-        this.setState({stripe: this.stripeApiKey});
+        this.setState({stripe: this.config.stripeConfig});
       });
     }
 
@@ -106,7 +106,7 @@ class PaymentDetails extends Reflux.Component {
             <div className="padding-container">
               {this.renderPaymentMethodList()}
               <p>{T.translate('paymentDetails.useNew')}</p>
-              <StripeProvider apiKey={this.stripeApiKey}>
+              <StripeProvider apiKey={this.config.stripeConfig}>
                 <Elements>
                   <PaymentForm />
                 </Elements>

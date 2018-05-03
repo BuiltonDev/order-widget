@@ -4,7 +4,7 @@ import {CardElement, injectStripe} from 'react-stripe-elements';
 import T from 'src/utils/i18n';
 import Actions from 'src/reflux/Actions';
 import PaymentStore from 'src/reflux/PaymentStore';
-import {ShareActor} from 'src/utils';
+import ShareActor from '@shareactor/shareactor-sdk';
 
 class PaymentForm extends Reflux.Component {
   constructor(props) {
