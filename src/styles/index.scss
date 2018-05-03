@@ -44,6 +44,18 @@
 
     box-shadow: 0 0 20px 1px #111118;
   }
+
+  .kvass-widget_powered-by {
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    @include translate(-50%, -50%);
+
+    .svg-icon--powered-by {
+      width: 75px;
+      height: auto;
+    }
+  }
 }
 
 .kvass-widget--close {

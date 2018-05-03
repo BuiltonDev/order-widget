@@ -7,7 +7,8 @@ import 'react-dates/initialize';
 import {FirebaseConfig} from 'src/utils';
 import NavigationStore from 'src/reflux/NavigationStore';
 import Actions from 'src/reflux/Actions';
-
+import KvassIcon from 'src/components/SvgIcons/KvassIcon'
+import T from 'src/utils/i18n';
 
 class App extends Reflux.Component {
   constructor(props) {
@@ -41,6 +42,10 @@ class App extends Reflux.Component {
         <div className="kvass-widget__overlay"></div>
           <div className="kvass-widget__container">
             {this.renderCurrentNav()}
+            <div className="kvass-widget_powered-by">
+              <span>{T.translate('global.poweredBy')}</span>{' '}
+              <KvassIcon className="svg-icon--powered-by"></KvassIcon>
+            </div>
           </div>
       </div>
     );

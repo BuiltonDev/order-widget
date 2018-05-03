@@ -13,7 +13,8 @@ T.setLanguage = (lng) => {
         last: 'Avslutt',
         select: 'Velg',
         confirm: 'Bekreft',
-        defaultError: 'Noe gikk galt. Vennligst prøv igjen'
+        defaultError: 'Noe gikk galt. Vennligst prøv igjen',
+        poweredBy: 'Powered by'
       },
       product: {
         search: 'Søk',
@@ -77,7 +78,8 @@ T.setLanguage = (lng) => {
         last: 'Complete',
         select: 'Select',
         confirm: 'Confirm',
-        defaultError: 'Something went wrong. Please try again'
+        defaultError: 'Something went wrong. Please try again',
+        poweredBy: 'Powered By'
       },
       product: {
         search: 'Search',
