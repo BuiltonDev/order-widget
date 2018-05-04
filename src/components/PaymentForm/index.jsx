@@ -45,8 +45,8 @@ class PaymentForm extends Reflux.Component {
 }
 
 PaymentForm.propTypes = {
-  stripe: PropTypes.object,
-  onStripePaymentAdded: PropTypes.func
+  stripe: PropTypes.object.isRequired,
+  onStripePaymentAdded: PropTypes.func.isRequired
 };
 
 // Use Higher-Order Component (HOC)
