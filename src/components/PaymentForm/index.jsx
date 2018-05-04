@@ -1,5 +1,6 @@
 import React from 'react'
 import Reflux from 'reflux'
+import PropTypes from 'prop-types';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import T from 'src/utils/i18n';
 import Actions from 'src/reflux/Actions';
@@ -16,17 +17,19 @@ class PaymentForm extends Reflux.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    this.props.onStripePaymentAdded({isLoading: true});
     this.props.stripe.createToken().then(payload => {
       const paymentMethodPayload = {payment_method: 'stripe', token: payload.token.id};
-      this.sa.paymentMethod().create({body: paymentMethodPayload}, (err, paymentMethod, raw) => {
+      this.sa.paymentMethod().create({body: paymentMethodPayload}, (err, PaymentMethod, raw) => {
+        this.props.onStripePaymentAdded({isLoading: false});
+
         if (err) {
           Actions.onMessage({isError: true});
           return;
         }
-        
-        this.setState({isLoading: false});
 
-        Actions.onSelectPaymentMethod(paymentMethod);
+        Actions.onSelectPaymentMethod(PaymentMethod);
+        Actions.onAddUserPaymentMethods([PaymentMethod]);
       });
     });
   }
@@ -40,5 +43,11 @@ class PaymentForm extends Reflux.Component {
     );
   }
 }
+
+PaymentForm.propTypes = {
+  stripe: PropTypes.object,
+  onStripePaymentAdded: PropTypes.func
+};
+
 // Use Higher-Order Component (HOC)
 export default injectStripe(PaymentForm);
