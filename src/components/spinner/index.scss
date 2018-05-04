@@ -4,7 +4,6 @@
   position: absolute;
   z-index: 10000;
   width: 100%;
-  //min-height: $content-min-height;
   top: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.08);
@@ -13,7 +12,7 @@
 .spinner-container--hidden {
   display: none;
 }
-
+/* https://github.com/lukehaas/css-loaders */
 .loader,
 .loader:before,
 .loader:after {
