@@ -50,18 +50,3 @@
 .time_picker_modal_header, .time_picker_modal_footer, .timezone_picker_modal_header, .picker_pointer .pointer_drag, .picker_center, .picker_pointer {
   background-color: $primary-color;
 }
-
-/* Only valid when using react-times material css
-.time_picker_container {
-  position: relative;
-  display: flex;
-  .picker_container {
-    margin: 20px;
-  }
-  .time_picker_modal_header {
-    margin: 0;
-  }
-}
-*/
-
-@import '~react-times/css/classic/default.css';

@@ -23,7 +23,7 @@ class PaymentForm extends Reflux.Component {
           Actions.onMessage({isError: true});
           return;
         }
-
+        
         this.setState({isLoading: false});
 
         Actions.onSelectPaymentMethod(paymentMethod);

@@ -75,7 +75,7 @@ T.setLanguage = (lng) => {
     T.setTexts({
       global: {
         next: 'Next',
-        last: 'Complete',
+        last: 'Done',
         select: 'Select',
         confirm: 'Confirm',
         defaultError: 'Something went wrong. Please try again',

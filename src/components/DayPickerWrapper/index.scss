@@ -1,8 +1,8 @@
 @import '../../styles/_global';
 @import '../../styles/_mixins';
 
-/* react-dates override */
 
+/* react-dates override */
 .SingleDatePickerInput .DateInput_input {
   @include primary-input(36px, 100%);
 }
@@ -15,5 +15,3 @@
 .DayPickerKeyboardShortcuts_show__bottomRight, .DayPickerKeyboardShortcuts_show__bottomRight:hover {
   border-right: 33px solid $primary-color;
 }
-
-@import '~react-dates/lib/css/_datepicker.css';
