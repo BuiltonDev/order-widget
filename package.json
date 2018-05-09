@@ -7,7 +7,7 @@
     "start": "./node_modules/.bin/webpack-dev-server --open --config ./config/webpack.development.js",
     "build": "./node_modules/.bin/webpack --config ./config/webpack.production.js",
     "lint": "eslint src/**",
-    "release": "npm run build && release-it"
+    "release": "release-it"
   },
   "repository": {
     "type": "git",
@@ -67,5 +67,5 @@
     "react-stripe-elements": "1.6.0",
     "reflux": "6.4.1"
   },
-  "browser": "./dist/main.bundle.js"
+  "browser": "./dist/kvass.bundle.js"
 }
