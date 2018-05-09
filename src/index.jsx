@@ -1,10 +1,10 @@
+import './styles/index.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ShareActor from '@shareactor/shareactor-sdk';
 import App from './App';
 import T from './utils/i18n';
 import Config from './utils/Config';
-import '../src/styles/index.scss';
 
 let a;
 let e;

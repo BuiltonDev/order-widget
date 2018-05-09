@@ -7,7 +7,8 @@
           "browsers": [ "safari 10", "ie 11", "ios 9" ]
         },
         "modules": false,
-        "useBuiltIns": "usage"
+        "useBuiltIns": "usage",
+        "loose": true
       }
     ],
     ["@babel/preset-react"]

@@ -24,6 +24,7 @@ class ProductSearch extends Component {
       total: 0
     };
     this.sa = new ShareActor();
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
 
   searchProduct(search) {
@@ -35,13 +36,8 @@ class ProductSearch extends Component {
     }
 
     this.setState({isLoading: true});
-    this.sa.product().search({query: search, urlParams: {size: this.pagination.size, page: this.pagination.page}}, (error, productSearchList, res) => {
-      this.pagination.total = res.headers['x-pagination-total'];
-      this.setState({
-        isLoading: false,
-        search,
-        productSearchList
-      });
+    this.sa.product().search({query: search, urlParams: {size: this.pagination.size, page: this.pagination.page}}, (error, productListRes, res) => {
+      this.setState({isLoading: false, search, productSearchList: productListRes});
     });
   }
 

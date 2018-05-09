@@ -1,3 +1,4 @@
+import React from 'react';
 import Reflux from 'reflux';
 import moment from 'moment';
 import cloneDeep from 'lodash.clonedeep';

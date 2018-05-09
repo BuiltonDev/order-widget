@@ -5,7 +5,7 @@ module.exports = {
     kvass: path.resolve(__dirname, '../src/index.jsx')
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.scss'],
+    extensions: ['.js', '.jsx', '.scss', '.css'],
     alias: {
       '@shareactor/shareactor-sdk' : path.resolve(__dirname, '../node_modules/@shareactor/shareactor-sdk/src/main.js'),
       'src': path.resolve(__dirname, '../src')
@@ -19,7 +19,7 @@ module.exports = {
        use: ['babel-loader']
      },
      {
-       test: /\.scss/,
+       test: /\.(css|scss)/,
        use: ['style-loader', 'css-loader', 'sass-loader']
      }
    ]

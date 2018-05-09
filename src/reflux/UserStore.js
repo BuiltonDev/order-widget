@@ -1,3 +1,4 @@
+import React from 'react';
 import Reflux from 'reflux';
 import cloneDeep from 'lodash.clonedeep';
 import storage from 'src/utils/storage';

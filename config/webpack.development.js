@@ -16,7 +16,7 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(['../dist']),
     new HtmlWebpackPlugin({
       title: 'Kvass Ordering Widget',
-      template: path.resolve(__dirname, '../example/index.html')
+      template: path.resolve(__dirname, '../demo/index.html')
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()

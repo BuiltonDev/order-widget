@@ -1,8 +1,9 @@
 import React from 'react';
 import Reflux from 'reflux';
 import {DebounceInput} from 'react-debounce-input';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import FirebaseAuth from 'react-firebaseui/FirebaseAuth';
 import Header from 'src/components/Header';
 import Spinner from 'src/components/Spinner';
 import UserIcon from 'src/components/SvgIcons/UserIcon';
@@ -94,7 +95,7 @@ class UserDetails extends Reflux.Component {
 
   renderUserVerifyStep() {
     return (
-      <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
+      <FirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
     );
   }
 
