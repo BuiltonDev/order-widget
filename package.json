@@ -6,7 +6,8 @@
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --open --config ./config/webpack.development.js",
     "build": "./node_modules/.bin/webpack --config ./config/webpack.production.js",
-    "lint": "eslint src/**"
+    "lint": "eslint src/**",
+    "release": "npm run build && release-it"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "mini-css-extract-plugin": "0.4.0",
     "node-sass": "4.8.3",
     "react-times": "3.0.0",
+    "release-it": "7.4.3",
     "sass-loader": "6.0.7",
     "style-loader": "0.20.3",
     "uglifyjs-webpack-plugin": "1.2.4",
