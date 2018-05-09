@@ -4,7 +4,6 @@
   position: absolute;
   z-index: 10000;
   width: 100%;
-  //min-height: $content-min-height;
   top: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.08);
@@ -13,7 +12,7 @@
 .spinner-container--hidden {
   display: none;
 }
-
+/* https://github.com/lukehaas/css-loaders */
 .loader,
 .loader:before,
 .loader:after {
@@ -31,9 +30,7 @@
   margin: 80px auto;
   position: relative;
   text-indent: -9999em;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
+  @include transform(translateZ(0));
   -webkit-animation-delay: -0.16s;
   animation-delay: -0.16s;
 }

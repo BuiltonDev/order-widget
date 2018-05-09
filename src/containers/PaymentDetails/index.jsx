@@ -22,13 +22,13 @@ class PaymentDetails extends Reflux.Component {
     this.stores = [PaymentStore, UserStore];
     this.state = {
       isLoading: true,
-      userPaymentMethods: [],
       stripe: null // stripe instance
     };
-    this.storeKeys = ['stripeToken', 'apiUser', 'selectedPaymentMethod'];
+    this.storeKeys = ['stripeToken', 'apiUser', 'selectedPaymentMethod', 'userPaymentMethods'];
 
     this.setPaymentMethod = this.setPaymentMethod.bind(this);
     this.onPaymentMethodChange = this.onPaymentMethodChange.bind(this);
+    this.onStripePaymentAdded = this.onStripePaymentAdded.bind(this);
   }
 
   componentDidMount() {
@@ -54,8 +54,8 @@ class PaymentDetails extends Reflux.Component {
       if (defaultPaymentMethod) {
         this.setPaymentMethod(defaultPaymentMethod.$oid, PaymentMethods);
       }
-
-      this.setState({isLoading: false, userPaymentMethods: PaymentMethods});
+      Actions.onAddUserPaymentMethods(PaymentMethods);
+      this.setState({isLoading: false});
     });
 
   }
@@ -70,6 +70,10 @@ class PaymentDetails extends Reflux.Component {
 
   onPaymentMethodChange(event) {
     this.setPaymentMethod(event.target.value, this.state.userPaymentMethods);
+  }
+
+  onStripePaymentAdded({isLoading = false}) {
+    this.setState({isLoading});
   }
 
   renderPaymentMethodList() {
@@ -108,7 +112,7 @@ class PaymentDetails extends Reflux.Component {
               <p>{T.translate('paymentDetails.useNew')}</p>
               <StripeProvider apiKey={this.config.stripeConfig}>
                 <Elements>
-                  <PaymentForm />
+                  <PaymentForm onStripePaymentAdded={this.onStripePaymentAdded}/>
                 </Elements>
               </StripeProvider>
             </div>

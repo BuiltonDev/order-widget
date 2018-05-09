@@ -3,7 +3,8 @@ import cloneDeep from 'lodash.clonedeep';
 import Actions from './Actions';
 
 const INITIAL_STATE = {
-  selectedPaymentMethod: ''
+  selectedPaymentMethod: '',
+  userPaymentMethods: []
 };
 
 class PaymentStore extends Reflux.Store {
@@ -20,6 +21,10 @@ class PaymentStore extends Reflux.Store {
   onSelectPaymentMethod(selectedPaymentMethod) {
     if (!selectedPaymentMethod) return;
     this.setState({selectedPaymentMethod});
+  }
+
+  onAddUserPaymentMethods(userPaymentMethods) {
+    this.setState({userPaymentMethods});
   }
 }
 

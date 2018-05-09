@@ -1,7 +1,15 @@
-/** **/
+// Load dependencies first, so we can override
+@import '~react-dates/lib/css/_datepicker.css';
+@import '~react-times/css/classic/default.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 @import '_global';
 @import '_mixins';
+
 .kvass-widget {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+
   display: flex;
   align-items: center;
 
@@ -43,6 +51,18 @@
     //@include transition-delay(0.5s);
 
     box-shadow: 0 0 20px 1px #111118;
+  }
+
+  .kvass-widget_powered-by {
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    @include translate(-50%, -50%);
+
+    .svg-icon--powered-by {
+      width: 75px;
+      height: auto;
+    }
   }
 }
 
