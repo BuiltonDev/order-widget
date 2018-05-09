@@ -1,7 +1,8 @@
 <html>
 <head>
   <script src="https://js.stripe.com/v3/" async></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<YOUR_GOOGLE_API_KEY>=places"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf53-uXGDdH29KisPNSvsqpdRIzruI66U&libraries=places"></script>
+  <script src="https://unpkg.com/@shareactor/kvass-ordering-widget@latest/dist/kvass.bundle.js"></script>
 </head>
 
 <body>
@@ -13,14 +14,14 @@
       if (window.KvassOrdering) {
         KvassOrdering.init({
           domElementId: 'kvass-instance',
-          apiKey: <YOUR_KVASS_API_KEY>,
+          apiKey: 'EFjCY4CQWsKBVYz4xHemX9KMeckxdHTkqn20FXW2o9FKn6R_p6bnjsWdMlB0zIWs8Tfx-uNS0I0m4lZrUzmM2A==',
           endpoint: 'https://qa.shareactor.io/',
           lng: 'en',
           firebaseConfig: {
-            domain: <YOUR_FIREBASE_DOMAIN>,
-            apiKey: <YOUR_FIREBASE_APIKEY>
+            domain: 'shareactor-dashboard-qa.firebaseapp.com',
+            apiKey: 'AIzaSyC9qUU43xXbKS3_Mw1TgiRnOXcJqa754nw'
           },
-          stripeApiKey: <YOUR_STRIPE_APIKEY>
+          stripeApiKey: 'pk_test_tAYRDsnQMi1gE7IBosMWmeEn'
         });
 
         document.getElementById('openKvass').addEventListener('click', function(event) {
