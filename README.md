@@ -27,6 +27,9 @@ From [npm](https://npmjs.org)
 npm install @shareactor/kvass-ordering-widget
 ```
 
+## Demo
+Try out our [demo](https://shareactorio.github.io/kvass-ordering-widget/demo/index.html)
+
 ## Getting started
 Add the required script dependencies in your header, and remember to add your [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/) key.
 
