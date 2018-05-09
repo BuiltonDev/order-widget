@@ -1,0 +1,1672 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+.PresetDateRangePicker_panel {
+  padding: 0 22px 11px
+}
+.PresetDateRangePicker_button {
+  position: relative;
+  height: 100%;
+  text-align: center;
+  background: 0 0;
+  border: 2px solid #00a699;
+  color: #00a699;
+  padding: 4px 12px;
+  margin-right: 8px;
+  font: inherit;
+  font-weight: 700;
+  line-height: normal;
+  overflow: visible;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer
+}
+.PresetDateRangePicker_button:active {
+  outline: 0
+}
+.PresetDateRangePicker_button__selected {
+  color: #fff;
+  background: #00a699
+}
+.SingleDatePickerInput {
+  display: inline-block;
+  background-color: #fff
+}
+.SingleDatePickerInput__withBorder {
+  border: 1px solid #dbdbdb
+}
+.SingleDatePickerInput__rtl {
+  direction: rtl
+}
+.SingleDatePickerInput__disabled {
+  background-color: #f2f2f2
+}
+.SingleDatePickerInput__block {
+  display: block
+}
+.SingleDatePickerInput__showClearDate {
+  padding-right: 30px
+}
+.SingleDatePickerInput_clearDate {
+  background: 0 0;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 10px 0 5px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%)
+}
+.SingleDatePickerInput_clearDate__default:focus,
+.SingleDatePickerInput_clearDate__default:hover {
+  background: #dbdbdb;
+  border-radius: 50%
+}
+.SingleDatePickerInput_clearDate__small {
+  padding: 6px
+}
+.SingleDatePickerInput_clearDate__hide {
+  visibility: hidden
+}
+.SingleDatePickerInput_clearDate_svg {
+  fill: #82888a;
+  height: 12px;
+  width: 15px;
+  vertical-align: middle
+}
+.SingleDatePickerInput_clearDate_svg__small {
+  height: 9px
+}
+.SingleDatePickerInput_calendarIcon {
+  background: 0 0;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px;
+  margin: 0 5px 0 10px
+}
+.SingleDatePickerInput_calendarIcon_svg {
+  fill: #82888a;
+  height: 15px;
+  width: 14px;
+  vertical-align: middle
+}
+.SingleDatePicker {
+  position: relative;
+  display: inline-block
+}
+.SingleDatePicker__block {
+  display: block
+}
+.SingleDatePicker_picker {
+  z-index: 1;
+  background-color: #fff;
+  position: absolute
+}
+.SingleDatePicker_picker__rtl {
+  direction: rtl
+}
+.SingleDatePicker_picker__directionLeft {
+  left: 0
+}
+.SingleDatePicker_picker__directionRight {
+  right: 0
+}
+.SingleDatePicker_picker__portal {
+  background-color: rgba(0,0,0,.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%
+}
+.SingleDatePicker_picker__fullScreenPortal {
+  background-color: #fff
+}
+.SingleDatePicker_closeButton {
+  background: 0 0;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px;
+  z-index: 2
+}
+.SingleDatePicker_closeButton:focus,
+.SingleDatePicker_closeButton:hover {
+  color: darken(#cacccd,10%);
+  text-decoration: none
+}
+.SingleDatePicker_closeButton_svg {
+  height: 15px;
+  width: 15px;
+  fill: #cacccd
+}
+.DayPickerKeyboardShortcuts_buttonReset {
+  background: 0 0;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  cursor: pointer;
+  font-size: 14px
+}
+.DayPickerKeyboardShortcuts_buttonReset:active {
+  outline: 0
+}
+.DayPickerKeyboardShortcuts_show {
+  width: 22px;
+  position: absolute;
+  z-index: 2
+}
+.DayPickerKeyboardShortcuts_show__bottomRight {
+  border-top: 26px solid transparent;
+  border-right: 33px solid #00a699;
+  bottom: 0;
+  right: 0
+}
+.DayPickerKeyboardShortcuts_show__bottomRight:hover {
+  border-right: 33px solid #008489
+}
+.DayPickerKeyboardShortcuts_show__topRight {
+  border-bottom: 26px solid transparent;
+  border-right: 33px solid #00a699;
+  top: 0;
+  right: 0
+}
+.DayPickerKeyboardShortcuts_show__topRight:hover {
+  border-right: 33px solid #008489
+}
+.DayPickerKeyboardShortcuts_show__topLeft {
+  border-bottom: 26px solid transparent;
+  border-left: 33px solid #00a699;
+  top: 0;
+  left: 0
+}
+.DayPickerKeyboardShortcuts_show__topLeft:hover {
+  border-left: 33px solid #008489
+}
+.DayPickerKeyboardShortcuts_showSpan {
+  color: #fff;
+  position: absolute
+}
+.DayPickerKeyboardShortcuts_showSpan__bottomRight {
+  bottom: 0;
+  right: -28px
+}
+.DayPickerKeyboardShortcuts_showSpan__topRight {
+  top: 1px;
+  right: -28px
+}
+.DayPickerKeyboardShortcuts_showSpan__topLeft {
+  top: 1px;
+  left: -28px
+}
+.DayPickerKeyboardShortcuts_panel {
+  overflow: auto;
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  padding: 22px;
+  margin: 33px
+}
+.DayPickerKeyboardShortcuts_title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0
+}
+.DayPickerKeyboardShortcuts_list {
+  list-style: none;
+  padding: 0;
+  font-size: 14px
+}
+.DayPickerKeyboardShortcuts_close {
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  z-index: 2
+}
+.DayPickerKeyboardShortcuts_close:active {
+  outline: 0
+}
+.DayPickerKeyboardShortcuts_closeSvg {
+  height: 15px;
+  width: 15px;
+  fill: #cacccd
+}
+.DayPickerKeyboardShortcuts_closeSvg:focus,
+.DayPickerKeyboardShortcuts_closeSvg:hover {
+  fill: #82888a
+}
+.CalendarDay {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center
+}
+.CalendarDay:active {
+  outline: 0
+}
+.CalendarDay__defaultCursor {
+  cursor: default
+}
+.CalendarDay__default {
+  border: 1px solid #e4e7e7;
+  color: #565a5c;
+  background: #fff
+}
+.CalendarDay__default:hover {
+  background: #e4e7e7;
+  border: 1px double #e4e7e7;
+  color: inherit
+}
+.CalendarDay__hovered_offset {
+  background: #f4f5f5;
+  border: 1px double #e4e7e7;
+  color: inherit
+}
+.CalendarDay__outside {
+  border: 0;
+  background: #fff;
+  color: #565a5c
+}
+.CalendarDay__blocked_minimum_nights {
+  background: #fff;
+  border: 1px solid #eceeee;
+  color: #cacccd
+}
+.CalendarDay__blocked_minimum_nights:active,
+.CalendarDay__blocked_minimum_nights:hover {
+  background: #fff;
+  color: #cacccd
+}
+.CalendarDay__highlighted_calendar {
+  background: #ffe8bc;
+  color: #565a5c
+}
+.CalendarDay__highlighted_calendar:active,
+.CalendarDay__highlighted_calendar:hover {
+  background: #ffce71;
+  color: #565a5c
+}
+.CalendarDay__selected_span {
+  background: #66e2da;
+  border: 1px solid #33dacd;
+  color: #fff
+}
+.CalendarDay__selected_span:active,
+.CalendarDay__selected_span:hover {
+  background: #33dacd;
+  border: 1px solid #33dacd;
+  color: #fff
+}
+.CalendarDay__last_in_range {
+  border-right: #00a699
+}
+.CalendarDay__selected,
+.CalendarDay__selected:active,
+.CalendarDay__selected:hover {
+  background: #00a699;
+  border: 1px solid #00a699;
+  color: #fff
+}
+.CalendarDay__hovered_span,
+.CalendarDay__hovered_span:hover {
+  background: #b2f1ec;
+  border: 1px solid #80e8e0;
+  color: #007a87
+}
+.CalendarDay__hovered_span:active {
+  background: #80e8e0;
+  border: 1px solid #80e8e0;
+  color: #007a87
+}
+.CalendarDay__blocked_calendar,
+.CalendarDay__blocked_calendar:active,
+.CalendarDay__blocked_calendar:hover {
+  background: #cacccd;
+  border: 1px solid #cacccd;
+  color: #82888a
+}
+.CalendarDay__blocked_out_of_range,
+.CalendarDay__blocked_out_of_range:active,
+.CalendarDay__blocked_out_of_range:hover {
+  background: #fff;
+  border: 1px solid #e4e7e7;
+  color: #cacccd
+}
+.CalendarMonth {
+  background: #fff;
+  text-align: center;
+  padding: 0 13px;
+  vertical-align: top;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+.CalendarMonth_table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+.CalendarMonth_verticalSpacing {
+  border-collapse: separate
+}
+.CalendarMonth_caption {
+  color: #565a5c;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 22px;
+  padding-bottom: 37px;
+  caption-side: initial
+}
+.CalendarMonth_caption__verticalScrollable {
+  padding-top: 12px;
+  padding-bottom: 7px
+}
+.CalendarMonthGrid {
+  background: #fff;
+  text-align: left;
+  z-index: 0
+}
+.CalendarMonthGrid__animating {
+  z-index: 1
+}
+.CalendarMonthGrid__horizontal {
+  position: absolute;
+  left: 9px
+}
+.CalendarMonthGrid__vertical {
+  margin: 0 auto
+}
+.CalendarMonthGrid__vertical_scrollable {
+  margin: 0 auto;
+  overflow-y: scroll
+}
+.CalendarMonthGrid_month__horizontal {
+  display: inline-block;
+  vertical-align: top;
+  min-height: 100%
+}
+.CalendarMonthGrid_month__hideForAnimation {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none
+}
+.CalendarMonthGrid_month__hidden {
+  visibility: hidden
+}
+.DayPickerNavigation_container {
+  position: relative;
+  z-index: 2
+}
+.DayPickerNavigation_container__vertical {
+  background: #fff;
+  box-shadow: 0 0 5px 2px rgba(0,0,0,.1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 52px;
+  width: 100%
+}
+.DayPickerNavigation_container__verticalScrollable {
+  position: relative
+}
+.DayPickerNavigation_button {
+  cursor: pointer;
+  line-height: .78;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+.DayPickerNavigation_button__default {
+  border: 1px solid #e4e7e7;
+  background-color: #fff;
+  color: #757575
+}
+.DayPickerNavigation_button__default:focus,
+.DayPickerNavigation_button__default:hover {
+  border: 1px solid #c4c4c4
+}
+.DayPickerNavigation_button__default:active {
+  background: #f2f2f2
+}
+.DayPickerNavigation_button__horizontal {
+  border-radius: 3px;
+  padding: 6px 9px;
+  top: 18px;
+  position: absolute
+}
+.DayPickerNavigation_leftButton__horizontal {
+  left: 22px
+}
+.DayPickerNavigation_rightButton__horizontal {
+  right: 22px
+}
+.DayPickerNavigation_button__vertical {
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  width: 50%
+}
+.DayPickerNavigation_button__vertical__default {
+  padding: 5px
+}
+.DayPickerNavigation_nextButton__vertical__default {
+  border-left: 0
+}
+.DayPickerNavigation_nextButton__verticalScrollable {
+  width: 100%
+}
+.DayPickerNavigation_svg__horizontal {
+  height: 19px;
+  width: 19px;
+  fill: #82888a
+}
+.DayPickerNavigation_svg__vertical {
+  height: 42px;
+  width: 42px;
+  fill: #565a5c
+}
+.DayPicker {
+  background: #fff;
+  position: relative;
+  text-align: left
+}
+.DayPicker__horizontal {
+  background: #fff
+}
+.DayPicker__verticalScrollable {
+  height: 100%
+}
+.DayPicker__hidden {
+  visibility: hidden
+}
+.DayPicker__withBorder {
+  box-shadow: 0 2px 6px rgba(0,0,0,.05),0 0 0 1px rgba(0,0,0,.07);
+  border-radius: 3px
+}
+.DayPicker_portal__horizontal {
+  box-shadow: none;
+  position: absolute;
+  left: 50%;
+  top: 50%
+}
+.DayPicker_portal__vertical {
+  position: initial
+}
+.DayPicker_focusRegion {
+  outline: 0
+}
+.DayPicker_calendarInfo__horizontal,
+.DayPicker_wrapper__horizontal {
+  display: inline-block;
+  vertical-align: top
+}
+.DayPicker_weekHeaders {
+  position: relative
+}
+.DayPicker_weekHeaders__horizontal {
+  margin-left: 9px
+}
+.DayPicker_weekHeader {
+  color: #757575;
+  position: absolute;
+  top: 62px;
+  z-index: 2;
+  padding: 0 13px;
+  text-align: left
+}
+.DayPicker_weekHeader__vertical {
+  left: 50%
+}
+.DayPicker_weekHeader__verticalScrollable {
+  top: 0;
+  display: table-row;
+  border-bottom: 1px solid #dbdbdb;
+  background: #fff;
+  margin-left: 0;
+  left: 0;
+  width: 100%;
+  text-align: center
+}
+.DayPicker_weekHeader_ul {
+  list-style: none;
+  margin: 1px 0;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 14px
+}
+.DayPicker_weekHeader_li {
+  display: inline-block;
+  text-align: center
+}
+.DayPicker_transitionContainer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px
+}
+.DayPicker_transitionContainer__horizontal {
+  -webkit-transition: height .2s ease-in-out;
+  -moz-transition: height .2s ease-in-out;
+  transition: height .2s ease-in-out
+}
+.DayPicker_transitionContainer__vertical {
+  width: 100%
+}
+.DayPicker_transitionContainer__verticalScrollable {
+  padding-top: 20px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow-y: scroll
+}
+.DateInput {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  position: relative;
+  display: inline-block;
+  width: 130px;
+  vertical-align: middle
+}
+.DateInput__small {
+  width: 90px
+}
+.DateInput__block {
+  width: 100%
+}
+.DateInput__disabled {
+  background: #f2f2f2;
+  color: #dbdbdb
+}
+.DateInput_input {
+  font-weight: 200;
+  font-size: 18px;
+  line-height: 24px;
+  color: #565a5c;
+  background-color: #fff;
+  width: 100%;
+  padding: 13px 12px 11px;
+  border: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 2px solid transparent;
+  border-left: 0
+}
+.DateInput_input__small {
+  font-size: 14px;
+  line-height: 18px;
+  padding: 8px 8px 6px
+}
+.DateInput_input__regular {
+  font-weight: auto
+}
+.DateInput_input__readOnly {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+.DateInput_input__focused {
+  outline: 0;
+  background: #fff;
+  border: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 2px solid #008489;
+  border-left: 0
+}
+.DateInput_input__disabled {
+  background: #f2f2f2;
+  font-style: italic
+}
+.DateInput_screenReaderMessage {
+  border: 0;
+  clip: rect(0,0,0,0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px
+}
+.DateInput_fang {
+  position: absolute;
+  width: 20px;
+  height: 10px;
+  left: 22px;
+  z-index: 2
+}
+.DateInput_fangShape {
+  fill: #fff
+}
+.DateInput_fangStroke {
+  stroke: #dbdbdb;
+  fill: transparent
+}
+.DateRangePickerInput {
+  background-color: #fff;
+  display: inline-block
+}
+.DateRangePickerInput__disabled {
+  background: #f2f2f2
+}
+.DateRangePickerInput__withBorder {
+  border: 1px solid #cacccd
+}
+.DateRangePickerInput__rtl {
+  direction: rtl
+}
+.DateRangePickerInput__block {
+  display: block
+}
+.DateRangePickerInput__showClearDates {
+  padding-right: 30px
+}
+.DateRangePickerInput_arrow {
+  display: inline-block;
+  vertical-align: middle
+}
+.DateRangePickerInput_arrow_svg {
+  vertical-align: middle;
+  fill: #565a5c;
+  height: 24px;
+  width: 24px
+}
+.DateRangePickerInput_arrow_svg__small {
+  height: 19px;
+  width: 19px
+}
+.DateRangePickerInput_clearDates {
+  background: 0 0;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 10px 0 5px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%)
+}
+.DateRangePickerInput_clearDates__small {
+  padding: 6px
+}
+.DateRangePickerInput_clearDates_default:focus,
+.DateRangePickerInput_clearDates_default:hover {
+  background: #dbdbdb;
+  border-radius: 50%
+}
+.DateRangePickerInput_clearDates__hide {
+  visibility: hidden
+}
+.DateRangePickerInput_clearDates_svg {
+  fill: #82888a;
+  height: 12px;
+  width: 15px;
+  vertical-align: middle
+}
+.DateRangePickerInput_clearDates_svg__small {
+  height: 9px
+}
+.DateRangePickerInput_calendarIcon {
+  background: 0 0;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px;
+  margin: 0 5px 0 10px
+}
+.DateRangePickerInput_calendarIcon_svg {
+  fill: #82888a;
+  height: 15px;
+  width: 14px;
+  vertical-align: middle
+}
+.DateRangePicker {
+  position: relative;
+  display: inline-block
+}
+.DateRangePicker__block {
+  display: block
+}
+.DateRangePicker_picker {
+  z-index: 1;
+  background-color: #fff;
+  position: absolute
+}
+.DateRangePicker_picker__rtl {
+  direction: rtl
+}
+.DateRangePicker_picker__directionLeft {
+  left: 0
+}
+.DateRangePicker_picker__directionRight {
+  right: 0
+}
+.DateRangePicker_picker__portal {
+  background-color: rgba(0,0,0,.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%
+}
+.DateRangePicker_picker__fullScreenPortal {
+  background-color: #fff
+}
+.DateRangePicker_closeButton {
+  background: 0 0;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 15px;
+  z-index: 2
+}
+.DateRangePicker_closeButton:focus,
+.DateRangePicker_closeButton:hover {
+  color: darken(#cacccd,10%);
+  text-decoration: none
+}
+.DateRangePicker_closeButton_svg {
+  height: 15px;
+  width: 15px;
+  fill: #cacccd
+}
+.time_picker_container {
+  position: relative;
+}
+
+.time_picker_preview {
+  position: relative;
+  cursor: pointer;
+  height: 50px;
+  color: #343434;
+  border-radius: 2px;
+  background-color: #fff;
+  transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -ms-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -moz-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.12), 0 0 4px 0 rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.12), 0 0 4px 0 rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.12), 0 0 4px 0 rgba(0, 0, 0, 0.08);
+}
+.time_picker_preview.active,
+.time_picker_preview:hover {
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.12), 0 0 8px 0 rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.12), 0 0 8px 0 rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.12), 0 0 8px 0 rgba(0, 0, 0, 0.08);
+}
+.time_picker_preview.active {
+}
+
+.time_picker_preview.active .preview_container svg {
+}
+
+.preview_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 30px;
+  transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+}
+
+.preview_container.without_icon {
+  padding-right: 30px;
+}
+
+.preview_container svg {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 5.5px;
+  left: 0;
+}
+
+.classic_theme_container {
+  user-select: none;
+  cursor: default;
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  width: 100%;
+  height: 250px;
+  overflow-y: scroll;
+  transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -ms-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -moz-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  background-color: #fff;
+  border-radius: 2px;
+  top: 100%;
+  left: 0;
+  transform: translateY(20px);
+  -ms-transform: translateY(20px);
+  -moz-transform: translateY(20px);
+  -o-transform: translateY(20px);
+  -webkit-transform: translateY(20px);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.12), 0 0 4px 0 rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.12), 0 0 4px 0 rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.12), 0 0 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.outside_container.active .classic_theme_container {
+  opacity: 1;
+  z-index: 2;
+}
+
+.classic_theme_container .classic_time {
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-bottom: 1px solid #f3f3f3;
+  background-color: #fff;
+  transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -ms-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -moz-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  -webkit-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.classic_theme_container .classic_time .meridiem {
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+.classic_theme_container .classic_time.dark.active,
+.classic_theme_container .classic_time.dark:hover {
+  background-color: #4a4a4a;
+  color: #fff;
+}
+
+.classic_theme_container .classic_time.light.active,
+.classic_theme_container .classic_time.light:hover {
+  background-color: #3498db;
+  color: #fff;
+}
+
+/* dark theme */
+.dark .classic_theme_container {
+  background-color: #4a4a4a;
+}
+
+.dark .classic_theme_container .classic_time {
+  border-bottom: 1px solid #5d5d5d;
+  background-color: #4a4a4a;
+  color: #fff;
+}
+
+.dark .classic_theme_container .classic_time.active,
+.dark .classic_theme_container .classic_time:hover {
+  background-color: #343434;
+}
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.kvass-widget {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  right: 0; }
+  .kvass-widget p {
+    margin: 12px 0; }
+  .kvass-widget .kvass-widget__overlay {
+    background: radial-gradient(#40404b, #111118) rgba(34, 34, 40, 0.94);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0; }
+  .kvass-widget .kvass-widget__container {
+    display: block;
+    position: relative;
+    background-color: #f5f5f5;
+    opacity: 1;
+    width: 400px;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 0 20px 1px #111118; }
+  .kvass-widget .kvass-widget_powered-by {
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+    .kvass-widget .kvass-widget_powered-by .svg-icon--powered-by {
+      width: 75px;
+      height: auto; }
+
+.kvass-widget--close {
+  display: none;
+  opacity: 0; }
+
+.kvass-widget--open {
+  opacity: 1; }
+
+.kvass-widget__content-body {
+  position: relative; }
+
+.close-widget-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 5px 0 0; }
+
+/* Global classes*/
+.kvass-widget__primary-button {
+  text-align: center;
+  cursor: pointer;
+  height: 36px;
+  width: 70px;
+  color: #ffffff;
+  background-color: #f68d39;
+  border: 0; }
+  .kvass-widget__primary-button:focus {
+    outline: none;
+    border: 1px solid #dc6804;
+    box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+    -webkit-transition: all 150ms ease;
+    transition: all 150ms ease; }
+  .kvass-widget__primary-button:hover {
+    outline: none;
+    border: 1px solid #dc6804; }
+  .kvass-widget__primary-button:disabled {
+    outline: none;
+    cursor: default;
+    background-color: #d0d0d0; }
+    .kvass-widget__primary-button:disabled:hover {
+      border: none; }
+
+.kvass-widget__input {
+  height: 36px;
+  width: 100%;
+  border: 1px solid #f68d39;
+  padding: 0 16px;
+  border-radius: 2px 0 0 2px;
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 24px;
+  color: #565a5c; }
+  .kvass-widget__input:focus {
+    outline: none;
+    border: 1px solid #dc6804;
+    box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+    -webkit-transition: all 150ms ease;
+    transition: all 150ms ease; }
+  .kvass-widget__input:disabled {
+    border: none; }
+
+.kvass-widget__input-container {
+  display: flex;
+  padding-bottom: 10px; }
+
+/** Include component styles **/
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.product-search {
+  text-align: center; }
+  .product-search .search-form {
+    display: flex;
+    margin-bottom: 0;
+    padding: 32px; }
+  .product-search .product-list {
+    min-height: 500px; }
+    .product-search .product-list ul {
+      list-style: none;
+      margin: 0;
+      padding: 30px 32px; }
+    .product-search .product-list li {
+      font-size: 12px;
+      display: flex;
+      cursor: pointer;
+      margin-bottom: 5px;
+      padding: 5px;
+      background-color: #ffffff;
+      border: 1px solid #bfbcbc7a;
+      border-radius: 2px; }
+    .product-search .product-list .product-list-item {
+      transition: all .2s ease-in-out; }
+      .product-search .product-list .product-list-item:hover {
+        transform: scale(1.1); }
+    .product-search .product-list .product-list-item__img {
+      max-width: 30px; }
+      .product-search .product-list .product-list-item__img img {
+        height: auto;
+        width: 100%; }
+    .product-search .product-list .product-list-item__name {
+      margin: 13px 5px 10px 5px; }
+    .product-search .product-list .product-list-item__toolbar {
+      display: flex;
+      margin: 10px 5;
+      margin-left: auto; }
+  .product-search .product-list--empty {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px; }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.product-basket .product-list {
+  min-height: 500px; }
+  .product-basket .product-list .padding-container {
+    padding: 10px 32px; }
+  .product-basket .product-list li {
+    display: flex;
+    font-size: 12px;
+    padding-bottom: 2px; }
+    .product-basket .product-list li:nth-child(even) {
+      padding-bottom: 5px; }
+    .product-basket .product-list li .product-item {
+      padding-right: 10px; }
+      .product-basket .product-list li .product-item:last-child {
+        margin-left: auto;
+        padding-right: 0; }
+      .product-basket .product-list li .product-item:only-child {
+        margin-left: 0; }
+    .product-basket .product-list li .product-item__title {
+      text-overflow: ellipsis; }
+    .product-basket .product-list li .product-item__count {
+      width: 25px;
+      border: 1px solid #FF7700;
+      padding-left: 8px;
+      border-radius: 2px 0 0 2px; }
+      .product-basket .product-list li .product-item__count:focus {
+        outline: none;
+        border: 1px solid #dc6804;
+        box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+        -webkit-transition: all 150ms ease;
+        transition: all 150ms ease; }
+    .product-basket .product-list li .product_item__price {
+      padding-left: 20px; }
+    .product-basket .product-list li .product_item__total {
+      margin-left: auto; }
+  .product-basket .product-list .product-sum {
+    padding: 10px 32px; }
+    .product-basket .product-list .product-sum .product-sum__line {
+      display: flex;
+      margin-bottom: 5px; }
+      .product-basket .product-list .product-sum .product-sum__line span:nth-child(2) {
+        margin-left: auto; }
+    .product-basket .product-list .product-sum .product-sum__total {
+      border-bottom: 3px double #9e9c9c;
+      font-weight: bold; }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.user-details .content {
+  min-height: 500px; }
+  .user-details .content .padding-container {
+    padding: 10px 32px; }
+  .user-details .content .user-details__additional {
+    margin-top: 100px; }
+  .user-details .content .user-details__existing-user {
+    text-align: center;
+    margin-top: 100px; }
+    .user-details .content .user-details__existing-user .avatar {
+      display: block;
+      margin: 0 auto;
+      height: 150px;
+      width: 150px; }
+    .user-details .content .user-details__existing-user .phoneNumber {
+      display: block;
+      margin-bottom: 15px; }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.delivery-details .content {
+  min-height: 500px; }
+
+.delivery-details .padding-container {
+  padding: 10px 32px; }
+
+.delivery-details .delivery-details__additional {
+  height: 155px;
+  width: 100%;
+  border: 1px solid #f68d39;
+  padding: 0 16px;
+  border-radius: 2px 0 0 2px;
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 24px;
+  color: #565a5c;
+  resize: none; }
+  .delivery-details .delivery-details__additional:focus {
+    outline: none;
+    border: 1px solid #dc6804;
+    box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+    -webkit-transition: all 150ms ease;
+    transition: all 150ms ease; }
+  .delivery-details .delivery-details__additional:disabled {
+    border: none; }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.payment-details .content {
+  min-height: 500px; }
+  .payment-details .content .padding-container {
+    padding: 10px 32px; }
+  .payment-details .content .payment-details__list {
+    height: 36px;
+    width: 100%;
+    border: 1px solid #f68d39;
+    padding: 0 16px;
+    border-radius: 2px 0 0 2px;
+    font-weight: 200;
+    font-size: 14px;
+    line-height: 24px;
+    color: #565a5c;
+    background-color: #ffffff; }
+    .payment-details .content .payment-details__list:focus {
+      outline: none;
+      border: 1px solid #dc6804;
+      box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+      -webkit-transition: all 150ms ease;
+      transition: all 150ms ease; }
+    .payment-details .content .payment-details__list:disabled {
+      border: none; }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.confirm-order .content {
+  min-height: 500px; }
+
+.confirm-order .step-list {
+  padding: 10px 32px; }
+  .confirm-order .step-list .step {
+    margin-bottom: 15px; }
+  .confirm-order .step-list .step__items {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding: 5px;
+    background-color: #ffffff;
+    border: 1px solid #bfbcbc7a;
+    border-radius: 2px;
+    transition: all .2s ease-in-out; }
+    .confirm-order .step-list .step__items:hover {
+      transform: scale(1.02); }
+    .confirm-order .step-list .step__items .edit {
+      opacity: 0;
+      position: absolute;
+      right: 2px;
+      top: 2px; }
+    .confirm-order .step-list .step__items:hover .edit {
+      transform: scale(1.02);
+      opacity: 1; }
+    .confirm-order .step-list .step__items span {
+      display: block;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden; }
+    .confirm-order .step-list .step__items span:not(:last-child) {
+      margin-bottom: 5px; }
+  .confirm-order .step-list .step-list__note {
+    font-size: small; }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.receipt {
+  min-height: 500px; }
+  .receipt .padding-container {
+    padding: 10px 32px; }
+  .receipt .receipt-summary {
+    /* Jagged edges on top, to look like a receipt
+    background: linear-gradient(-135deg, #f5f5f5 10px, transparent 0) 0 10px, linear-gradient(135deg, #f5f5f5 10px, #ffffff 0) 0 10px;
+    background-color: #fff7ef;
+    background-size: 20px 20px;
+    background-position: left top !important;
+    background-repeat: repeat-x !important;
+    */ }
+    .receipt .receipt-summary .receipt-item {
+      display: flex;
+      margin-bottom: 10px; }
+    .receipt .receipt-summary .receipt-item__multiple {
+      display: inline-grid; }
+      .receipt .receipt-summary .receipt-item__multiple span {
+        margin-left: auto; }
+    .receipt .receipt-summary .receipt-item div:nth-child(even) {
+      margin-left: auto; }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.kvass-widget__content-header {
+  height: 100px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.033);
+  -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.033);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.033);
+  text-align: center; }
+  .kvass-widget__content-header .previous-navigation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px 0 0 5px; }
+  .kvass-widget__content-header .header-title {
+    font-size: 30px;
+    display: inline-block;
+    padding: 32px; }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.kvass-widget__content-footer {
+  height: 100px;
+  text-align: center; }
+  .kvass-widget__content-footer .footer-content {
+    padding: 32px; }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.kvass-widget__notification {
+  position: absolute;
+  width: 100%;
+  height: 125px;
+  bottom: 0;
+  overflow: hidden;
+  background-color: #d43636;
+  color: #FFF;
+  transition: all 0.5s; }
+  .kvass-widget__notification .message {
+    padding: 32px; }
+
+.kvass-widget__notification--close {
+  bottom: 0;
+  height: 0; }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.spinner-container {
+  position: absolute;
+  z-index: 10000;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.08); }
+
+.spinner-container--hidden {
+  display: none; }
+
+/* https://github.com/lukehaas/css-loaders */
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out; }
+
+.loader {
+  color: #f68d39;
+  font-size: 10px;
+  margin: 80px auto;
+  position: relative;
+  text-indent: -9999em;
+  -moz-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s; }
+
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 0; }
+
+.loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s; }
+
+.loader:after {
+  left: 3.5em; }
+
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em; }
+  40% {
+    box-shadow: 0 2.5em 0 0; } }
+
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em; }
+  40% {
+    box-shadow: 0 2.5em 0 0; } }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.svg-icon--green {
+  fill: #5cb85c; }
+  .svg-icon--green:hover {
+    fill: #1cab1c; }
+
+.svg-icon--red {
+  fill: #d9534f; }
+  .svg-icon--red:hover {
+    fill: #b71914; }
+
+.svg-icon--primary {
+  fill: #f68d39; }
+  .svg-icon--primary:hover {
+    fill: #dc6804; }
+
+.svg-icon--secondary {
+  fill: #ffffff; }
+  .svg-icon--secondary:hover {
+    fill: #dc6804; }
+
+.svg-icon--disabled {
+  cursor: default;
+  fill: #d0d0d0; }
+  .svg-icon--disabled:hover {
+    fill: #d0d0d0; }
+
+.shopping-cart svg {
+  position: relative; }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.place-auto-complete {
+  position: relative;
+  width: 100%; }
+  .place-auto-complete .container {
+    position: absolute;
+    top: 100%;
+    background-color: #ffffff;
+    border: 1px solid #f68d39;
+    width: 100%;
+    z-index: 9999; }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+/* time_picker override */
+.time_picker_container {
+  width: 150px; }
+
+.time_picker_preview {
+  height: 36px;
+  width: 100%;
+  border: 1px solid #f68d39;
+  padding: 0 16px;
+  border-radius: 2px 0 0 2px;
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 24px;
+  color: #565a5c;
+  -moz-transition: none;
+  -o-transition: none;
+  -webkit-transition: none;
+  transition: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none; }
+  .time_picker_preview:focus {
+    outline: none;
+    border: 1px solid #dc6804;
+    box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+    -webkit-transition: all 150ms ease;
+    transition: all 150ms ease; }
+  .time_picker_preview:disabled {
+    border: none; }
+  .time_picker_preview .active {
+    outline: none;
+    border: 1px solid #dc6804;
+    box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+    -webkit-transition: all 150ms ease;
+    transition: all 150ms ease; }
+  .time_picker_preview:hover {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+    border: 1px solid #dc6804; }
+  .time_picker_preview .preview_container {
+    left: 25%; }
+    .time_picker_preview .preview_container svg {
+      fill: #9a9a9a; }
+
+.classic_theme_container {
+  width: 184px; }
+  .classic_theme_container .active {
+    background-color: #f68d39; }
+
+.classic_theme_container .classic_time.light.active, .classic_theme_container {
+  background-color: #f68d39; }
+
+.classic_theme_container .classic_time.light:hover {
+  outline: none;
+  background-color: #dc6804; }
+
+.time_picker_modal_header, .time_picker_modal_footer, .timezone_picker_modal_header, .picker_pointer .pointer_drag, .picker_center, .picker_pointer {
+  background-color: #f68d39; }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+/* react-dates override */
+.SingleDatePickerInput .DateInput_input {
+  height: 36px;
+  width: 100%;
+  border: 1px solid #f68d39;
+  padding: 0 16px;
+  border-radius: 2px 0 0 2px;
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 24px;
+  color: #565a5c; }
+  .SingleDatePickerInput .DateInput_input:focus {
+    outline: none;
+    border: 1px solid #dc6804;
+    box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+    -webkit-transition: all 150ms ease;
+    transition: all 150ms ease; }
+  .SingleDatePickerInput .DateInput_input:disabled {
+    border: none; }
+
+.CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover {
+  background: #f68d39;
+  border: 1px solid #f68d39; }
+
+.DayPickerKeyboardShortcuts_show__bottomRight, .DayPickerKeyboardShortcuts_show__bottomRight:hover {
+  border-right: 33px solid #f68d39; }
+
+.product-basket .product-list ul, .receipt .receipt-summary ul {
+  list-style: none;
+  min-height: 300px;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #bfbcbc7a; }
+
+.payment-form {
+  /* Override Stripe css */ }
+  .payment-form .StripeElement {
+    display: block;
+    margin: 0;
+    max-width: 500px;
+    width: 100%;
+    padding: 8px 8px;
+    border: 1px solid #f68d39;
+    background: white; }
+  .payment-form .StripeElement--focus {
+    outline: none;
+    border: 1px solid #dc6804;
+    box-shadow: rgba(50, 50, 93, 0.109804) 0px 4px 6px, rgba(0, 0, 0, 0.0784314) 0px 1px 3px;
+    -webkit-transition: all 150ms ease;
+    transition: all 150ms ease; }
+
