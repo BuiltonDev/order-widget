@@ -11,7 +11,7 @@ class PaymentForm extends Reflux.Component {
   constructor(props) {
     super(props);
     this.store = PaymentStore;
-    this.sa = ShareActor();
+    this.sa = new ShareActor();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 

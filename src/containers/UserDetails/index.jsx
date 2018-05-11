@@ -32,7 +32,7 @@ class UserDetails extends Reflux.Component {
     this.state = {
       isLoading: false
     };
-
+    this.sa = new ShareActor();
     this.authenticateWithApi = this.authenticateWithApi.bind(this);
     this.removeAuthentication = this.removeAuthentication.bind(this);
     this.renderExistingUser = this.renderExistingUser.bind(this);
@@ -58,8 +58,8 @@ class UserDetails extends Reflux.Component {
       email: this.state.email
     };
     // Add the idToken from successful firebase authentication
-    ShareActor().refreshBearerToken(this.state.idToken);
-    ShareActor().user().login({body: profile}, (err, apiUser, raw) => {
+    this.sa.refreshBearerToken(this.state.idToken);
+    this.sa.user().login({body: profile}, (err, apiUser, raw) => {
       this.setState({isLoading: false});
       if (err) {
         Actions.onMessage({isError: true});
