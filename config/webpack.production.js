@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const common = require('./webpack.common.js');
@@ -12,7 +13,18 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: '[name].css'
     }),
-    new UglifyJSPlugin()
+    new UglifyJSPlugin({
+      sourceMap: true,
+      uglifyOptions: {
+        ecma: 5,
+        mangle: false,
+        keep_classnames: true,
+        keep_fnames: true
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    })
   ],
   module: {
     rules: [

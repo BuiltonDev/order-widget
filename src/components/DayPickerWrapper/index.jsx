@@ -1,6 +1,8 @@
 import React from 'react'
 import Reflux from 'reflux'
-import {SingleDatePicker} from 'react-dates';
+import 'react-dates/initialize';
+
+import SingleDatePicker from 'react-dates/lib/components/SingleDatePicker';
 import T from 'src/utils/i18n';
 import Actions from 'src/reflux/Actions';
 import DeliveryStore from 'src/reflux/DeliveryStore';
