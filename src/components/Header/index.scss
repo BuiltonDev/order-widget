@@ -2,9 +2,9 @@
 
 .kvass-widget__content-header {
   height: $header-height;
+  @include box-shadow(0 5px 15px rgba(0,0,0,.033));
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
-  @include box-shadow(0 5px 15px rgba(0,0,0,.033));
   text-align: center;
   background-image: url("http://res.cloudinary.com/dftspnwxo/image/upload/v1526044427/KVASS_pattern_orange_dty31p.png");
   background-repeat: repeat;
@@ -12,6 +12,8 @@
   position: relative;
 
   .kvass-widget_inner-content-header {
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
     position: absolute;
     width: 100%;
     height: 100%;

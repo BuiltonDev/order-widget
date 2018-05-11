@@ -44,7 +44,7 @@
     opacity: 1;
     width: $widget-width;
     margin: 0 auto;
-    border-radius: 8px;
+    border-radius: $primary-border-radius;
 
     //@include transition(transform 0.6s, opacity 0.6s, -webkit-transform 0.6s);
     //@include transition(opacity 0.3s ease-in-out 0.4s);
@@ -91,17 +91,19 @@
 .kvass-widget__primary-button {
   text-align: center;
   cursor: pointer;
-  height: 36px;
-  width: 70px;
-  color: $secondary-background-color;
-  background-color: $primary-color;
-  border: 0;
+  height: 42px;
+  width: 120px;
+  margin-left: 12px;
+  font-size: 12px;
+  color: $primary-input-text-color;
+  border-radius: $primary-border-radius;
+  background-color: $secondary-background-color;
+  border: 1px solid transparent;
   &:focus {
     @include focus-effect();
   }
   &:hover {
     outline: none;
-    border: 1px solid $primary-color-focus;
   }
   &:disabled {
     outline: none;
