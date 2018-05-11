@@ -23,9 +23,11 @@ const Header = (props) => {
 
   return (
     <div className="kvass-widget__content-header">
-      {showBackNav ? backNav() : null}
-      {showCloseNav ? closeNav() : null}
-      {props.children}
+      <div className="kvass-widget_inner-content-header">
+        {showBackNav ? backNav() : null}
+        {showCloseNav ? closeNav() : null}
+        {props.children}
+      </div>
     </div>
   );
 };

@@ -44,13 +44,13 @@
     opacity: 1;
     width: $widget-width;
     margin: 0 auto;
-    border-radius: 5px;
+    border-radius: 8px;
 
     //@include transition(transform 0.6s, opacity 0.6s, -webkit-transform 0.6s);
     //@include transition(opacity 0.3s ease-in-out 0.4s);
     //@include transition-delay(0.5s);
 
-    box-shadow: 0 0 20px 1px #111118;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.24);
   }
 
   .kvass-widget_powered-by {
