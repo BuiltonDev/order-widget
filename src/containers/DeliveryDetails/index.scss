@@ -2,6 +2,10 @@
 
 .delivery-details {
 
+  p {
+    font-size: 12px;
+  }
+
   .content {
     min-height: $content-min-height;
   }
@@ -9,8 +13,16 @@
     padding: 10px 32px;
   }
 
+  .kvass-widget__input {
+    border-color: $list-item-border-color;
+  }
+
   .delivery-details__additional {
     @include primary-input(155px, 100%);
     resize: none;
+    border: 1px solid $list-item-border-color;
+    &:focus {
+      border: 1px solid $list-item-border-color;
+    }
   }
 }

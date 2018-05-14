@@ -124,9 +124,18 @@ button.kvass-widget__primary-button {
   background-color: $primary-color;
 }
 
-
-
-
+button.kvass-widget__secondary-button {
+  color: $primary-input-text-color;
+  background-color: $primary-button-color;
+  border: 1px solid $primary-color;
+  margin-left: 12px;
+  border-radius: $primary-border-radius;
+  text-align: center;
+  cursor: pointer;
+  height: 42px;
+  width: 120px;
+  font-size: 12px;
+}
 
 .kvass-widget__input {
   @include primary-input(36px, 100%);
