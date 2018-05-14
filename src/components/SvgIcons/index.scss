@@ -14,6 +14,27 @@
     fill: #b71914;
   }
 }
+
+.svg-icon--plus {
+  @include transition(all 450ms);
+  fill: $main-icon-color;
+
+  &:hover {
+    @include transition(all 450ms);
+    fill: #1cab1c;
+  }
+}
+
+.svg-icon--minus {
+  @include transition(all 450ms);
+  fill: $main-icon-color;
+
+  &:hover {
+    @include transition(all 450ms);
+    fill: #b71914;
+  }
+}
+
 .svg-icon--primary {
   fill: $primary-color;
   &:hover {

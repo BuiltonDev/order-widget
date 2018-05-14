@@ -5,6 +5,7 @@
   text-align: center;
 
   .footer-content {
+    border-top: 1px solid $list-item-border-color;
     padding: $default-padding;
   }
 }

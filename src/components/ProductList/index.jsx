@@ -37,8 +37,8 @@ class ProductList extends Reflux.Component {
           </div>
           <span className="product-list-item__name">{product.name}</span>
           <div className="product-list-item__toolbar">
-            <a href="#" onClick={() => Actions.onRemoveProduct(product)}><MinusIcon className="svg-icon--red"></MinusIcon></a>
-            <a href="#" onClick={() => Actions.onAddProduct(product)}><AddIcon className="svg-icon--green"></AddIcon></a>
+            <a href="#" onClick={() => Actions.onRemoveProduct(product)}><MinusIcon className="svg-icon--minus" /></a>
+            <a href="#" onClick={() => Actions.onAddProduct(product)}><AddIcon className="svg-icon--plus" /></a>
           </div>
         </li>
       );
