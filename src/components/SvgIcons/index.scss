@@ -36,9 +36,11 @@
 }
 
 .svg-icon--primary {
-  fill: $primary-color;
+  @include transition(all 450ms);
+  fill: #7a7a7a;
   &:hover {
-    fill: $primary-color-focus
+    @include transition(all 450ms);
+    fill: #666
   }
 }
 
