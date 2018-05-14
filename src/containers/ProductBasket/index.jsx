@@ -38,12 +38,14 @@ class ProductBasket extends Reflux.Component {
     const addedKey = `${product.item._id.$oid}-1`;
     return (
       <li key={addedKey}>
-        <DebounceInput
-          className="product-item__count"
-          minLength={1}
-          debounceTimeout={500}
-          value={product.count}
-          onChange={event => this.handleCountChange(product, event)} />
+        <span>
+          <DebounceInput
+            className="product-item__count"
+            minLength={1}
+            debounceTimeout={500}
+            value={product.count}
+            onChange={event => this.handleCountChange(product, event)} />
+        </span>
         <span className="product_item__price">{product.item.price} {product.item.currency}</span>
         <span className="product_item__total">{product.item.price * product.count} {product.item.currency}</span>
       </li>
@@ -72,26 +74,26 @@ class ProductBasket extends Reflux.Component {
         </Header>
         <div className="kvass-widget__content-body">
           <div className="product-list">
-            <div className="padding-container">
-              <Scrollbars style={{ height: 380 }}>
+            <Scrollbars style={{ height: 380 }}>
+              <div className="padding-container">
                 <ul>
                   {productArray}
                 </ul>
-              </Scrollbars>
+              </div>
+            </Scrollbars>
+          </div>
+          <div className="product-sum">
+            <div className="product-sum__line">
+              <span>{T.translate('basket.products')}</span>
+              <span>{totalCount}</span>
             </div>
-            <div className="product-sum">
-              <div className="product-sum__line">
-                <span>{T.translate('basket.products')}</span>
-                <span>{totalCount}</span>
-              </div>
-              <div className="product-sum__line">
-                <span>{T.translate('basket.tax')}</span>
-                <span>{totalTax} {currency}</span>
-              </div>
-              <div className="product-sum__line">
-                <span>{T.translate('basket.total')}</span>
-                <span className="product-sum__total">{totalSum} {currency}</span>
-              </div>
+            <div className="product-sum__line">
+              <span>{T.translate('basket.tax')}</span>
+              <span>{totalTax} {currency}</span>
+            </div>
+            <div className="product-sum__line">
+              <span>{T.translate('basket.total')}</span>
+              <span className="product-sum__total">{totalSum} {currency}</span>
             </div>
           </div>
           <Footer>

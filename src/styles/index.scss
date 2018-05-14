@@ -83,7 +83,6 @@
   position: absolute;
   top: 0;
   right: 0;
-  cursor: pointer;
   padding: 5px 5px 0 0
 }
 
@@ -94,11 +93,8 @@
   cursor: pointer;
   height: 42px;
   width: 120px;
-  margin-left: 12px;
   font-size: 12px;
-  color: $primary-input-text-color;
   border-radius: $primary-border-radius;
-  background-color: $primary-background-color;
   border: 1px solid transparent;
   &:focus {
     @include focus-effect();
@@ -115,6 +111,22 @@
     }
   }
 }
+
+input.kvass-widget__primary-button {
+  color: $primary-input-text-color;
+  background-color: $primary-background-color;
+  margin-left: 12px;
+}
+
+
+button.kvass-widget__primary-button {
+  color: $primary-button-color;
+  background-color: $primary-color;
+}
+
+
+
+
 
 .kvass-widget__input {
   @include primary-input(36px, 100%);
