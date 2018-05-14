@@ -24,15 +24,39 @@
     .user-details__existing-user {
       text-align: center;
       margin-top: 100px;
+      font-size: 14px;
+      a {
+        color: $primary-color;
+        @include transition(all 450ms);
+        &:hover, &:focus, &:active {
+          @include transition(all 450ms);
+          color: $primary-color-focus
+        }
+      }
+      .default-user-avatar-container {
+        margin-bottom: 24px;
+        padding: 24px;
+        border-radius: 50%;
+        display: inline-block;
+        background-color: #f5f2f0;
+      }
+
       .avatar {
         display: block;
         margin: 0 auto;
-        height: 150px;
-        width: 150px;
+        height: 62px;
+        width: 62px;
       }
+
+      .userName {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 8px;
+      }
+
       .phoneNumber {
         display: block;
-        margin-bottom: 15px;
+        margin-bottom: 16px;
       }
     }
   }
