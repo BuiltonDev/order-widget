@@ -123,10 +123,12 @@ class UserDetails extends Reflux.Component {
   renderExistingUser() {
     return (
       <div className="user-details__existing-user">
-        <UserIcon className="svg-icon--primary avatar"/>
-        <span className="phoneNumber">{this.state.firstName} {this.state.lastName}</span>
+        <div className="avatar-container">
+          <UserIcon className="avatar"/>
+        </div>
+        <span className="name">{this.state.firstName} {this.state.lastName}</span>
         <span className="phoneNumber">{this.state.phoneNumber}</span>
-        <a href="#" onClick={this.removeAuthentication}>{T.translate('userDetails.notYou')}</a>
+        <a className="notYou" href="#" onClick={this.removeAuthentication}>{T.translate('userDetails.notYou')}</a>
       </div>
     );
   }
