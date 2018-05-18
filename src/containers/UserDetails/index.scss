@@ -1,4 +1,5 @@
 @import '../../styles/_global';
+@import '../../styles/_mixins';
 
 .user-details {
 
@@ -42,6 +43,7 @@
       }
 
       .avatar {
+        fill: #ffffff;
         display: block;
         margin: 0 auto;
         height: 62px;
@@ -58,6 +60,67 @@
         display: block;
         margin-bottom: 16px;
       }
+      .notYou {
+        color: $primary-color;
+      }
     }
+  }
+
+  /* Override Firebase styles */
+  .mdl-shadow--2dp {
+    box-shadow: none;
+  }
+
+  .firebaseui-subtitle, .firebaseui-title {
+    font-size: 14px;
+  }
+
+  .mdl-textfield__input {
+    @include primary-input(36px, 100%);
+  }
+
+  .firebaseui-textfield.mdl-textfield .firebaseui-input {
+    border-color: #f68d39;
+  }
+
+  /* Override label */
+  .mdl-textfield__label {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+
+  .mdl-textfield--floating-label .mdl-textfield__label {
+    transition-duration: unset;
+    transition-timing-function: unset;
+  }
+
+  .mdl-textfield--floating-label.is-focused .mdl-textfield__label, .mdl-textfield--floating-label.is-dirty .mdl-textfield__label {
+    visibility: hidden;
+  }
+
+  .mdl-textfield__label:after {
+    height: 0;
+  }
+  /* End override label */
+
+  /* Override button*/
+  .mdl-button {
+    //font-family: unset;
+    @extend .kvass-widget__primary-button;
+  }
+
+  .mdl-button--raised.mdl-button--colored:hover {
+    background-color: unset;
+  }
+
+  .mdl-button--raised.mdl-button--colored, .mdl-button--primary.mdl-button--primary, .mdl-button--raised {
+    background: unset;
+    box-shadow: unset;
+    color: unset;
+  }
+
+  .mdl-button:active, .mdl-button--raised.mdl-button--colored:active, .mdl-button:focus:not(:active), .mdl-button--raised.mdl-button--colored:focus:not(:active) {
+    background-color: unset;
+    box-shadow: unset;
   }
 }
