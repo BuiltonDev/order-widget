@@ -123,7 +123,7 @@ class UserDetails extends Reflux.Component {
   renderExistingUser() {
     return (
       <div className="user-details__existing-user">
-        <div class="default-user-avatar-container">
+        <div className="default-user-avatar-container">
           <UserIcon className="svg-icon--primary avatar"/>
         </div>
         <span className="userName">{this.state.firstName} {this.state.lastName}</span>

@@ -10,21 +10,6 @@
 
     .step {
       margin-bottom: 15px;
-    }
-
-    .step__items {
-      display: block;
-      position: relative;
-      cursor: pointer;
-      padding: 5px;
-      background-color: $secondary-background-color;
-      border: 1px solid #bfbcbc7a;
-      border-radius: 2px;
-
-      transition: all .2s ease-in-out;
-      &:hover {
-        transform: scale(1.02);
-      }
 
       .edit {
         opacity: 0;
@@ -36,6 +21,66 @@
       &:hover .edit {
         transform: scale(1.02);
         opacity: 1;
+      }
+    }
+
+    .step-header {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: bold;
+
+      svg {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+
+    .step__items {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      position: relative;
+      cursor: pointer;
+      padding: 5px;
+      //background-color: $secondary-background-color;
+      //border: 1px solid #bfbcbc7a;
+      border-radius: 2px;
+
+      //transition: all .2s ease-in-out;
+
+      &:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $list-item-border-color;
+        content: '';
+      }
+
+      &:before {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        @include transform(translateX(-50%));
+        @include transition(all 450ms);
+        width: 0;
+        height: 2px;
+        background-color: $primary-color;
+        content: '';
+        z-index: 1;
+      }
+
+      &:hover {
+        //transform: scale(1.02);
+        &::before {
+          width: 100%;
+          @include transition(all 450ms);
+        }
       }
 
       span {
@@ -49,10 +94,14 @@
         margin-bottom: 5px;
       }
     }
-
-    .step-list__note {
-      font-size: small;
-    }
   }
+}
 
+.step-list__note {
+  font-size: 9px;
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  @include translate(-50%, 0);
+  color: $primary-input-text-color;
 }

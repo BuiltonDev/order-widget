@@ -89,46 +89,50 @@ class ConfirmOrder extends Reflux.Component {
           <div className="content">
             <div className="step-list">
                 <div className="step">
-                  <p className="step__label">{T.translate('basket.header')}</p>
+                  <div className="step-header">
+                    <p className="step__label">{T.translate('basket.header')}</p>
+                    <p className="step__label">{T.translate('confirm.totalPrice')} </p>
+                  </div>
                   <div onClick={() => Actions.onNavigateTo(1)} className="step__items">
                     <span>{totalCount}x {T.translate('confirm.products')}</span>
-                    <span>{T.translate('confirm.totalPrice')} {totalSum}</span>
-                    <EditIcon className="svg-icon--primary edit" />
+                    <span>{totalSum}</span>
                   </div>
                 </div>
 
                 <div className="step">
-                  <p className="step__label">{T.translate('userDetails.header')}</p>
+                  <div className="step-header">
+                    <p className="step__label">{T.translate('userDetails.header')}</p>
+                  </div>
                   <div onClick={() => Actions.onNavigateTo(2)} className="step__items">
                     <span>{firstName} {lastName}</span>
                     <span>{phoneNumber}</span>
-                    <EditIcon className="svg-icon--primary edit" />
                   </div>
                 </div>
 
                 <div className="step">
-                  <p className="step__label">{T.translate('deliveryDetails.header')}</p>
+                  <div className="step-header">
+                    <p className="step__label">{T.translate('deliveryDetails.header')}</p>
+                  </div>
                   <div onClick={() => Actions.onNavigateTo(3)} className="step__items">
                     <span>{deliveryAddress}</span>
                     <span>{deliveryTimeFormatted.toString()}</span>
                     <span>{deliveryAdditional ? T.translate('confirm.note') : ''}</span>
                     <span>{deliveryAdditional}</span>
-                    <EditIcon className="svg-icon--primary edit" />
                   </div>
                 </div>
 
                 <div className="step">
-                  <p className="step__label">{T.translate('paymentDetails.header')}</p>
+                  <div className="step-header">
+                    <p className="step__label">{T.translate('paymentDetails.header')}</p>
+                  </div>
                   <div onClick={() => Actions.onNavigateTo(4)} className="step__items">
                     <span>{parseCreditCard(selectedPaymentMethod.card)}</span>
-                    <EditIcon className="svg-icon--primary edit" />
                   </div>
                 </div>
-
-                <span className="step-list__note">{T.translate('confirm.editNote')}</span>
             </div>
           </div>
           <Footer>
+            <span className="step-list__note">{T.translate('confirm.editNote')}</span>
             <button className="kvass-widget__primary-button" onClick={this.createOrder}>{T.translate('global.confirm')}</button>
           </Footer>
         </div>

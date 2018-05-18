@@ -12,7 +12,13 @@
 
     .receipt-item {
       display: flex;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid $list-item-border-color;
+      padding: 12px 0 6px;
+      div:first-child span {
+        font-size: 12px;
+        font-weight: bold;
+      }
     }
 
     .receipt-item__multiple {
