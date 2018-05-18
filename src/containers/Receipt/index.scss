@@ -15,10 +15,14 @@
       margin-bottom: 12px;
       border-bottom: 1px solid $list-item-border-color;
       padding: 12px 0 6px;
-      div:first-child span {
+      .label {
         font-size: 12px;
         font-weight: bold;
       }
+    }
+
+    .receipt-item__basket {
+      padding-top: 0;
     }
 
     .receipt-item__multiple {
@@ -30,6 +34,10 @@
 
     .receipt-item div:nth-child(even) {
       margin-left: auto;
+    }
+
+    .receipt-basket {
+      margin-top: 0;
     }
 
 

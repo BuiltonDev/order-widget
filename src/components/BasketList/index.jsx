@@ -7,8 +7,11 @@ class BasketList extends Component {
     super(props);
   }
 
+  onChange(product, event) {
+    if (this.props.isCountChangeEnabled) this.props.onCountChange(product, event);
+  }
+
   renderBasketItem(product) {
-    const addedKey = `${product.item._id.$oid}-1`;
     return (
       <li key={product.item._id.$oid}>
         <span className="basket-item__title">{product.item.name}</span>
@@ -17,16 +20,17 @@ class BasketList extends Component {
   }
 
   renderBasketPrice(product) {
-    const addedKey = `${product.item._id.$oid}-1`;
+    const key = `${product.item._id.$oid}-1`;
     return (
-      <li key={addedKey}>
+      <li key={key}>
         <span className="basket-item__count">
           <DebounceInput
             className="basket-item__count-input"
             minLength={1}
             debounceTimeout={500}
             value={product.count}
-            onChange={event => this.props.onCountChange(product, event)} />
+            disabled={!this.props.isCountChangeEnabled}
+            onChange={event => this.onChange(product, event)} />
         </span>
         <span className="basket-item__price">{product.item.price} {product.item.currency}</span>
         <span className="basket-item__total">{product.item.price * product.count} {product.item.currency}</span>
@@ -34,31 +38,62 @@ class BasketList extends Component {
     );
   }
 
+  renderBasketOneLine(product) {
+    return (
+      <li key={product.item._id.$oid}>
+        <span className="basket-item__count">
+          <DebounceInput
+            className="basket-item__count-input"
+            minLength={1}
+            debounceTimeout={500}
+            value={product.count}
+            disabled={!this.props.isCountChangeEnabled}
+            onChange={event => this.onChange(product, event)} />
+        </span>
+        <span className="basket-item__title">{product.item.name}</span>
+        <span className="basket-item__total">{product.item.price * product.count} {product.item.currency}</span>
+      </li>
+    );
+  }
+
   render() {
     const productArray = [];
-    let currency = ''
+    let className = 'basket-list';
+
+    if (this.props.className) className += ' ' + this.props.className;
 
     Object.entries(this.props.products).forEach(([key, value]) => {
       if (value) {
 
-        if (!currency) currency = value.item.currency; // TODO better solution in the future here for currency
+        if (this.props.onOneLine) {
+          productArray.push(this.renderBasketOneLine(value));
+        } else {
+          productArray.push(this.renderBasketItem(value));
+          productArray.push(this.renderBasketPrice(value));
+        }
 
-        productArray.push(this.renderBasketItem(value));
-        productArray.push(this.renderBasketPrice(value));
       }
     });
 
     return (
-      <ul className="basket-list">
+      <ul className={className}>
         {productArray}
       </ul>
     )
   }
 }
 
+BasketList.defaultProps = {
+  isCountChangeEnabled: true,
+  onOneLine: false
+};
+
 BasketList.propTypes = {
   products: PropTypes.object.isRequired,
-  onCountChange: PropTypes.func.isRequired
+  isCountChangeEnabled: PropTypes.bool,
+  onCountChange: PropTypes.func,
+  onOneLine: PropTypes.bool,
+  classOverride: PropTypes.string
 };
 
 export default BasketList;

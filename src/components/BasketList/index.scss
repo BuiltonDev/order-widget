@@ -18,6 +18,7 @@
 
     span:nth-child(3) {
       margin-left: auto;
+      padding-left: 10px
     }
 
     span:nth-child(2) {
@@ -43,6 +44,8 @@
 
     .basket-item__title {
       text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     .basket-item__count {
