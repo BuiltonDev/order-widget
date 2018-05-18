@@ -14,17 +14,40 @@
     fill: #b71914;
   }
 }
-.svg-icon--primary {
-  fill: $primary-color;
+
+.svg-icon--plus {
+  @include transition(all 450ms);
+  fill: $main-icon-color;
+
   &:hover {
-    fill: $primary-color-focus
+    @include transition(all 450ms);
+    fill: #1cab1c;
+  }
+}
+
+.svg-icon--minus {
+  @include transition(all 450ms);
+  fill: $main-icon-color;
+
+  &:hover {
+    @include transition(all 450ms);
+    fill: #b71914;
+  }
+}
+
+.svg-icon--primary {
+  @include transition(all 450ms);
+  fill: #7a7a7a;
+  &:hover {
+    @include transition(all 450ms);
+    fill: #666
   }
 }
 
 .svg-icon--secondary {
   fill: $secondary-background-color;
   &:hover {
-    fill: $primary-color-focus
+    fill: $primary-color-focus;
   }
 }
 

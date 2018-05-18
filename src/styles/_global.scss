@@ -2,25 +2,35 @@ $primary-color: #f68d39;
 $primary-color-focus: #dc6804;
 $primary-color-active: #cc6810;
 
-$primary-background-color: #f5f5f5;
-$secondary-background-color: #ffffff;
+$primary-background-color: #ffffff;
+$secondary-background-color: #f5f5f5;
+
+$list-item-border-color: #f6f6f6;
+$list-item-hover-background-color: #fbfbfb;
+
+$primary-header-title-color: #fff;
 
 $widget-width: 400px;
 $header-height: 100px;
 $footer-height: 100px;
 $content-min-height: 500px;
 
+$primary-input-text-color: #565a5c;
+$primary-button-color: #fff;
+
+$primary-border-radius: 8px;
+
 $default-padding: 32px;
 
-$notification-error-color: #d43636;
+$notification-error-color: #afafaf;
+
+$main-icon-color: #9a9a9a;
+
 
 %white-content-box {
   ul {
     list-style: none;
-    min-height: 300px;
-    background-color: $secondary-background-color;
-    margin: 0;
-    padding: 5px;
-    border: 1px solid #bfbcbc7a;
+    padding: 0;
+    margin: 12px 0 0;
   }
 }

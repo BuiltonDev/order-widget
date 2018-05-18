@@ -7,7 +7,9 @@ import Actions from 'src/reflux/Actions';
 import DeliveryStore from 'src/reflux/DeliveryStore';
 import ProductStore from 'src/reflux/ProductStore';
 import UserStore from 'src/reflux/UserStore';
+import BasketList from 'src/components/BasketList';
 import T from 'src/utils/i18n';
+import getCurrency from 'src/utils/getCurrency';
 
 class Receipt extends Reflux.Component {
   constructor(props) {
@@ -25,7 +27,7 @@ class Receipt extends Reflux.Component {
     return (
       <li key={label} className="receipt-item">
         <div>
-          <span>{label}:</span>
+          <span className="label">{label}:</span>
         </div>
         <div className={multipleClassName}>
           {children}
@@ -34,12 +36,25 @@ class Receipt extends Reflux.Component {
     );
   }
 
-  render() {
-    let productArray = [];
-    Object.entries(this.state.products).forEach(([key, value]) => {
-      if (value) productArray.push(`${value.count}x ${value.item.name}`);
-    });
+  renderBasketReceiptItem(label, products) {
+    return (
+      <>
+        <li key={label} className="receipt-item">
+          <div>
+            <span className="label">{label}:</span>
+          </div>
+        </li>
+        <li key={`${label}-item`} className="receipt-item receipt-item__basket">
+          <div className="receipt-item__multiple">
+            <BasketList className="receipt-basket" products={products} isCountChangeEnabled={false} onOneLine={true}/>
+          </div>
+        </li>
+      </>
+    );
+  }
 
+  render() {
+    const currency = getCurrency(this.state.products);
     return (
       <div className="receipt">
         <Header showBackNav={false}>
@@ -53,8 +68,8 @@ class Receipt extends Reflux.Component {
                   {this.renderReceiptItem(T.translate('receipt.nameLabel'), [this.state.firstName + ' ' + this.state.lastName])}
                   {this.renderReceiptItem(T.translate('receipt.phoneNumberLabel'), [this.state.phoneNumber])}
                   {/*this.renderReceiptItem('Order', [this.state.orderId])*/}
-                  {this.renderReceiptItem(T.translate('receipt.productsLabel'), productArray)}
-                  {this.renderReceiptItem(T.translate('receipt.priceLabel'), [this.state.totalSum])}
+                  {this.renderBasketReceiptItem(T.translate('receipt.productsLabel'), this.state.products)}
+                  {this.renderReceiptItem(T.translate('receipt.priceLabel'), [this.state.totalSum + ' ' + currency])}
                   {this.renderReceiptItem(T.translate('receipt.deliveryLabel'), [this.state.deliveryAddress, this.state.parsedDeliveryTime.format('LLL')])}
                   {this.state.deliveryAdditional ? this.renderReceiptItem(T.translate('receipt.deliveryAddLabel') , [this.state.deliveryAdditional]) : null}
                 </ul>

@@ -8,7 +8,9 @@
 }
 
 .time_picker_preview {
-  @include primary-input(36px, 100%);
+  @include primary-input(0, 100%);
+  border: 1px solid $list-item-border-color;
+
   @include transition(none);
   @include box-shadow(none);
 
@@ -19,7 +21,7 @@
   &:hover {
     @include box-shadow(none);
     outline: none;
-    border: 1px solid $primary-color-focus;
+    border: 1px solid $list-item-border-color;
   }
 
   .preview_container {

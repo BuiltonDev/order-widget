@@ -38,7 +38,7 @@ class PaymentForm extends Reflux.Component {
     return (
       <form className="kvass-widget__input-container payment-form" onSubmit={this.handleSubmit}>
         <CardElement />
-        <button className="kvass-widget__primary-button" type="submit">{T.translate('paymentDetails.addNewCard')}</button>
+        <button className="kvass-widget__secondary-button" type="submit">{T.translate('paymentDetails.addNewCard')}</button>
       </form>
     );
   }

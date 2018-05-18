@@ -3,8 +3,17 @@
 
 
 /* react-dates override */
-.SingleDatePickerInput .DateInput_input {
-  @include primary-input(36px, 100%);
+.SingleDatePickerInput {
+  &.SingleDatePickerInput__withBorder {
+    border: none;
+  }
+  .DateInput_input {
+    @include primary-input(36px, 100%);
+    border: 1px solid $list-item-border-color;
+    &:focus {
+
+    }
+  }
 }
 
 .CalendarDay__selected, .CalendarDay__selected:active, .CalendarDay__selected:hover{

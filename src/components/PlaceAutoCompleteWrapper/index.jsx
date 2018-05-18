@@ -52,7 +52,7 @@ class PlaceAutoCompleteWrapper extends Reflux.Component {
           renderSuggestion={this.renderSuggestion}
           onSelect={(address) => Actions.onGetAddressFromGoogle(address)}
           onEnterKeyDown={(address) => Actions.onGetAddressFromGoogle(address)} />
-        <button className="kvass-widget__primary-button" type="submit">{T.translate('global.select')}</button>
+        <button className="kvass-widget__secondary-button" type="submit">{T.translate('global.select')}</button>
       </form>
     )
   }

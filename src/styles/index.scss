@@ -44,13 +44,13 @@
     opacity: 1;
     width: $widget-width;
     margin: 0 auto;
-    border-radius: 5px;
+    border-radius: $primary-border-radius;
 
     //@include transition(transform 0.6s, opacity 0.6s, -webkit-transform 0.6s);
     //@include transition(opacity 0.3s ease-in-out 0.4s);
     //@include transition-delay(0.5s);
 
-    box-shadow: 0 0 20px 1px #111118;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.24);
   }
 
   .kvass-widget_powered-by {
@@ -91,17 +91,16 @@
 .kvass-widget__primary-button {
   text-align: center;
   cursor: pointer;
-  height: 36px;
-  width: 70px;
-  color: $secondary-background-color;
-  background-color: $primary-color;
-  border: 0;
+  height: 42px;
+  width: 120px;
+  font-size: 12px;
+  border-radius: $primary-border-radius;
+  border: 1px solid transparent;
   &:focus {
     @include focus-effect();
   }
   &:hover {
     outline: none;
-    border: 1px solid $primary-color-focus;
   }
   &:disabled {
     outline: none;
@@ -111,6 +110,31 @@
       border: none;
     }
   }
+}
+
+input.kvass-widget__primary-button {
+  color: $primary-input-text-color;
+  background-color: $primary-background-color;
+  margin-left: 12px;
+}
+
+
+button.kvass-widget__primary-button {
+  color: $primary-button-color;
+  background-color: $primary-color;
+}
+
+button.kvass-widget__secondary-button {
+  color: $primary-input-text-color;
+  background-color: $primary-button-color;
+  border: 1px solid $primary-color;
+  margin-left: 12px;
+  border-radius: $primary-border-radius;
+  text-align: center;
+  cursor: pointer;
+  height: 42px;
+  width: 120px;
+  font-size: 12px;
 }
 
 .kvass-widget__input {
@@ -143,3 +167,4 @@
 @import '../components/TimePickerWrapper/index';
 @import '../components/DayPickerWrapper/index';
 @import '../components/PaymentForm/index';
+@import '../components/BasketList/index';
