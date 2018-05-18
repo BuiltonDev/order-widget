@@ -39,9 +39,16 @@
       }
     }
 
+    .row {
+      flex-direction: row;
+    }
+
+    .column {
+      flex-direction: column;
+    }
+
     .step__items {
       display: flex;
-      flex-direction: row;
       justify-content: space-between;
       position: relative;
       cursor: pointer;
@@ -49,6 +56,8 @@
       //background-color: $secondary-background-color;
       //border: 1px solid #bfbcbc7a;
       border-radius: 2px;
+      //display: block;
+
 
       //transition: all .2s ease-in-out;
 

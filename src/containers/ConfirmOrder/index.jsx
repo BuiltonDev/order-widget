@@ -93,7 +93,7 @@ class ConfirmOrder extends Reflux.Component {
                     <p className="step__label">{T.translate('basket.header')}</p>
                     <p className="step__label">{T.translate('confirm.totalPrice')} </p>
                   </div>
-                  <div onClick={() => Actions.onNavigateTo(1)} className="step__items">
+                  <div onClick={() => Actions.onNavigateTo(1)} className="step__items row">
                     <span>{totalCount}x {T.translate('confirm.products')}</span>
                     <span>{totalSum}</span>
                   </div>
@@ -103,7 +103,7 @@ class ConfirmOrder extends Reflux.Component {
                   <div className="step-header">
                     <p className="step__label">{T.translate('userDetails.header')}</p>
                   </div>
-                  <div onClick={() => Actions.onNavigateTo(2)} className="step__items">
+                  <div onClick={() => Actions.onNavigateTo(2)} className="step__items column">
                     <span>{firstName} {lastName}</span>
                     <span>{phoneNumber}</span>
                   </div>
@@ -113,7 +113,7 @@ class ConfirmOrder extends Reflux.Component {
                   <div className="step-header">
                     <p className="step__label">{T.translate('deliveryDetails.header')}</p>
                   </div>
-                  <div onClick={() => Actions.onNavigateTo(3)} className="step__items">
+                  <div onClick={() => Actions.onNavigateTo(3)} className="step__items column">
                     <span>{deliveryAddress}</span>
                     <span>{deliveryTimeFormatted.toString()}</span>
                     <span>{deliveryAdditional ? T.translate('confirm.note') : ''}</span>
@@ -125,7 +125,7 @@ class ConfirmOrder extends Reflux.Component {
                   <div className="step-header">
                     <p className="step__label">{T.translate('paymentDetails.header')}</p>
                   </div>
-                  <div onClick={() => Actions.onNavigateTo(4)} className="step__items">
+                  <div onClick={() => Actions.onNavigateTo(4)} className="step__items column">
                     <span>{parseCreditCard(selectedPaymentMethod.card)}</span>
                   </div>
                 </div>
