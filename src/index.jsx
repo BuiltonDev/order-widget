@@ -1,7 +1,7 @@
-import './styles/index.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ShareActor from '@shareactor/shareactor-sdk';
+import './styles/index.scss';
 import App from './App';
 import T from './utils/i18n';
 import Config from './utils/Config';
@@ -11,9 +11,10 @@ let e;
 let el;
 
 export const init = ({domElementId, apiKey, endpoint, lng = 'no', firebaseConfig, stripeApiKey}) => {
-  // eslint-disable-next-line no-undef
-  new ShareActor({apiKey, endpoint});
-  new Config(firebaseConfig, stripeApiKey);
+  // eslint-disable-next-line no-unused-vars
+  const sa = new ShareActor({apiKey, endpoint});
+  // eslint-disable-next-line no-unused-vars
+  const config = new Config(firebaseConfig, stripeApiKey);
   T.setLanguage(lng);
 
   el = document.getElementById(domElementId);

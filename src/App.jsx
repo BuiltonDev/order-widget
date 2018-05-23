@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import Config from 'src/utils/Config';
 import NavigationStore from 'src/reflux/NavigationStore';
 import Actions from 'src/reflux/Actions';
-import KvassIcon from 'src/components/SvgIcons/KvassIcon'
+import KvassIcon from 'src/components/SvgIcons/KvassIcon';
 import T from 'src/utils/i18n';
 
 import firebase from 'firebase/app';

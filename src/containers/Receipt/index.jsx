@@ -38,7 +38,7 @@ class Receipt extends Reflux.Component {
 
   renderBasketReceiptItem(label, products) {
     return (
-      <>
+      <React.Fragment>
         <li key={label} className="receipt-item">
           <div>
             <span className="label">{label}:</span>
@@ -49,7 +49,7 @@ class Receipt extends Reflux.Component {
             <BasketList className="receipt-basket" products={products} isCountChangeEnabled={false} onOneLine={true}/>
           </div>
         </li>
-      </>
+      </React.Fragment>
     );
   }
 

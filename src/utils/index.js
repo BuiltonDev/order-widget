@@ -28,12 +28,12 @@ function roundNumber(value, decimals) {
 // Temporary method to retreive currency
 function getCurrency(products) {
   if (!products) return '';
-  const productList = Object.entries(products);
+  const productList = Object.values(products);
 
-  for (let property in products) {
-    const p = products[property];
+  for (let i = 0; i < productList.length; i += 1) {
+    const p = productList[i];
     if (p && p.item && p.item.currency) return p.item.currency;
-  };
+  }
 
   return '';
 }
