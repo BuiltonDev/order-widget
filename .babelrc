@@ -14,5 +14,13 @@
     ["@babel/preset-react"]
   ],
   "plugins": ["@babel/plugin-proposal-object-rest-spread"],
-  "comments": false
+  "comments": false,
+  "env": {
+    "test": {
+      "presets": [
+        ["@babel/preset-env"],
+        ["@babel/preset-react"]
+      ]
+    }
+  }
 }

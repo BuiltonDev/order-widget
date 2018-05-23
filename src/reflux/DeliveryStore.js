@@ -73,11 +73,11 @@ class DeliveryStore extends Reflux.Store {
       .then((results) => {
         this.setState({
           parsedDeliveryAddress: {
-            street_name: utils.parseLocation(results[0], 'route'),
-            building: utils.parseLocation(results[0], 'street_number'),
-            zip_code: utils.parseLocation(results[0], 'postal_code'),
-            city: utils.parseLocation(results[0], 'postal_town'),
-            country: utils.parseLocation(results[0], 'country')
+            street_name: utils.getLocationType(results[0], 'route'),
+            building: utils.getLocationType(results[0], 'street_number'),
+            zip_code: utils.getLocationType(results[0], 'postal_code'),
+            city: utils.getLocationType(results[0], 'postal_town'),
+            country: utils.getLocationType(results[0], 'country')
           }
         });
         return getLatLng(results[0]);

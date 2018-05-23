@@ -1,17 +1,17 @@
 import moment from 'moment';
 
-export function parseDeliveryTime(time, date) {
+function parseDeliveryTime(time, date) {
   if (!time || !date || !moment.isMoment(date)) return null;
   const [hours, minutes] = time.split(':');
   return date.set({hour: hours, minute: minutes, seconds: 0});
 }
 
-export function parseCreditCard(card) {
+function parseCreditCard(card) {
   if (!card) return '';
   return `${card.brand} xxxx xxxx xxxx ${card.last4} ${card.exp_month}/${card.exp_year.toString().substring(2, 4)}`;
 }
 
-export function parseLocation(location, type) {
+function getLocationType(location, type) {
   if (!location || !location.address_components) return null;
   const components = location.address_components;
   for (let i = 0; i < components.length; i += 1) {
@@ -20,18 +20,28 @@ export function parseLocation(location, type) {
   return null;
 }
 
-export function roundNumber(value, decimals) {
+function roundNumber(value, decimals) {
   const round = Math.round(`${value}e${decimals}`);
   return Number(`${round}e-${decimals}`);
 }
 
 // Temporary method to retreive currency
-export function getCurrency(products) {
+function getCurrency(products) {
   if (!products) return '';
+  const productList = Object.entries(products);
 
-  Object.entries(products).forEach(([key, value]) => {
-    if (value) return value.item.currency;
-  });
+  for (let property in products) {
+    const p = products[property];
+    if (p && p.item && p.item.currency) return p.item.currency;
+  };
 
   return '';
 }
+
+export default {
+  parseDeliveryTime,
+  parseCreditCard,
+  getLocationType,
+  roundNumber,
+  getCurrency
+};
