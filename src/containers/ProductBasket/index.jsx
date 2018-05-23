@@ -9,7 +9,7 @@ import ProductList from 'src/components/ProductList';
 import CloseIcon from 'src/components/SvgIcons/CloseIcon';
 import BasketList from 'src/components/BasketList';
 import T from 'src/utils/i18n';
-import getCurrency from 'src/utils/getCurrency';
+import utils from 'src/utils';
 
 class ProductBasket extends Reflux.Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class ProductBasket extends Reflux.Component {
 
   render() {
     const {products, totalCount, totalSum, totalTax} = this.state;
-    const currency = getCurrency(products);
+    const currency = utils.getCurrency(products);
 
     return (
       <div className="product-basket">

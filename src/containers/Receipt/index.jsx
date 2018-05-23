@@ -9,7 +9,7 @@ import ProductStore from 'src/reflux/ProductStore';
 import UserStore from 'src/reflux/UserStore';
 import BasketList from 'src/components/BasketList';
 import T from 'src/utils/i18n';
-import getCurrency from 'src/utils/getCurrency';
+import utils from 'src/utils';
 
 class Receipt extends Reflux.Component {
   constructor(props) {
@@ -54,7 +54,7 @@ class Receipt extends Reflux.Component {
   }
 
   render() {
-    const currency = getCurrency(this.state.products);
+    const currency = utils.getCurrency(this.state.products);
     return (
       <div className="receipt">
         <Header showBackNav={false}>
