@@ -33,7 +33,7 @@ class ProductList extends Reflux.Component {
       return (
         <li className="product-list-item" key={product._id.$oid}>
           <div className="product-list-item__img">
-            {this.renderProductImg(product.image_url)}
+            {/*this.renderProductImg(product.image_url)*/}
           </div>
           <span className="product-list-item__name">{product.name}</span>
           <div className="product-list-item__toolbar">
