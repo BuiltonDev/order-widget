@@ -9,7 +9,7 @@ import ProductStore from 'src/reflux/ProductStore';
 import UserStore from 'src/reflux/UserStore';
 import BasketList from 'src/components/BasketList';
 import T from 'src/utils/i18n';
-import getCurrency from 'src/utils/getCurrency';
+import utils from 'src/utils';
 
 class Receipt extends Reflux.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class Receipt extends Reflux.Component {
 
   renderBasketReceiptItem(label, products) {
     return (
-      <>
+      <React.Fragment>
         <li key={label} className="receipt-item">
           <div>
             <span className="label">{label}:</span>
@@ -49,12 +49,12 @@ class Receipt extends Reflux.Component {
             <BasketList className="receipt-basket" products={products} isCountChangeEnabled={false} onOneLine={true}/>
           </div>
         </li>
-      </>
+      </React.Fragment>
     );
   }
 
   render() {
-    const currency = getCurrency(this.state.products);
+    const currency = utils.getCurrency(this.state.products);
     return (
       <div className="receipt">
         <Header showBackNav={false}>

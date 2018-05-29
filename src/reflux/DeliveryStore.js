@@ -2,8 +2,7 @@ import Reflux from 'reflux';
 import moment from 'moment';
 import cloneDeep from 'lodash.clonedeep';
 import {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
-import parseLocation from 'src/utils/parseLocation';
-import parseDeliveryTime from 'src/utils/parseDeliveryTime';
+import utils from 'src/utils';
 import Actions from './Actions';
 
 const INITIAL_STATE = {
@@ -37,7 +36,7 @@ class DeliveryStore extends Reflux.Store {
       ...cloneDeep(INITIAL_STATE),
       deliveryDate,
       deliveryTime,
-      parsedDeliveryTime: parseDeliveryTime(deliveryTime, deliveryDate)
+      parsedDeliveryTime: utils.parseDeliveryTime(deliveryTime, deliveryDate)
     };
     this.listenables = Actions;
   }
@@ -49,17 +48,17 @@ class DeliveryStore extends Reflux.Store {
       ...cloneDeep(INITIAL_STATE),
       deliveryDate,
       deliveryTime,
-      parsedDeliveryTime: parseDeliveryTime(deliveryTime, deliveryDate)
+      parsedDeliveryTime: utils.parseDeliveryTime(deliveryTime, deliveryDate)
     });
   }
 
   onDateChange(deliveryDate) {
-    const parsed = parseDeliveryTime(this.state.deliveryTime, deliveryDate);
+    const parsed = utils.parseDeliveryTime(this.state.deliveryTime, deliveryDate);
     this.setState({deliveryDate, parsedDeliveryTime: parsed, setDate: true});
   }
 
   onTimeChange(deliveryTime) {
-    const parsed = parseDeliveryTime(deliveryTime, this.state.deliveryDate);
+    const parsed = utils.parseDeliveryTime(deliveryTime, this.state.deliveryDate);
     this.setState({deliveryTime, parsedDeliveryTime: parsed, setTime: true});
   }
 
@@ -74,11 +73,11 @@ class DeliveryStore extends Reflux.Store {
       .then((results) => {
         this.setState({
           parsedDeliveryAddress: {
-            street_name: parseLocation(results[0], 'route'),
-            building: parseLocation(results[0], 'street_number'),
-            zip_code: parseLocation(results[0], 'postal_code'),
-            city: parseLocation(results[0], 'postal_town'),
-            country: parseLocation(results[0], 'country')
+            street_name: utils.getLocationType(results[0], 'route'),
+            building: utils.getLocationType(results[0], 'street_number'),
+            zip_code: utils.getLocationType(results[0], 'postal_code'),
+            city: utils.getLocationType(results[0], 'postal_town'),
+            country: utils.getLocationType(results[0], 'country')
           }
         });
         return getLatLng(results[0]);

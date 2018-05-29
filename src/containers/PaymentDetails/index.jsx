@@ -11,7 +11,7 @@ import Config from 'src/utils/Config';
 import PaymentStore from 'src/reflux/PaymentStore';
 import UserStore from 'src/reflux/UserStore';
 import ShareActor from '@shareactor/shareactor-sdk';
-import parseCreditCard from 'src/utils/parseCreditCard';
+import utils from 'src/utils';
 
 class PaymentDetails extends Reflux.Component {
   constructor(props) {
@@ -83,7 +83,7 @@ class PaymentDetails extends Reflux.Component {
     const children = userPaymentMethods.map((paymentMethod) => {
       return (
         <option key={paymentMethod.id} value={paymentMethod.id}>
-          {parseCreditCard(paymentMethod.card)}
+          {utils.parseCreditCard(paymentMethod.card)}
         </option>
       );
     });

@@ -12,7 +12,7 @@ import ProductStore from 'src/reflux/ProductStore';
 import DeliveryStore from 'src/reflux/DeliveryStore';
 import PaymentStore from 'src/reflux/PaymentStore';
 import EditIcon from 'src/components/SvgIcons/EditIcon';
-import parseCreditCard from 'src/utils/parseCreditCard';
+import utils from 'src/utils';
 
 class ConfirmOrder extends Reflux.Component {
   constructor(props) {
@@ -115,7 +115,7 @@ class ConfirmOrder extends Reflux.Component {
                     <p className="step__label">{T.translate('paymentDetails.header')}</p>
                   </div>
                   <div onClick={() => Actions.onNavigateTo(4)} className="step__items column">
-                    <span>{parseCreditCard(selectedPaymentMethod.card)}</span>
+                    <span>{utils.parseCreditCard(selectedPaymentMethod.card)}</span>
                   </div>
                 </div>
 
