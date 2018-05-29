@@ -78,7 +78,9 @@ class ConfirmOrder extends Reflux.Component {
       firstName = '', lastName = '', phoneNumber = '', totalCount = '', totalSum = '', parsedDeliveryTime = '',
       deliveryAddress = '', deliveryAdditional = '', selectedPaymentMethod = ''} = this.state;
 
+      let currency = utils.getCurrency(this.state.products);
       let deliveryTimeFormatted = moment.isMoment(parsedDeliveryTime) ? parsedDeliveryTime.format('LLL') : '';
+      
     return (
       <div className="confirm-order">
         <Header showBackNav={true}>
@@ -126,7 +128,7 @@ class ConfirmOrder extends Reflux.Component {
                   </div>
                   <div onClick={() => Actions.onNavigateTo(1)} className="step__items row">
                     <span>{totalCount}x {T.translate('confirm.products')}</span>
-                    <span>{totalSum}</span>
+                    <span>{totalSum} {currency}</span>
                   </div>
                 </div>
             </div>
