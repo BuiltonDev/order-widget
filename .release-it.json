@@ -2,16 +2,16 @@
   "requireCleanWorkingDir": false,
   "buildCommand": "npm run build",
   "src": {
-    "releaseName": "Release v%s",
     "tagName": "v%s",
-    "tokenRef": "GITHUB_TOKEN",
     "assets": "dist/kvass.*"
   },
   "dist": {
     "baseDir": "dist"
   },
   "github": {
-    "release": true
+    "releaseName": "Release v%s",
+    "release": true,
+    "tokenRef": "GITHUB_TOKEN"
   },
   "npm": {
     "publish": false
