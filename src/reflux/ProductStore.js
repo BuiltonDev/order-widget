@@ -42,7 +42,7 @@ class ProductStore extends Reflux.Store {
         [id]: copy
       },
       totalCount: this.state.totalCount + addCount,
-      totalSum: this.state.totalSum + (copy.item.price * addCount),
+      totalSum: utils.roundNumber(this.state.totalSum + (copy.item.price * addCount), 2),
       totalTax: utils.roundNumber(tax, 2)
     });
   }
@@ -64,7 +64,7 @@ class ProductStore extends Reflux.Store {
         [id]: copy.count > 0 ? copy : null // Set to null on last item of product
       },
       totalCount: this.state.totalCount + maxRemovable,
-      totalSum: this.state.totalSum + (copy.item.price * maxRemovable),
+      totalSum: utils.roundNumber(this.state.totalSum + (copy.item.price * maxRemovable), 2),
       totalTax: utils.roundNumber(tax, 2)
     });
   }
