@@ -1133,11 +1133,10 @@ button.kvass-widget__secondary-button {
       white-space: nowrap;
       overflow: hidden;
       padding: 0 5px; }
-    .product-search .product-list .product-list-item__img {
+    .product-search .product-list .product-list-item__img img {
       width: 25px;
-      max-height: 40px; }
-      .product-search .product-list .product-list-item__img img {
-        padding: 0 3px; }
+      max-height: 40px;
+      padding: 0 3px; }
     .product-search .product-list .product-list-item__toolbar {
       display: flex;
       margin-left: auto;
