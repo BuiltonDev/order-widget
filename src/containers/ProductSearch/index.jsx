@@ -20,23 +20,20 @@ class ProductSearch extends Component {
     };
     this.pagination = {
       page: 0,
-      size: 9,
+      size: 10,
       total: 0
     };
     this.kvass = new Kvass();
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
 
-  searchProduct(search) {
-    if (search === this.state.search) return;
-    // Empty search
-    if (!search.length) {
-      this.setState({search, productSearchList: []});
-      return;
-    }
+  componentDidMount() {
+    this.searchProduct('');
+  }
 
+  searchProduct(search) {
     this.setState({isLoading: true});
-    this.kvass.product().search({query: search, urlParams: {size: this.pagination.size, page: this.pagination.page}}, (error, productListRes, res) => {
+    this.kvass.product().search({query: search, urlParams: {size: this.pagination.size, page: this.pagination.page, sort: '-created'}}, (error, productListRes, res) => {
       this.setState({isLoading: false, search, productSearchList: productListRes});
     });
   }
@@ -48,7 +45,7 @@ class ProductSearch extends Component {
   renderEmptyBody() {
     return (
       <div className="product-list--empty">
-        <p>{T.translate('product.searchPlaceholder')}</p>
+        <p>{T.translate('product.noResults')}</p>
       </div>
     );
   }
@@ -71,7 +68,7 @@ class ProductSearch extends Component {
         <div className="kvass-widget__content-body">
           <Spinner show={isLoading}></Spinner>
           <div className="product-list">
-            {search ? <ProductList productList={productSearchList}></ProductList> : this.renderEmptyBody()}
+            {productSearchList.length ? <ProductList productList={productSearchList}></ProductList> : this.renderEmptyBody()}
           </div>
           <Footer>
             <ShoppingCart></ShoppingCart>
