@@ -5,13 +5,13 @@ import {CardElement, injectStripe} from 'react-stripe-elements';
 import T from 'src/utils/i18n';
 import Actions from 'src/reflux/Actions';
 import PaymentStore from 'src/reflux/PaymentStore';
-import ShareActor from '@shareactor/shareactor-sdk';
+import Kvass from '@kvass.ai/core-sdk';
 
 class PaymentForm extends Reflux.Component {
   constructor(props) {
     super(props);
     this.store = PaymentStore;
-    this.sa = new ShareActor();
+    this.kvass = new Kvass();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -20,7 +20,7 @@ class PaymentForm extends Reflux.Component {
     this.props.onStripePaymentAdded({isLoading: true});
     this.props.stripe.createToken().then(payload => {
       const paymentMethodPayload = {payment_method: 'stripe', token: payload.token.id};
-      this.sa.paymentMethod().create({body: paymentMethodPayload}, (err, PaymentMethod, raw) => {
+      this.kvass.paymentMethod().create({body: paymentMethodPayload}, (err, PaymentMethod, raw) => {
         this.props.onStripePaymentAdded({isLoading: false});
 
         if (err) {

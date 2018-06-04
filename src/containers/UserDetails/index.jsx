@@ -10,7 +10,7 @@ import UserIcon from 'src/components/SvgIcons/UserIcon';
 import UserStore from 'src/reflux/UserStore';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
-import ShareActor from '@shareactor/shareactor-sdk';
+import Kvass from '@kvass.ai/core-sdk';
 
 class UserDetails extends Reflux.Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class UserDetails extends Reflux.Component {
     this.state = {
       isLoading: false
     };
-    this.sa = new ShareActor();
+    this.kvass = new Kvass();
     this.authenticateWithApi = this.authenticateWithApi.bind(this);
     this.removeAuthentication = this.removeAuthentication.bind(this);
     this.renderExistingUser = this.renderExistingUser.bind(this);
@@ -58,8 +58,8 @@ class UserDetails extends Reflux.Component {
       email: this.state.email
     };
     // Add the idToken from successful firebase authentication
-    this.sa.refreshBearerToken(this.state.idToken);
-    this.sa.user().login({body: profile}, (err, apiUser, raw) => {
+    this.kvass.refreshBearerToken(this.state.idToken);
+    this.kvass.user().login({body: profile}, (err, apiUser, raw) => {
       this.setState({isLoading: false});
       if (err) {
         Actions.onMessage({isError: true});

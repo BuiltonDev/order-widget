@@ -6,7 +6,7 @@ import Footer from 'src/components/Footer';
 import Spinner from 'src/components/Spinner';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
-import ShareActor from '@shareactor/shareactor-sdk';
+import Kvass from '@kvass.ai/core-sdk';
 import UserStore from 'src/reflux/UserStore';
 import ProductStore from 'src/reflux/ProductStore';
 import DeliveryStore from 'src/reflux/DeliveryStore';
@@ -26,7 +26,7 @@ class ConfirmOrder extends Reflux.Component {
       processedOrder: false
     };
 
-    this.sa = new ShareActor();
+    this.kvass = new Kvass();
     this.createOrder = this.createOrder.bind(this);
   }
 
@@ -50,7 +50,7 @@ class ConfirmOrder extends Reflux.Component {
       delivery_time: this.state.parsedDeliveryTime.unix()
     };
 
-    this.sa.order().create({body: orderPayload}, (err, Order, raw) => {
+    this.kvass.order().create({body: orderPayload}, (err, Order, raw) => {
       if (err) {
         Actions.onMessage({isError: true});
         return;
@@ -61,7 +61,7 @@ class ConfirmOrder extends Reflux.Component {
         payment_method: this.state.selectedPaymentMethod.id
       };
 
-      this.sa.payment().create({body: paymentPayload}, (err, PayOrder, raw) => {
+      this.kvass.payment().create({body: paymentPayload}, (err, PayOrder, raw) => {
         if (err) {
           Actions.onMessage({isError: true});
           return;
@@ -80,7 +80,7 @@ class ConfirmOrder extends Reflux.Component {
 
       let currency = utils.getCurrency(this.state.products);
       let deliveryTimeFormatted = moment.isMoment(parsedDeliveryTime) ? parsedDeliveryTime.format('LLL') : '';
-      
+
     return (
       <div className="confirm-order">
         <Header showBackNav={true}>

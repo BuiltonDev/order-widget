@@ -18,13 +18,13 @@ Kvass ordering widget uses the [Kvass](https://kvass.ai) platform for product, o
 From the [unpkg](https://unpkg.com/) CDN
 
 ```html
-<script src="https://unpkg.com/@shareactor/kvass-ordering-widget@latest/dist/kvass.bundle.js"></script>
+<script src="https://unpkg.com/@kvass/kvass-ordering-widget@latest/dist/kvass.bundle.js"></script>
 ```
 
 From [npm](https://npmjs.org)
 
 ```sh
-npm install @shareactor/kvass-ordering-widget
+npm install @kvass/kvass-ordering-widget
 ```
 
 ## Demo
@@ -37,7 +37,7 @@ Add the required script dependencies in your header, and remember to add your [G
 <head>
 	<script src="https://js.stripe.com/v3/" async></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
-	<script src="https://unpkg.com/@shareactor/kvass-ordering-widget@latest/dist/kvass.bundle.js"></script>
+	<script src="https://unpkg.com/@kvass/kvass-ordering-widget@latest/dist/kvass.bundle.js"></script>
 </head>
 ```
 
@@ -50,7 +50,7 @@ Add the required script dependencies in your header, and remember to add your [G
 - firebaseConfig {Object}
 - stripeApiKey {String}
 
-Initialize the widget by providing the required configuration, using your Kvass API key and Kvass endpoint (`https://qa.shareactor.io/` for our QA environment or `https://api.shareactor.io/` for our production environment), Firebase domain and API key for the user verification and authentication, a Stripe API key to process payments and the locale you want to use (en or no are the only supported locals)
+Initialize the widget by providing the required configuration, using your Kvass API key and Kvass endpoint (`https://qa.kvass.ai/` for our QA environment or `https://api.kvass.ai/` for our production environment), Firebase domain and API key for the user verification and authentication, a Stripe API key to process payments and the locale you want to use (en or no are the only supported locals)
 
 ```html
 <script>
