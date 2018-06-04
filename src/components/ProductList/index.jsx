@@ -3,7 +3,7 @@ import Reflux from 'reflux';
 import PropTypes from 'prop-types';
 import {Scrollbars} from 'react-custom-scrollbars';
 import Actions from 'src/reflux/Actions';
-import ShareActor from '@shareactor/shareactor-sdk';
+import Kvass from '@kvass.ai/core-sdk';
 import AddIcon from 'src/components/SvgIcons/AddIcon';
 import MinusIcon from 'src/components/SvgIcons/MinusIcon';
 import T from 'src/utils/i18n';
@@ -13,7 +13,7 @@ const DEFAULT_IMAGE = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/200
 class ProductList extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.sa = new ShareActor();
+    this.kvass = new Kvass();
   }
 
   addDefaultSrc(ev) {
@@ -22,7 +22,7 @@ class ProductList extends Reflux.Component {
 
   renderProductImg(image_url) {
     let src = DEFAULT_IMAGE;
-    if (image_url) src = `${this.sa.endpoint}images/${image_url}?api_key=${this.sa.apiKey}`;
+    if (image_url) src = `${this.kvass.endpoint}images/${image_url}?api_key=${this.kvass.apiKey}`;
 
     return (
       <img onError={this.addDefaultSrc} src={src} alt="product image"/>

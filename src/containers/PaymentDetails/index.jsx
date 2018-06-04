@@ -10,14 +10,14 @@ import T from 'src/utils/i18n';
 import Config from 'src/utils/Config';
 import PaymentStore from 'src/reflux/PaymentStore';
 import UserStore from 'src/reflux/UserStore';
-import ShareActor from '@shareactor/shareactor-sdk';
+import Kvass from '@kvass.ai/core-sdk';
 import utils from 'src/utils';
 
 class PaymentDetails extends Reflux.Component {
   constructor(props) {
     super(props);
     this.config = Config();
-    this.sa = new ShareActor();
+    this.kvass = new Kvass();
 
     this.stores = [PaymentStore, UserStore];
     this.state = {
@@ -42,7 +42,7 @@ class PaymentDetails extends Reflux.Component {
     }
 
     // Retrieve payment methods
-    this.sa.paymentMethod().getAll({}, (err, PaymentMethods, raw) => {
+    this.kvass.paymentMethod().getAll({}, (err, PaymentMethods, raw) => {
       if (err) {
         Actions.onMessage({isError: true});
         this.setState({isLoading: false});

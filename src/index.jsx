@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ShareActor from '@shareactor/shareactor-sdk';
+import Kvass from '@kvass.ai/core-sdk';
 import './styles/index.scss';
 import App from './App';
 import T from './utils/i18n';
@@ -12,7 +12,7 @@ let el;
 
 export const init = ({domElementId, apiKey, endpoint, lng = 'no', firebaseConfig, stripeApiKey}) => {
   // eslint-disable-next-line no-unused-vars
-  const sa = new ShareActor({apiKey, endpoint});
+  const sa = new Kvass({apiKey, endpoint});
   // eslint-disable-next-line no-unused-vars
   const config = new Config(firebaseConfig, stripeApiKey);
   T.setLanguage(lng);
@@ -32,9 +32,9 @@ export const close = () => {
   ReactDOM.unmountComponentAtNode(el);
 };
 
-// TODO check whether we should destroy shareactor and i18n instance as well
+// TODO check whether we should destroy kvass and i18n instance as well
 export const destroy = () => {
-  delete window.ShareActor;
+  delete window.Kvass;
   delete window.StripeApiKey;
   delete window.FirebaseConfig;
   ReactDOM.unmountComponentAtNode(el);

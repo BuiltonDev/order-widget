@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {DebounceInput} from 'react-debounce-input';
 import T from 'src/utils/i18n';
-import ShareActor from '@shareactor/shareactor-sdk';
+import Kvass from '@kvass.ai/core-sdk';
 import Actions from 'src/reflux/Actions';
 import Spinner from 'src/components/Spinner';
 import Header from 'src/components/Header';
@@ -23,7 +23,7 @@ class ProductSearch extends Component {
       size: 9,
       total: 0
     };
-    this.sa = new ShareActor();
+    this.kvass = new Kvass();
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
 
@@ -36,7 +36,7 @@ class ProductSearch extends Component {
     }
 
     this.setState({isLoading: true});
-    this.sa.product().search({query: search, urlParams: {size: this.pagination.size, page: this.pagination.page}}, (error, productListRes, res) => {
+    this.kvass.product().search({query: search, urlParams: {size: this.pagination.size, page: this.pagination.page}}, (error, productListRes, res) => {
       this.setState({isLoading: false, search, productSearchList: productListRes});
     });
   }
