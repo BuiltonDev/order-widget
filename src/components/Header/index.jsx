@@ -5,10 +5,10 @@ import BackIcon from 'src/components/SvgIcons/BackIcon';
 import CloseIcon from 'src/components/SvgIcons/CloseIcon';
 
 const Header = (props) => {
-  const {showBackNav, showCloseNav} = props;
+  const {showBackNav, showCloseNav, backStep} = props;
   const backNav = () => {
     return (
-      <div className="previous-navigation" onClick={() => Actions.onPreviousNavigation()}>
+      <div className="previous-navigation" onClick={() => backStep !== null ? Actions.onNavigateTo(backStep): Actions.onPreviousNavigation()}>
         <BackIcon className="svg-icon--primary"></BackIcon>
       </div>
     );
@@ -34,12 +34,14 @@ const Header = (props) => {
 
 Header.defaultProps = {
   showCloseNav: true,
-  showBackNav: false
+  showBackNav: false,
+  backStep: null
 };
 
 Header.propTypes = {
   showCloseNav: PropTypes.bool,
-  showBackNav: PropTypes.bool
+  showBackNav: PropTypes.bool,
+  backStep: PropTypes.number
 };
 
 export default Header;

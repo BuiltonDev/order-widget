@@ -21,6 +21,9 @@ T.setLanguage = (lng) => {
         searchPlaceholder: 'Søk etter produkt',
         noResults: 'Fant ingen treff'
       },
+      productPage: {
+        addToCart: 'Legg til kurv'
+      },
       basket: {
         header: 'Handlekurv',
         checkout: 'Fortsett',
@@ -85,6 +88,9 @@ T.setLanguage = (lng) => {
         search: 'Search',
         searchPlaceholder: 'Search for product',
         noResults: 'No results'
+      },
+      productPage: {
+        addToCart: 'Add to cart'
       },
       basket: {
         header: 'Basket',

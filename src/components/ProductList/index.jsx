@@ -15,6 +15,11 @@ class ProductList extends Reflux.Component {
     this.kvass = new Kvass();
   }
 
+  onProductClick(product) {
+    Actions.onSelectProduct(product)
+    Actions.onNavigateTo(7);
+  }
+
   render() {
     const {productList} = this.props;
     if (!productList.length) return (
@@ -25,7 +30,7 @@ class ProductList extends Reflux.Component {
 
     const children = productList.map((product) => {
       return (
-        <li className="product-list-item" key={product._id.$oid}>
+        <li className="product-list-item" key={product._id.$oid} onClick={() => this.onProductClick(product)}>
           <div className="product-list-item__img">
             <ProductImage imageUrl={product.image_url} apiKey={this.kvass.apiKey} endpoint={this.kvass.endpoint} />
           </div>

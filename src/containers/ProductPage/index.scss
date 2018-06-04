@@ -1,0 +1,28 @@
+@import '../../styles/_global';
+@import '../../styles/_mixins';
+
+.product-page {
+  min-height: $content-min-height;
+
+  .product-page__image {
+    padding: 5px;
+    img {
+      max-height: 300px;
+      max-width: 400px;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+
+  .product-page__info {
+    padding: 10px 32px;
+  }
+
+  .product-page__description {
+
+  }
+
+  .product-page__toolbar {
+
+  }
+}
