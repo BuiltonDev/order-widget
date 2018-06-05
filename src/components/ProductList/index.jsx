@@ -17,7 +17,7 @@ class ProductList extends Reflux.Component {
 
   onProductClick(product) {
     Actions.onSelectProduct(product)
-    Actions.onNavigateTo(7);
+    Actions.onNavigateTo(7); // Navigate to product page
   }
 
   render() {
