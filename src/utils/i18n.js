@@ -22,7 +22,10 @@ T.setLanguage = (lng) => {
         noResults: 'Fant ingen treff'
       },
       productPage: {
-        addToCart: 'Legg til kurv'
+        addToCart: 'Legg til kurv',
+        quantity: 'Antall',
+        unitPrice: 'Pris per enhet',
+        totalPrice: 'Total pris'
       },
       basket: {
         header: 'Handlekurv',
@@ -90,7 +93,10 @@ T.setLanguage = (lng) => {
         noResults: 'No results'
       },
       productPage: {
-        addToCart: 'Add to cart'
+        addToCart: 'Add to cart',
+        quantity: 'Quantity',
+        unitPrice: 'Unit price',
+        totalPrice: 'Total price'
       },
       basket: {
         header: 'Basket',

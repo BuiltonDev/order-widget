@@ -5,8 +5,10 @@
   min-height: $content-min-height;
 
   .product-page__image {
-    //padding: 5px;
+    padding-top: 5px;
     img {
+      border: 1px solid #7a7a7a;
+      border-radius: 3px;
       max-height: 300px;
       max-width: 400px;
       margin: 0 auto;
@@ -16,6 +18,11 @@
 
   .product-page__info {
     padding: 10px 32px;
+
+    button {
+      margin: 0 auto;
+      display: block;
+    }
   }
 
   .product-page__description {
@@ -23,6 +30,23 @@
   }
 
   .product-page__toolbar {
+    text-transform: uppercase;
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+
+    .product-page__quantity {
+
+    }
+
+    .product-page__unit-price {
+
+    }
+
+    .product-page__total-price {
+
+    }
 
   }
+
 }
