@@ -16,7 +16,7 @@ class ProductList extends Reflux.Component {
   }
 
   onProductClick(product) {
-    Actions.onSelectProduct(product)
+    Actions.onSelectProduct(product);
     Actions.onNavigateTo(7); // Navigate to product page
   }
 
@@ -30,11 +30,11 @@ class ProductList extends Reflux.Component {
 
     const children = productList.map((product) => {
       return (
-        <li className="product-list-item" key={product._id.$oid} onClick={() => this.onProductClick(product)}>
+        <li className="product-list-item" key={product._id.$oid}>
           <div className="product-list-item__img">
             <ProductImage imageUrl={product.image_url} apiKey={this.kvass.apiKey} endpoint={this.kvass.endpoint} />
           </div>
-          <span className="product-list-item__name">{product.name}</span>
+          <span className="product-list-item__name" onClick={() => this.onProductClick(product)}>{product.name}</span>
           <div className="product-list-item__toolbar">
             <a href="#" onClick={() => Actions.onRemoveProduct(product)}><MinusIcon className="svg-icon--minus" /></a>
             <a href="#" onClick={() => Actions.onAddProduct(product)}><AddIcon className="svg-icon--plus" /></a>
