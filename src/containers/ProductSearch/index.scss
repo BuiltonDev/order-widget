@@ -11,28 +11,10 @@
 
   .product-list {
     min-height: $content-min-height;
+    @extend %styled-list;
+
     ul {
-      list-style: none;
-      margin: 0;
       padding: 30px 32px;
-    }
-    li {
-      font-size: 12px;
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      flex: 1;
-      cursor: pointer;
-      margin-bottom: 16px;
-      padding-left: 0;
-      color: $primary-input-text-color;
-      border: 1px solid $list-item-border-color;
-      border-radius: 6px;
-      align-items: center;
-      justify-content: center;
-      height: 42px;
     }
 
     .product-list-item__name {
@@ -51,27 +33,7 @@
     }
 
     .product-list-item__toolbar {
-      display: flex;
-      margin-left: auto;
-      flex: 1;
-      justify-content: flex-end;
-      height: 100%;
-      a {
-        padding: 0 8px;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        border-left: 1px solid $list-item-border-color;
-        @include transition(all 450ms)
-        &:hover {
-          @include transition(all 450ms);
-          background-color: $list-item-hover-background-color;
-        }
-      }
+      @extend %toolbar;
     }
   }
 

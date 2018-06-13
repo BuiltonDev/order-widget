@@ -29,24 +29,39 @@
 
   }
 
-  .product-page__toolbar {
-    text-transform: uppercase;
-    list-style: none;
-    margin: 0;
-    padding: 10px 0;
+  .product-page__list {
+    margin-top: 15px;
+    @extend %styled-list;
 
-    .product-page__quantity {
-
+    ul {
+      padding: unset;
     }
 
-    .product-page__unit-price {
-
+    .list-item__toolbar {
+      @extend %toolbar;
     }
 
-    .product-page__total-price {
-
+    .list-item {
+      font-size: 14px;
+      flex: auto;
+      padding: 15px;
+      text-transform: uppercase;
     }
 
+    .list-item__count {
+      text-align: right;
+    }
+
+    .list-item__count-input {
+      font-size: 14px;
+      text-align: center;
+      font-weight: 400;
+      color: #9a9a9a;
+      width: 41px;
+      border: unset;
+      border-left: 1px solid #f6f6f6
+    }
   }
+
 
 }
