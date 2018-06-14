@@ -15,8 +15,6 @@ import MinusIcon from 'src/components/SvgIcons/MinusIcon';
 import AddIcon from 'src/components/SvgIcons/AddIcon';
 import ShoppingCart from 'src/components/ShoppingCart';
 
-const LOREM_IPSUM = 'Pellentesque est lorem, euismod in nunc sed, vulputate rutrum nisi. Mauris semper convallis interdum. Aliquam feugiat semper tempus. Maecenas bibendum eget erat in euismod. Maecenas blandit a risus eu vehicula. Morbi feugiat est a quam tempor, at porta nunc eleifend. Integer lobortis, lorem quis luctus euismod, enim risus ultricies augue, quis vestibulum velit purus sit amet enim. Aenean at finibus tortor. Suspendisse potenti. Fusce semper, mi a posuere sollicitudin, ligula arcu dapibus lacus, ac laoreet dui nisl malesuada justo. Phasellus commodo consectetur vestibulum. Nam volutpat, erat in mollis ornare, diam ex venenatis est, ut laoreet velit lacus quis mi. Donec aliquet arcu neque, id condimentum urna blandit sit amet. Phasellus metus diam, dignissim sit amet vehicula eu, iaculis ac urna. Ut sodales lacinia purus, eu vehicula urna porttitor quis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
-
 class ProductPage extends Reflux.Component {
   constructor(props) {
     super(props);
@@ -56,7 +54,7 @@ class ProductPage extends Reflux.Component {
             </div>
             <div className="product-page__info">
               <div className="product-page__description">
-                <span>{LOREM_IPSUM}</span>
+                <span>{selectedProduct.short_description}</span>
               </div>
               <div className="product-page__list">
                 <ul>
