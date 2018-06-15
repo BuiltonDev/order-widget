@@ -4,8 +4,8 @@
   "description": "KVASS Order Widget",
   "main": "./src/index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --open --config ./config/webpack.development.js",
-    "build": "./node_modules/.bin/webpack --config ./config/webpack.production.js",
+    "start": "webpack-dev-server --open --config ./config/webpack.development.js",
+    "build": "webpack --config ./config/webpack.production.js",
     "lint": "eslint src/**",
     "test": "jest",
     "release": "release-it"
@@ -21,6 +21,14 @@
   },
   "author": "Sofien Rakke Lazreg <sofien@kvass.ai>",
   "license": "MIT",
+  "keywords": [
+    "KVASS",
+    "AI",
+    "SAAS",
+    "On-demand",
+    "ecommerce",
+    "checkout"
+  ],
   "bugs": {
     "url": "https://github.com/kvassAI/order-widget/issues"
   },
