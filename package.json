@@ -1,7 +1,7 @@
 {
-  "name": "kvass-ordering-widget",
+  "name": "@kvass.ai/ordering-widget",
   "version": "0.4.0",
-  "description": "KVASS ordering widget",
+  "description": "KVASS Ordering Widget",
   "main": "./src/index.js",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --open --config ./config/webpack.development.js",
