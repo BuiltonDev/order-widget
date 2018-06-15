@@ -7,7 +7,8 @@ const INITIAL_STATE = {
   products: {},
   totalCount: 0,
   totalSum: 0,
-  totalTax: 0
+  totalTax: 0,
+  selectedProduct: null
 };
 
 class ProductStore extends Reflux.Store {
@@ -67,6 +68,10 @@ class ProductStore extends Reflux.Store {
       totalSum: utils.roundNumber(this.state.totalSum + (copy.item.price * maxRemovable), 2),
       totalTax: utils.roundNumber(tax, 2)
     });
+  }
+
+  onSelectProduct(product) {
+    this.setState({selectedProduct: product});
   }
 }
 

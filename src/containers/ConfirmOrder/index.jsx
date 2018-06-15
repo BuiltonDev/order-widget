@@ -53,6 +53,7 @@ class ConfirmOrder extends Reflux.Component {
     this.kvass.order().create({body: orderPayload}, (err, Order, raw) => {
       if (err) {
         Actions.onMessage({isError: true});
+        this.setState({isLoading: false});
         return;
       }
 
@@ -64,6 +65,7 @@ class ConfirmOrder extends Reflux.Component {
       this.kvass.payment().create({body: paymentPayload}, (err, PayOrder, raw) => {
         if (err) {
           Actions.onMessage({isError: true});
+          this.setState({isLoading: false});
           return;
         }
 

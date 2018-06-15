@@ -11,6 +11,7 @@ const Actions = Reflux.createActions([
   'onNavigationReset', // Nav
   'onAddProduct', // Product
   'onRemoveProduct', // Product
+  'onSelectProduct', // Product
   'onProductReset', // Product
   'onAuthStateChanged', // User
   'onUserDetailsInput', // User
