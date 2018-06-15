@@ -18,17 +18,17 @@ Kvass ordering widget uses the [Kvass](https://kvass.ai) platform for product, o
 From the [unpkg](https://unpkg.com/) CDN
 
 ```html
-<script src="https://unpkg.com/@kvass/kvass-ordering-widget@latest/dist/kvass.bundle.js"></script>
+<script src="https://unpkg.com/@kvass.ai/order-widget@latest/dist/kvass.bundle.js"></script>
 ```
 
 From [npm](https://npmjs.org)
 
 ```sh
-npm install @kvass/kvass-ordering-widget
+npm install @kvass.ai/order-widget
 ```
 
 ## Demo
-Try out our [demo](https://kvassAI.github.io/kvass-ordering-widget/demo/index.html)
+Try out our [demo](https://kvassAI.github.io/order-widget/demo/index.html)
 
 ## Getting started
 Add the required script dependencies in your header, and remember to add your [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/) key.
@@ -37,7 +37,7 @@ Add the required script dependencies in your header, and remember to add your [G
 <head>
 	<script src="https://js.stripe.com/v3/" async></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
-	<script src="https://unpkg.com/@kvass/kvass-ordering-widget@latest/dist/kvass.bundle.js"></script>
+	<script src="https://unpkg.com/@kvass.ai/order-widget@latest/dist/kvass.bundle.js"></script>
 </head>
 ```
 

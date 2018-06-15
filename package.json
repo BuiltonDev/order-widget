@@ -1,7 +1,7 @@
 {
-  "name": "@kvass.ai/ordering-widget",
+  "name": "@kvass.ai/order-widget",
   "version": "0.4.1",
-  "description": "KVASS Ordering Widget",
+  "description": "KVASS Order Widget",
   "main": "./src/index.js",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --open --config ./config/webpack.development.js",
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kvassAI/kvass-ordering-widget.git"
+    "url": "git+https://github.com/kvassAI/order-widget.git"
   },
   "author": "Sofien Rakke Lazreg <sofien@kvass.ai>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kvassAI/kvass-ordering-widget/issues"
+    "url": "https://github.com/kvassAI/order-widget/issues"
   },
-  "homepage": "https://github.com/kvassAI/kvass-ordering-widget#readme",
+  "homepage": "https://github.com/kvassAI/order-widget#readme",
   "devDependencies": {
     "@babel/core": "7.0.0-beta.44",
     "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.44",
