@@ -18,7 +18,7 @@ class ShoppingCart extends Reflux.Component {
 
   onShoppingCartClick() {
     if (this.state.totalCount) {
-      Actions.onNextNavigation();
+      Actions.onNavigateTo(1); // To basket
     }
   }
 

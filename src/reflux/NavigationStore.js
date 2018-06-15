@@ -1,7 +1,7 @@
 import Reflux from 'reflux';
 import cloneDeep from 'lodash.clonedeep';
 
-// Containers
+// Nav Containers
 import ProductSearch from 'src/containers/ProductSearch';
 import ProductBasket from 'src/containers/ProductBasket';
 import UserDetails from 'src/containers/UserDetails';
@@ -9,7 +9,11 @@ import DeliveryDetails from 'src/containers/DeliveryDetails';
 import PaymentDetails from 'src/containers/PaymentDetails';
 import ConfirmOrder from 'src/containers/ConfirmOrder';
 import Receipt from 'src/containers/Receipt';
+
 import Actions from './Actions';
+
+// Target Containers
+import ProductPage from 'src/containers/ProductPage';
 
 const INITIAL_STATE = {
   step: 0,
@@ -20,7 +24,8 @@ const INITIAL_STATE = {
     DeliveryDetails,
     PaymentDetails,
     ConfirmOrder,
-    Receipt
+    Receipt,
+    ProductPage // outside normal nav
   ]
 };
 
