@@ -44,7 +44,7 @@ class ProductList extends Reflux.Component {
     });
 
     return (
-      <Scrollbars style={{ height: 500 }}>
+      <Scrollbars style={{ height: 490 }}>
         <ul>
           {children}
         </ul>

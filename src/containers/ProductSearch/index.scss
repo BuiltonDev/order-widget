@@ -11,7 +11,8 @@
   }
 
   .product-list {
-    min-height: $content-min-height;
+    //min-height: $content-min-height;
+    min-height: 490px; // This is due to Scrollbars taking up some more space
     @extend %styled-list;
 
     ul {

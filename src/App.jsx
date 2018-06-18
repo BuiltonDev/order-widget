@@ -5,8 +5,6 @@ import classNames from 'classnames';
 import Config from 'src/utils/Config';
 import NavigationStore from 'src/reflux/NavigationStore';
 import Actions from 'src/reflux/Actions';
-import KvassIcon from 'src/components/SvgIcons/KvassIcon';
-import T from 'src/utils/i18n';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -42,13 +40,9 @@ class App extends Reflux.Component {
     return (
       <div id="kvass-widget" className={className}>
         <div className="kvass-widget__overlay"></div>
-          <div className="kvass-widget__container">
-            {this.renderCurrentNav()}
-            <div className="kvass-widget_powered-by">
-              <span>{T.translate('global.poweredBy')}</span>{' '}
-              <KvassIcon className="svg-icon--powered-by"></KvassIcon>
-            </div>
-          </div>
+        <div className="kvass-widget__container">
+          {this.renderCurrentNav()}
+        </div>
       </div>
     );
   }
