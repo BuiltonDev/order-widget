@@ -5,6 +5,8 @@ const common = require('./webpack.common.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const devKeys = require('./devKeys');
+
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
@@ -15,8 +17,8 @@ module.exports = merge(common, {
   plugins: [
     new CleanWebpackPlugin(['../dist']),
     new HtmlWebpackPlugin({
-      title: 'Kvass Ordering Widget',
-      template: path.resolve(__dirname, '../demo/index.html')
+      title: 'Kvass Order Widget',
+      template: path.resolve(__dirname, './template.html')
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
