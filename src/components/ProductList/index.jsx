@@ -50,7 +50,7 @@ class ProductList extends Reflux.Component {
 
   renderChildrenItems(productList) {
     return productList.map(product =>
-      <li className="product-list-item" key={product._id.$oid}>
+      <li className="product-list-item in-page-transition" key={product._id.$oid}>
         <div className="product-list-item__img">
           {this.renderProductImg(product.image_url)}
         </div>

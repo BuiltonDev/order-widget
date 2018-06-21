@@ -19,7 +19,7 @@
       padding: 30px 32px;
     }
 
-    .product-list-item {
+    .in-page-transition {
       transform: translateY(25px);
       opacity: 0;
       transition: all .2s ease-in-out;
@@ -32,7 +32,7 @@
       padding: 0 5px;
     }
 
-    .product-list-item.is-moved {
+    .in-page-transition.is-moved {
       opacity: 1;
       transform: translateY(0);
       transition: all .2s ease-in-out;

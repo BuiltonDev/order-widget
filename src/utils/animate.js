@@ -4,10 +4,9 @@ class Animate {
   constructor() {
     this.index = 0;
     this.lastMove = new Date();
-    this.delay = 50;
   }
 
-  static moveItem(items, delay = this.delay) {
+  static moveItem(items, delay = 50) {
     const now = new Date();
     if (now - this.lastMove < delay || !items[this.index]) {
       return;
