@@ -6,6 +6,17 @@
     padding: 10px 32px;
   }
 
+  .product-basket--item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-basket--item-content {
+    display: flex;
+    flex-direction: row;
+  }
+
+
   .product-list {
     @extend %white-content-box;
   }

@@ -22,9 +22,7 @@ class ProductList extends Reflux.Component {
   constructor(props) {
     super(props);
     this.kvass = new Kvass();
-    this.items = props.productList;
-
-    this.animate = this.animate.bind(this);
+    this.animation = new Animate();
   }
 
   onProductClick(product) {
@@ -32,13 +30,15 @@ class ProductList extends Reflux.Component {
     Actions.onNavigateTo(7); // Navigate to product page
   }
 
-  componentDidMount() {
-    this.animate();
-  }
-
-  animate() {
-    Animate.moveItem(this.items);
-    requestAnimationFrame(this.animate);
+  componentWillReceiveProps(nextProps) {
+    if(!this.props.isLoading && nextProps.productList) {
+      const items = document.getElementsByClassName('in-page-transition');
+      for (let i = 0; i < items.length; i += 1) {
+        items[i].classList.remove('is-moved');
+      }
+      const itemsArray = [].slice.call(items);
+      this.animation.animate(itemsArray);
+    }
   }
 
   renderProductImg(imageUrl) {
@@ -71,11 +71,6 @@ class ProductList extends Reflux.Component {
   render() {
     const { productList } = this.props;
     if (!productList.length) return this.constructor.renderEmptyResults();
-
-    if (!this.props.isLoading) {
-      this.items = document.getElementsByClassName('product-list-item');
-      Animate.resetIndex();
-    }
 
     return (
       <Scrollbars style={{ height: 500 }}>

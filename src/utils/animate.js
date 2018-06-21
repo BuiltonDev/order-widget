@@ -1,23 +1,32 @@
-import React from 'react';
-
 class Animate {
-  constructor() {
+  constructor(delay) {
     this.index = 0;
     this.lastMove = new Date();
+    this.delay = delay || 100;
+    this.timeout = null;
   }
 
-  static moveItem(items, delay = 50) {
+  animate(items) {
+    if (this.index === items.length - 1) {
+      cancelAnimationFrame(this.timeout);
+      this.index = 0;
+    } else {
+      this.timeout = requestAnimationFrame(() => {
+        this.moveItem(items[this.index]);
+        this.animate(items);
+      });
+    }
+  }
+
+  moveItem(item) {
     const now = new Date();
-    if (now - this.lastMove < delay || !items[this.index]) {
+    if (now - this.lastMove < this.delay || !item) {
       return;
     }
-    this.lastMove = now;
-    items[this.index].classList.add('is-moved');
-    this.index += 1;
-  }
 
-  static resetIndex() {
-    this.index = 0;
+    this.lastMove = now;
+    item.classList.add('is-moved');
+    this.index += 1;
   }
 }
 
