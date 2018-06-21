@@ -8,6 +8,7 @@ import AddIcon from 'src/components/SvgIcons/AddIcon';
 import MinusIcon from 'src/components/SvgIcons/MinusIcon';
 import T from 'src/utils/i18n';
 import ProductImage from 'src/components/ProductImage';
+import Animate from 'src/utils/animate';
 
 class ProductList extends Reflux.Component {
   static renderEmptyResults() {
@@ -22,9 +23,6 @@ class ProductList extends Reflux.Component {
     super(props);
     this.kvass = new Kvass();
     this.items = props.productList;
-    this.index = 0;
-    this.lastMove = new Date();
-    this.delay = 50;
 
     this.animate = this.animate.bind(this);
   }
@@ -32,7 +30,6 @@ class ProductList extends Reflux.Component {
   onProductClick(product) {
     Actions.onSelectProduct(product);
     Actions.onNavigateTo(7); // Navigate to product page
-
   }
 
   componentDidMount() {
@@ -40,18 +37,8 @@ class ProductList extends Reflux.Component {
   }
 
   animate() {
-    this.moveItem();
+    Animate.moveItem(this.items);
     requestAnimationFrame(this.animate);
-  }
-
-  moveItem() {
-    const now = new Date();
-    if (now - this.lastMove < this.delay || !this.items[this.index]) {
-      return;
-    }
-    this.lastMove = now;
-    this.items[this.index].classList.add('is-moved');
-    this.index += 1;
   }
 
   renderProductImg(imageUrl) {
@@ -87,7 +74,7 @@ class ProductList extends Reflux.Component {
 
     if (!this.props.isLoading) {
       this.items = document.getElementsByClassName('product-list-item');
-      this.index = 0;
+      Animate.resetIndex();
     }
 
     return (
