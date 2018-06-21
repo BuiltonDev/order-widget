@@ -11,6 +11,7 @@ import UserStore from 'src/reflux/UserStore';
 import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
 import Kvass from '@kvass.ai/core-sdk';
+import Footer from 'src/components/Footer';
 
 class UserDetails extends Reflux.Component {
   constructor(props) {
@@ -147,11 +148,9 @@ class UserDetails extends Reflux.Component {
               {isAuthComplete ? this.renderExistingUser() : this.renderAuthProcess(this.state.isVerified)}
             </div>
           </div>
-          <div className="kvass-widget__content-footer">
-            <div className="footer-content">
-              <button disabled={!this.state.isVerified} className="kvass-widget__primary-button" onClick={this.authenticateWithApi}>{T.translate('global.next')}</button>
-            </div>
-          </div>
+          <Footer>
+            <button disabled={!this.state.isVerified} className="kvass-widget__primary-button" onClick={this.authenticateWithApi}>{T.translate('global.next')}</button>
+          </Footer>
         </div>
       </div>
     );

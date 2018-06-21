@@ -33,7 +33,7 @@
     right: 0;
     left: 0;
     z-index: -1;
-    opacity: 0;
+    opacity: 0.05;
     //@include transition(opacity 0.2s ease-in 0.4s);
   }
 
@@ -51,18 +51,6 @@
     //@include transition-delay(0.5s);
 
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.24);
-  }
-
-  .kvass-widget_powered-by {
-    position: absolute;
-    bottom: -70px;
-    left: 50%;
-    @include translate(-50%, -50%);
-
-    .svg-icon--powered-by {
-      width: 75px;
-      height: auto;
-    }
   }
 }
 
