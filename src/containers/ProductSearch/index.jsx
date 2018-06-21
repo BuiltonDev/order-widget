@@ -68,7 +68,7 @@ class ProductSearch extends Component {
         <div className="kvass-widget__content-body">
           <Spinner show={isLoading}></Spinner>
           <div className="product-list">
-            {productSearchList.length ? <ProductList productList={productSearchList}></ProductList> : this.renderEmptyBody()}
+            {productSearchList.length ? <ProductList isLoading={this.state.isLoading} productList={productSearchList}></ProductList> : this.renderEmptyBody()}
           </div>
           <Footer>
             <ShoppingCart></ShoppingCart>
