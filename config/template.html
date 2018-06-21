@@ -13,15 +13,15 @@
       window.onload = function() {
         if (window.KvassOrdering) {
           KvassOrdering.init({
-            domElementId: 'kvass-instance',
-            apiKey: 'EFjCY4CQWsKBVYz4xHemX9KMeckxdHTkqn20FXW2o9FKn6R_p6bnjsWdMlB0zIWs8Tfx-uNS0I0m4lZrUzmM2A==',
-            endpoint: 'https://qa.kvass.ai/',
-            lng: 'en',
+            domElementId: "<%= DOM_ELEMENT_ID %>",
+            apiKey: "<%= APIKEY %>",
+            endpoint: "<%= ENDPOINT %>",
+            lng: "<%= LANGUAGE %>",
             firebaseConfig: {
-              domain: 'shareactor-dashboard-qa.firebaseapp.com',
-              apiKey: 'AIzaSyC9qUU43xXbKS3_Mw1TgiRnOXcJqa754nw'
+              domain: "<%= FIREBASE_APIKEY %>",
+              apiKey: "<%= FIREBASE_DOMAIN %>",
             },
-            stripeApiKey: 'pk_test_tAYRDsnQMi1gE7IBosMWmeEn'
+            stripeApiKey: "<%= STRIPE_API_KEY %>"
           });
 
           document.getElementById('openKvass').addEventListener('click', function(event) {
