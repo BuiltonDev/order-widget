@@ -38,9 +38,6 @@ class UserDetails extends Reflux.Component {
     this.removeAuthentication = this.removeAuthentication.bind(this);
     this.renderExistingUser = this.renderExistingUser.bind(this);
     this.renderInput = this.renderInput.bind(this);
-  }
-
-  componentDidMount() {
     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged((user) => Actions.onAuthStateChanged(user));
   }
 
