@@ -75,6 +75,9 @@ T.setLanguage = (lng) => {
         priceLabel: 'Total pris',
         deliveryLabel: 'Levering',
         deliveryAddLabel: 'Tilleggsinformasjon'
+      },
+      recommendations: {
+        title: 'Anbefalinger'
       }
     });
   } else { // fallback english
@@ -146,6 +149,9 @@ T.setLanguage = (lng) => {
         priceLabel: 'Total price',
         deliveryLabel: 'Delivery',
         deliveryAddLabel: 'Comment'
+      },
+      recommendations: {
+        title: 'Recommendations'
       }
     });
   }
