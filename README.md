@@ -33,12 +33,18 @@ Try out our [demo](https://kvassAI.github.io/order-widget/demo/index.html)
 ## Getting started
 Add the required script dependencies in your header, and remember to add your [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript/) key.
 
+Add a div element in the body with an id of your choosing.
+
 ```html
 <head>
-	<script src="https://js.stripe.com/v3/" async></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
-	<script src="https://unpkg.com/@kvass.ai/order-widget@latest/dist/kvass.bundle.js"></script>
+  <script src="https://js.stripe.com/v3/" async></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+  <script src="https://unpkg.com/@kvass.ai/order-widget@latest/dist/kvass.bundle.js"></script>
 </head>
+
+<body>
+  <div id="kvass-example-instance"></div>
+</body>
 ```
 
 #### init(options)
@@ -54,17 +60,17 @@ Initialize the widget by providing the required configuration, using your Kvass 
 
 ```html
 <script>
-	KvassOrdering.init({
-		domElementId: 'kvass-example-instance',
-		apiKey: "KVASS_API_KEY",
-		endpoint: "KVASS_API_ENDPOINT",
-		lng: 'en',
-		firebaseConfig: {
-			domain: "YOUR_FIREBASE_DOMAIN",
-			apiKey: "YOUR_FIREBASE_APIKEY"
-		},
-		stripeApiKey: "YOUR_STRIPE_KEY"
-	});
+  KvassOrdering.init({
+    domElementId: 'kvass-example-instance',
+    apiKey: "KVASS_API_KEY",
+    endpoint: "KVASS_API_ENDPOINT",
+    lng: 'en',
+    firebaseConfig: {
+      domain: "YOUR_FIREBASE_DOMAIN",
+      apiKey: "YOUR_FIREBASE_APIKEY"
+    },
+    stripeApiKey: "YOUR_STRIPE_KEY"
+  });
 </script>
 ```
 
@@ -74,7 +80,7 @@ function to open the widget
 
 ```html
 <script>
-	KvassOrdering.open();
+  KvassOrdering.open();
 </script>
 ```
 
@@ -84,7 +90,7 @@ function to close the widget
 
 ```html
 <script>
-	KvassOrdering.close();
+  KvassOrdering.close();
 </script>
 ```
 
@@ -94,7 +100,7 @@ function to destroy the widget instance
 
 ```html
 <script>
-	KvassOrdering.destroy();
+  KvassOrdering.destroy();
 </script>
 ```
 
@@ -105,8 +111,21 @@ Install dependencies:
 ```sh
 npm install
 ```
+Add config file named keys.json to the config folder, containing your keys:
 
-Run demo (using our demo keys):
+```json
+{
+  "domElementId": "",
+  "apiKey": "",
+  "endpoint": "",
+  "lng": "",
+  "firebaseConfig": {
+    "domain": "",
+    "apiKey": ""
+  },
+  "stripeApiKey": ""
+}
+```
 
 ```sh
 npm run start
