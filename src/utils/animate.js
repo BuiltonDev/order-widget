@@ -6,19 +6,22 @@ class Animate {
     this.timeout = null;
   }
 
-  animate(items) {
-    if (this.index === items.length) {
+  animateInViewTransition() {
+    const items = document.getElementsByClassName('in-page-transition');
+    const itemsArray = [].slice.call(items);
+    if (this.index === itemsArray.length) {
       this.index = 0;
       cancelAnimationFrame(this.timeout);
     } else {
       this.timeout = requestAnimationFrame(() => {
-        this.moveItem(items[this.index]);
-        this.animate(items);
+        this.moveItem(itemsArray[this.index]);
+        this.animateInViewTransition(itemsArray);
       });
     }
   }
 
   moveItem(item) {
+
     const now = new Date();
     if (now - this.lastMove < this.delay || !item) {
       return;

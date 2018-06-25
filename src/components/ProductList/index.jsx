@@ -44,8 +44,7 @@ class ProductList extends Reflux.Component {
       for (let i = 0; i < items.length; i += 1) {
         items[i].classList.remove('is-moved');
       }
-      const itemsArray = [].slice.call(items);
-      this.animation.animate(itemsArray);
+      this.animation.animateInViewTransition();
     }
   }
 

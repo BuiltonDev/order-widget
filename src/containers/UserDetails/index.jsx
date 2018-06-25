@@ -12,6 +12,7 @@ import Actions from 'src/reflux/Actions';
 import T from 'src/utils/i18n';
 import Kvass from '@kvass.ai/core-sdk';
 import Footer from 'src/components/Footer';
+import Animate from '../../utils/animate';
 
 class UserDetails extends Reflux.Component {
   constructor(props) {
@@ -34,6 +35,9 @@ class UserDetails extends Reflux.Component {
       isLoading: false
     };
     this.kvass = new Kvass();
+
+    this.animation = new Animate();
+
     this.authenticateWithApi = this.authenticateWithApi.bind(this);
     this.removeAuthentication = this.removeAuthentication.bind(this);
     this.renderExistingUser = this.renderExistingUser.bind(this);
@@ -42,6 +46,11 @@ class UserDetails extends Reflux.Component {
 
   componentDidMount() {
     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged((user) => Actions.onAuthStateChanged(user));
+    this.animation.animateInViewTransition();
+  }
+
+  componentDidUpdate() {
+    this.animation.animateInViewTransition();
   }
 
   // Make sure we un-register Firebase observers when the component unmounts.
@@ -124,11 +133,11 @@ class UserDetails extends Reflux.Component {
   renderExistingUser() {
     return (
       <div className="user-details__existing-user">
-        <div className="default-user-avatar-container">
+        <div className="default-user-avatar-container in-page-transition">
           <UserIcon className="svg-icon--primary avatar"/>
         </div>
-        <span className="userName">{this.state.firstName} {this.state.lastName}</span>
-        <span className="phoneNumber">{this.state.phoneNumber}</span>
+        <span className="userName in-page-transition">{this.state.firstName} {this.state.lastName}</span>
+        <span className="phoneNumber in-page-transition">{this.state.phoneNumber}</span>
         <a className="notYou" href="#" onClick={this.removeAuthentication}>{T.translate('userDetails.notYou')}</a>
       </div>
     );
@@ -136,6 +145,7 @@ class UserDetails extends Reflux.Component {
 
   render() {
     const isAuthComplete = this.state.isVerified && this.state.isAuthenticated;
+
     return (
       <div className="user-details">
         <Header showBackNav={true}>

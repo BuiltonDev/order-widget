@@ -16,9 +16,7 @@ class BasketList extends Component {
 
   componentDidMount() {
     if (this.props.products) {
-      const items = document.getElementsByClassName('in-page-transition');
-      const itemsArray = [].slice.call(items);
-      this.animation.animate(itemsArray);
+      this.animation.animateInViewTransition();
     }
   }
 
