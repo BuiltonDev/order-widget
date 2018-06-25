@@ -35,7 +35,6 @@ class UserDetails extends Reflux.Component {
       isLoading: false
     };
     this.kvass = new Kvass();
-
     this.animation = new Animate();
 
     this.authenticateWithApi = this.authenticateWithApi.bind(this);
@@ -43,6 +42,10 @@ class UserDetails extends Reflux.Component {
     this.renderExistingUser = this.renderExistingUser.bind(this);
     this.renderInput = this.renderInput.bind(this);
     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged((user) => Actions.onAuthStateChanged(user));
+    this.animation.animateInViewTransition();
+  }
+
+  componentDidMount() {
     this.animation.animateInViewTransition();
   }
 
