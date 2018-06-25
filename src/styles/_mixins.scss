@@ -44,6 +44,7 @@
 }
 
 @mixin primary-input($height, $width) {
+  box-sizing: border-box;
   height: $height;
   width: $width;
   border: 1px solid $primary-color;
