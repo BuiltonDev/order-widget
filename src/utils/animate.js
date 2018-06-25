@@ -7,9 +7,9 @@ class Animate {
   }
 
   animate(items) {
-    if (this.index === items.length - 1) {
-      cancelAnimationFrame(this.timeout);
+    if (this.index === items.length) {
       this.index = 0;
+      cancelAnimationFrame(this.timeout);
     } else {
       this.timeout = requestAnimationFrame(() => {
         this.moveItem(items[this.index]);

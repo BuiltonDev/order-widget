@@ -1,7 +1,7 @@
 import React from 'react';
 import Reflux from 'reflux';
 import PropTypes from 'prop-types';
-import {Scrollbars} from 'react-custom-scrollbars';
+import { Scrollbars } from 'react-custom-scrollbars';
 import Actions from 'src/reflux/Actions';
 import Kvass from '@kvass.ai/core-sdk';
 import AddIcon from 'src/components/SvgIcons/AddIcon';
@@ -30,8 +30,16 @@ class ProductList extends Reflux.Component {
     Actions.onNavigateTo(7); // Navigate to product page
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(!this.props.isLoading && nextProps.productList) {
+  componentDidMount() {
+    this.renderAnimation();
+  }
+
+  componentDidUpdate() {
+    this.renderAnimation();
+  }
+
+  renderAnimation() {
+    if (!this.props.isLoading && this.props.productList) {
       const items = document.getElementsByClassName('in-page-transition');
       for (let i = 0; i < items.length; i += 1) {
         items[i].classList.remove('is-moved');

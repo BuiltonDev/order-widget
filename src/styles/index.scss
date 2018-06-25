@@ -134,6 +134,18 @@ button.kvass-widget__secondary-button {
   padding-bottom: 10px;
 }
 
+.in-page-transition {
+  transform: translateY(25px);
+  opacity: 0;
+  transition: all .2s ease-in-out;
+}
+
+.in-page-transition.is-moved {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all .2s ease-in-out;
+}
+
 /** Include component styles **/
 
 @import '../containers/ProductSearch/index';

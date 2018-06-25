@@ -1,14 +1,13 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 import {DebounceInput} from 'react-debounce-input';
-import Animate from "src/utils/animate";
+import Animate from 'src/utils/animate';
 
 class BasketList extends Component {
   constructor(props) {
     super(props);
     this.items = props.products;
-
-    this.animate = this.animate.bind(this);
+    this.animation = new Animate();
   }
 
   onChange(product, event) {
@@ -16,13 +15,11 @@ class BasketList extends Component {
   }
 
   componentDidMount() {
-    this.animate();
-  }
-
-  animate() {
-    Animate.moveItem(this.items, 2000);
-
-    requestAnimationFrame(this.animate);
+    if (this.props.products) {
+      const items = document.getElementsByClassName('in-page-transition');
+      const itemsArray = [].slice.call(items);
+      this.animation.animate(itemsArray);
+    }
   }
 
   renderBasketPrice(product) {

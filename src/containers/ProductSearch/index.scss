@@ -19,23 +19,11 @@
       padding: 30px 32px;
     }
 
-    .in-page-transition {
-      transform: translateY(25px);
-      opacity: 0;
-      transition: all .2s ease-in-out;
-    }
-
     .product-list-item__name {
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
       padding: 0 5px;
-    }
-
-    .in-page-transition.is-moved {
-      opacity: 1;
-      transform: translateY(0);
-      transition: all .2s ease-in-out;
     }
 
     .product-list-item__name:hover {
