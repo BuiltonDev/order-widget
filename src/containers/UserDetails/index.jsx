@@ -112,11 +112,11 @@ class UserDetails extends Reflux.Component {
   renderUserDetailsStep() {
     return (
       <div className="user-details__additional">
-        <p>{T.translate('userDetails.detailsInfo')}</p>
-        <div className="kvass-widget__input-container">
+        <p className="in-page-transition">{T.translate('userDetails.detailsInfo')}</p>
+        <div className="kvass-widget__input-container in-page-transition">
           {this.renderInput('firstName')}
         </div>
-        <div className="kvass-widget__input-container">
+        <div className="kvass-widget__input-container in-page-transition">
           {this.renderInput('lastName')}
         </div>
       </div>
