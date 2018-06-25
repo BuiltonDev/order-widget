@@ -1035,7 +1035,7 @@
     right: 0;
     left: 0;
     z-index: -1;
-    opacity: 0; }
+    opacity: 0.05; }
   .kvass-widget .kvass-widget__container {
     display: block;
     position: relative;
@@ -1045,18 +1045,6 @@
     margin: 0 auto;
     border-radius: 8px;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.24); }
-  .kvass-widget .kvass-widget_powered-by {
-    position: absolute;
-    bottom: -70px;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%); }
-    .kvass-widget .kvass-widget_powered-by .svg-icon--powered-by {
-      width: 75px;
-      height: auto; }
 
 .kvass-widget--close {
   display: none;
@@ -1120,6 +1108,7 @@ button.kvass-widget__secondary-button {
   font-size: 12px; }
 
 .kvass-widget__input {
+  box-sizing: border-box;
   height: 36px;
   width: 100%;
   border: 1px solid #f68d39;
@@ -1204,7 +1193,7 @@ button.kvass-widget__secondary-button {
     margin-bottom: 0;
     padding: 32px; }
   .product-search .product-list {
-    min-height: 500px; }
+    min-height: 490px; }
     .product-search .product-list ul {
       padding: 30px 32px; }
     .product-search .product-list .product-list-item__name {
@@ -1284,7 +1273,7 @@ button.kvass-widget__secondary-button {
       background-color: #fbfbfb; }
 
 .product-page {
-  min-height: 500px; }
+  min-height: 490px; }
   .product-page .product-page__image {
     padding-top: 5px; }
     .product-page .product-page__image img {
@@ -1514,6 +1503,7 @@ button.kvass-widget__secondary-button {
   .user-details .firebaseui-subtitle, .user-details .firebaseui-title {
     font-size: 14px; }
   .user-details .mdl-textfield__input {
+    box-sizing: border-box;
     height: 36px;
     width: 100%;
     border: 1px solid #f68d39;
@@ -1620,6 +1610,7 @@ button.kvass-widget__secondary-button {
   border-color: #f6f6f6; }
 
 .delivery-details .delivery-details__additional {
+  box-sizing: border-box;
   height: 155px;
   width: 100%;
   border: 1px solid #f68d39;
@@ -1704,6 +1695,7 @@ button.kvass-widget__secondary-button {
   .payment-details .content .padding-container {
     padding: 10px 32px; }
   .payment-details .content .payment-details__list {
+    box-sizing: border-box;
     height: 36px;
     width: 100%;
     border: 1px solid #f68d39;
@@ -2098,12 +2090,28 @@ button.kvass-widget__secondary-button {
       background-color: #fbfbfb; }
 
 .kvass-widget__content-footer {
-  height: 100px;
   text-align: center; }
   .kvass-widget__content-footer .footer-content {
     border-top: 1px solid #f6f6f6;
     padding: 32px;
     position: relative; }
+  .kvass-widget__content-footer .kvass-widget_powered-by {
+    position: absolute;
+    bottom: 0;
+    right: -50px;
+    font-size: 12px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+    .kvass-widget__content-footer .kvass-widget_powered-by a {
+      color: unset;
+      text-decoration: unset; }
+    .kvass-widget__content-footer .kvass-widget_powered-by .svg-icon--powered-by {
+      margin-bottom: -1px;
+      width: 45px;
+      height: auto; }
 
 .product-basket .product-list ul, .receipt .receipt-summary ul {
   list-style: none;
@@ -2555,6 +2563,7 @@ button.kvass-widget__secondary-button {
   width: 150px; }
 
 .time_picker_preview {
+  box-sizing: border-box;
   height: 0;
   width: 100%;
   border: 1px solid #f68d39;
@@ -2671,6 +2680,7 @@ button.kvass-widget__secondary-button {
   border: none; }
 
 .SingleDatePickerInput .DateInput_input {
+  box-sizing: border-box;
   height: 36px;
   width: 100%;
   border: 1px solid #f68d39;
