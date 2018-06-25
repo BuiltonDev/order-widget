@@ -11,8 +11,8 @@ import UserStore from 'src/reflux/UserStore';
 import ProductStore from 'src/reflux/ProductStore';
 import DeliveryStore from 'src/reflux/DeliveryStore';
 import PaymentStore from 'src/reflux/PaymentStore';
-import EditIcon from 'src/components/SvgIcons/EditIcon';
 import utils from 'src/utils';
+import Animate from '../../utils/animate';
 
 class ConfirmOrder extends Reflux.Component {
   constructor(props) {
@@ -27,7 +27,12 @@ class ConfirmOrder extends Reflux.Component {
     };
 
     this.kvass = new Kvass();
+    this.animation = new Animate();
     this.createOrder = this.createOrder.bind(this);
+  }
+
+  componentDidMount() {
+    this.animation.animateInViewTransition();
   }
 
   // POST /order {items: [{...product, quantity}], payment_method: payment_method_id}
@@ -92,7 +97,7 @@ class ConfirmOrder extends Reflux.Component {
           <Spinner show={this.state.isLoading}></Spinner>
           <div className="content">
             <div className="step-list">
-                <div className="step">
+                <div className="step in-page-transition">
                   <div className="step-header">
                     <p className="step__label">{T.translate('userDetails.header')}</p>
                   </div>
@@ -102,7 +107,7 @@ class ConfirmOrder extends Reflux.Component {
                   </div>
                 </div>
 
-                <div className="step">
+                <div className="step in-page-transition">
                   <div className="step-header">
                     <p className="step__label">{T.translate('deliveryDetails.header')}</p>
                   </div>
@@ -114,7 +119,7 @@ class ConfirmOrder extends Reflux.Component {
                   </div>
                 </div>
 
-                <div className="step">
+                <div className="step in-page-transition">
                   <div className="step-header">
                     <p className="step__label">{T.translate('paymentDetails.header')}</p>
                   </div>
@@ -123,7 +128,7 @@ class ConfirmOrder extends Reflux.Component {
                   </div>
                 </div>
 
-                <div className="step">
+                <div className="step in-page-transition">
                   <div className="step-header">
                     <p className="step__label">{T.translate('basket.header')}</p>
                     <p className="step__label">{T.translate('confirm.totalPrice')} </p>

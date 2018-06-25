@@ -12,7 +12,7 @@ import PaymentStore from 'src/reflux/PaymentStore';
 import UserStore from 'src/reflux/UserStore';
 import Kvass from '@kvass.ai/core-sdk';
 import utils from 'src/utils';
-import Animate from "../../utils/animate";
+import Animate from '../../utils/animate';
 
 class PaymentDetails extends Reflux.Component {
   constructor(props) {
