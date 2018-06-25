@@ -138,7 +138,9 @@ class UserDetails extends Reflux.Component {
         </div>
         <span className="userName in-page-transition">{this.state.firstName} {this.state.lastName}</span>
         <span className="phoneNumber in-page-transition">{this.state.phoneNumber}</span>
-        <a className="notYou" href="#" onClick={this.removeAuthentication}>{T.translate('userDetails.notYou')}</a>
+        <span className="in-page-transition">
+          <a className="notYou" href="#" onClick={this.removeAuthentication}>{T.translate('userDetails.notYou')}</a>
+        </span>
       </div>
     );
   }
