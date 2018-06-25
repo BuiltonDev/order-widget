@@ -12,12 +12,14 @@ import PaymentStore from 'src/reflux/PaymentStore';
 import UserStore from 'src/reflux/UserStore';
 import Kvass from '@kvass.ai/core-sdk';
 import utils from 'src/utils';
+import Animate from "../../utils/animate";
 
 class PaymentDetails extends Reflux.Component {
   constructor(props) {
     super(props);
     this.config = Config();
     this.kvass = new Kvass();
+    this.animation = new Animate();
 
     this.stores = [PaymentStore, UserStore];
     this.state = {
@@ -57,7 +59,10 @@ class PaymentDetails extends Reflux.Component {
       Actions.onAddUserPaymentMethods(PaymentMethods);
       this.setState({isLoading: false});
     });
+  }
 
+  componentDidUpdate() {
+    this.animation.animateInViewTransition();
   }
 
   setPaymentMethod(id, paymentMethods) {
@@ -88,7 +93,7 @@ class PaymentDetails extends Reflux.Component {
       );
     });
     return (
-      <div>
+      <div className='in-page-transition'>
         <p>{T.translate('paymentDetails.usePrevious')}</p>
         <select className="payment-details__list" name="paymentMethods" value={this.state.selectedPaymentMethod.id} onChange={this.onPaymentMethodChange}>
           {children}
@@ -109,12 +114,14 @@ class PaymentDetails extends Reflux.Component {
           <div className="content">
             <div className="padding-container">
               {this.renderPaymentMethodList()}
-              <p>{T.translate('paymentDetails.useNew')}</p>
-              <StripeProvider apiKey={this.config.stripeConfig}>
-                <Elements>
-                  <PaymentForm onStripePaymentAdded={this.onStripePaymentAdded}/>
-                </Elements>
-              </StripeProvider>
+              <div className='in-page-transition'>
+                <p>{T.translate('paymentDetails.useNew')}</p>
+                <StripeProvider apiKey={this.config.stripeConfig}>
+                  <Elements>
+                    <PaymentForm onStripePaymentAdded={this.onStripePaymentAdded}/>
+                  </Elements>
+                </StripeProvider>
+              </div>
             </div>
           </div>
           <Footer>
