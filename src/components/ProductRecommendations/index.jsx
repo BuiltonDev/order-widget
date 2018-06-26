@@ -9,13 +9,36 @@ class ProductRecommendations extends Component {
     super(props);
     this.state = {
       isLoading: false,
-      recommendations: []
+      recommendations: [],
+      visibleRecIndex: 3, // endIndex of what we are showing from array
+      size: 20 // no pagination on recommendations
     };
     this.kvass = new Kvass();
   }
 
-  onNavigateRecommendations(direction) {
+  componentDidMount() {
+    const body = {model_type: this.props.modelType, source: this.props.source, destination: this.props.destination};
+    const urlParams = {urlParams: {size: this.props.size};
+    kvass.aiModel().getRecommendations({body, urlParams}, (error, recommendations, res) => {
+      if (error) {
+        this.setState({isLoading: false});
+      }
+      this.setState({isLoading: false, recommendations: recommendations.response});
+    });
+  }
 
+  onNavigateRecommendations(direction) {
+    if (!direction) return;
+
+    let newVisibleIndex = visibleRecIndex;
+
+    if (direction === 'back') {
+      newVisibleIndex -= 3;
+    } else if (direction === 'forward') {
+      newVisibleIndex += 3;
+    }
+
+    this.setState({visibleRecIndex: newVisibleIndex > -1 && newVisibleIndex < this.props.size ? newVisibleIndex : 0});
   }
 
   renderRecommendationItem(product) {
@@ -45,8 +68,15 @@ class ProductRecommendations extends Component {
   }
 }
 
+ProductList.defaultProps = {
+  source: 'product' ,
+  destination: 'product'
+};
+
 ProductRecommendations.propTypes = {
-  modelType: PropTypes.string.isRequired
+  modelType: PropTypes.string.isRequired,
+  source: PropTypes.string,
+  destination: PropTypes.string
 };
 
 export ProductRecommendations;
