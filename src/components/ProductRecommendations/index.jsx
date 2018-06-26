@@ -11,17 +11,17 @@ class ProductRecommendations extends Component {
       isLoading: false,
       recommendations: [],
       visibleRecIndex: 3, // endIndex of what we are showing from array
-      size: 20 // no pagination on recommendations
+      size: 10 // no pagination on recommendations
     };
     this.kvass = new Kvass();
   }
 
   componentDidMount() {
-    const body = {model_type: this.props.modelType, source: this.props.source, destination: this.props.destination};
-    const urlParams = {urlParams: {size: this.props.size};
-    kvass.aiModel().getRecommendations({body, urlParams}, (error, recommendations, res) => {
+    const body = {model_type: this.props.modelType, source_id: this.props.sourceId, source: this.props.source, destination: this.props.destination, size: this.state.size};
+    this.kvass.aiModel().getRecommendations({body}, (error, recommendations, res) => {
       if (error) {
-        this.setState({isLoading: false});
+        this.setState({isLoading: false, recommendations: []});
+        return;
       }
       this.setState({isLoading: false, recommendations: recommendations.response});
     });
@@ -30,7 +30,7 @@ class ProductRecommendations extends Component {
   onNavigateRecommendations(direction) {
     if (!direction) return;
 
-    let newVisibleIndex = visibleRecIndex;
+    let newVisibleIndex = this.state.visibleRecIndex;
 
     if (direction === 'back') {
       newVisibleIndex -= 3;
@@ -43,7 +43,7 @@ class ProductRecommendations extends Component {
 
   renderRecommendationItem(product) {
     return (
-      <li className="recommendation__item">
+      <li key={product._id.$oid} className="recommendation__item">
         <ProductImage imageUrl={product.image_url} apiKey={this.kvass.apiKey} endpoint={this.kvass.endpoint} />
         <span className="title"></span>
       </li>
@@ -51,8 +51,8 @@ class ProductRecommendations extends Component {
   }
 
   render() {
-    const {recommendations, onLeftNav, onRightNav} = this.props;
-    const children = recommendations.map((product) => renderRecommendationItem(product));
+    if (!this.state.recommendations.length) return null;
+    const children = this.state.recommendations.map((product) => this.renderRecommendationItem(product));
     return (
       <div className="recommendation">
         <span className="recommendation__title">{T.translate('recommendations.title')}</span>
@@ -68,15 +68,16 @@ class ProductRecommendations extends Component {
   }
 }
 
-ProductList.defaultProps = {
+ProductRecommendations.defaultProps = {
   source: 'product' ,
   destination: 'product'
 };
 
 ProductRecommendations.propTypes = {
   modelType: PropTypes.string.isRequired,
+  sourceId: PropTypes.string.isRequired,
   source: PropTypes.string,
   destination: PropTypes.string
 };
 
-export ProductRecommendations;
+export default ProductRecommendations;

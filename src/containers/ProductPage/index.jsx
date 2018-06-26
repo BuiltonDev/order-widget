@@ -14,6 +14,7 @@ import ProductImage from 'src/components/ProductImage';
 import MinusIcon from 'src/components/SvgIcons/MinusIcon';
 import AddIcon from 'src/components/SvgIcons/AddIcon';
 import ShoppingCart from 'src/components/ShoppingCart';
+import ProductRecommendations from 'src/components/ProductRecommendations';
 
 class ProductPage extends Reflux.Component {
   constructor(props) {
@@ -84,6 +85,7 @@ class ProductPage extends Reflux.Component {
               <button className="kvass-widget__primary-button" onClick={() => this.addToCart()}>{T.translate('productPage.addToCart')}</button>
             </div>
           </Scrollbars>
+          <ProductRecommendations modelType={'content_similarity_graph'} sourceId={selectedProduct._id.$oid}/>
           <Footer>
             <ShoppingCart></ShoppingCart>
           </Footer>
