@@ -37,7 +37,7 @@ Add a div element in the body with an id of your choosing.
 
 ```html
 <head>
-	<link rel="stylesheet" href="https://unpkg.com/@kvass.ai/order-widget@latest/dist/kvass.css">
+  <link rel="stylesheet" href="https://unpkg.com/@kvass.ai/order-widget@latest/dist/kvass.css">
   <script src="https://js.stripe.com/v3/" async></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
   <script src="https://unpkg.com/@kvass.ai/order-widget@latest/dist/kvass.bundle.js"></script>
