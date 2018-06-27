@@ -19,6 +19,11 @@ class PaymentForm extends Reflux.Component {
     event.preventDefault();
     this.props.onStripePaymentAdded({isLoading: true});
     this.props.stripe.createToken().then(payload => {
+      if (payload && payload.error) {
+        this.props.onStripePaymentAdded({isLoading: false});
+        Actions.onMessage({isError: true}, T.translate('paymentDetails.error', {errorCode: payload.error.code}));
+        return;
+      }
       const paymentMethodPayload = {payment_method: 'stripe', token: payload.token.id};
       this.kvass.paymentMethod().create({body: paymentMethodPayload}, (err, PaymentMethod, raw) => {
         this.props.onStripePaymentAdded({isLoading: false});

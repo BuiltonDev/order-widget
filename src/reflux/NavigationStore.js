@@ -10,10 +10,11 @@ import PaymentDetails from 'src/containers/PaymentDetails';
 import ConfirmOrder from 'src/containers/ConfirmOrder';
 import Receipt from 'src/containers/Receipt';
 
-import Actions from './Actions';
-
 // Target Containers
 import ProductPage from 'src/containers/ProductPage';
+
+import Actions from './Actions';
+
 
 const INITIAL_STATE = {
   step: 0,

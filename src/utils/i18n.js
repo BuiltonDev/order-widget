@@ -58,7 +58,8 @@ T.setLanguage = (lng) => {
         cardDetails: 'Fyll inn betalingsdetaljer',
         addNewCard: 'Legg til',
         usePrevious: 'Bruk tidligere betalingsmetode',
-        useNew: 'Legg til betalingsmetode'
+        useNew: 'Legg til betalingsmetode',
+        error: 'Noe gikk galt. Fikk feilmelding fra Stripe: {errorCode}'
       },
       confirm: {
         header: 'Bekreft',
@@ -129,7 +130,8 @@ T.setLanguage = (lng) => {
         cardDetails: 'Fill in card details',
         addNewCard: 'Add',
         usePrevious: 'Use previous payment method',
-        useNew: 'Add payment method'
+        useNew: 'Add payment method',
+        error: 'Something went wrong. Received an error from Stripe: {errorCode}'
       },
       confirm: {
         header: 'Confirm',
