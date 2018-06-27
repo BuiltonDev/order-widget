@@ -1,18 +1,28 @@
 import React from 'react';
 import Reflux from 'reflux';
 import PropTypes from 'prop-types';
-import {Scrollbars} from 'react-custom-scrollbars';
+import { Scrollbars } from 'react-custom-scrollbars';
 import Actions from 'src/reflux/Actions';
 import Kvass from '@kvass.ai/core-sdk';
 import AddIcon from 'src/components/SvgIcons/AddIcon';
 import MinusIcon from 'src/components/SvgIcons/MinusIcon';
 import T from 'src/utils/i18n';
 import ProductImage from 'src/components/ProductImage';
+import Animate from 'src/utils/animate';
 
 class ProductList extends Reflux.Component {
+  static renderEmptyResults() {
+    return (
+      <div className="product-list--empty">
+        <p>{T.translate('product.noResults')}</p>
+      </div>
+    );
+  }
+
   constructor(props) {
     super(props);
     this.kvass = new Kvass();
+    this.animation = new Animate();
   }
 
   onProductClick(product) {
@@ -20,33 +30,59 @@ class ProductList extends Reflux.Component {
     Actions.onNavigateTo(7); // Navigate to product page
   }
 
-  render() {
-    const {productList} = this.props;
-    if (!productList.length) return (
-      <div className="product-list--empty">
-        <p>{T.translate('product.noResults')}</p>
-      </div>
-    );
+  componentDidMount() {
+    this.renderAnimation();
+  }
 
-    const children = productList.map((product) => {
-      return (
-        <li className="product-list-item" key={product._id.$oid}>
-          <div className="product-list-item__img">
-            <ProductImage imageUrl={product.image_url} apiKey={this.kvass.apiKey} endpoint={this.kvass.endpoint} />
-          </div>
-          <span className="product-list-item__name" onClick={() => this.onProductClick(product)}>{product.name}</span>
-          <div className="product-list-item__toolbar">
-            <a href="#" onClick={() => Actions.onRemoveProduct(product)}><MinusIcon className="svg-icon--minus" /></a>
-            <a href="#" onClick={() => Actions.onAddProduct(product)}><AddIcon className="svg-icon--plus" /></a>
-          </div>
-        </li>
-      );
-    });
+  componentDidUpdate() {
+    this.renderAnimation();
+  }
+
+  renderAnimation() {
+    if (!this.props.isLoading && this.props.productList) {
+      const items = document.getElementsByClassName('in-page-transition');
+      for (let i = 0; i < items.length; i += 1) {
+        items[i].classList.remove('is-moved');
+      }
+      this.animation.animateInViewTransition();
+    }
+  }
+
+  renderProductImg(imageUrl) {
+    if (!imageUrl) return;
+    return (
+      <ProductImage imageUrl={imageUrl} apiKey={this.kvass.apiKey} endpoint={this.kvass.endpoint} />
+    );
+  }
+
+  renderChildrenItems(productList) {
+    return productList.map(product =>
+      <li className="product-list-item in-page-transition" key={product._id.$oid}>
+        <div className="product-list-item__img">
+          {this.renderProductImg(product.image_url)}
+        </div>
+        <span className="product-list-item__name" onClick={() => this.onProductClick(product)}>
+          {product.name}
+        </span>
+        <div className="product-list-item__toolbar">
+          <a href="#" onClick={() => Actions.onRemoveProduct(product)}>
+            <MinusIcon className="svg-icon--red" />
+          </a>
+          <a href="#" onClick={() => Actions.onAddProduct(product)}>
+            <AddIcon className="svg-icon--green" />
+          </a>
+        </div>
+      </li>);
+  }
+
+  render() {
+    const { productList } = this.props;
+    if (!productList.length) return this.constructor.renderEmptyResults();
 
     return (
-      <Scrollbars style={{ height: 490 }}>
+      <Scrollbars style={{ height: 500 }}>
         <ul>
-          {children}
+          {this.renderChildrenItems(productList)}
         </ul>
       </Scrollbars>
     );
@@ -54,11 +90,13 @@ class ProductList extends Reflux.Component {
 }
 
 ProductList.defaultProps = {
-  productList: []
+  productList: [],
+  isLoading: false
 };
 
 ProductList.propTypes = {
-  productList: PropTypes.array.isRequired
+  productList: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default ProductList;

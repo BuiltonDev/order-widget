@@ -78,7 +78,7 @@ $main-icon-color: #9a9a9a;
     justify-content: center;
     flex-direction: column;
     border-left: 1px solid $list-item-border-color;
-    @include transition(all 450ms)
+    @include transition(all 450ms);
     &:hover {
       @include transition(all 450ms);
       background-color: $list-item-hover-background-color;
