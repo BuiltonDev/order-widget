@@ -9,7 +9,6 @@ import Actions from 'src/reflux/Actions';
 import DeliveryStore from 'src/reflux/DeliveryStore';
 import T from 'src/utils/i18n';
 import Animate from 'src/utils/animate';
-import firebase from "firebase/app/index";
 
 class DeliveryDetails extends Reflux.Component {
   constructor(props) {
@@ -21,7 +20,6 @@ class DeliveryDetails extends Reflux.Component {
   }
 
   componentDidMount() {
-    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged((user) => Actions.onAuthStateChanged(user));
     this.animation.animateInViewTransition();
   }
 
