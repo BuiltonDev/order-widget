@@ -21,7 +21,6 @@ class Animate {
   }
 
   moveItem(item) {
-
     const now = new Date();
     if (now - this.lastMove < this.delay || !item) {
       return;
