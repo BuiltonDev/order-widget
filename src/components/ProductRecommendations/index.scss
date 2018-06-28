@@ -1,4 +1,5 @@
 @import '../../styles/_global';
+@import '../../styles/_mixins';
 
 .recommendations {
   display: flex;
@@ -15,6 +16,11 @@
       padding-left: 0;
       display: flex;
       flex-direction: row;
+      li {
+        &:hover {
+          @include transform(scale(1.05));
+        }
+      }
     }
   }
 
