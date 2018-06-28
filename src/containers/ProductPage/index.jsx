@@ -49,7 +49,7 @@ class ProductPage extends Reflux.Component {
           <span className="header-title">{selectedProduct.name}</span>
         </Header>
         <div className="kvass-widget__content-body">
-          <Scrollbars style={{ height: 490 }}>
+          <Scrollbars style={{ height: 450 }}>
             <div className="product-page__image">
               <ProductImage imageUrl={selectedProduct.image_url} apiKey={this.kvass.apiKey} endpoint={this.kvass.endpoint} />
             </div>
@@ -82,7 +82,6 @@ class ProductPage extends Reflux.Component {
                   </li>
                 </ul>
               </div>
-              <button className="kvass-widget__primary-button" onClick={() => this.addToCart()}>{T.translate('productPage.addToCart')}</button>
             </div>
           </Scrollbars>
           <ProductRecommendations modelType={'content_similarity_graph'} sourceId={selectedProduct._id.$oid}/>
