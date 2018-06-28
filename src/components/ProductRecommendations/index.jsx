@@ -11,7 +11,7 @@ class ProductRecommendations extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true,
+      isLoading: false,
       recommendations: [],
       visibleRecIndex: 3, // endIndex of what we are showing from array
       size: 9 // no pagination on recommendations
@@ -31,7 +31,7 @@ class ProductRecommendations extends Component {
       this.setState({isLoading: false, recommendations: recommendations.response});
     });*/
     setTimeout(() => {
-      this.setState({recommendations: MOCK_RECOMMENDATIONS});
+      this.setState({recommendations: MOCK_RECOMMENDATIONS, isLoading: false});
     }, 500);
   }
 
