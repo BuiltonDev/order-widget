@@ -65,7 +65,7 @@ class ProductRecommendations extends Component {
 
   render() {
     const {recommendations, visibleRecIndex, isLoading} = this.state;
-    if (!recommendations.length) return null;
+    //if (!recommendations.length) return null;
     const children = recommendations.slice(visibleRecIndex - 3, visibleRecIndex).map((product) => this.renderRecommendationItem(product));
     return (
       <div className="recommendations">
