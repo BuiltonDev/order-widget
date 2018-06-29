@@ -49,7 +49,7 @@ class ProductRecommendations extends Component {
 
     setTimeout(() => {
       this.setState({
-        visibleRecIndex: (newVisibleIndex > -1 && newVisibleIndex) < this.state.size ? newVisibleIndex : 3,
+        visibleRecIndex: (newVisibleIndex >= 3 && newVisibleIndex <= this.state.size) ? newVisibleIndex : 3,
         isLoading: false
       });
     }, 500);
@@ -71,7 +71,7 @@ class ProductRecommendations extends Component {
 
   render() {
     const {recommendations, visibleRecIndex, isLoading} = this.state;
-    //if (!recommendations.length) return null;
+
     const children = recommendations.slice(visibleRecIndex - 3, visibleRecIndex).map((product) => this.renderRecommendationItem(product));
     return (
       <div className="recommendations">
@@ -79,8 +79,8 @@ class ProductRecommendations extends Component {
           <a className="recommendation-nav__backward" href="#" onClick={(ev) => this.onNavigateRecommendations('back')}>&#8249;</a>
         </div>
         <div className="recommendations-list">
-          <Spinner show={isLoading}></Spinner>
-          <span className="recommendation__title">{T.translate('recommendations.title')}</span>
+          <Spinner show={isLoading} showOverlay={false}></Spinner>
+          <span className="recommendation__title">{this.props.title}:</span>
           <ul>
             {children}
           </ul>
@@ -94,11 +94,13 @@ class ProductRecommendations extends Component {
 }
 
 ProductRecommendations.defaultProps = {
+  title: 'Recommendations',
   source: 'product' ,
   destination: 'product'
 };
 
 ProductRecommendations.propTypes = {
+  title: PropTypes.string,
   modelType: PropTypes.string.isRequired,
   sourceId: PropTypes.string.isRequired,
   source: PropTypes.string,

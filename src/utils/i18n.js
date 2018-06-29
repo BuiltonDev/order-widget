@@ -77,7 +77,8 @@ T.setLanguage = (lng) => {
         deliveryAddLabel: 'Tilleggsinformasjon'
       },
       recommendations: {
-        title: 'Anbefalinger'
+        similar: 'Lignende produkter',
+        complementary: 'Kunder kjøper også'
       }
     });
   } else { // fallback english
@@ -151,7 +152,8 @@ T.setLanguage = (lng) => {
         deliveryAddLabel: 'Comment'
       },
       recommendations: {
-        title: 'Recommendations'
+        similar: 'Similar products',
+        complementary: ''
       }
     });
   }

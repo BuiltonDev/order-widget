@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Spinner = (props) => {
-  const {show} = props;
+  const {show, showOverlay} = props;
   const spinnerClass = classNames({
     'spinner-container': true,
-    'spinner-container--hidden': !show
+    'spinner-container--hidden': !show,
+    'overlay': showOverlay
   });
   return (
     <div className={spinnerClass}>
@@ -16,11 +17,13 @@ const Spinner = (props) => {
 };
 
 Spinner.defaultProps = {
-  show: false
+  show: false,
+  showOverlay: true
 };
 
 Spinner.propTypes = {
-  show: PropTypes.bool
+  show: PropTypes.bool,
+  showOverlay: PropTypes.bool
 };
 
 export default Spinner;

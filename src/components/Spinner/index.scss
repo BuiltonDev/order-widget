@@ -6,7 +6,9 @@
   width: 100%;
   top: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.08);
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
 }
 
 .spinner-container--hidden {

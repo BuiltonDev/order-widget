@@ -84,7 +84,7 @@ class ProductPage extends Reflux.Component {
               </div>
             </div>
           </Scrollbars>
-          <ProductRecommendations modelType={'content_similarity_graph'} sourceId={selectedProduct._id.$oid}/>
+          <ProductRecommendations title={T.translate('recommendations.similar')} modelType={'content_similarity_graph'} sourceId={selectedProduct._id.$oid}/>
           <Footer>
             <ShoppingCart></ShoppingCart>
           </Footer>
