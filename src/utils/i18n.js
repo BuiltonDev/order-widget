@@ -89,7 +89,7 @@ T.setLanguage = (lng) => {
         select: 'Select',
         confirm: 'Confirm',
         defaultError: 'Something went wrong. Please try again',
-        poweredBy: 'Powered By'
+        poweredBy: 'Powered by'
       },
       product: {
         search: 'Search',
