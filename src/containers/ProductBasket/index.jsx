@@ -8,6 +8,7 @@ import ProductStore from 'src/reflux/ProductStore';
 import ProductList from 'src/components/ProductList';
 import CloseIcon from 'src/components/SvgIcons/CloseIcon';
 import BasketList from 'src/components/BasketList';
+import ProductRecommendations from 'src/components/ProductRecommendations';
 import T from 'src/utils/i18n';
 import utils from 'src/utils';
 
@@ -31,6 +32,10 @@ class ProductBasket extends Reflux.Component {
   render() {
     const {products, totalCount, totalSum, totalTax} = this.state;
     const currency = utils.getCurrency(products);
+
+    // Currently the recommendations dont support list of products
+    const productKeys = Object.keys(products)[0];
+    const recommenProduct = products[productKeys].item;
 
     return (
       <div className="product-basket">
@@ -59,6 +64,7 @@ class ProductBasket extends Reflux.Component {
               <span className="product-sum__total">{totalSum} {currency}</span>
             </div>
           </div>
+          <ProductRecommendations title={T.translate('recommendations.complementary')} modelType={'frequent_items_recommender'} sourceId={recommenProduct._id.$oid} customClass={'basket-recommendations'}/>
           <Footer>
             <button className="kvass-widget__primary-button" disabled={!totalCount} onClick={() => Actions.onNextNavigation()}>{T.translate('basket.checkout')}</button>
           </Footer>

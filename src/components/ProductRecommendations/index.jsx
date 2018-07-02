@@ -73,7 +73,7 @@ class ProductRecommendations extends Component {
     const {recommendations, visibleRecIndex, isLoading} = this.state;
     const {customClass} = this.props;
 
-    let className = !customClass ? 'recommendations' : `recommendation ${customClass}`;
+    let className = !customClass ? 'recommendations' : `recommendations ${customClass}`;
 
     const children = recommendations.slice(visibleRecIndex - 3, visibleRecIndex).map((product) => this.renderRecommendationItem(product));
     return (
