@@ -1131,6 +1131,32 @@ button.kvass-widget__secondary-button {
   display: flex;
   padding-bottom: 10px; }
 
+.in-page-transition {
+  opacity: 0; }
+
+.in-page-transition.is-moved {
+  opacity: 1;
+  -webkit-animation: animate-element-in 200ms ease-in-out;
+  -moz-animation: animate-element-in 200ms ease-in-out;
+  -o-animation: animate-element-in 200ms ease-in-out;
+  animation: animate-element-in 200ms ease-in-out; }
+
+@keyframes animate-element-in {
+  0% {
+    opacity: 0;
+    transform: translateY(25px); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
+@keyframes animate-element-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0); }
+  100% {
+    opacity: 0;
+    transform: translateY(25px); } }
+
 /** Include component styles **/
 .product-basket .product-list ul, .receipt .receipt-summary ul {
   list-style: none;
@@ -1368,6 +1394,12 @@ button.kvass-widget__secondary-button {
   min-height: 500px; }
   .product-basket .padding-container {
     padding: 10px 32px; }
+  .product-basket .product-basket--item {
+    display: flex;
+    flex-direction: column; }
+  .product-basket .product-basket--item-content {
+    display: flex;
+    flex-direction: row; }
   .product-basket .product-sum {
     padding: 10px 32px 0;
     background-color: #f5f2f0; }
