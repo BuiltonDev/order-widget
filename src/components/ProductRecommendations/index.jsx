@@ -71,10 +71,13 @@ class ProductRecommendations extends Component {
 
   render() {
     const {recommendations, visibleRecIndex, isLoading} = this.state;
+    const {customClass} = this.props;
+
+    let className = !customClass ? 'recommendations' : `recommendation ${customClass}`;
 
     const children = recommendations.slice(visibleRecIndex - 3, visibleRecIndex).map((product) => this.renderRecommendationItem(product));
     return (
-      <div className="recommendations">
+      <div className={className}>
         <div className="recommendation-nav">
           <a className="recommendation-nav__backward" href="#" onClick={(ev) => this.onNavigateRecommendations('back')}>&#8249;</a>
         </div>
@@ -104,7 +107,8 @@ ProductRecommendations.propTypes = {
   modelType: PropTypes.string.isRequired,
   sourceId: PropTypes.string.isRequired,
   source: PropTypes.string,
-  destination: PropTypes.string
+  destination: PropTypes.string,
+  customClass: PropTypes.string
 };
 
 export default ProductRecommendations;
