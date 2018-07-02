@@ -2138,7 +2138,7 @@ button.kvass-widget__secondary-button {
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
     .kvass-widget__content-footer .kvass-widget_powered-by a {
-      color: unset;
+      color: darkgray;
       text-decoration: unset; }
     .kvass-widget__content-footer .kvass-widget_powered-by .svg-icon--powered-by {
       margin-bottom: -1px;

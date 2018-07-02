@@ -1,6 +1,6 @@
 {
   "name": "@kvass.ai/order-widget",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "KVASS Order Widget",
   "main": "./src/index.js",
   "scripts": {
