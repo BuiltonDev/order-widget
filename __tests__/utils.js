@@ -76,4 +76,19 @@ describe('utils functions', () => {
     });
   });
 
+  describe('parseRecommendations', () => {
+    it('should parse returned recommendations into a easily consumable array', () => {
+      const recommendations = {
+        response: [
+          {
+            object: {
+              name: 'product'
+            }
+          }
+        ]
+      };
+      expect(utils.parseRecommendations(recommendations)[0]).toEqual(recommendations.response[0].object);
+    });
+  });
+
 });

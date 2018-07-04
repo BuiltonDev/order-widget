@@ -5,6 +5,7 @@ import T from 'src/utils/i18n';
 import ProductImage from 'src/components/ProductImage';
 import Spinner from 'src/components/Spinner';
 import Actions from 'src/reflux/Actions';
+import utils from 'src/utils';
 
 class ProductRecommendations extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class ProductRecommendations extends Component {
         this.setState({isLoading: false, recommendations: []});
         return;
       }
-      this.setState({isLoading: false, recommendations: recommendations.response});
+      this.setState({isLoading: false, recommendations: utils.parseRecommendations(recommendations)});
     });
   }
 
@@ -69,7 +70,7 @@ class ProductRecommendations extends Component {
 
     let className = !customClass ? 'recommendations' : `recommendations ${customClass}`;
 
-    const children = recommendations.slice(visibleRecIndex - 3, visibleRecIndex).map((recommended) => this.renderRecommendationItem(recommended.object));
+    const children = recommendations.slice(visibleRecIndex - 3, visibleRecIndex).map((product) => this.renderRecommendationItem(product));
     return (
       <div className={className}>
         <div className="recommendation-nav">

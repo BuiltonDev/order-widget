@@ -4,6 +4,7 @@ import {DebounceInput} from 'react-debounce-input';
 import T from 'src/utils/i18n';
 import Kvass from '@kvass.ai/core-sdk';
 import Actions from 'src/reflux/Actions';
+import UserStore from 'src/reflux/UserStore';
 import Spinner from 'src/components/Spinner';
 import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
@@ -25,10 +26,24 @@ class ProductSearch extends Component {
     };
     this.kvass = new Kvass();
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+
+    this.store = UserStore;
+    this.storeKeys = ['apiUser'];
   }
 
+  // Get personalized products on first load, based on general populariy or based on user if logged in
   componentDidMount() {
-    this.searchProduct('');
+    this.setState({isLoading: true});
+    const userId = !this.props.apiUser ? '' : this.props.apiUser._id.$oid;
+    const body = {model_type: 'item_similarity_recommender', source_id: userId, source: 'user', destination: 'product', size: this.pagination.size};
+    this.setState({isLoading: true});
+    this.kvass.aiModel().getRecommendations({body, urlParams: {expand: 'response.object'}}, (error, recommendations, res) => {
+      if (error) {
+        this.setState({isLoading: false, productSearchList: []});
+        return;
+      }
+      this.setState({isLoading: false, productSearchList: utils.parseRecommendations(recommendations)});
+    });
   }
 
   searchProduct(search) {
