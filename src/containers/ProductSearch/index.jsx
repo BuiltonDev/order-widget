@@ -35,7 +35,7 @@ class ProductSearch extends Component {
   componentDidMount() {
     this.setState({isLoading: true});
     const userId = !this.props.apiUser ? '' : this.props.apiUser._id.$oid;
-    const body = {model_type: 'item_similarity_recommender', source_id: userId, source: 'user', destination: 'product', size: this.pagination.size};
+    const body = {model_type: 'collaborative_filtering_recommender', source_id: userId, source: 'user', destination: 'product', size: this.pagination.size};
     this.setState({isLoading: true});
     this.kvass.aiModel().getRecommendations({body, urlParams: {expand: 'response.object'}}, (error, recommendations, res) => {
       if (error) {
