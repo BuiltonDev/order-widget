@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React from 'react';
+import Reflux from 'reflux';
 import PropTypes from 'prop-types';
 import {DebounceInput} from 'react-debounce-input';
 import T from 'src/utils/i18n';
@@ -10,8 +11,9 @@ import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import ProductList from 'src/components/ProductList';
 import ShoppingCart from 'src/components/ShoppingCart';
+import utils from 'src/utils';
 
-class ProductSearch extends Component {
+class ProductSearch extends Reflux.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,12 +36,12 @@ class ProductSearch extends Component {
   // Get personalized products on first load, based on general populariy or based on user if logged in
   componentDidMount() {
     this.setState({isLoading: true});
-    const userId = !this.props.apiUser ? '' : this.props.apiUser._id.$oid;
+    const userId = !this.state.apiUser ? '' : this.state.apiUser._id.$oid;
     const body = {model_type: 'collaborative_filtering_recommender', source_id: userId, source: 'user', destination: 'product', size: this.pagination.size};
     this.setState({isLoading: true});
     this.kvass.aiModel().getRecommendations({body, urlParams: {expand: 'response.object'}}, (error, recommendations, res) => {
       if (error) {
-        this.setState({isLoading: false, productSearchList: []});
+        this.searchProduct(''); // do a normal product search if recommendations fail
         return;
       }
       this.setState({isLoading: false, productSearchList: utils.parseRecommendations(recommendations)});
