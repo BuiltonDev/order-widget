@@ -153,7 +153,7 @@ T.setLanguage = (lng) => {
       },
       recommendations: {
         similar: 'Similar products',
-        complementary: ''
+        complementary: 'Customers also bought'
       }
     });
   }
