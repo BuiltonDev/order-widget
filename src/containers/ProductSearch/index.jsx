@@ -17,7 +17,7 @@ class ProductSearch extends Reflux.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false,
+      isLoading: true,
       productSearchList: [],
       search: ''
     };
@@ -35,7 +35,6 @@ class ProductSearch extends Reflux.Component {
 
   // Get personalized products on first load, based on general populariy or based on user if logged in
   componentDidMount() {
-    this.setState({isLoading: true});
     const userId = !this.state.apiUser ? '' : this.state.apiUser._id.$oid;
     const body = {model_type: 'collaborative_filtering_recommender', source_id: userId, source: 'user', destination: 'product', size: this.pagination.size};
     this.setState({isLoading: true});

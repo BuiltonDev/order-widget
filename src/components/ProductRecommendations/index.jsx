@@ -11,7 +11,7 @@ class ProductRecommendations extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false,
+      isLoading: true,
       recommendations: [],
       visibleRecIndex: 3, // endIndex of what we are showing from array
       size: 9 // no pagination on recommendations
@@ -21,7 +21,6 @@ class ProductRecommendations extends Component {
 
   componentDidMount() {
     const body = {model_type: this.props.modelType, source_id: this.props.sourceId, source: this.props.source, destination: this.props.destination, size: this.state.size};
-    this.setState({isLoading: true});
     this.kvass.aiModel().getRecommendations({body, urlParams: {expand: 'response.object'}}, (error, recommendations, res) => {
       if (error) {
         this.setState({isLoading: false, recommendations: []});
