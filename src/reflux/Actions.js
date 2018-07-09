@@ -28,7 +28,8 @@ const Actions = Reflux.createActions([
   'onSelectPaymentMethod', // Payment
   'onAddUserPaymentMethods', // Payment
   'onPaymentReset', // Payment
-  'onSetOrder' // Order
+  'onSetOrder', // Order
+  'onOrderReset' // Order
 ]);
 
 export default Actions;
