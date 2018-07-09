@@ -44,10 +44,6 @@ $main-icon-color: #9a9a9a;
   }
   li {
     font-size: 12px;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
     flex: 1;
     cursor: pointer;
@@ -70,10 +66,6 @@ $main-icon-color: #9a9a9a;
   height: 100%;
   a {
     padding: 0 8px;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
     justify-content: center;
     flex-direction: column;

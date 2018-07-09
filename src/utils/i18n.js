@@ -76,6 +76,10 @@ T.setLanguage = (lng) => {
         priceLabel: 'Total pris',
         deliveryLabel: 'Levering',
         deliveryAddLabel: 'Tilleggsinformasjon'
+      },
+      recommendations: {
+        similar: 'Lignende produkter',
+        complementary: 'Kunder kjøper også'
       }
     });
   } else { // fallback english
@@ -149,6 +153,10 @@ T.setLanguage = (lng) => {
         deliveryLabel: 'Delivery',
         deliveryAddLabel: 'Comment',
         orderId: 'Order ID'
+      },
+      recommendations: {
+        similar: 'Similar products',
+        complementary: 'Customers also bought'
       }
     });
   }

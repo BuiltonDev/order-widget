@@ -38,10 +38,15 @@ function getCurrency(products) {
   return '';
 }
 
+function parseRecommendations(recs) {
+  return recs.response.map((item) => item.object);
+}
+
 export default {
   parseDeliveryTime,
   parseCreditCard,
   getLocationType,
   roundNumber,
-  getCurrency
+  getCurrency,
+  parseRecommendations
 };

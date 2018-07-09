@@ -6,7 +6,9 @@
   width: 100%;
   top: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.08);
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
 }
 
 .spinner-container--hidden {
@@ -27,7 +29,8 @@
 .loader {
   color: $primary-color;
   font-size: 10px;
-  margin: 80px auto;
+  //margin: 80px auto;
+  margin: 10% auto;
   position: relative;
   text-indent: -9999em;
   @include transform(translateZ(0));

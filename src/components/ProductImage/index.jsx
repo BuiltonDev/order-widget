@@ -12,7 +12,7 @@ const ProductImage = (props) => {
 };
 
 ProductImage.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
   endpoint: PropTypes.string.isRequired,
   apiKey: PropTypes.string.isRequired
 };
