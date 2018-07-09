@@ -5,6 +5,7 @@ import Footer from 'src/components/Footer';
 import DeliveryStore from 'src/reflux/DeliveryStore';
 import ProductStore from 'src/reflux/ProductStore';
 import UserStore from 'src/reflux/UserStore';
+import OrderStore from 'src/reflux/OrderStore';
 import BasketList from 'src/components/BasketList';
 import T from 'src/utils/i18n';
 import utils from 'src/utils';
@@ -13,9 +14,9 @@ import Animate from '../../utils/animate';
 class Receipt extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.stores = [DeliveryStore, ProductStore, UserStore];
+    this.stores = [DeliveryStore, ProductStore, UserStore, OrderStore];
     this.animation = new Animate();
-    this.storeKeys = ['firstName', 'lastName', 'phoneNumber', 'products', 'totalSum', 'deliveryAddress', 'parsedDeliveryTime', 'deliveryAdditional'];
+    this.storeKeys = ['firstName', 'lastName', 'phoneNumber', 'products', 'totalSum', 'deliveryAddress', 'parsedDeliveryTime', 'deliveryAdditional', 'order'];
   }
 
   renderReceiptItem(label, items = []) {
@@ -71,6 +72,7 @@ class Receipt extends Reflux.Component {
                 <ul>
                   {this.renderReceiptItem(T.translate('receipt.nameLabel'), [this.state.firstName + ' ' + this.state.lastName])}
                   {this.renderReceiptItem(T.translate('receipt.phoneNumberLabel'), [this.state.phoneNumber])}
+                  {this.renderReceiptItem(T.translate('receipt.orderId'), [this.state.order.human_id])}
                   {/*this.renderReceiptItem('Order', [this.state.orderId])*/}
                   {this.renderBasketReceiptItem(T.translate('receipt.productsLabel'), this.state.products)}
                   {this.renderReceiptItem(T.translate('receipt.priceLabel'), [this.state.totalSum + ' ' + currency])}

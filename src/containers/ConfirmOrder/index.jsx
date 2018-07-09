@@ -11,13 +11,15 @@ import UserStore from 'src/reflux/UserStore';
 import ProductStore from 'src/reflux/ProductStore';
 import DeliveryStore from 'src/reflux/DeliveryStore';
 import PaymentStore from 'src/reflux/PaymentStore';
+import OrderStore from "../../reflux/OrderStore";
 import utils from 'src/utils';
 import Animate from '../../utils/animate';
+
 
 class ConfirmOrder extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.stores = [UserStore, ProductStore, DeliveryStore, PaymentStore];
+    this.stores = [UserStore, ProductStore, DeliveryStore, PaymentStore, OrderStore];
     this.storeKeys = ['firstName', 'lastName', 'phoneNumber', 'products', 'totalCount', 'totalSum', 'parsedDeliveryTime',
     'parsedDeliveryAddress', 'deliveryAddress', 'deliveryGeo', 'deliveryAdditional', 'selectedPaymentMethod'];
 
@@ -39,7 +41,7 @@ class ConfirmOrder extends Reflux.Component {
   // POST /order/{ID}/pay {}
   createOrder() {
     this.setState({isLoading: true});
-    let productItems = [];
+    const productItems = [];
     let currency;
 
     Object.entries(this.state.products).forEach(([key, value]) => {
@@ -61,6 +63,9 @@ class ConfirmOrder extends Reflux.Component {
         this.setState({isLoading: false});
         return;
       }
+
+      // Set the order in the store
+      Actions.onSetOrder(Order);
 
       const paymentPayload = {
         orders: [Order.id],

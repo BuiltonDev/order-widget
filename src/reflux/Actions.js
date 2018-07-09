@@ -27,7 +27,8 @@ const Actions = Reflux.createActions([
   'onStripeToken', // Payment
   'onSelectPaymentMethod', // Payment
   'onAddUserPaymentMethods', // Payment
-  'onPaymentReset' // Payment
+  'onPaymentReset', // Payment
+  'onSetOrder', // Order
 ]);
 
 export default Actions;
