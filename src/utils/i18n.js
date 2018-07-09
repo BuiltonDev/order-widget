@@ -151,7 +151,8 @@ T.setLanguage = (lng) => {
         productsLabel: 'Product(s)',
         priceLabel: 'Total price',
         deliveryLabel: 'Delivery',
-        deliveryAddLabel: 'Comment'
+        deliveryAddLabel: 'Comment',
+        orderId: 'Order ID'
       },
       recommendations: {
         similar: 'Similar products',

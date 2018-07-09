@@ -22,6 +22,7 @@ class GlobalStore extends Reflux.Store {
     Actions.onDeliveryReset();
     Actions.onPaymentReset();
     Actions.onProductReset();
+    Actions.onOrderReset();
   }
 
   onCloseMessage() {
