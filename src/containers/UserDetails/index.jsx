@@ -156,9 +156,7 @@ class UserDetails extends Reflux.Component {
         <div className="kvass-widget__content-body">
           <Spinner show={this.state.isLoading}></Spinner>
           <div className="content">
-            <div className="padding-container">
-              {isAuthComplete ? this.renderExistingUser() : this.renderAuthProcess(this.state.isVerified)}
-            </div>
+            {isAuthComplete ? this.renderExistingUser() : this.renderAuthProcess(this.state.isVerified)}
           </div>
           <Footer>
             <button disabled={!this.state.isVerified} className="kvass-widget__primary-button" onClick={this.authenticateWithApi}>{T.translate('global.next')}</button>
