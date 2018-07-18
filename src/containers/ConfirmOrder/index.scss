@@ -1,8 +1,12 @@
 @import '../../styles/_global';
 
 .confirm-order {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   .content {
-    min-height: $content-min-height;
+    flex: 1;
+    overflow-y: auto;
   }
 
   .step-list {
