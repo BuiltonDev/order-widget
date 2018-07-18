@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   totalSum: 0,
   totalTax: 0,
   selectedProduct: null,
-  searchString: '',
+  searchString: ''
 };
 
 class ProductStore extends Reflux.Store {

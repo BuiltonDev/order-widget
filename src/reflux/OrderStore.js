@@ -1,6 +1,5 @@
 import Reflux from 'reflux';
 import Actions from './Actions';
-import cloneDeep from "lodash.clonedeep";
 
 const INITIAL_STATE = {
   order: {}

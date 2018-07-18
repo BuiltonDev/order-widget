@@ -7,7 +7,7 @@ const Spinner = (props) => {
   const spinnerClass = classNames({
     'spinner-container': true,
     'spinner-container--hidden': !show,
-    'overlay': showOverlay
+    overlay: showOverlay
   });
   return (
     <div className={spinnerClass}>
