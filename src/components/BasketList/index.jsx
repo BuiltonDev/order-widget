@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 import {DebounceInput} from 'react-debounce-input';
 import Animate from 'src/utils/animate';
+import utils from 'src/utils';
 
 class BasketList extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class BasketList extends Component {
               onChange={event => this.onChange(product, event)} />
           </span>
           <span className="basket-item__price">{product.item.price} {product.item.currency}</span>
-          <span className="basket-item__total">{product.item.price * product.count} {product.item.currency}</span>
+          <span className="basket-item__total">{utils.roundNumber(product.item.price * product.count, 2)} {product.item.currency}</span>
         </div>
       </li>
     );
@@ -55,7 +56,7 @@ class BasketList extends Component {
             onChange={event => this.onChange(product, event)} />
         </span>
         <span className="basket-item__title">{product.item.name}</span>
-        <span className="basket-item__total">{product.item.price * product.count} {product.item.currency}</span>
+        <span className="basket-item__total">{utils.roundNumber(product.item.price * product.count, 2)} {product.item.currency}</span>
       </li>
     );
   }

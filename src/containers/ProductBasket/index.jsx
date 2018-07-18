@@ -57,11 +57,11 @@ class ProductBasket extends Reflux.Component {
             </div>
             <div className="product-sum__line">
               <span>{T.translate('basket.tax')}</span>
-              <span>{totalTax} {currency}</span>
+              <span>{utils.roundNumber(totalTax, 2)} {currency}</span>
             </div>
             <div className="product-sum__line">
               <span>{T.translate('basket.total')}</span>
-              <span className="product-sum__total">{totalSum} {currency}</span>
+              <span className="product-sum__total">{utils.roundNumber(totalSum, 2)} {currency}</span>
             </div>
           </div>
           {/*<ProductRecommendations title={T.translate('recommendations.complementary')} modelType={'frequent_items_recommender'} sourceId={recommenProduct._id.$oid} customClass={'basket-recommendations'}/>*/}
