@@ -2,13 +2,17 @@
 @import '../../styles/_mixins';
 
 .payment-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 
   p {
     font-size: 12px;
   }
 
   .content {
-    min-height: $content-min-height;
+    flex: 1;
+    overflow-y: auto;
 
     .padding-container {
       padding: 10px 32px;
