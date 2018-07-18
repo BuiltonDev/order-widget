@@ -12,15 +12,12 @@ import Footer from 'src/components/Footer';
 import ProductList from 'src/components/ProductList';
 import ShoppingCart from 'src/components/ShoppingCart';
 import utils from 'src/utils';
+import ProductStore from "../../reflux/ProductStore";
 
 class ProductSearch extends Reflux.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLoading: true,
-      productSearchList: [],
-      search: ''
-    };
+
     this.pagination = {
       page: 0,
       size: 10,
@@ -29,28 +26,41 @@ class ProductSearch extends Reflux.Component {
     this.kvass = new Kvass();
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
 
-    this.store = UserStore;
-    this.storeKeys = ['apiUser'];
+    this.stores = [UserStore, ProductStore];
+    this.storeKeys = ['apiUser', 'searchString'];
+    this.state = {
+      isLoading: true,
+      productSearchList: [],
+      search: ''
+    };
   }
 
   // Get personalized products on first load, based on general populariy or based on user if logged in
   componentDidMount() {
     const userId = !this.state.apiUser ? '' : this.state.apiUser._id.$oid;
     const body = {model_type: 'collaborative_filtering_recommender', source_id: userId, source: 'user', destination: 'product', size: this.pagination.size};
-    this.setState({isLoading: true});
-    this.kvass.aiModel().getRecommendations({body, urlParams: {expand: 'response.object'}}, (error, recommendations, res) => {
-      if (error) {
-        this.searchProduct(''); // do a normal product search if recommendations fail
-        return;
-      }
-      this.setState({isLoading: false, productSearchList: utils.parseRecommendations(recommendations)});
+    this.setState({
+      isLoading: true
     });
+
+    if (this.state.searchString) {
+      this.searchProduct(this.state.searchString);
+    } else {
+      this.kvass.aiModel().getRecommendations({body, urlParams: {expand: 'response.object'}}, (error, recommendations, res) => {
+        if (error) {
+          this.searchProduct(this.state.searchString); // do a normal product search if recommendations fail
+          return;
+        }
+        this.setState({isLoading: false, productSearchList: utils.parseRecommendations(recommendations)});
+      });
+    }
   }
 
   searchProduct(search) {
-    this.setState({isLoading: true});
+    this.setState({isLoading: true, search});
     this.kvass.product().search({query: search, urlParams: {size: this.pagination.size, page: this.pagination.page, sort: '-created'}}, (error, productListRes, res) => {
-      this.setState({isLoading: false, search, productSearchList: productListRes});
+      this.setState({isLoading: false, productSearchList: productListRes});
+      Actions.onSearch(search);
     });
   }
 
@@ -75,6 +85,7 @@ class ProductSearch extends Reflux.Component {
             <DebounceInput
               className="kvass-widget__input"
               minLength={1}
+              value={search}
               debounceTimeout={500}
               placeholder={T.translate('product.searchPlaceholder')}
               onChange={event => this.searchProduct(event.target.value)} />
