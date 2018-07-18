@@ -31,6 +31,7 @@
     .user-details__existing-user {
       text-align: center;
       font-size: 14px;
+      align-self: center;
       a {
         color: $primary-color;
         @include transition(all 450ms);
