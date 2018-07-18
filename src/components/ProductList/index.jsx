@@ -58,12 +58,14 @@ class ProductList extends Reflux.Component {
   renderChildrenItems(productList) {
     return productList.map(product =>
       <li className="product-list-item in-page-transition" key={product._id.$oid}>
-        <div className="product-list-item__img">
-          {this.renderProductImg(product.image_url)}
+        <div className="product-list-item--description" onClick={() => this.onProductClick(product)}>
+          <div className="product-list-item__img">
+            {this.renderProductImg(product.image_url)}
+          </div>
+          <span className="product-list-item__name">
+            {product.name}
+          </span>
         </div>
-        <span className="product-list-item__name" onClick={() => this.onProductClick(product)}>
-          {product.name}
-        </span>
         <div className="product-list-item__toolbar">
           <a href="#" onClick={() => Actions.onRemoveProduct(product)}>
             <MinusIcon className="svg-icon--red" />

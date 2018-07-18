@@ -61,7 +61,7 @@ $main-icon-color: #9a9a9a;
 %toolbar {
   display: flex;
   margin-left: auto;
-  flex: 1;
+  flex: initial;
   justify-content: flex-end;
   height: 100%;
   a {
