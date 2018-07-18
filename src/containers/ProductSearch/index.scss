@@ -3,6 +3,9 @@
 
 .product-search {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 
   .search-form {
     display: flex;
@@ -11,8 +14,9 @@
   }
 
   .product-list {
-    //min-height: $content-min-height;
-    min-height: 490px; // This is due to Scrollbars taking up some more space
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     @extend %styled-list;
 
     ul {

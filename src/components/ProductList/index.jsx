@@ -80,7 +80,7 @@ class ProductList extends Reflux.Component {
     if (!productList.length) return this.constructor.renderEmptyResults();
 
     return (
-      <Scrollbars style={{ height: 500 }}>
+      <Scrollbars style={{ flex: 1 }}>
         <ul>
           {this.renderChildrenItems(productList)}
         </ul>
