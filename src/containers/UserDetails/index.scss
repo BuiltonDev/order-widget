@@ -14,6 +14,10 @@
     justify-content: center;
     overflow-y: auto;
 
+    #firebaseui_container {
+      height: 0; // Fix issue with FF
+    }
+
     .user-details__additional {
       flex: 1;
       padding: 0 32px;
