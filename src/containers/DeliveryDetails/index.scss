@@ -1,13 +1,17 @@
 @import '../../styles/_global';
 
 .delivery-details {
+  flex: 1;
+  flex-direction: column;
+  display: flex;
 
   p {
     font-size: 12px;
   }
 
   .content {
-    min-height: $content-min-height;
+    flex: 1;
+    overflow-y: auto;
   }
   .padding-container {
     padding: 10px 32px;

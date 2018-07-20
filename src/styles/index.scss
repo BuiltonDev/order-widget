@@ -38,7 +38,9 @@
   }
 
   .kvass-widget__container {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
     position: relative;
     background-color: $primary-background-color;
     opacity: 1;
@@ -65,6 +67,9 @@
 
 .kvass-widget__content-body {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .close-widget-icon {

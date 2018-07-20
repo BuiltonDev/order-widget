@@ -3,6 +3,9 @@
 
 .product-search {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 
   .search-form {
     display: flex;
@@ -11,8 +14,9 @@
   }
 
   .product-list {
-    //min-height: $content-min-height;
-    min-height: 490px; // This is due to Scrollbars taking up some more space
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     @extend %styled-list;
 
     ul {
@@ -24,6 +28,14 @@
       white-space: nowrap;
       overflow: hidden;
       padding: 0 5px;
+    }
+
+    .product-list-item--description {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+      align-items: center;
+      align-self: stretch;
     }
 
     .product-list-item__name:hover {

@@ -1,7 +1,9 @@
 @import '../../styles/_global';
 
 .product-basket {
-  min-height: $content-min-height;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   .padding-container {
     padding: 10px 32px;
   }
@@ -19,6 +21,7 @@
 
   .product-list {
     @extend %white-content-box;
+    flex: 1;
   }
 
   .product-sum {

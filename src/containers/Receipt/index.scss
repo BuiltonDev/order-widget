@@ -1,10 +1,16 @@
 @import '../../styles/_global';
 
 .receipt {
-  min-height: $content-min-height;
-
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   .padding-container {
     padding: 10px 32px;
+  }
+
+  .content {
+    flex: 1;
+    overflow-y: auto;
   }
 
   .receipt-summary {

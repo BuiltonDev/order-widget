@@ -44,7 +44,7 @@ class ProductBasket extends Reflux.Component {
         </Header>
         <div className="kvass-widget__content-body">
           <div className="product-list">
-            <Scrollbars style={{ height: 380 }}>
+            <Scrollbars style={{ flex: 1 }}>
               <div className="padding-container">
                 <BasketList products={products} onCountChange={this.handleCountChange}/>
               </div>

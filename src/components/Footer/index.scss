@@ -1,11 +1,17 @@
 @import '../../styles/_global';
 
 .kvass-widget__content-footer {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
 
   .footer-content {
     border-top: 1px solid $list-item-border-color;
-    padding: $default-padding;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: relative;
   }
 

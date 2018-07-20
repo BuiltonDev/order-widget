@@ -66,7 +66,7 @@ class Receipt extends Reflux.Component {
           <span className="header-title">{T.translate('receipt.header')}</span>
         </Header>
         <div className="kvass-widget__content-body">
-          <div className="receipt">
+          <div className="content">
             <div className="padding-container">
               <div className="receipt-summary">
                 <ul>

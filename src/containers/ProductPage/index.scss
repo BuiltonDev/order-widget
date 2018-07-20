@@ -2,8 +2,9 @@
 @import '../../styles/_mixins';
 
 .product-page {
-  //min-height: $content-min-height;
-  min-height: 490px; // This is due to Scrollbars taking up some more space
+  flex: 1;
+  flex-direction: column;
+  display: flex;
 
   .product-page__image {
     padding-top: 5px;
