@@ -75,7 +75,7 @@ class Receipt extends Reflux.Component {
                   {this.renderReceiptItem(T.translate('receipt.orderId'), [this.state.order.human_id])}
                   {/*this.renderReceiptItem('Order', [this.state.orderId])*/}
                   {this.renderBasketReceiptItem(T.translate('receipt.productsLabel'), this.state.products)}
-                  {this.renderReceiptItem(T.translate('receipt.priceLabel'), [this.state.totalSum + ' ' + currency])}
+                  {this.renderReceiptItem(T.translate('receipt.priceLabel'), [utils.roundNumber(this.state.totalSum, 2) + ' ' + currency])}
                   {this.renderReceiptItem(T.translate('receipt.deliveryLabel'), [this.state.deliveryAddress, this.state.parsedDeliveryTime.format('LLL')])}
                   {this.state.deliveryAdditional ? this.renderReceiptItem(T.translate('receipt.deliveryAddLabel') , [this.state.deliveryAdditional]) : null}
                 </ul>

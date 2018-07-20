@@ -74,11 +74,11 @@ class ProductPage extends Reflux.Component {
                   </li>
                   <li>
                     <span className="list-item">{T.translate('productPage.unitPrice')}</span>
-                    <span className="list-item list-item__count">{selectedProduct.price} {selectedProduct.currency}</span>
+                    <span className="list-item list-item__count">{utils.roundNumber(selectedProduct.price, 2)} {selectedProduct.currency}</span>
                   </li>
                   <li>
                     <span className="list-item">{T.translate('productPage.totalPrice')}</span>
-                    <span className="list-item list-item__count">{totalPrice} {selectedProduct.currency}</span>
+                    <span className="list-item list-item__count">{utils.roundNumber(totalPrice, 2)} {selectedProduct.currency}</span>
                   </li>
                 </ul>
               </div>

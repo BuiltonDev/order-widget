@@ -140,7 +140,7 @@ class ConfirmOrder extends Reflux.Component {
                   </div>
                   <div onClick={() => Actions.onNavigateTo(1)} className="step__items row">
                     <span>{totalCount}x {T.translate('confirm.products')}</span>
-                    <span>{totalSum} {currency}</span>
+                    <span>{utils.roundNumber(totalSum, 2)} {currency}</span>
                   </div>
                 </div>
             </div>
