@@ -39,7 +39,7 @@ function getCurrency(products) {
 }
 
 function parseRecommendations(recs) {
-  return recs.response.map((item) => item.object);
+  return recs.response.map(item => item.object);
 }
 
 export default {

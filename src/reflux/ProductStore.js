@@ -8,7 +8,8 @@ const INITIAL_STATE = {
   totalCount: 0,
   totalSum: 0,
   totalTax: 0,
-  selectedProduct: null
+  selectedProduct: null,
+  searchString: ''
 };
 
 class ProductStore extends Reflux.Store {
@@ -45,6 +46,12 @@ class ProductStore extends Reflux.Store {
       totalCount: this.state.totalCount + addCount,
       totalSum: utils.roundNumber(this.state.totalSum + (copy.item.price * addCount), 2),
       totalTax: utils.roundNumber(tax, 2)
+    });
+  }
+
+  onSearch(searchString) {
+    this.setState({
+      searchString
     });
   }
 
