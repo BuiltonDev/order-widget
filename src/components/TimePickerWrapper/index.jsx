@@ -1,8 +1,7 @@
-import React from 'react'
-import Reflux from 'reflux'
+import React from 'react';
+import Reflux from 'reflux';
 import * as utils from 'react-times/lib/utils/const_value';
 import TimePicker from 'react-times';
-import T from 'src/utils/i18n';
 import Actions from 'src/reflux/Actions';
 import DeliveryStore from 'src/reflux/DeliveryStore';
 
@@ -43,7 +42,12 @@ class TimePickerWrapper extends Reflux.Component {
 
   render() {
     return (
-      <TimePicker time={this.state.deliveryTime} draggable={false} onTimeChange={(time) => Actions.onTimeChange(time)} theme="classic"/>
+      <TimePicker
+        time={this.state.deliveryTime}
+        draggable={false}
+        onTimeChange={(time) => Actions.onTimeChange(time)}
+        theme="classic"
+      />
     );
   }
 }
