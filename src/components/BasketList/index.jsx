@@ -15,7 +15,6 @@ class BasketList extends Component {
     if (this.props.isCountChangeEnabled) this.props.onCountChange(product, event);
   }
 
-
   componentDidMount() {
     if (this.props.products) {
       this.animation.animateInViewTransition();
@@ -42,7 +41,9 @@ class BasketList extends Component {
     const key = `${product.item._id.$oid}-1`;
     return (
       <li key={key} className='product-basket--item in-page-transition'>
-        <div className="basket-item__title">{product.item.name}</div>
+        <div className="basket-item__title">
+          {product.item.name}
+        </div>
         <div className='product-basket--item-content'>
           <span className="basket-item__count">
             <DebounceInput
@@ -51,10 +52,15 @@ class BasketList extends Component {
               debounceTimeout={500}
               value={product.count}
               disabled={!this.props.isCountChangeEnabled}
-              onChange={event => this.onChange(product, event)} />
+              onChange={event => this.onChange(product, event)}
+            />
           </span>
-          <span className="basket-item__price">{product.item.price} {product.item.currency}</span>
-          <span className="basket-item__total">{utils.roundNumber(product.item.price * product.count, 2)} {product.item.currency}</span>
+          <span className="basket-item__price">
+            {product.item.price} {product.item.currency}
+          </span>
+          <span className="basket-item__total">
+            {utils.roundNumber(product.item.price * product.count, 2)} {product.item.currency}
+          </span>
         </div>
       </li>
     );
@@ -70,10 +76,15 @@ class BasketList extends Component {
             debounceTimeout={500}
             value={product.count}
             disabled={!this.props.isCountChangeEnabled}
-            onChange={event => this.onChange(product, event)} />
+            onChange={event => this.onChange(product, event)}
+          />
         </span>
-        <span className="basket-item__title">{product.item.name}</span>
-        <span className="basket-item__total">{utils.roundNumber(product.item.price * product.count, 2)} {product.item.currency}</span>
+        <span className="basket-item__title">
+          {product.item.name}
+        </span>
+        <span className="basket-item__total">
+          {utils.roundNumber(product.item.price * product.count, 2)} {product.item.currency}
+        </span>
       </li>
     );
   }
