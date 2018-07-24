@@ -7,7 +7,13 @@ const ProductImage = (props) => {
   let src = DEFAULT_IMAGE;
   if (props.imageUrl) src = `${props.endpoint}images/${props.imageUrl}?api_key=${props.apiKey}`;
   return (
-    <img onError={(ev) => {ev.target.src = DEFAULT_IMAGE}} src={src} alt="product image"/>
+    <img
+      onError={
+        (ev) => {ev.target.src = DEFAULT_IMAGE}
+      }
+      src={src}
+      alt="product image"
+    />
   );
 };
 
