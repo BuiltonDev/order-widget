@@ -45,7 +45,7 @@ Header.defaultProps = {
   showCloseNav: true,
   showBackNav: false,
   backStep: null,
-  children: undefined
+  children: {}
 };
 
 Header.propTypes = {
@@ -54,7 +54,8 @@ Header.propTypes = {
   backStep: PropTypes.number,
   children: PropTypes.oneOfType([
     PropTypes.array,
-    PropTypes.instanceOf(React.Component)
+    PropTypes.instanceOf(React.Component),
+    PropTypes.object,
   ])
 };
 

@@ -20,13 +20,14 @@ const Footer = props => (
 );
 
 Footer.defaultProps = {
-  children: undefined
+  children: {}
 };
 
 Footer.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.array,
-    PropTypes.instanceOf(React.Component)
+    PropTypes.instanceOf(React.Component),
+    PropTypes.object
   ])
 };
 
