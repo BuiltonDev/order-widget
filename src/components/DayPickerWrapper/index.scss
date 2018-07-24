@@ -10,9 +10,6 @@
   .DateInput_input {
     @include primary-input(36px, 100%);
     border: 1px solid $list-item-border-color;
-    &:focus {
-
-    }
   }
 }
 
