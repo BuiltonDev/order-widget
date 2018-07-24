@@ -58,21 +58,15 @@ class DeliveryDetails extends Reflux.Component {
     return (
       <div className="padding-container">
         <div className='in-page-transition'>
-          <p>
-            {T.translate('deliveryDetails.deliveryDetails')}
-          </p>
+          <p>{T.translate('deliveryDetails.deliveryDetails')}</p>
           <PlaceAutoCompleteWrapper />
         </div>
         <div className='in-page-transition'>
-          <p>
-            {T.translate('deliveryDetails.dateDetails')}
-          </p>
+          <p>{T.translate('deliveryDetails.dateDetails')}</p>
           <DayPickerWrapper />
         </div>
         <div className='in-page-transition'>
-          <p>
-            {T.translate('deliveryDetails.timeDetails')}
-          </p>
+          <p>{T.translate('deliveryDetails.timeDetails')}</p>
           <TimePickerWrapper />
         </div>
         <div className='in-page-transition'>

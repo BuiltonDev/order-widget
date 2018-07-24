@@ -20,9 +20,7 @@ class ConfirmOrder extends Reflux.Component {
   static renderHeader() {
     return (
       <Header showBackNav={true}>
-          <span className="header-title">
-            {T.translate('confirm.header')}
-          </span>
+        <span className="header-title">{T.translate('confirm.header')}</span>
       </Header>
     );
   }
@@ -141,31 +139,19 @@ class ConfirmOrder extends Reflux.Component {
 
         <div className="step in-page-transition">
           <div className="step-header">
-            <p className="step__label">
-              {T.translate('deliveryDetails.header')}
-            </p>
+            <p className="step__label">{T.translate('deliveryDetails.header')}</p>
           </div>
           <div onClick={() => Actions.onNavigateTo(3)} className="step__items column">
-            <span>
-              {deliveryAddress}
-            </span>
-            <span>
-              {deliveryTimeFormatted.toString()}
-            </span>
-            <span>
-              {deliveryAdditional ? T.translate('confirm.note') : ''}
-            </span>
-            <span>
-              {deliveryAdditional}
-            </span>
+            <span>{deliveryAddress}</span>
+            <span>{deliveryTimeFormatted.toString()}</span>
+            <span>{deliveryAdditional ? T.translate('confirm.note') : ''}</span>
+            <span>{deliveryAdditional}</span>
           </div>
         </div>
 
         <div className="step in-page-transition">
           <div className="step-header">
-            <p className="step__label">
-              {T.translate('paymentDetails.header')}
-            </p>
+            <p className="step__label">{T.translate('paymentDetails.header')}</p>
           </div>
           <div onClick={() => Actions.onNavigateTo(4)} className="step__items column">
             <span>
@@ -176,20 +162,12 @@ class ConfirmOrder extends Reflux.Component {
 
         <div className="step in-page-transition">
           <div className="step-header">
-            <p className="step__label">
-              {T.translate('basket.header')}
-            </p>
-            <p className="step__label">
-              {T.translate('confirm.totalPrice')}
-            </p>
+            <p className="step__label">{T.translate('basket.header')}</p>
+            <p className="step__label">{T.translate('confirm.totalPrice')}</p>
           </div>
           <div onClick={() => Actions.onNavigateTo(1)} className="step__items row">
-            <span>
-              {totalCount}x {T.translate('confirm.products')}
-            </span>
-            <span>
-              {utils.roundNumber(totalSum, 2)} {currency}
-            </span>
+            <span>{totalCount}x {T.translate('confirm.products')}</span>
+            <span>{utils.roundNumber(totalSum, 2)} {currency}</span>
           </div>
         </div>
       </div>
@@ -203,6 +181,7 @@ class ConfirmOrder extends Reflux.Component {
         <div className="kvass-widget__content-body">
           <Spinner show={this.state.isLoading} />
           <div className="content">
+            {this.renderBody()}
           </div>
           {this.renderFooter()}
         </div>
