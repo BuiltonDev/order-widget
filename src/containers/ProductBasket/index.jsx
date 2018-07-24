@@ -38,7 +38,7 @@ class ProductBasket extends Reflux.Component {
     const currency = utils.getCurrency(products);
 
     return (
-      <div>
+      <div className='content'>
         <div className="product-list">
           <Scrollbars style={{ flex: 1 }}>
             <div className="padding-container">
