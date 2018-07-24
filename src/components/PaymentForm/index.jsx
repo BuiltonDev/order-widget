@@ -1,5 +1,5 @@
-import React from 'react'
-import Reflux from 'reflux'
+import React from 'react';
+import Reflux from 'reflux';
 import PropTypes from 'prop-types';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import T from 'src/utils/i18n';
@@ -18,10 +18,13 @@ class PaymentForm extends Reflux.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.onStripePaymentAdded({isLoading: true});
-    this.props.stripe.createToken().then(payload => {
+    this.props.stripe.createToken().then((payload) => {
       if (payload && payload.error) {
         this.props.onStripePaymentAdded({isLoading: false});
-        Actions.onMessage({isError: true}, T.translate('paymentDetails.error', {errorCode: payload.error.code}));
+        Actions.onMessage(
+          {isError: true},
+          T.translate('paymentDetails.error', {errorCode: payload.error.code})
+        );
         return;
       }
       const paymentMethodPayload = {payment_method: 'stripe', token: payload.token.id};
@@ -43,7 +46,9 @@ class PaymentForm extends Reflux.Component {
     return (
       <form className="kvass-widget__input-container payment-form" onSubmit={this.handleSubmit}>
         <CardElement />
-        <button className="kvass-widget__secondary-button" type="submit">{T.translate('paymentDetails.addNewCard')}</button>
+        <button className="kvass-widget__secondary-button" type="submit">
+          {T.translate('paymentDetails.addNewCard')}
+        </button>
       </form>
     );
   }
