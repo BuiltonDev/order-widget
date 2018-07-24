@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {DebounceInput} from 'react-debounce-input';
 import Animate from 'src/utils/animate';
@@ -15,10 +15,27 @@ class BasketList extends Component {
     if (this.props.isCountChangeEnabled) this.props.onCountChange(product, event);
   }
 
+
   componentDidMount() {
     if (this.props.products) {
       this.animation.animateInViewTransition();
     }
+  }
+
+  mapBasketLines() {
+    const productArray = [];
+
+    Object.values(this.props.products).forEach((value) => {
+      if (value) {
+        if (this.props.onOneLine) {
+          productArray.push(this.renderBasketOneLine(value));
+        } else {
+          productArray.push(this.renderBasketPrice(value));
+        }
+      }
+    });
+
+    return productArray;
   }
 
   renderBasketPrice(product) {
@@ -62,36 +79,18 @@ class BasketList extends Component {
   }
 
   render() {
-    const productArray = [];
-    let className = 'basket-list';
-
-    if (this.props.className) className += ' ' + this.props.className;
-
-    this.items = document.getElementsByClassName('in-page-transition');
-
-    Object.entries(this.props.products).forEach(([key, value]) => {
-      if (value) {
-
-        if (this.props.onOneLine) {
-          productArray.push(this.renderBasketOneLine(value));
-        } else {
-          productArray.push(this.renderBasketPrice(value));
-        }
-
-      }
-    });
-
     return (
-      <ul className={className}>
-        {productArray}
+      <ul className={`basket-list ${this.props.className}`}>
+        {this.mapBasketLines()}
       </ul>
-    )
+    );
   }
 }
 
 BasketList.defaultProps = {
   isCountChangeEnabled: true,
-  onOneLine: false
+  onOneLine: false,
+  className: ''
 };
 
 BasketList.propTypes = {
@@ -99,7 +98,11 @@ BasketList.propTypes = {
   isCountChangeEnabled: PropTypes.bool,
   onCountChange: PropTypes.func,
   onOneLine: PropTypes.bool,
-  classOverride: PropTypes.string
+  classOverride: PropTypes.string,
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array
+  ])
 };
 
 export default BasketList;
