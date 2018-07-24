@@ -125,43 +125,71 @@ class ConfirmOrder extends Reflux.Component {
       <div className="step-list">
         <div className="step in-page-transition">
           <div className="step-header">
-            <p className="step__label">{T.translate('userDetails.header')}</p>
+            <p className="step__label">
+              {T.translate('userDetails.header')}
+            </p>
           </div>
           <div onClick={() => Actions.onNavigateTo(2)} className="step__items column">
-            <span>{firstName} {lastName}</span>
-            <span>{phoneNumber}</span>
+            <span>
+              {firstName} {lastName}
+            </span>
+            <span>
+              {phoneNumber}
+            </span>
           </div>
         </div>
 
         <div className="step in-page-transition">
           <div className="step-header">
-            <p className="step__label">{T.translate('deliveryDetails.header')}</p>
+            <p className="step__label">
+              {T.translate('deliveryDetails.header')}
+            </p>
           </div>
           <div onClick={() => Actions.onNavigateTo(3)} className="step__items column">
-            <span>{deliveryAddress}</span>
-            <span>{deliveryTimeFormatted.toString()}</span>
-            <span>{deliveryAdditional ? T.translate('confirm.note') : ''}</span>
-            <span>{deliveryAdditional}</span>
+            <span>
+              {deliveryAddress}
+            </span>
+            <span>
+              {deliveryTimeFormatted.toString()}
+            </span>
+            <span>
+              {deliveryAdditional ? T.translate('confirm.note') : ''}
+            </span>
+            <span>
+              {deliveryAdditional}
+            </span>
           </div>
         </div>
 
         <div className="step in-page-transition">
           <div className="step-header">
-            <p className="step__label">{T.translate('paymentDetails.header')}</p>
+            <p className="step__label">
+              {T.translate('paymentDetails.header')}
+            </p>
           </div>
           <div onClick={() => Actions.onNavigateTo(4)} className="step__items column">
-            <span>{utils.parseCreditCard(selectedPaymentMethod.card)}</span>
+            <span>
+              {utils.parseCreditCard(selectedPaymentMethod.card)}
+            </span>
           </div>
         </div>
 
         <div className="step in-page-transition">
           <div className="step-header">
-            <p className="step__label">{T.translate('basket.header')}</p>
-            <p className="step__label">{T.translate('confirm.totalPrice')} </p>
+            <p className="step__label">
+              {T.translate('basket.header')}
+            </p>
+            <p className="step__label">
+              {T.translate('confirm.totalPrice')}
+            </p>
           </div>
           <div onClick={() => Actions.onNavigateTo(1)} className="step__items row">
-            <span>{totalCount}x {T.translate('confirm.products')}</span>
-            <span>{utils.roundNumber(totalSum, 2)} {currency}</span>
+            <span>
+              {totalCount}x {T.translate('confirm.products')}
+            </span>
+            <span>
+              {utils.roundNumber(totalSum, 2)} {currency}
+            </span>
           </div>
         </div>
       </div>
