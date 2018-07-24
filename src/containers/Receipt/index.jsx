@@ -12,14 +12,24 @@ import utils from 'src/utils';
 import Animate from '../../utils/animate';
 
 class Receipt extends Reflux.Component {
-  constructor(props) {
-    super(props);
-    this.stores = [DeliveryStore, ProductStore, UserStore, OrderStore];
-    this.animation = new Animate();
-    this.storeKeys = ['firstName', 'lastName', 'phoneNumber', 'products', 'totalSum', 'deliveryAddress', 'parsedDeliveryTime', 'deliveryAdditional', 'order'];
+  static renderBasketReceiptItem(label, products) {
+    return (
+      <React.Fragment>
+        <li key={label} className="receipt-item in-page-transition">
+          <div>
+            <span className="label">{label}:</span>
+          </div>
+        </li>
+        <li key={`${label}-item`} className="receipt-item receipt-item__basket in-page-transition">
+          <div className="receipt-item__multiple">
+            <BasketList className="receipt-basket" products={products} isCountChangeEnabled={false} onOneLine={true}/>
+          </div>
+        </li>
+      </React.Fragment>
+    );
   }
 
-  renderReceiptItem(label, items = []) {
+  static renderReceiptItem(label, items = []) {
     let multipleClassName = null;
     if (items.length > 1) multipleClassName = 'receipt-item__multiple';
 
@@ -37,54 +47,69 @@ class Receipt extends Reflux.Component {
     );
   }
 
+  static renderHeader() {
+    return (
+      <Header showBackNav={false}>
+        <span className="header-title">{T.translate('receipt.header')}</span>
+      </Header>
+    );
+  }
+
+  static renderFooter() {
+    return (
+      <Footer>
+        <button
+          className="kvass-widget__primary-button"
+          onClick={() => window.KvassOrdering.close()}
+        >
+          {T.translate('global.last')}
+        </button>
+      </Footer>
+    );
+  }
+
+  constructor(props) {
+    super(props);
+    this.stores = [DeliveryStore, ProductStore, UserStore, OrderStore];
+    this.animation = new Animate();
+    this.storeKeys = ['firstName', 'lastName', 'phoneNumber', 'products', 'totalSum', 'deliveryAddress', 'parsedDeliveryTime', 'deliveryAdditional', 'order'];
+
+    this.renderBody = this.renderBody.bind(this);
+  }
+
   componentDidMount() {
     this.animation.animateInViewTransition();
   }
 
-  renderBasketReceiptItem(label, products) {
+  renderBody() {
+    const currency = utils.getCurrency(this.state.products);
     return (
-      <React.Fragment>
-        <li key={label} className="receipt-item in-page-transition">
-          <div>
-            <span className="label">{label}:</span>
+      <div className="content">
+        <div className="padding-container">
+          <div className="receipt-summary">
+            <ul>
+              {this.constructor.renderReceiptItem(T.translate('receipt.nameLabel'), [`${this.state.firstName} ${this.state.lastName}`])}
+              {this.constructor.renderReceiptItem(T.translate('receipt.phoneNumberLabel'), [this.state.phoneNumber])}
+              {this.constructor.renderReceiptItem(T.translate('receipt.orderId'), [this.state.order.human_id])}
+              {/*this.constructor.renderReceiptItem('Order', [this.state.orderId])*/}
+              {this.constructor.renderBasketReceiptItem(T.translate('receipt.productsLabel'), this.state.products)}
+              {this.constructor.renderReceiptItem(T.translate('receipt.priceLabel'), [`${utils.roundNumber(this.state.totalSum, 2)} ${currency}`])}
+              {this.constructor.renderReceiptItem(T.translate('receipt.deliveryLabel'), [this.state.deliveryAddress, this.state.parsedDeliveryTime.format('LLL')])}
+              {this.state.deliveryAdditional ? this.constructor.renderReceiptItem(T.translate('receipt.deliveryAddLabel'), [this.state.deliveryAdditional]) : null}
+            </ul>
           </div>
-        </li>
-        <li key={`${label}-item`} className="receipt-item receipt-item__basket in-page-transition">
-          <div className="receipt-item__multiple">
-            <BasketList className="receipt-basket" products={products} isCountChangeEnabled={false} onOneLine={true}/>
-          </div>
-        </li>
-      </React.Fragment>
+        </div>
+      </div>
     );
   }
 
   render() {
-    const currency = utils.getCurrency(this.state.products);
     return (
       <div className="receipt">
-        <Header showBackNav={false}>
-          <span className="header-title">{T.translate('receipt.header')}</span>
-        </Header>
+        {this.constructor.renderHeader()}
         <div className="kvass-widget__content-body">
-          <div className="content">
-            <div className="padding-container">
-              <div className="receipt-summary">
-                <ul>
-                  {this.renderReceiptItem(T.translate('receipt.nameLabel'), [this.state.firstName + ' ' + this.state.lastName])}
-                  {this.renderReceiptItem(T.translate('receipt.phoneNumberLabel'), [this.state.phoneNumber])}
-                  {this.renderReceiptItem(T.translate('receipt.orderId'), [this.state.order.human_id])}
-                  {/*this.renderReceiptItem('Order', [this.state.orderId])*/}
-                  {this.renderBasketReceiptItem(T.translate('receipt.productsLabel'), this.state.products)}
-                  {this.renderReceiptItem(T.translate('receipt.priceLabel'), [utils.roundNumber(this.state.totalSum, 2) + ' ' + currency])}
-                  {this.renderReceiptItem(T.translate('receipt.deliveryLabel'), [this.state.deliveryAddress, this.state.parsedDeliveryTime.format('LLL')])}
-                  {this.state.deliveryAdditional ? this.renderReceiptItem(T.translate('receipt.deliveryAddLabel') , [this.state.deliveryAdditional]) : null}
-                </ul>
-              </div>
-            </div>
-          </div>
-          <Footer>
-            <button className="kvass-widget__primary-button" onClick={() => window.KvassOrdering.close()}>{T.translate('global.last')}</button>
-          </Footer>
+          {this.renderBody()}
+          {this.constructor.renderFooter()}
         </div>
       </div>
     );
