@@ -15,6 +15,14 @@ import Footer from 'src/components/Footer';
 import Animate from '../../utils/animate';
 
 class UserDetails extends Reflux.Component {
+  static renderHeader() {
+    return (
+      <Header showBackNav={true}>
+        <span className="header-title">{T.translate('userDetails.header')}</span>
+      </Header>
+    )
+  }
+
   constructor(props) {
     super(props);
     this.uiConfig = {
@@ -41,7 +49,8 @@ class UserDetails extends Reflux.Component {
     this.removeAuthentication = this.removeAuthentication.bind(this);
     this.renderExistingUser = this.renderExistingUser.bind(this);
     this.renderInput = this.renderInput.bind(this);
-    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged((user) => Actions.onAuthStateChanged(user));
+    this.renderFooter = this.renderFooter.bind(this);
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => Actions.onAuthStateChanged(user));
     this.animation.animateInViewTransition();
   }
 
@@ -96,7 +105,7 @@ class UserDetails extends Reflux.Component {
         type="string"
         disabled={isDisabled}
         debounceTimeout={300}
-        placeholder={T.translate('userDetails.' + type)}
+        placeholder={T.translate(`userDetails.${type}`)}
         value={this.state[type]}
         onChange={event => Actions.onUserDetailsInput(type, event.target.value)}
       />
@@ -139,9 +148,25 @@ class UserDetails extends Reflux.Component {
         <span className="userName in-page-transition">{this.state.firstName} {this.state.lastName}</span>
         <span className="phoneNumber in-page-transition">{this.state.phoneNumber}</span>
         <span className="in-page-transition">
-          <a className="notYou" href="#" onClick={this.removeAuthentication}>{T.translate('userDetails.notYou')}</a>
+          <a className="notYou" href="#" onClick={this.removeAuthentication}>
+            {T.translate('userDetails.notYou')}
+          </a>
         </span>
       </div>
+    );
+  }
+
+  renderFooter() {
+    return (
+      <Footer>
+        <button
+          disabled={!this.state.isVerified}
+          className="kvass-widget__primary-button"
+          onClick={this.authenticateWithApi}
+        >
+          {T.translate('global.next')}
+        </button>
+      </Footer>
     );
   }
 
@@ -150,17 +175,16 @@ class UserDetails extends Reflux.Component {
 
     return (
       <div className="user-details">
-        <Header showBackNav={true}>
-          <span className="header-title">{T.translate('userDetails.header')}</span>
-        </Header>
+        {this.constructor.renderHeader()}
         <div className="kvass-widget__content-body">
-          <Spinner show={this.state.isLoading}></Spinner>
+          <Spinner show={this.state.isLoading} />
           <div className="content">
-            {isAuthComplete ? this.renderExistingUser() : this.renderAuthProcess(this.state.isVerified)}
+            {isAuthComplete ?
+              this.renderExistingUser()
+              :
+              this.renderAuthProcess(this.state.isVerified)}
           </div>
-          <Footer>
-            <button disabled={!this.state.isVerified} className="kvass-widget__primary-button" onClick={this.authenticateWithApi}>{T.translate('global.next')}</button>
-          </Footer>
+          {this.renderFooter()}
         </div>
       </div>
     );
