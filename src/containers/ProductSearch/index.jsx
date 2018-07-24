@@ -1,6 +1,5 @@
 import React from 'react';
 import Reflux from 'reflux';
-import PropTypes from 'prop-types';
 import {DebounceInput} from 'react-debounce-input';
 import T from 'src/utils/i18n';
 import Kvass from '@kvass.ai/core-sdk';
@@ -12,9 +11,17 @@ import Footer from 'src/components/Footer';
 import ProductList from 'src/components/ProductList';
 import ShoppingCart from 'src/components/ShoppingCart';
 import utils from 'src/utils';
-import ProductStore from "../../reflux/ProductStore";
+import ProductStore from 'src/reflux/ProductStore';
 
 class ProductSearch extends Reflux.Component {
+  static renderFooter() {
+    return (
+      <Footer>
+        <ShoppingCart />
+      </Footer>
+    );
+  }
+
   constructor(props) {
     super(props);
 
@@ -24,7 +31,6 @@ class ProductSearch extends Reflux.Component {
       total: 0
     };
     this.kvass = new Kvass();
-    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
 
     this.stores = [UserStore, ProductStore];
     this.storeKeys = ['apiUser', 'searchString'];
@@ -33,6 +39,9 @@ class ProductSearch extends Reflux.Component {
       productSearchList: [],
       search: ''
     };
+
+    this.renderBody = this.renderBody.bind(this);
+    this.renderHeader = this.renderHeader.bind(this);
   }
 
   // Get personalized products on first load, based on general populariy or based on user if logged in
@@ -46,29 +55,33 @@ class ProductSearch extends Reflux.Component {
     if (this.state.searchString) {
       this.searchProduct(this.state.searchString);
     } else {
-      this.kvass.aiModel().getRecommendations({body, urlParams: {expand: 'response.object'}}, (error, recommendations, res) => {
+      this.kvass.aiModel().getRecommendations({body, urlParams: {expand: 'response.object'}}, (error, recommendations) => {
         if (error) {
-          this.searchProduct(this.state.searchString); // do a normal product search if recommendations fail
+          // do a normal product search if recommendations fail
+          this.searchProduct(this.state.searchString);
           return;
         }
-        this.setState({isLoading: false, productSearchList: utils.parseRecommendations(recommendations)});
+        this.setState({
+          isLoading: false,
+          productSearchList: utils.parseRecommendations(recommendations)
+        });
       });
     }
   }
 
   searchProduct(search) {
     this.setState({isLoading: true, search});
-    this.kvass.product().search({query: search, urlParams: {size: this.pagination.size, page: this.pagination.page, sort: '-created'}}, (error, productListRes, res) => {
+    this.kvass.product().search({query: search, urlParams: {size: this.pagination.size, page: this.pagination.page, sort: '-created'}}, (error, productListRes) => {
       this.setState({isLoading: false, productSearchList: productListRes});
       Actions.onSearch(search);
     });
   }
 
-  handleSearchSubmit(event) {
+  static handleSearchSubmit(event) {
     event.preventDefault();
   }
 
-  renderEmptyBody() {
+  static renderEmptyBody() {
     return (
       <div className="product-list--empty">
         <p>{T.translate('product.noResults')}</p>
@@ -76,30 +89,49 @@ class ProductSearch extends Reflux.Component {
     );
   }
 
+  renderHeader() {
+    const {search} = this.state;
+    return (
+      <Header showBackNav={false}>
+        <form className="search-form" onSubmit={this.constructor.handleSearchSubmit}>
+          <DebounceInput
+            className="kvass-widget__input"
+            minLength={1}
+            value={search}
+            debounceTimeout={500}
+            placeholder={T.translate('product.searchPlaceholder')}
+            onChange={event => this.searchProduct(event.target.value)} />
+          <input
+            className="kvass-widget__primary-button"
+            type="submit"
+            value={T.translate('product.search')}
+          />
+        </form>
+      </Header>
+    );
+  }
+
+  renderBody() {
+    const {productSearchList} = this.state;
+    return (
+      <div className="product-list">
+        {productSearchList.length ?
+          <ProductList isLoading={this.state.isLoading} productList={productSearchList} />
+          :
+          this.constructor.renderEmptyBody()}
+      </div>
+    );
+  }
+
   render() {
-    const {search, isLoading, productSearchList} = this.state;
+    const {isLoading} = this.state;
     return (
       <div className="product-search">
-        <Header showBackNav={false}>
-          <form className="search-form" onSubmit={this.handleSearchSubmit}>
-            <DebounceInput
-              className="kvass-widget__input"
-              minLength={1}
-              value={search}
-              debounceTimeout={500}
-              placeholder={T.translate('product.searchPlaceholder')}
-              onChange={event => this.searchProduct(event.target.value)} />
-            <input className="kvass-widget__primary-button" type="submit" value={T.translate('product.search')} />
-          </form>
-        </Header>
+        {this.renderHeader()}
         <div className="kvass-widget__content-body">
-          <Spinner show={isLoading}></Spinner>
-          <div className="product-list">
-            {productSearchList.length ? <ProductList isLoading={this.state.isLoading} productList={productSearchList}></ProductList> : this.renderEmptyBody()}
-          </div>
-          <Footer>
-            <ShoppingCart></ShoppingCart>
-          </Footer>
+          <Spinner show={isLoading} />
+          {this.renderBody()}
+          {this.constructor.renderFooter()}
         </div>
       </div>
     );
