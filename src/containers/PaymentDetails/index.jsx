@@ -15,6 +15,22 @@ import utils from 'src/utils';
 import Animate from '../../utils/animate';
 
 class PaymentDetails extends Reflux.Component {
+  static renderHeader() {
+    return (
+      <Header showBackNav={true}>
+        <span className="header-title">{T.translate('paymentDetails.header')}</span>
+      </Header>
+    );
+  }
+
+  static setPaymentMethod(id, paymentMethods) {
+    let foundPaymentMethod = null;
+    paymentMethods.forEach((paymentMethod) => {
+      if (paymentMethod.id === id) foundPaymentMethod = paymentMethod;
+    });
+    Actions.onSelectPaymentMethod(foundPaymentMethod);
+  }
+
   constructor(props) {
     super(props);
     this.config = Config();
@@ -28,9 +44,10 @@ class PaymentDetails extends Reflux.Component {
     };
     this.storeKeys = ['stripeToken', 'apiUser', 'selectedPaymentMethod', 'userPaymentMethods'];
 
-    this.setPaymentMethod = this.setPaymentMethod.bind(this);
     this.onPaymentMethodChange = this.onPaymentMethodChange.bind(this);
     this.onStripePaymentAdded = this.onStripePaymentAdded.bind(this);
+    this.renderFooter = this.renderFooter.bind(this);
+    this.renderBody = this.renderBody.bind(this);
   }
 
   componentDidMount() {
@@ -44,7 +61,7 @@ class PaymentDetails extends Reflux.Component {
     }
 
     // Retrieve payment methods
-    this.kvass.paymentMethod().getAll({}, (err, PaymentMethods, raw) => {
+    this.kvass.paymentMethod().getAll({}, (err, PaymentMethods) => {
       if (err) {
         Actions.onMessage({isError: true});
         this.setState({isLoading: false});
@@ -54,7 +71,7 @@ class PaymentDetails extends Reflux.Component {
       // Set default selected payment method to users default
       const defaultPaymentMethod = this.state.apiUser.default_payment_method;
       if (defaultPaymentMethod) {
-        this.setPaymentMethod(defaultPaymentMethod.$oid, PaymentMethods);
+        this.constructor.setPaymentMethod(defaultPaymentMethod.$oid, PaymentMethods);
       }
       Actions.onAddUserPaymentMethods(PaymentMethods);
       this.setState({isLoading: false});
@@ -63,14 +80,6 @@ class PaymentDetails extends Reflux.Component {
 
   componentDidUpdate() {
     this.animation.animateInViewTransition();
-  }
-
-  setPaymentMethod(id, paymentMethods) {
-    let foundPaymentMethod = null;
-    paymentMethods.forEach((paymentMethod) => {
-      if (paymentMethod.id === id) foundPaymentMethod = paymentMethod;
-    });
-    Actions.onSelectPaymentMethod(foundPaymentMethod);
   }
 
   onPaymentMethodChange(event) {
@@ -82,51 +91,76 @@ class PaymentDetails extends Reflux.Component {
   }
 
   renderPaymentMethodList() {
-    const {userPaymentMethods, apiUser, selectedPaymentMethod} = this.state;
+    const {userPaymentMethods} = this.state;
     if (!userPaymentMethods || !userPaymentMethods.length) return;
 
-    const children = userPaymentMethods.map((paymentMethod) => {
-      return (
-        <option key={paymentMethod.id} value={paymentMethod.id}>
-          {utils.parseCreditCard(paymentMethod.card)}
-        </option>
-      );
-    });
+    const children = userPaymentMethods.map(paymentMethod =>
+      <option
+        key={paymentMethod.id}
+        value={paymentMethod.id}
+      >
+        {utils.parseCreditCard(paymentMethod.card)}
+      </option>);
+
     return (
       <div className='in-page-transition'>
         <p>{T.translate('paymentDetails.usePrevious')}</p>
-        <select className="payment-details__list" name="paymentMethods" value={this.state.selectedPaymentMethod.id} onChange={this.onPaymentMethodChange}>
+        <select
+          className="payment-details__list"
+          name="paymentMethods"
+          value={this.state.selectedPaymentMethod.id}
+          onChange={this.onPaymentMethodChange}
+        >
           {children}
         </select>
       </div>
     );
   }
 
+  renderBody() {
+    return (
+      <div className="padding-container">
+        {this.renderPaymentMethodList()}
+        <div className='in-page-transition'>
+          <p>{T.translate('paymentDetails.useNew')}</p>
+          <StripeProvider apiKey={this.config.stripeConfig}>
+            <Elements>
+              <PaymentForm onStripePaymentAdded={this.onStripePaymentAdded}/>
+            </Elements>
+          </StripeProvider>
+        </div>
+      </div>
+    );
+  }
+
+  renderFooter() {
+    const {selectedPaymentMethod} = this.state;
+    return (
+      <Footer>
+        <button
+          className="kvass-widget__primary-button"
+          disabled={!selectedPaymentMethod}
+          onClick={
+            () => Actions.onNextNavigation()
+          }
+        >
+          {T.translate('paymentDetails.pay')}
+        </button>
+      </Footer>
+    );
+  }
+
   render() {
-    const {isLoading, stripeToken, selectedPaymentMethod} = this.state;
+    const {isLoading} = this.state;
     return (
       <div className="payment-details">
-        <Header showBackNav={true}>
-          <span className="header-title">{T.translate('paymentDetails.header')}</span>
-        </Header>
+        {this.constructor.renderHeader()}
         <div className="kvass-widget__content-body">
-          <Spinner show={isLoading}></Spinner>
+          <Spinner show={isLoading} />
           <div className="content">
-            <div className="padding-container">
-              {this.renderPaymentMethodList()}
-              <div className='in-page-transition'>
-                <p>{T.translate('paymentDetails.useNew')}</p>
-                <StripeProvider apiKey={this.config.stripeConfig}>
-                  <Elements>
-                    <PaymentForm onStripePaymentAdded={this.onStripePaymentAdded}/>
-                  </Elements>
-                </StripeProvider>
-              </div>
-            </div>
+            {this.renderBody()}
           </div>
-          <Footer>
-            <button className="kvass-widget__primary-button" disabled={!selectedPaymentMethod} onClick={() => Actions.onNextNavigation()}>{T.translate('paymentDetails.pay')}</button>
-          </Footer>
+          {this.renderFooter()}
         </div>
       </div>
     );
