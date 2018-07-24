@@ -19,15 +19,15 @@ class ProductList extends Reflux.Component {
     );
   }
 
+  static onProductClick(product) {
+    Actions.onSelectProduct(product);
+    Actions.onNavigateTo(7); // Navigate to product page
+  }
+
   constructor(props) {
     super(props);
     this.kvass = new Kvass();
     this.animation = new Animate();
-  }
-
-  onProductClick(product) {
-    Actions.onSelectProduct(product);
-    Actions.onNavigateTo(7); // Navigate to product page
   }
 
   componentDidMount() {
@@ -57,8 +57,11 @@ class ProductList extends Reflux.Component {
 
   renderChildrenItems(productList) {
     return productList.map(product =>
-      <li className="product-list-item in-page-transition" key={product._id.$oid}>
-        <div className="product-list-item--description" onClick={() => this.onProductClick(product)}>
+      <li key={product._id.$oid} className="product-list-item in-page-transition">
+        <div
+          className="product-list-item--description"
+          onClick={() => this.constructor.onProductClick(product)}
+        >
           <div className="product-list-item__img">
             {this.renderProductImg(product.image_url)}
           </div>
@@ -98,7 +101,7 @@ ProductList.defaultProps = {
 
 ProductList.propTypes = {
   productList: PropTypes.array.isRequired,
-  isLoading: PropTypes.bool,
+  isLoading: PropTypes.bool
 };
 
 export default ProductList;
