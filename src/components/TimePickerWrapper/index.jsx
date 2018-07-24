@@ -45,7 +45,7 @@ class TimePickerWrapper extends Reflux.Component {
       <TimePicker
         time={this.state.deliveryTime}
         draggable={false}
-        onTimeChange={(time) => Actions.onTimeChange(time)}
+        onTimeChange={time => Actions.onTimeChange(time)}
         theme="classic"
       />
     );

@@ -15,6 +15,7 @@ class DayPickerWrapper extends Reflux.Component {
     this.state = {
       focused: false
     };
+    this.onFocusChange = this.onFocusChange.bind(this);
   }
 
   onFocusChange({focused}) {
