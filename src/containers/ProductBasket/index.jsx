@@ -12,7 +12,7 @@ import utils from 'src/utils';
 
 class ProductBasket extends Reflux.Component {
   static handleCountChange(product, event) {
-    const diff = parseInt(event.target.value - product.count);
+    const diff = parseInt(event.target.value - product.count, 10);
     if (event.target.value > product.count) {
       Actions.onAddProduct(product.item, diff);
     } else {
