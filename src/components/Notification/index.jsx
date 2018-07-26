@@ -1,37 +1,33 @@
-import React from 'react'
-import Reflux from 'reflux'
-import classNames from 'classnames'
-import T from 'src/utils/i18n';
+import React from 'react';
+import Reflux from 'reflux';
 import Actions from 'src/reflux/Actions';
 import GlobalStore from 'src/reflux/GlobalStore';
 import CloseIcon from 'src/components/SvgIcons/CloseIcon';
 
 class Notification extends Reflux.Component {
+  static closeNotification() {
+    Actions.onCloseMessage();
+  }
+
   constructor(props) {
     super(props);
     this.store = GlobalStore;
     this.storeKeys = ['message'];
-    this.closeNotifcation = this.closeNotifcation.bind(this);
-  }
-
-  closeNotifcation() {
-    Actions.onCloseMessage();
   }
 
   render() {
     const {message} = this.state;
-    const className = classNames('kvass-widget__notification', {
-      'kvass-widget__notification--close': message ? false : true
-    });
 
     return (
-      <div className={className}>
-        <div className="close-widget-icon" onClick={this.closeNotifcation}>
-          <CloseIcon className="svg-icon--secondary"></CloseIcon>
+      <div className={`kvass-widget__notification ${!message && 'kvass-widget__notification--close'}`}>
+        <div className="close-widget-icon" onClick={this.constructor.closeNotification}>
+          <CloseIcon className="svg-icon--secondary" />
         </div>
-        <div className="message">{message}</div>
+        <div className="message">
+          {message}
+        </div>
       </div>
-    )
+    );
   }
 }
 

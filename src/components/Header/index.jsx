@@ -6,20 +6,29 @@ import CloseIcon from 'src/components/SvgIcons/CloseIcon';
 
 const Header = (props) => {
   const {showBackNav, showCloseNav, backStep} = props;
-  const backNav = () => {
-    return (
-      <div className="previous-navigation" onClick={() => backStep !== null ? Actions.onNavigateTo(backStep): Actions.onPreviousNavigation()}>
-        <BackIcon className="svg-icon--primary"></BackIcon>
-      </div>
-    );
-  };
-  const closeNav = () => {
-    return (
-      <div className="close-widget-icon" onClick={() => window.KvassOrdering.close()}>
-        <CloseIcon className="svg-icon--primary"></CloseIcon>
-      </div>
-    );
-  };
+
+  const backNav = () => (
+    <div
+      className="previous-navigation"
+      onClick={
+        () =>
+          (backStep !== null ? Actions.onNavigateTo(backStep) : Actions.onPreviousNavigation())
+      }
+    >
+      <BackIcon className="svg-icon--primary" />
+    </div>
+  );
+
+  const closeNav = () => (
+    <div
+      className="close-widget-icon"
+      onClick={
+        () => window.KvassOrdering.close()
+      }
+    >
+      <CloseIcon className="svg-icon--primary" />
+    </div>
+  );
 
   return (
     <div className="kvass-widget__content-header">
@@ -35,13 +44,19 @@ const Header = (props) => {
 Header.defaultProps = {
   showCloseNav: true,
   showBackNav: false,
-  backStep: null
+  backStep: null,
+  children: {}
 };
 
 Header.propTypes = {
   showCloseNav: PropTypes.bool,
   showBackNav: PropTypes.bool,
-  backStep: PropTypes.number
+  backStep: PropTypes.number,
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.instanceOf(React.Component),
+    PropTypes.object,
+  ])
 };
 
 export default Header;

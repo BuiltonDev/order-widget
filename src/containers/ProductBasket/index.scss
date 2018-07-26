@@ -8,6 +8,12 @@
     padding: 10px 32px;
   }
 
+  .content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
   .product-basket--item {
     display: flex;
     flex-direction: column;

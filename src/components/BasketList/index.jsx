@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {DebounceInput} from 'react-debounce-input';
 import Animate from 'src/utils/animate';
@@ -21,11 +21,29 @@ class BasketList extends Component {
     }
   }
 
+  mapBasketLines() {
+    const productArray = [];
+
+    Object.values(this.props.products).forEach((value) => {
+      if (value) {
+        if (this.props.onOneLine) {
+          productArray.push(this.renderBasketOneLine(value));
+        } else {
+          productArray.push(this.renderBasketPrice(value));
+        }
+      }
+    });
+
+    return productArray;
+  }
+
   renderBasketPrice(product) {
     const key = `${product.item._id.$oid}-1`;
     return (
       <li key={key} className='product-basket--item in-page-transition'>
-        <div className="basket-item__title">{product.item.name}</div>
+        <div className="basket-item__title">
+          {product.item.name}
+        </div>
         <div className='product-basket--item-content'>
           <span className="basket-item__count">
             <DebounceInput
@@ -34,10 +52,15 @@ class BasketList extends Component {
               debounceTimeout={500}
               value={product.count}
               disabled={!this.props.isCountChangeEnabled}
-              onChange={event => this.onChange(product, event)} />
+              onChange={event => this.onChange(product, event)}
+            />
           </span>
-          <span className="basket-item__price">{product.item.price} {product.item.currency}</span>
-          <span className="basket-item__total">{utils.roundNumber(product.item.price * product.count, 2)} {product.item.currency}</span>
+          <span className="basket-item__price">
+            {product.item.price} {product.item.currency}
+          </span>
+          <span className="basket-item__total">
+            {utils.roundNumber(product.item.price * product.count, 2)} {product.item.currency}
+          </span>
         </div>
       </li>
     );
@@ -53,45 +76,32 @@ class BasketList extends Component {
             debounceTimeout={500}
             value={product.count}
             disabled={!this.props.isCountChangeEnabled}
-            onChange={event => this.onChange(product, event)} />
+            onChange={event => this.onChange(product, event)}
+          />
         </span>
-        <span className="basket-item__title">{product.item.name}</span>
-        <span className="basket-item__total">{utils.roundNumber(product.item.price * product.count, 2)} {product.item.currency}</span>
+        <span className="basket-item__title">
+          {product.item.name}
+        </span>
+        <span className="basket-item__total">
+          {utils.roundNumber(product.item.price * product.count, 2)} {product.item.currency}
+        </span>
       </li>
     );
   }
 
   render() {
-    const productArray = [];
-    let className = 'basket-list';
-
-    if (this.props.className) className += ' ' + this.props.className;
-
-    this.items = document.getElementsByClassName('in-page-transition');
-
-    Object.entries(this.props.products).forEach(([key, value]) => {
-      if (value) {
-
-        if (this.props.onOneLine) {
-          productArray.push(this.renderBasketOneLine(value));
-        } else {
-          productArray.push(this.renderBasketPrice(value));
-        }
-
-      }
-    });
-
     return (
-      <ul className={className}>
-        {productArray}
+      <ul className={`basket-list ${this.props.className}`}>
+        {this.mapBasketLines()}
       </ul>
-    )
+    );
   }
 }
 
 BasketList.defaultProps = {
   isCountChangeEnabled: true,
-  onOneLine: false
+  onOneLine: false,
+  className: ''
 };
 
 BasketList.propTypes = {
@@ -99,7 +109,11 @@ BasketList.propTypes = {
   isCountChangeEnabled: PropTypes.bool,
   onCountChange: PropTypes.func,
   onOneLine: PropTypes.bool,
-  classOverride: PropTypes.string
+  classOverride: PropTypes.string,
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array
+  ])
 };
 
 export default BasketList;
